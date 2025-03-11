@@ -1,0 +1,180 @@
+C:\Users\User\Desktop\Proyecto sistema de ventas\ProyectoSistemaVentas\CapaPresentacion\bin\Debug\CapaPresentacion.exe.config
+C:\Users\User\Desktop\Proyecto sistema de ventas\ProyectoSistemaVentas\CapaPresentacion\bin\Debug\CapaPresentacion.exe
+C:\Users\User\Desktop\Proyecto sistema de ventas\ProyectoSistemaVentas\CapaPresentacion\bin\Debug\CapaPresentacion.pdb
+C:\Users\User\Desktop\Proyecto sistema de ventas\ProyectoSistemaVentas\CapaPresentacion\bin\Debug\FontAwesome.Sharp.dll
+C:\Users\User\Desktop\Proyecto sistema de ventas\ProyectoSistemaVentas\CapaPresentacion\obj\Debug\CapaPresentacion.csproj.AssemblyReference.cache
+C:\Users\User\Desktop\Proyecto sistema de ventas\ProyectoSistemaVentas\CapaPresentacion\obj\Debug\CapaPresentacion.Inicio.resources
+C:\Users\User\Desktop\Proyecto sistema de ventas\ProyectoSistemaVentas\CapaPresentacion\obj\Debug\CapaPresentacion.Login.resources
+C:\Users\User\Desktop\Proyecto sistema de ventas\ProyectoSistemaVentas\CapaPresentacion\obj\Debug\CapaPresentacion.Properties.Resources.resources
+C:\Users\User\Desktop\Proyecto sistema de ventas\ProyectoSistemaVentas\CapaPresentacion\obj\Debug\CapaPresentacion.csproj.GenerateResource.cache
+C:\Users\User\Desktop\Proyecto sistema de ventas\ProyectoSistemaVentas\CapaPresentacion\obj\Debug\CapaPresentacion.csproj.CoreCompileInputs.cache
+C:\Users\User\Desktop\Proyecto sistema de ventas\ProyectoSistemaVentas\CapaPresentacion\obj\Debug\CapaPres.61CA7C38.Up2Date
+C:\Users\User\Desktop\Proyecto sistema de ventas\ProyectoSistemaVentas\CapaPresentacion\obj\Debug\CapaPresentacion.exe
+C:\Users\User\Desktop\Proyecto sistema de ventas\ProyectoSistemaVentas\CapaPresentacion\obj\Debug\CapaPresentacion.pdb
+C:\Users\User\Desktop\Proyecto sistema de ventas\ProyectoSistemaVentas\CapaPresentacion\bin\Debug\CapaEntidad.dll
+C:\Users\User\Desktop\Proyecto sistema de ventas\ProyectoSistemaVentas\CapaPresentacion\bin\Debug\CapaNegocio.dll
+C:\Users\User\Desktop\Proyecto sistema de ventas\ProyectoSistemaVentas\CapaPresentacion\bin\Debug\CapaDatos.dll
+C:\Users\User\Desktop\Proyecto sistema de ventas\ProyectoSistemaVentas\CapaPresentacion\bin\Debug\CapaEntidad.pdb
+C:\Users\User\Desktop\Proyecto sistema de ventas\ProyectoSistemaVentas\CapaPresentacion\bin\Debug\CapaNegocio.pdb
+C:\Users\User\Desktop\Proyecto sistema de ventas\ProyectoSistemaVentas\CapaPresentacion\bin\Debug\CapaDatos.pdb
+C:\Users\User\Desktop\Proyecto sistema de ventas\ProyectoSistemaVentas\CapaPresentacion\obj\Debug\CapaPresentacion.frmCategoria.resources
+C:\Users\User\Desktop\Proyecto sistema de ventas\ProyectoSistemaVentas\CapaPresentacion\obj\Debug\CapaPresentacion.frmClientes.resources
+C:\Users\User\Desktop\Proyecto sistema de ventas\ProyectoSistemaVentas\CapaPresentacion\obj\Debug\CapaPresentacion.frmCompras.resources
+C:\Users\User\Desktop\Proyecto sistema de ventas\ProyectoSistemaVentas\CapaPresentacion\obj\Debug\CapaPresentacion.frmProducto.resources
+C:\Users\User\Desktop\Proyecto sistema de ventas\ProyectoSistemaVentas\CapaPresentacion\obj\Debug\CapaPresentacion.frmProveedores.resources
+C:\Users\User\Desktop\Proyecto sistema de ventas\ProyectoSistemaVentas\CapaPresentacion\obj\Debug\CapaPresentacion.frmReportes.resources
+C:\Users\User\Desktop\Proyecto sistema de ventas\ProyectoSistemaVentas\CapaPresentacion\obj\Debug\CapaPresentacion.frmUsuarios.resources
+C:\Users\User\Desktop\Proyecto sistema de ventas\ProyectoSistemaVentas\CapaPresentacion\obj\Debug\CapaPresentacion.frmVentas.resources
+C:\Users\User\Desktop\Proyecto sistema de ventas\ProyectoSistemaVentas\CapaPresentacion\bin\Debug\ClosedXML.dll
+C:\Users\User\Desktop\Proyecto sistema de ventas\ProyectoSistemaVentas\CapaPresentacion\bin\Debug\ClosedXML.Parser.dll
+C:\Users\User\Desktop\Proyecto sistema de ventas\ProyectoSistemaVentas\CapaPresentacion\bin\Debug\DocumentFormat.OpenXml.dll
+C:\Users\User\Desktop\Proyecto sistema de ventas\ProyectoSistemaVentas\CapaPresentacion\bin\Debug\DocumentFormat.OpenXml.Framework.dll
+C:\Users\User\Desktop\Proyecto sistema de ventas\ProyectoSistemaVentas\CapaPresentacion\bin\Debug\ExcelNumberFormat.dll
+C:\Users\User\Desktop\Proyecto sistema de ventas\ProyectoSistemaVentas\CapaPresentacion\bin\Debug\Microsoft.Bcl.HashCode.dll
+C:\Users\User\Desktop\Proyecto sistema de ventas\ProyectoSistemaVentas\CapaPresentacion\bin\Debug\RBush.dll
+C:\Users\User\Desktop\Proyecto sistema de ventas\ProyectoSistemaVentas\CapaPresentacion\bin\Debug\SixLabors.Fonts.dll
+C:\Users\User\Desktop\Proyecto sistema de ventas\ProyectoSistemaVentas\CapaPresentacion\bin\Debug\System.Buffers.dll
+C:\Users\User\Desktop\Proyecto sistema de ventas\ProyectoSistemaVentas\CapaPresentacion\bin\Debug\System.Memory.dll
+C:\Users\User\Desktop\Proyecto sistema de ventas\ProyectoSistemaVentas\CapaPresentacion\bin\Debug\System.Numerics.Vectors.dll
+C:\Users\User\Desktop\Proyecto sistema de ventas\ProyectoSistemaVentas\CapaPresentacion\bin\Debug\System.Runtime.CompilerServices.Unsafe.dll
+C:\Users\User\Desktop\Proyecto sistema de ventas\ProyectoSistemaVentas\CapaPresentacion\bin\Debug\ClosedXML.pdb
+C:\Users\User\Desktop\Proyecto sistema de ventas\ProyectoSistemaVentas\CapaPresentacion\bin\Debug\ClosedXML.xml
+C:\Users\User\Desktop\Proyecto sistema de ventas\ProyectoSistemaVentas\CapaPresentacion\bin\Debug\ClosedXML.Parser.xml
+C:\Users\User\Desktop\Proyecto sistema de ventas\ProyectoSistemaVentas\CapaPresentacion\bin\Debug\DocumentFormat.OpenXml.xml
+C:\Users\User\Desktop\Proyecto sistema de ventas\ProyectoSistemaVentas\CapaPresentacion\bin\Debug\DocumentFormat.OpenXml.Framework.xml
+C:\Users\User\Desktop\Proyecto sistema de ventas\ProyectoSistemaVentas\CapaPresentacion\bin\Debug\ExcelNumberFormat.xml
+C:\Users\User\Desktop\Proyecto sistema de ventas\ProyectoSistemaVentas\CapaPresentacion\bin\Debug\Microsoft.Bcl.HashCode.xml
+C:\Users\User\Desktop\Proyecto sistema de ventas\ProyectoSistemaVentas\CapaPresentacion\bin\Debug\RBush.xml
+C:\Users\User\Desktop\Proyecto sistema de ventas\ProyectoSistemaVentas\CapaPresentacion\bin\Debug\SixLabors.Fonts.xml
+C:\Users\User\Desktop\Proyecto sistema de ventas\ProyectoSistemaVentas\CapaPresentacion\bin\Debug\System.Buffers.xml
+C:\Users\User\Desktop\Proyecto sistema de ventas\ProyectoSistemaVentas\CapaPresentacion\bin\Debug\System.Memory.xml
+C:\Users\User\Desktop\Proyecto sistema de ventas\ProyectoSistemaVentas\CapaPresentacion\bin\Debug\System.Numerics.Vectors.xml
+C:\Users\User\Desktop\Proyecto sistema de ventas\ProyectoSistemaVentas\CapaPresentacion\bin\Debug\System.Runtime.CompilerServices.Unsafe.xml
+C:\Users\User\Desktop\Proyecto sistema de ventas\ProyectoSistemaVentas\CapaPresentacion\obj\Debug\CapaPresentacion.frmNegocio.resources
+C:\Users\User\Desktop\Proyecto sistema de ventas\ProyectoSistemaVentas\CapaPresentacion\obj\Debug\CapaPresentacion.Modales.mdProveedor.resources
+C:\Users\User\Desktop\Proyecto sistema de ventas\ProyectoSistemaVentas\CapaPresentacion\obj\Debug\CapaPresentacion.Modales.mdProducto.resources
+C:\Users\User\Desktop\Proyecto sistema de ventas\ProyectoSistemaVentas\CapaPresentacion\obj\Debug\CapaPresentacion.frmDetalleCompra.resources
+C:\Users\User\Desktop\Proyecto sistema de ventas\ProyectoSistemaVentas\CapaPresentacion\bin\Debug\BouncyCastle.Cryptography.dll
+C:\Users\User\Desktop\Proyecto sistema de ventas\ProyectoSistemaVentas\CapaPresentacion\bin\Debug\itextsharp.dll
+C:\Users\User\Desktop\Proyecto sistema de ventas\ProyectoSistemaVentas\CapaPresentacion\bin\Debug\itextsharp.xmlworker.dll
+C:\Users\User\Desktop\Proyecto sistema de ventas\ProyectoSistemaVentas\CapaPresentacion\bin\Debug\BouncyCastle.Cryptography.xml
+C:\Users\User\Desktop\Proyecto sistema de ventas\ProyectoSistemaVentas\CapaPresentacion\bin\Debug\itextsharp.xml
+C:\Users\User\Desktop\Proyecto sistema de ventas\ProyectoSistemaVentas\CapaPresentacion\obj\Debug\CapaPresentacion.Modales.mdCliente.resources
+C:\Users\User\Desktop\Proyecto sistema de ventas\ProyectoSistemaVentas\CapaPresentacion\obj\Debug\CapaPresentacion.frmDetalleVenta.resources
+C:\Users\User\Desktop\Proyecto sistema de ventas\ProyectoSistemaVentas\CapaPresentacion\obj\Debug\CapaPresentacion.frmReporteCompras.resources
+C:\Users\User\Desktop\Proyecto sistema de ventas\ProyectoSistemaVentas\CapaPresentacion\obj\Debug\CapaPresentacion.frmReporteVentas.resources
+C:\Users\User\Desktop\Proyecto sistema de ventas\ProyectoSistemaVentas\CapaPresentacion\obj\Debug\CapaPresentacion.Modales.mdAcercade.resources
+C:\Users\User\Documents\Proyecto sistema de ventas SP\ProyectoSistemaVentas\CapaPresentacion\obj\Debug\CapaPresentacion.csproj.AssemblyReference.cache
+C:\Users\User\Documents\Proyecto sistema de ventas SP\ProyectoSistemaVentas\CapaPresentacion\obj\Debug\CapaPresentacion.frmCategoria.resources
+C:\Users\User\Documents\Proyecto sistema de ventas SP\ProyectoSistemaVentas\CapaPresentacion\obj\Debug\CapaPresentacion.frmClientes.resources
+C:\Users\User\Documents\Proyecto sistema de ventas SP\ProyectoSistemaVentas\CapaPresentacion\obj\Debug\CapaPresentacion.frmCompras.resources
+C:\Users\User\Documents\Proyecto sistema de ventas SP\ProyectoSistemaVentas\CapaPresentacion\obj\Debug\CapaPresentacion.frmDetalleCompra.resources
+C:\Users\User\Documents\Proyecto sistema de ventas SP\ProyectoSistemaVentas\CapaPresentacion\obj\Debug\CapaPresentacion.frmDetalleVenta.resources
+C:\Users\User\Documents\Proyecto sistema de ventas SP\ProyectoSistemaVentas\CapaPresentacion\obj\Debug\CapaPresentacion.frmNegocio.resources
+C:\Users\User\Documents\Proyecto sistema de ventas SP\ProyectoSistemaVentas\CapaPresentacion\obj\Debug\CapaPresentacion.frmProducto.resources
+C:\Users\User\Documents\Proyecto sistema de ventas SP\ProyectoSistemaVentas\CapaPresentacion\obj\Debug\CapaPresentacion.frmProveedores.resources
+C:\Users\User\Documents\Proyecto sistema de ventas SP\ProyectoSistemaVentas\CapaPresentacion\obj\Debug\CapaPresentacion.frmReporteCompras.resources
+C:\Users\User\Documents\Proyecto sistema de ventas SP\ProyectoSistemaVentas\CapaPresentacion\obj\Debug\CapaPresentacion.frmReportes.resources
+C:\Users\User\Documents\Proyecto sistema de ventas SP\ProyectoSistemaVentas\CapaPresentacion\obj\Debug\CapaPresentacion.frmReporteVentas.resources
+C:\Users\User\Documents\Proyecto sistema de ventas SP\ProyectoSistemaVentas\CapaPresentacion\obj\Debug\CapaPresentacion.frmUsuarios.resources
+C:\Users\User\Documents\Proyecto sistema de ventas SP\ProyectoSistemaVentas\CapaPresentacion\obj\Debug\CapaPresentacion.frmVentas.resources
+C:\Users\User\Documents\Proyecto sistema de ventas SP\ProyectoSistemaVentas\CapaPresentacion\obj\Debug\CapaPresentacion.Inicio.resources
+C:\Users\User\Documents\Proyecto sistema de ventas SP\ProyectoSistemaVentas\CapaPresentacion\obj\Debug\CapaPresentacion.Login.resources
+C:\Users\User\Documents\Proyecto sistema de ventas SP\ProyectoSistemaVentas\CapaPresentacion\obj\Debug\CapaPresentacion.Modales.mdAcercade.resources
+C:\Users\User\Documents\Proyecto sistema de ventas SP\ProyectoSistemaVentas\CapaPresentacion\obj\Debug\CapaPresentacion.Modales.mdCliente.resources
+C:\Users\User\Documents\Proyecto sistema de ventas SP\ProyectoSistemaVentas\CapaPresentacion\obj\Debug\CapaPresentacion.Modales.mdProducto.resources
+C:\Users\User\Documents\Proyecto sistema de ventas SP\ProyectoSistemaVentas\CapaPresentacion\obj\Debug\CapaPresentacion.Modales.mdProveedor.resources
+C:\Users\User\Documents\Proyecto sistema de ventas SP\ProyectoSistemaVentas\CapaPresentacion\obj\Debug\CapaPresentacion.Properties.Resources.resources
+C:\Users\User\Documents\Proyecto sistema de ventas SP\ProyectoSistemaVentas\CapaPresentacion\obj\Debug\CapaPresentacion.csproj.GenerateResource.cache
+C:\Users\User\Documents\Proyecto sistema de ventas SP\ProyectoSistemaVentas\CapaPresentacion\obj\Debug\CapaPresentacion.csproj.CoreCompileInputs.cache
+C:\Users\User\Documents\Proyecto sistema de ventas SP\ProyectoSistemaVentas\CapaPresentacion\bin\Debug\CapaPresentacionSP.exe.config
+C:\Users\User\Documents\Proyecto sistema de ventas SP\ProyectoSistemaVentas\CapaPresentacion\bin\Debug\CapaPresentacionSP.exe
+C:\Users\User\Documents\Proyecto sistema de ventas SP\ProyectoSistemaVentas\CapaPresentacion\bin\Debug\CapaPresentacionSP.pdb
+C:\Users\User\Documents\Proyecto sistema de ventas SP\ProyectoSistemaVentas\CapaPresentacion\bin\Debug\BouncyCastle.Cryptography.dll
+C:\Users\User\Documents\Proyecto sistema de ventas SP\ProyectoSistemaVentas\CapaPresentacion\bin\Debug\CapaDatosSP.dll
+C:\Users\User\Documents\Proyecto sistema de ventas SP\ProyectoSistemaVentas\CapaPresentacion\bin\Debug\CapaEntidadSP.dll
+C:\Users\User\Documents\Proyecto sistema de ventas SP\ProyectoSistemaVentas\CapaPresentacion\bin\Debug\CapaNegocioSP.dll
+C:\Users\User\Documents\Proyecto sistema de ventas SP\ProyectoSistemaVentas\CapaPresentacion\bin\Debug\ClosedXML.dll
+C:\Users\User\Documents\Proyecto sistema de ventas SP\ProyectoSistemaVentas\CapaPresentacion\bin\Debug\ClosedXML.Parser.dll
+C:\Users\User\Documents\Proyecto sistema de ventas SP\ProyectoSistemaVentas\CapaPresentacion\bin\Debug\DocumentFormat.OpenXml.dll
+C:\Users\User\Documents\Proyecto sistema de ventas SP\ProyectoSistemaVentas\CapaPresentacion\bin\Debug\DocumentFormat.OpenXml.Framework.dll
+C:\Users\User\Documents\Proyecto sistema de ventas SP\ProyectoSistemaVentas\CapaPresentacion\bin\Debug\ESC-POS-USB-NET.dll
+C:\Users\User\Documents\Proyecto sistema de ventas SP\ProyectoSistemaVentas\CapaPresentacion\bin\Debug\ESCPOS_NET.dll
+C:\Users\User\Documents\Proyecto sistema de ventas SP\ProyectoSistemaVentas\CapaPresentacion\bin\Debug\ExcelNumberFormat.dll
+C:\Users\User\Documents\Proyecto sistema de ventas SP\ProyectoSistemaVentas\CapaPresentacion\bin\Debug\FontAwesome.Sharp.dll
+C:\Users\User\Documents\Proyecto sistema de ventas SP\ProyectoSistemaVentas\CapaPresentacion\bin\Debug\itextsharp.dll
+C:\Users\User\Documents\Proyecto sistema de ventas SP\ProyectoSistemaVentas\CapaPresentacion\bin\Debug\itextsharp.xmlworker.dll
+C:\Users\User\Documents\Proyecto sistema de ventas SP\ProyectoSistemaVentas\CapaPresentacion\bin\Debug\Microsoft.Bcl.AsyncInterfaces.dll
+C:\Users\User\Documents\Proyecto sistema de ventas SP\ProyectoSistemaVentas\CapaPresentacion\bin\Debug\Microsoft.Bcl.HashCode.dll
+C:\Users\User\Documents\Proyecto sistema de ventas SP\ProyectoSistemaVentas\CapaPresentacion\bin\Debug\Microsoft.Extensions.DependencyInjection.Abstractions.dll
+C:\Users\User\Documents\Proyecto sistema de ventas SP\ProyectoSistemaVentas\CapaPresentacion\bin\Debug\Microsoft.Extensions.DependencyInjection.dll
+C:\Users\User\Documents\Proyecto sistema de ventas SP\ProyectoSistemaVentas\CapaPresentacion\bin\Debug\Microsoft.Extensions.Logging.Abstractions.dll
+C:\Users\User\Documents\Proyecto sistema de ventas SP\ProyectoSistemaVentas\CapaPresentacion\bin\Debug\Microsoft.Extensions.Logging.dll
+C:\Users\User\Documents\Proyecto sistema de ventas SP\ProyectoSistemaVentas\CapaPresentacion\bin\Debug\Microsoft.Extensions.Options.dll
+C:\Users\User\Documents\Proyecto sistema de ventas SP\ProyectoSistemaVentas\CapaPresentacion\bin\Debug\Microsoft.Extensions.Primitives.dll
+C:\Users\User\Documents\Proyecto sistema de ventas SP\ProyectoSistemaVentas\CapaPresentacion\bin\Debug\RBush.dll
+C:\Users\User\Documents\Proyecto sistema de ventas SP\ProyectoSistemaVentas\CapaPresentacion\bin\Debug\SimpleTcp.dll
+C:\Users\User\Documents\Proyecto sistema de ventas SP\ProyectoSistemaVentas\CapaPresentacion\bin\Debug\SixLabors.Fonts.dll
+C:\Users\User\Documents\Proyecto sistema de ventas SP\ProyectoSistemaVentas\CapaPresentacion\bin\Debug\SixLabors.ImageSharp.dll
+C:\Users\User\Documents\Proyecto sistema de ventas SP\ProyectoSistemaVentas\CapaPresentacion\bin\Debug\System.Buffers.dll
+C:\Users\User\Documents\Proyecto sistema de ventas SP\ProyectoSistemaVentas\CapaPresentacion\bin\Debug\System.Diagnostics.DiagnosticSource.dll
+C:\Users\User\Documents\Proyecto sistema de ventas SP\ProyectoSistemaVentas\CapaPresentacion\bin\Debug\System.Drawing.Common.dll
+C:\Users\User\Documents\Proyecto sistema de ventas SP\ProyectoSistemaVentas\CapaPresentacion\bin\Debug\System.IO.Ports.dll
+C:\Users\User\Documents\Proyecto sistema de ventas SP\ProyectoSistemaVentas\CapaPresentacion\bin\Debug\System.Memory.dll
+C:\Users\User\Documents\Proyecto sistema de ventas SP\ProyectoSistemaVentas\CapaPresentacion\bin\Debug\System.Numerics.Vectors.dll
+C:\Users\User\Documents\Proyecto sistema de ventas SP\ProyectoSistemaVentas\CapaPresentacion\bin\Debug\System.Runtime.CompilerServices.Unsafe.dll
+C:\Users\User\Documents\Proyecto sistema de ventas SP\ProyectoSistemaVentas\CapaPresentacion\bin\Debug\System.Text.Encoding.CodePages.dll
+C:\Users\User\Documents\Proyecto sistema de ventas SP\ProyectoSistemaVentas\CapaPresentacion\bin\Debug\System.Text.Encodings.Web.dll
+C:\Users\User\Documents\Proyecto sistema de ventas SP\ProyectoSistemaVentas\CapaPresentacion\bin\Debug\System.Text.Json.dll
+C:\Users\User\Documents\Proyecto sistema de ventas SP\ProyectoSistemaVentas\CapaPresentacion\bin\Debug\System.Threading.Tasks.Extensions.dll
+C:\Users\User\Documents\Proyecto sistema de ventas SP\ProyectoSistemaVentas\CapaPresentacion\bin\Debug\System.ValueTuple.dll
+C:\Users\User\Documents\Proyecto sistema de ventas SP\ProyectoSistemaVentas\CapaPresentacion\bin\Debug\CapaDatosSP.pdb
+C:\Users\User\Documents\Proyecto sistema de ventas SP\ProyectoSistemaVentas\CapaPresentacion\bin\Debug\CapaEntidadSP.pdb
+C:\Users\User\Documents\Proyecto sistema de ventas SP\ProyectoSistemaVentas\CapaPresentacion\bin\Debug\CapaNegocioSP.pdb
+C:\Users\User\Documents\Proyecto sistema de ventas SP\ProyectoSistemaVentas\CapaPresentacion\bin\Debug\BouncyCastle.Cryptography.xml
+C:\Users\User\Documents\Proyecto sistema de ventas SP\ProyectoSistemaVentas\CapaPresentacion\bin\Debug\ClosedXML.pdb
+C:\Users\User\Documents\Proyecto sistema de ventas SP\ProyectoSistemaVentas\CapaPresentacion\bin\Debug\ClosedXML.xml
+C:\Users\User\Documents\Proyecto sistema de ventas SP\ProyectoSistemaVentas\CapaPresentacion\bin\Debug\ClosedXML.Parser.xml
+C:\Users\User\Documents\Proyecto sistema de ventas SP\ProyectoSistemaVentas\CapaPresentacion\bin\Debug\DocumentFormat.OpenXml.xml
+C:\Users\User\Documents\Proyecto sistema de ventas SP\ProyectoSistemaVentas\CapaPresentacion\bin\Debug\DocumentFormat.OpenXml.Framework.xml
+C:\Users\User\Documents\Proyecto sistema de ventas SP\ProyectoSistemaVentas\CapaPresentacion\bin\Debug\ExcelNumberFormat.xml
+C:\Users\User\Documents\Proyecto sistema de ventas SP\ProyectoSistemaVentas\CapaPresentacion\bin\Debug\itextsharp.xml
+C:\Users\User\Documents\Proyecto sistema de ventas SP\ProyectoSistemaVentas\CapaPresentacion\bin\Debug\Microsoft.Bcl.AsyncInterfaces.xml
+C:\Users\User\Documents\Proyecto sistema de ventas SP\ProyectoSistemaVentas\CapaPresentacion\bin\Debug\Microsoft.Bcl.HashCode.xml
+C:\Users\User\Documents\Proyecto sistema de ventas SP\ProyectoSistemaVentas\CapaPresentacion\bin\Debug\Microsoft.Extensions.DependencyInjection.xml
+C:\Users\User\Documents\Proyecto sistema de ventas SP\ProyectoSistemaVentas\CapaPresentacion\bin\Debug\Microsoft.Extensions.DependencyInjection.Abstractions.xml
+C:\Users\User\Documents\Proyecto sistema de ventas SP\ProyectoSistemaVentas\CapaPresentacion\bin\Debug\Microsoft.Extensions.Logging.xml
+C:\Users\User\Documents\Proyecto sistema de ventas SP\ProyectoSistemaVentas\CapaPresentacion\bin\Debug\Microsoft.Extensions.Logging.Abstractions.xml
+C:\Users\User\Documents\Proyecto sistema de ventas SP\ProyectoSistemaVentas\CapaPresentacion\bin\Debug\Microsoft.Extensions.Options.xml
+C:\Users\User\Documents\Proyecto sistema de ventas SP\ProyectoSistemaVentas\CapaPresentacion\bin\Debug\Microsoft.Extensions.Primitives.xml
+C:\Users\User\Documents\Proyecto sistema de ventas SP\ProyectoSistemaVentas\CapaPresentacion\bin\Debug\RBush.xml
+C:\Users\User\Documents\Proyecto sistema de ventas SP\ProyectoSistemaVentas\CapaPresentacion\bin\Debug\SimpleTcp.xml
+C:\Users\User\Documents\Proyecto sistema de ventas SP\ProyectoSistemaVentas\CapaPresentacion\bin\Debug\SixLabors.Fonts.xml
+C:\Users\User\Documents\Proyecto sistema de ventas SP\ProyectoSistemaVentas\CapaPresentacion\bin\Debug\SixLabors.ImageSharp.xml
+C:\Users\User\Documents\Proyecto sistema de ventas SP\ProyectoSistemaVentas\CapaPresentacion\bin\Debug\System.Buffers.xml
+C:\Users\User\Documents\Proyecto sistema de ventas SP\ProyectoSistemaVentas\CapaPresentacion\bin\Debug\System.Diagnostics.DiagnosticSource.xml
+C:\Users\User\Documents\Proyecto sistema de ventas SP\ProyectoSistemaVentas\CapaPresentacion\bin\Debug\System.IO.Ports.xml
+C:\Users\User\Documents\Proyecto sistema de ventas SP\ProyectoSistemaVentas\CapaPresentacion\bin\Debug\System.Memory.xml
+C:\Users\User\Documents\Proyecto sistema de ventas SP\ProyectoSistemaVentas\CapaPresentacion\bin\Debug\System.Numerics.Vectors.xml
+C:\Users\User\Documents\Proyecto sistema de ventas SP\ProyectoSistemaVentas\CapaPresentacion\bin\Debug\System.Runtime.CompilerServices.Unsafe.xml
+C:\Users\User\Documents\Proyecto sistema de ventas SP\ProyectoSistemaVentas\CapaPresentacion\bin\Debug\System.Text.Encoding.CodePages.xml
+C:\Users\User\Documents\Proyecto sistema de ventas SP\ProyectoSistemaVentas\CapaPresentacion\bin\Debug\System.Text.Encodings.Web.xml
+C:\Users\User\Documents\Proyecto sistema de ventas SP\ProyectoSistemaVentas\CapaPresentacion\bin\Debug\System.Text.Json.xml
+C:\Users\User\Documents\Proyecto sistema de ventas SP\ProyectoSistemaVentas\CapaPresentacion\bin\Debug\System.Threading.Tasks.Extensions.xml
+C:\Users\User\Documents\Proyecto sistema de ventas SP\ProyectoSistemaVentas\CapaPresentacion\bin\Debug\System.ValueTuple.xml
+C:\Users\User\Documents\Proyecto sistema de ventas SP\ProyectoSistemaVentas\CapaPresentacion\obj\Debug\CapaPres.61CA7C38.Up2Date
+C:\Users\User\Documents\Proyecto sistema de ventas SP\ProyectoSistemaVentas\CapaPresentacion\obj\Debug\CapaPresentacionSP.exe
+C:\Users\User\Documents\Proyecto sistema de ventas SP\ProyectoSistemaVentas\CapaPresentacion\obj\Debug\CapaPresentacionSP.pdb
+C:\Users\User\Documents\Proyecto sistema de ventas SP\ProyectoSistemaVentas\CapaPresentacion\bin\Debug\CapaDatosSP.dll.config
+C:\Users\User\Documents\Proyecto sistema de ventas SP\ProyectoSistemaVentas\CapaPresentacion\bin\Debug\CapaEntidadSP.dll.config
+C:\Users\User\Documents\Proyecto sistema de ventas SP\ProyectoSistemaVentas\CapaPresentacion\bin\Debug\CapaNegocioSP.dll.config
+C:\Users\User\Documents\Proyecto sistema de ventas SP\ProyectoSistemaVentas\CapaPresentacion\obj\Debug\CapaPresentacion.Modales.frmHistorialStock.resources
+C:\Users\User\Documents\Proyecto sistema de ventas SP\ProyectoSistemaVentas\CapaPresentacion\obj\Debug\CapaPresentacion.FrmVentasCredito.resources
+C:\Users\User\Documents\Proyecto sistema de ventas SP\ProyectoSistemaVentas\CapaPresentacion\obj\Debug\CapaPresentacion.Modales.FrmCredito.resources
+C:\Users\User\Documents\Proyecto sistema de ventas SP\ProyectoSistemaVentas\CapaPresentacion\obj\Debug\CapaPresentacion.FrmPedidos.resources
+C:\Users\User\Documents\Proyecto sistema de ventas SP\ProyectoSistemaVentas\CapaPresentacion\obj\Debug\CapaPresentacion.FrmRegistroColores.resources
+C:\Users\User\Documents\Proyecto sistema de ventas SP\ProyectoSistemaVentas\CapaPresentacion\obj\Debug\CapaPresentacion.FrmComprasCredito.resources
+C:\Users\User\Documents\Proyecto sistema de ventas SP\ProyectoSistemaVentas\CapaPresentacion\obj\Debug\CapaPresentacion.Modales.MdAbonosCompra.resources
+C:\Users\User\Documents\Proyecto sistema de ventas SP\ProyectoSistemaVentas\CapaPresentacion\obj\Debug\CapaPresentacion.Modales.Md_RegistrarCredito.resources
+C:\Users\User\Documents\Proyecto sistema de ventas SP\ProyectoSistemaVentas\CapaPresentacion\obj\Debug\CapaPresentacion.Modales.md_RegistrarVentaCredito.resources
+C:\Users\User\Documents\Proyecto sistema de ventas SP\ProyectoSistemaVentas\CapaPresentacion\obj\Debug\CapaPresentacion.Modales.frmMostrarExcel.resources

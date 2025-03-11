@@ -1,0 +1,55 @@
+C:\Users\User\Desktop\Proyecto sistema de ventas\ProyectoSistemaVentas\CapaEntidad\bin\Debug\CapaEntidad.dll
+C:\Users\User\Desktop\Proyecto sistema de ventas\ProyectoSistemaVentas\CapaEntidad\bin\Debug\CapaEntidad.pdb
+C:\Users\User\Desktop\Proyecto sistema de ventas\ProyectoSistemaVentas\CapaEntidad\obj\Debug\CapaEntidad.csproj.AssemblyReference.cache
+C:\Users\User\Desktop\Proyecto sistema de ventas\ProyectoSistemaVentas\CapaEntidad\obj\Debug\CapaEntidad.csproj.CoreCompileInputs.cache
+C:\Users\User\Desktop\Proyecto sistema de ventas\ProyectoSistemaVentas\CapaEntidad\obj\Debug\CapaEntidad.dll
+C:\Users\User\Desktop\Proyecto sistema de ventas\ProyectoSistemaVentas\CapaEntidad\obj\Debug\CapaEntidad.pdb
+C:\Users\User\Documents\Proyecto sistema de ventas SP\ProyectoSistemaVentas\CapaEntidad\bin\Debug\CapaEntidadSP.dll
+C:\Users\User\Documents\Proyecto sistema de ventas SP\ProyectoSistemaVentas\CapaEntidad\bin\Debug\CapaEntidadSP.pdb
+C:\Users\User\Documents\Proyecto sistema de ventas SP\ProyectoSistemaVentas\CapaEntidad\obj\Debug\CapaEntidad.csproj.AssemblyReference.cache
+C:\Users\User\Documents\Proyecto sistema de ventas SP\ProyectoSistemaVentas\CapaEntidad\obj\Debug\CapaEntidad.csproj.CoreCompileInputs.cache
+C:\Users\User\Documents\Proyecto sistema de ventas SP\ProyectoSistemaVentas\CapaEntidad\obj\Debug\CapaEntidadSP.dll
+C:\Users\User\Documents\Proyecto sistema de ventas SP\ProyectoSistemaVentas\CapaEntidad\obj\Debug\CapaEntidadSP.pdb
+C:\Users\User\Documents\Proyecto sistema de ventas SP\ProyectoSistemaVentas\CapaEntidad\bin\Debug\CapaEntidadSP.dll.config
+C:\Users\User\Documents\Proyecto sistema de ventas SP\ProyectoSistemaVentas\CapaEntidad\bin\Debug\ESCPOS_NET.dll
+C:\Users\User\Documents\Proyecto sistema de ventas SP\ProyectoSistemaVentas\CapaEntidad\bin\Debug\Microsoft.Bcl.AsyncInterfaces.dll
+C:\Users\User\Documents\Proyecto sistema de ventas SP\ProyectoSistemaVentas\CapaEntidad\bin\Debug\Microsoft.Extensions.DependencyInjection.Abstractions.dll
+C:\Users\User\Documents\Proyecto sistema de ventas SP\ProyectoSistemaVentas\CapaEntidad\bin\Debug\Microsoft.Extensions.DependencyInjection.dll
+C:\Users\User\Documents\Proyecto sistema de ventas SP\ProyectoSistemaVentas\CapaEntidad\bin\Debug\Microsoft.Extensions.Logging.Abstractions.dll
+C:\Users\User\Documents\Proyecto sistema de ventas SP\ProyectoSistemaVentas\CapaEntidad\bin\Debug\Microsoft.Extensions.Logging.dll
+C:\Users\User\Documents\Proyecto sistema de ventas SP\ProyectoSistemaVentas\CapaEntidad\bin\Debug\Microsoft.Extensions.Options.dll
+C:\Users\User\Documents\Proyecto sistema de ventas SP\ProyectoSistemaVentas\CapaEntidad\bin\Debug\Microsoft.Extensions.Primitives.dll
+C:\Users\User\Documents\Proyecto sistema de ventas SP\ProyectoSistemaVentas\CapaEntidad\bin\Debug\SimpleTcp.dll
+C:\Users\User\Documents\Proyecto sistema de ventas SP\ProyectoSistemaVentas\CapaEntidad\bin\Debug\SixLabors.ImageSharp.dll
+C:\Users\User\Documents\Proyecto sistema de ventas SP\ProyectoSistemaVentas\CapaEntidad\bin\Debug\System.Buffers.dll
+C:\Users\User\Documents\Proyecto sistema de ventas SP\ProyectoSistemaVentas\CapaEntidad\bin\Debug\System.Diagnostics.DiagnosticSource.dll
+C:\Users\User\Documents\Proyecto sistema de ventas SP\ProyectoSistemaVentas\CapaEntidad\bin\Debug\System.IO.Ports.dll
+C:\Users\User\Documents\Proyecto sistema de ventas SP\ProyectoSistemaVentas\CapaEntidad\bin\Debug\System.Memory.dll
+C:\Users\User\Documents\Proyecto sistema de ventas SP\ProyectoSistemaVentas\CapaEntidad\bin\Debug\System.Numerics.Vectors.dll
+C:\Users\User\Documents\Proyecto sistema de ventas SP\ProyectoSistemaVentas\CapaEntidad\bin\Debug\System.Runtime.CompilerServices.Unsafe.dll
+C:\Users\User\Documents\Proyecto sistema de ventas SP\ProyectoSistemaVentas\CapaEntidad\bin\Debug\System.Text.Encoding.CodePages.dll
+C:\Users\User\Documents\Proyecto sistema de ventas SP\ProyectoSistemaVentas\CapaEntidad\bin\Debug\System.Text.Encodings.Web.dll
+C:\Users\User\Documents\Proyecto sistema de ventas SP\ProyectoSistemaVentas\CapaEntidad\bin\Debug\System.Text.Json.dll
+C:\Users\User\Documents\Proyecto sistema de ventas SP\ProyectoSistemaVentas\CapaEntidad\bin\Debug\System.Threading.Tasks.Extensions.dll
+C:\Users\User\Documents\Proyecto sistema de ventas SP\ProyectoSistemaVentas\CapaEntidad\bin\Debug\System.ValueTuple.dll
+C:\Users\User\Documents\Proyecto sistema de ventas SP\ProyectoSistemaVentas\CapaEntidad\bin\Debug\Microsoft.Bcl.AsyncInterfaces.xml
+C:\Users\User\Documents\Proyecto sistema de ventas SP\ProyectoSistemaVentas\CapaEntidad\bin\Debug\Microsoft.Extensions.DependencyInjection.xml
+C:\Users\User\Documents\Proyecto sistema de ventas SP\ProyectoSistemaVentas\CapaEntidad\bin\Debug\Microsoft.Extensions.DependencyInjection.Abstractions.xml
+C:\Users\User\Documents\Proyecto sistema de ventas SP\ProyectoSistemaVentas\CapaEntidad\bin\Debug\Microsoft.Extensions.Logging.xml
+C:\Users\User\Documents\Proyecto sistema de ventas SP\ProyectoSistemaVentas\CapaEntidad\bin\Debug\Microsoft.Extensions.Logging.Abstractions.xml
+C:\Users\User\Documents\Proyecto sistema de ventas SP\ProyectoSistemaVentas\CapaEntidad\bin\Debug\Microsoft.Extensions.Options.xml
+C:\Users\User\Documents\Proyecto sistema de ventas SP\ProyectoSistemaVentas\CapaEntidad\bin\Debug\Microsoft.Extensions.Primitives.xml
+C:\Users\User\Documents\Proyecto sistema de ventas SP\ProyectoSistemaVentas\CapaEntidad\bin\Debug\SimpleTcp.xml
+C:\Users\User\Documents\Proyecto sistema de ventas SP\ProyectoSistemaVentas\CapaEntidad\bin\Debug\SixLabors.ImageSharp.xml
+C:\Users\User\Documents\Proyecto sistema de ventas SP\ProyectoSistemaVentas\CapaEntidad\bin\Debug\System.Buffers.xml
+C:\Users\User\Documents\Proyecto sistema de ventas SP\ProyectoSistemaVentas\CapaEntidad\bin\Debug\System.Diagnostics.DiagnosticSource.xml
+C:\Users\User\Documents\Proyecto sistema de ventas SP\ProyectoSistemaVentas\CapaEntidad\bin\Debug\System.IO.Ports.xml
+C:\Users\User\Documents\Proyecto sistema de ventas SP\ProyectoSistemaVentas\CapaEntidad\bin\Debug\System.Memory.xml
+C:\Users\User\Documents\Proyecto sistema de ventas SP\ProyectoSistemaVentas\CapaEntidad\bin\Debug\System.Numerics.Vectors.xml
+C:\Users\User\Documents\Proyecto sistema de ventas SP\ProyectoSistemaVentas\CapaEntidad\bin\Debug\System.Runtime.CompilerServices.Unsafe.xml
+C:\Users\User\Documents\Proyecto sistema de ventas SP\ProyectoSistemaVentas\CapaEntidad\bin\Debug\System.Text.Encoding.CodePages.xml
+C:\Users\User\Documents\Proyecto sistema de ventas SP\ProyectoSistemaVentas\CapaEntidad\bin\Debug\System.Text.Encodings.Web.xml
+C:\Users\User\Documents\Proyecto sistema de ventas SP\ProyectoSistemaVentas\CapaEntidad\bin\Debug\System.Text.Json.xml
+C:\Users\User\Documents\Proyecto sistema de ventas SP\ProyectoSistemaVentas\CapaEntidad\bin\Debug\System.Threading.Tasks.Extensions.xml
+C:\Users\User\Documents\Proyecto sistema de ventas SP\ProyectoSistemaVentas\CapaEntidad\bin\Debug\System.ValueTuple.xml
+C:\Users\User\Documents\Proyecto sistema de ventas SP\ProyectoSistemaVentas\CapaEntidad\obj\Debug\CapaEnti.526B9C87.Up2Date

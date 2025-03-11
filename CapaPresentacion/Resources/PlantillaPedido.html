@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Web Page Design</title>
+    <style>
+        table.border {
+            border-collapse: collapse;
+            width: 100%;
+        }
+
+            table.border th {
+                text-align: center;
+                padding: 5px;
+                border: 1px solid black;
+                background-color: #CACACA;
+            }
+
+            table.border td {
+                text-align: left;
+                padding: 5px;
+                border: 1px solid black;
+            }
+
+        /* Estilo para la celda de descripción */
+        .description-cell {
+            width: 50%; /* Ajusta el ancho según sea necesario */
+            word-wrap: break-word; /* Permite que el texto se divida en varias líneas */
+            overflow-wrap: break-word; /* Asegura que las palabras largas se dividan */
+        }
+
+        .totales-table {
+            width: 35%;
+            margin-left: auto;
+            border-collapse: collapse;
+            float: right;
+            margin-top: 20px; /* Espacio entre la tabla de productos y la tabla de totales */
+        }
+
+            .totales-table td {
+                text-align: right;
+                padding: 5px;
+                border: 1px solid black;
+            }
+
+            .totales-table tr:first-child td {
+                background-color: #CACACA;
+                font-weight: bold;
+            }
+
+            .totales-table td:first-child {
+                width: 70%;
+            }
+
+            .totales-table td:last-child {
+                width: 30%;
+            }
+
+        /* Espacio entre las secciones */
+        .space-before-table {
+            margin-top: 20px; /* Este es el espacio entre "Usuario Registro" y la siguiente tabla */
+        }
+
+        .space-after-user {
+            margin-bottom: 20px; /* Espacio después de la tabla de Usuario Registro */
+        }
+    </style>
+</head>
+<body>
+    <table border="0" style="width:100%">
+        <tr>
+            <td style="width:15%" valign="top"></td>
+            <td style="width:60%" valign="top" align="center">
+                <label style="font-size:20px;font-weight:bold;margin-bottom:10px">@nombrenegocio</label><br />
+                <label style="font-size:11px;">@eslogan</label><br />
+                <label style="font-size:11px;">RTN: @docnegocio</label><br />
+                <label style="font-size:11px;">Dirección: @direcnegocio</label><br />
+                <label style="font-size:11px;">Teléfono: @telefono Email: @correo</label><br />
+                <label style="font-size:11px;">CAI: @cai</label><br />
+            </td>
+            <td style="width:25%;" align="right" valign="top">
+                <table style="width:100%" class="border">
+                    <tr>
+                        <td align="center">
+                            <div style="text-align: center;">
+                                <label style="font-size:15px;font-weight:bold">PEDIDO</label>
+                            </div>
+                        </td>
+                    </tr>
+                </table>
+            </td>
+        </tr>
+    </table>
+    <hr />
+
+
+    <!-- Espacio después de Usuario Registro -->
+    <div class="space-after-user"></div>
+
+    <!-- Agregamos espacio antes de la tabla de productos -->
+    <div class="space-before-table">
+        <table class="border">
+            <thead>
+                <tr>
+                    <th>Codigo</th>
+                    <th class="description-cell">Producto</th>
+                    <th>CANTIDAD</th>
+                </tr>
+            </thead>
+            <tbody>
+                @filas
+            </tbody>
+        </table>
+    </div>
+
+    <!-- Espacio antes de la tabla de Totales -->
+    <div class="space-after-user"></div>
+
+   
+</body>
+</html>

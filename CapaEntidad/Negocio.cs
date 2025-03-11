@@ -1,0 +1,25 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace CapaEntidad
+{
+    public class Negocio
+    {
+        public int IdNegocio { get; set; }
+        public string Nombre { get; set; }
+        public string RUC { get; set; }
+        public string Direccion { get; set; }
+        public string Telefono { get; set; } // Nuevo campo
+        public DateTime FechaLimiteEmision { get; set; } // Nuevo campo
+        public string CorreoElectronico { get; set; } // Nuevo campo
+        public string CAI { get; set; } // Nuevo campo
+        public string RangoAutorizado { get; set; }
+        public string RangoInicial { get; set; } // Nuevo campo
+        public string Eslogan { get; set; } // Nuevo campo
+        public byte[] Logo { get; set; } // Logo original
+        public byte[] LogoBlancoNegro { get; set; }
+    }
+}
