@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8" />
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            padding: 20px;
+        }
+
+        h1 {
+            text-align: center;
+            color: #222;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+
+        th, td {
+            border: 1px solid #ccc;
+            padding: 8px;
+            text-align: center;
+        }
+
+        th {
+            background-color: #f7f7f7;
+        }
+
+        .resumen {
+            margin-top: 30px;
+            font-size: 16px;
+        }
+
+            .resumen span {
+                font-weight: bold;
+            }
+    </style>
+</head>
+<body>
+    <h1>REPORTE DE GANANCIA POR PRODUCTO</h1>
+    <p><strong>Desde:</strong> @fechainicio &nbsp;&nbsp;&nbsp; <strong>Hasta:</strong> @fechafin</p>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Producto</th>
+                <th>Cantidad Vendida</th>
+                <th>Costo Total</th>
+                <th>Total Ventas</th>
+                <th>Ganancia</th>
+            </tr>
+        </thead>
+        <tbody>
+            @tabla
+        </tbody>
+    </table>
+
+    <div class="resumen">
+        <p><span>Total Ventas:</span> L. @totalventa</p>
+        <p><span>Total Costos:</span> L. @totalcosto</p>
+        <p><span>Total Ganancia:</span> L. @totalganancia</p>
+    </div>
+</body>
+</html>

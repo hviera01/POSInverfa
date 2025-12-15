@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Data;
 using System.Drawing;
 using System.Linq;
+using System.Threading.Tasks;
 using System.Windows.Forms;
 using CapaEntidad;
 using CapaNegocio;
@@ -12,8 +13,9 @@ using FontAwesome.Sharp;
 
 namespace CapaPresentacion
 {
-    public partial class Inicio : Form
+    public partial class Inicio : ResponsiveFormBase
     {
+        protected override Size DesignSize => new Size(1370, 450);
         private static Usuario usuarioActual;
         private static IconMenuItem MenuActivo = null;
         private static Form FormularioActivo = null;
@@ -28,30 +30,89 @@ namespace CapaPresentacion
             this.Resize += Inicio_Resize;
         }
 
-        private void Inicio_Load(object sender, EventArgs e)
+        private async void Inicio_Load(object sender, EventArgs e)
         {
             List<Permiso> ListaPermisos = new CN_Permiso().Listar(usuarioActual.IdUsuario);
 
+            // 2. Recorrer el menú principal y mostrar u ocultar según permisos
             foreach (IconMenuItem iconmenu in menu.Items)
             {
-                bool encontrado = ListaPermisos.Any(m => m.NombreMenu == iconmenu.Name);
+                bool tienePermisoMenu = ListaPermisos.Any(m => m.NombreMenu == iconmenu.Name);
 
-                // Asegúrate de que el menú "Acerca de" esté incluido en los permisos
-                if (!encontrado)
+                iconmenu.Visible = tienePermisoMenu;
+
+                if (tienePermisoMenu)
                 {
-                    iconmenu.Visible = false;
+                    // Validar submenús
+                    foreach (ToolStripItem subItem in iconmenu.DropDownItems)
+                    {
+                        if (subItem is ToolStripMenuItem subMenu)
+                        {
+                            bool tienePermisoSubMenu = ListaPermisos.Any(p => p.NombreMenu == subMenu.Name);
+                            subMenu.Visible = tienePermisoSubMenu;
+                        }
+                    }
                 }
             }
 
-            // Verifica si el menú "Acerca de" está visible
+            // 3. Validar visibilidad del menú AcercaDe
             var acercaDeMenu = menu.Items.OfType<IconMenuItem>().FirstOrDefault(m => m.Name == "menuacercade");
             if (acercaDeMenu != null && !acercaDeMenu.Visible)
             {
                 MessageBox.Show("El menú 'Acerca de' no está visible. Verifica los permisos.");
             }
 
+            // 4. Mostrar el nombre del usuario
             lblusuario.Text = usuarioActual.NombreCompleto;
+
+            // 5. (Opcional) Agregar eventos click a todos los botones del formulario principal
+            foreach (Control ctrl in this.Controls)
+            {
+                if (ctrl is Button btn)
+                {
+                    btn.Click += Btn_Click;
+                }
+            }
+
+            // 6. Precargar formularios comunes en segundo plano para mejorar velocidad al abrir
+            await Task.Run(() =>
+            {
+                var frmVentasPrecarga = new frmVentas(usuarioActual);
+                var frmClientesPrecarga = new frmProducto(usuarioActual);
+
+                this.Invoke(new Action(() =>
+                {
+                    if (!formulariosAbiertos.ContainsKey("frmVentas"))
+                        formulariosAbiertos["frmVentas"] = frmVentasPrecarga;
+
+                    if (!formulariosAbiertos.ContainsKey("frmProducto"))
+                        formulariosAbiertos["frmProducto"] = frmClientesPrecarga;
+
+                    // 🔽 Aquí es donde se aplica el bloque optimizado
+                    contenedor.SuspendLayout();
+                    foreach (var form in formulariosAbiertos.Values)
+                    {
+                        form.TopLevel = false;
+                        form.FormBorderStyle = FormBorderStyle.None;
+                        form.Dock = DockStyle.Fill;
+                        contenedor.Controls.Add(form);
+                        form.Hide(); // no mostrar aún, solo dejar en memoria
+                    }
+                    contenedor.ResumeLayout();
+                }));
+            });
         }
+
+        private void Btn_Click(object sender, EventArgs e)
+        {
+            if (sender is Button btn)
+            {
+
+                this.ActiveControl = null;
+            }
+        }
+
+        
 
         private void AjustarAnchoBotones()
         {
@@ -73,30 +134,62 @@ namespace CapaPresentacion
 
         private void AbrirForulario(IconMenuItem menu, Form formulario)
         {
-            if (MenuActivo != null)
-            {
-                MenuActivo.BackColor = Color.White;
-            }
+            if (MenuActivo != null) MenuActivo.BackColor = Color.White;
             menu.BackColor = Color.Silver;
             MenuActivo = menu;
 
-            if (FormularioActivo != null && FormularioActivo != formulario)
+            if (formulariosAbiertos.ContainsKey(formulario.Name))
             {
-                FormularioActivo.Hide();
+                var f = formulariosAbiertos[formulario.Name];
+                f.Dock = DockStyle.Fill;        // <- reafirma
+                f.Show();
+                f.BringToFront();
+                FormularioActivo = f;
+                return;
             }
 
-            if (!formulariosAbiertos.ContainsKey(formulario.Name))
-            {
-                formulario.TopLevel = false;
-                formulario.FormBorderStyle = FormBorderStyle.None;
-                formulario.Dock = DockStyle.Fill;
-                contenedor.Controls.Add(formulario);
-                formulariosAbiertos[formulario.Name] = formulario;
-            }
+            if (FormularioActivo != null && FormularioActivo != formulario)
+                FormularioActivo.Hide();
+
+            formulario.TopLevel = false;
+            formulario.FormBorderStyle = FormBorderStyle.None;
+            formulario.Dock = DockStyle.Fill;   // <- importante
+            contenedor.Controls.Add(formulario);
+            formulariosAbiertos[formulario.Name] = formulario;
             FormularioActivo = formulario;
             formulario.Show();
             formulario.BringToFront();
         }
+
+        private void RegistrarFormulario(string key, IconMenuItem menu, Func<Form> creadorFormulario)
+        {
+            if (MenuActivo != null)
+                MenuActivo.BackColor = Color.White;
+
+            menu.BackColor = Color.Silver;
+            MenuActivo = menu;
+
+            if (!formulariosAbiertos.ContainsKey(key))
+            {
+                var form = creadorFormulario.Invoke();
+                form.TopLevel = false;
+                form.FormBorderStyle = FormBorderStyle.None;
+                form.Dock = DockStyle.Fill;
+                contenedor.Controls.Add(form);
+                formulariosAbiertos[key] = form;
+            }
+
+            var f = formulariosAbiertos[key];
+
+            if (FormularioActivo != null && FormularioActivo != f)
+                FormularioActivo.Hide();
+
+            f.Show();
+            f.BringToFront();
+            FormularioActivo = f;
+        }
+
+
 
         private void menuusuarios_Click(object sender, EventArgs e)
         {
@@ -110,12 +203,12 @@ namespace CapaPresentacion
 
         private void SubMenuProducto_Click(object sender, EventArgs e)
         {
-            AbrirForulario(menumantenedor, new frmProducto(usuarioActual));
+            RegistrarFormulario("frmProducto", menumantenedor, () => new frmProducto(usuarioActual));
         }
 
         private void SubMenuRegistrarVenta_Click(object sender, EventArgs e)
         {
-            AbrirForulario(menuventas, new frmVentas(usuarioActual));
+            RegistrarFormulario("frmVentas", menuventas, () => new frmVentas(usuarioActual));
         }
 
         private void SubMenuVerDetalleVenta_Click(object sender, EventArgs e)
@@ -176,8 +269,7 @@ namespace CapaPresentacion
 
         private void submenureporteventas_Click(object sender, EventArgs e)
         {
-            frmReporteVentas frm = new frmReporteVentas();
-            AbrirForulario(menureportes, frm);
+            AbrirForulario(menureportes, new frmReporteVentas());
         }
 
         private void menuproveedores_Click(object sender, EventArgs e)
@@ -206,11 +298,7 @@ namespace CapaPresentacion
             AbrirForulario(menucompras, new FrmPedidos());
         }
 
-        private void rEGISTRODECOLORESToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            AbrirForulario(menumantenedor, new FrmRegistroColores());
-        }
-
+    
        
 
         private void toolStripMenuItem3_Click(object sender, EventArgs e)
@@ -221,6 +309,34 @@ namespace CapaPresentacion
         private void toolStripMenuItem4_Click(object sender, EventArgs e)
         {
             AbrirForulario(menucreditos, new FrmComprasCredito());
+        }
+
+       
+
+        private void subMenuCierre_Click(object sender, EventArgs e)
+        {
+            using (frmCierreCaja frm = new frmCierreCaja(usuarioActual))
+            {
+                frm.ShowDialog();
+            }
+        }
+
+        private void subMenuEgresos_Click(object sender, EventArgs e)
+        {
+            using (FrmEgresos frm = new FrmEgresos(usuarioActual))
+            {
+                frm.ShowDialog();
+            }
+        }
+
+        private void rEPORTEFINANCIEROToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            AbrirForulario(menureportes, new frmFinanzas());
+        }
+
+        private void rEGISTRODECOLORESToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            
         }
     }
 }

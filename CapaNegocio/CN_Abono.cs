@@ -10,18 +10,18 @@ namespace CapaNegocio
 {
     public class CN_Abono
     {
-        private CD_Abono objcd_abono = new CD_Abono();
+        private readonly CD_Abono _cd = new CD_Abono();
 
-        public bool Registrar(Abono abono, out string mensaje)
-        {
-            return objcd_abono.Registrar(abono, out mensaje);
-        }
+        public bool Registrar(Abono a, out string mensaje, out int idAbono)
+            => _cd.Registrar(a, out mensaje, out idAbono);
 
         public List<Abono> ObtenerHistorialAbonos(int idVenta)
-        {
-            return objcd_abono.ObtenerHistorialAbonos(idVenta);
-        }
+            => _cd.ObtenerHistorialAbonos(idVenta);
 
-      
+        public bool Actualizar(Abono a, out string mensaje)
+            => _cd.Actualizar(a, out mensaje);
+
+        public bool Eliminar(int idAbono, out string mensaje)
+            => _cd.Eliminar(idAbono, out mensaje);
     }
 }

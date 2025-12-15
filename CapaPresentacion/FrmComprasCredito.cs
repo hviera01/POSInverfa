@@ -26,15 +26,20 @@ namespace CapaPresentacion
             txtbusqueda.Select();
             CargarComprasCredito();
 
+            // Opciones del estado
+            if (cboEstadoFiltro.Items.Count == 0)
+                cboEstadoFiltro.Items.AddRange(new string[] { "Deuda", "Liquidada", "Todas" });
+            cboEstadoFiltro.SelectedIndex = 0;
+
+            // Eventos
+            cboEstadoFiltro.SelectedIndexChanged += cboEstadoFiltro_SelectedIndexChanged;
+
             foreach (System.Windows.Forms.Control ctrl in this.Controls)
+                if (ctrl is Button btn) btn.Click += Btn_Click;
 
-            {
-                if (ctrl is Button btn)
-                {
-                    btn.Click += Btn_Click;
-                }
-            }
-
+            // Aplica filtro inicial
+            AplicarFiltro();
+            HabilitarDoubleBuffering(dgvComprasCredito);
         }
 
         private void Btn_Click(object sender, EventArgs e)
@@ -46,6 +51,100 @@ namespace CapaPresentacion
             }
             txtbusqueda.Select();
         }
+
+        private void HabilitarDoubleBuffering(DataGridView dgv)
+        {
+            typeof(DataGridView).InvokeMember("DoubleBuffered",
+                System.Reflection.BindingFlags.NonPublic | System.Reflection.BindingFlags.Instance | System.Reflection.BindingFlags.SetProperty,
+                null, dgv, new object[] { true });
+        }
+
+        private void RecalcularTotalSaldoPendiente()
+        {
+            DataTable dt = dgvComprasCredito.DataSource as DataTable;
+            if (dt == null)
+            {
+                var dvSrc = dgvComprasCredito.DataSource as DataView;
+                if (dvSrc != null) dt = dvSrc.Table;
+            }
+
+            decimal total = 0m;
+
+            if (dt != null)
+            {
+                var dv = dt.DefaultView; // respeta RowFilter
+                foreach (DataRowView drv in dv)
+                    total += ParseDecimal(drv["SaldoPendiente"]);
+            }
+            else
+            {
+                foreach (DataGridViewRow row in dgvComprasCredito.Rows)
+                {
+                    if (row.Visible)
+                        total += ParseDecimal(row.Cells["SaldoPendiente"].Value);
+                }
+            }
+
+            txtTotalSaldoPendiente.Text = total.ToString("C2", new CultureInfo("es-HN"));
+        }
+
+
+        private decimal ParseDecimal(object val)
+        {
+            if (val == null) return 0m;
+
+            // Si ya viene como decimal
+            if (val is decimal d) return d;
+
+            // Si viene como string, intentamos con culturas comunes
+            var s = val.ToString().Trim();
+
+            decimal r;
+            // es-HN (coma como separador de miles, punto decimal)
+            if (decimal.TryParse(s, NumberStyles.Any, new CultureInfo("es-HN"), out r)) return r;
+            // Invariant (punto decimal)
+            if (decimal.TryParse(s, NumberStyles.Any, CultureInfo.InvariantCulture, out r)) return r;
+            // Local
+            if (decimal.TryParse(s, NumberStyles.Any, CultureInfo.CurrentCulture, out r)) return r;
+
+            return 0m;
+        }
+
+
+        private void AplicarFiltro()
+        {
+            DataTable dt = dgvComprasCredito.DataSource as DataTable;
+            if (dt == null)
+            {
+                var dv = dgvComprasCredito.DataSource as DataView;
+                if (dv != null)
+                    dt = dv.Table;
+            }
+
+            if (dt == null) return;
+
+
+            string filtroTexto = (txtbusqueda.Text ?? "").Trim().Replace("'", "''");
+            string estadoSeleccionado = (cboEstadoFiltro.SelectedItem?.ToString() ?? "Todas").Trim();
+
+            var sb = new StringBuilder();
+
+            // Filtro de texto (en varias columnas)
+            if (!string.IsNullOrEmpty(filtroTexto))
+                sb.AppendFormat("(NumeroDocumento LIKE '%{0}%' OR NombreProveedor LIKE '%{0}%' OR NoFactura LIKE '%{0}%')", filtroTexto);
+
+            // Filtro por estado
+            if (!string.Equals(estadoSeleccionado, "Todas", StringComparison.OrdinalIgnoreCase))
+            {
+                if (sb.Length > 0) sb.Append(" AND ");
+                sb.AppendFormat("Estado = '{0}'", estadoSeleccionado); // "Deuda" o "Liquidada"
+            }
+
+            dt.DefaultView.RowFilter = sb.ToString();
+            RecalcularTotalSaldoPendiente();
+
+        }
+
 
         public void CargarComprasCredito()
         {
@@ -119,7 +218,6 @@ namespace CapaPresentacion
                 dgvComprasCredito.Columns["Estado"].HeaderText = "Estado";
                 dgvComprasCredito.Columns["Vencida"].HeaderText = "Vencida";
 
-                // Establecer anchos de columnas
                 dgvComprasCredito.Columns["FechaRegistro"].Width = 150;
                 dgvComprasCredito.Columns["NumeroDocumento"].Width = 120;
                 dgvComprasCredito.Columns["NoFactura"].Width = 150;
@@ -137,12 +235,13 @@ namespace CapaPresentacion
             {
                 MessageBox.Show("Error al cargar las compras a crédito: " + ex.Message);
             }
+            RecalcularTotalSaldoPendiente();
+
         }
 
         private void txtbusqueda_TextChanged(object sender, EventArgs e)
         {
-            string filter = txtbusqueda.Text.Trim();
-            (dgvComprasCredito.DataSource as DataTable).DefaultView.RowFilter = string.Format("NumeroDocumento LIKE '%{0}%' OR NombreProveedor LIKE '%{0}%' OR Estado LIKE '%{0}%'", filter);
+            AplicarFiltro();
         }
 
         private void btnregistrarabono_Click(object sender, EventArgs e)
@@ -279,6 +378,53 @@ namespace CapaPresentacion
         {
             txtbusqueda.Text = "";
             txtbusqueda.Select();
+        }
+
+        private void btnrefrescar_Click(object sender, EventArgs e)
+        {
+            RefrescarFormulario();
+        }
+
+        public void RefrescarFormulario()
+        {
+            // Guardar filtros actuales
+            string texto = txtbusqueda.Text;
+            string estado = cboEstadoFiltro.SelectedItem?.ToString() ?? "Todas";
+
+            // Recargar
+            CargarComprasCredito();
+
+            // Restaurar filtros
+            txtbusqueda.Text = texto;
+            int idx = cboEstadoFiltro.Items.IndexOf(estado);
+            if (idx >= 0) cboEstadoFiltro.SelectedIndex = idx;
+
+            // Reaplicar
+            AplicarFiltro();
+        }
+
+
+        private void LimpiarCampos()
+        {
+            // Limpiar los campos de búsqueda
+            txtbusqueda.Text = "";
+            txtbusqueda.Select(); // Seleccionar el campo de búsqueda
+        }
+
+        private void cboEstadoFiltro_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            AplicarFiltro();
+        }
+
+        private void iconButton1_Click(object sender, EventArgs e)
+        {
+            FrmResumenAbonosProveedor frm = new FrmResumenAbonosProveedor();
+            frm.ShowDialog();
+        }
+
+        private void label1_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

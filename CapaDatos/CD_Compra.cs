@@ -10,6 +10,14 @@ using System.Globalization;
 
 namespace CapaDatos
 {
+
+    public class ResumenAbonoProveedor
+    {
+        public int IdProveedor { get; set; }
+        public string Proveedor { get; set; }
+        public decimal TotalAbonado { get; set; }
+        public int NumeroAbonos { get; set; }
+    }
     public class CD_Compra
     {
         public int ObtenerCorrelativo()
@@ -50,6 +58,8 @@ namespace CapaDatos
                 try
                 {
                     SqlCommand cmd = new SqlCommand("sp_RegistrarCompra", oconexion);
+                    cmd.CommandType = CommandType.StoredProcedure;
+
                     cmd.Parameters.AddWithValue("IdUsuario", obj.oUsuario.IdUsuario);
                     cmd.Parameters.AddWithValue("IdProveedor", obj.oProveedor.IdProveedor);
                     cmd.Parameters.AddWithValue("TipoDocumento", obj.TipoDocumento);
@@ -59,11 +69,22 @@ namespace CapaDatos
                     cmd.Parameters.AddWithValue("MetodoPago", obj.MetodoPago);
                     cmd.Parameters.AddWithValue("Condicion", obj.Condicion);
                     cmd.Parameters.AddWithValue("SaldoPendiente", obj.SaldoPendiente);
-                    cmd.Parameters.AddWithValue("FechaVencimiento", string.IsNullOrEmpty(obj.FechaVencimiento) ? (object)DBNull.Value : DateTime.ParseExact(obj.FechaVencimiento, "dd/MM/yyyy", CultureInfo.InvariantCulture));
+                    cmd.Parameters.AddWithValue("Impuesto", obj.Impuesto);
+
+                    // NOTA: FechaCompra no se usa en tu versión actual, pero lo dejamos comentado si luego activás ese campo
+                    // cmd.Parameters.AddWithValue("FechaCompra", obj.FechaCompra);
+
+                    cmd.Parameters.AddWithValue("FechaVencimiento",
+                        string.IsNullOrEmpty(obj.FechaVencimiento)
+                            ? (object)DBNull.Value
+                            : DateTime.ParseExact(obj.FechaVencimiento, "dd/MM/yyyy", CultureInfo.InvariantCulture)
+                    );
+
+                    // Aquí se pasa el DataTable con columna DescuentoPorcentaje
                     cmd.Parameters.AddWithValue("DetalleCompra", DetalleCompra);
+
                     cmd.Parameters.Add("Resultado", SqlDbType.Int).Direction = ParameterDirection.Output;
                     cmd.Parameters.Add("Mensaje", SqlDbType.VarChar, 500).Direction = ParameterDirection.Output;
-                    cmd.CommandType = CommandType.StoredProcedure;
 
                     oconexion.Open();
                     cmd.ExecuteNonQuery();
@@ -77,6 +98,7 @@ namespace CapaDatos
                     Mensaje = ex.Message;
                 }
             }
+
             return Respuesta;
         }
 
@@ -91,8 +113,10 @@ namespace CapaDatos
                     query.AppendLine("select c.IdCompra,");
                     query.AppendLine("u.NombreCompleto,");
                     query.AppendLine("pr.Documento, pr.RazonSocial,");
-                    query.AppendLine("c.TipoDocumento, c.NumeroDocumento,c.NoFactura, c.MontoTotal, convert(char(10), c.FechaRegistro, 103) [FechaRegistro],");
-                    query.AppendLine("c.MetodoPago, c.Condicion, c.SaldoPendiente, c.FechaVencimiento ");
+                    query.AppendLine("c.TipoDocumento, c.NumeroDocumento, c.NoFactura, c.MontoTotal, c.Impuesto,"); // <-- coma aquí
+                    query.AppendLine("convert(char(10), c.FechaRegistro, 103) [FechaRegistro],");
+                    query.AppendLine("c.MetodoPago, c.Condicion, c.SaldoPendiente, c.FechaVencimiento,");
+                    query.AppendLine("c.Estado");
                     query.AppendLine("from COMPRA c");
                     query.AppendLine("inner join USUARIO u on u.IdUsuario = c.IdUsuario");
                     query.AppendLine("inner join PROVEEDOR pr on pr.IdProveedor = c.IdProveedor");
@@ -117,11 +141,13 @@ namespace CapaDatos
                                 NumeroDocumento = dr["NumeroDocumento"].ToString(),
                                 NoFactura = dr["NoFactura"].ToString(),
                                 MontoTotal = Convert.ToDecimal(dr["MontoTotal"].ToString()),
+                                Impuesto = Convert.ToDecimal(dr["Impuesto"]), 
                                 FechaRegistro = dr["FechaRegistro"].ToString(),
                                 MetodoPago = dr["MetodoPago"].ToString(),
                                 Condicion = dr["Condicion"].ToString(),
                                 SaldoPendiente = Convert.ToDecimal(dr["SaldoPendiente"].ToString()),
-                                FechaVencimiento = dr["FechaVencimiento"] != DBNull.Value ? Convert.ToDateTime(dr["FechaVencimiento"]).ToString("dd/MM/yyyy") : null // Convertir a string
+                                FechaVencimiento = dr["FechaVencimiento"] != DBNull.Value ? Convert.ToDateTime(dr["FechaVencimiento"]).ToString("dd/MM/yyyy") : null,
+                                Estado = dr["Estado"].ToString()
                             };
                         }
                     }
@@ -145,7 +171,7 @@ namespace CapaDatos
                     conexion.Open();
                     StringBuilder query = new StringBuilder();
 
-                    query.AppendLine("select p.Nombre, dc.PrecioCompra, dc.Cantidad, dc.MontoTotal from DetalleCompra dc");
+                    query.AppendLine("select p.Nombre, dc.PrecioCompra, dc.Cantidad, dc.MontoTotal, dc.DescuentoPorcentaje from DetalleCompra dc");
                     query.AppendLine("inner join PRODUCTO p on p.IdProducto = dc.IdProducto");
                     query.AppendLine("where dc.IdCompra = @idcompra");
 
@@ -161,8 +187,10 @@ namespace CapaDatos
                             {
                                 oProducto = new Producto() { Nombre = dr["Nombre"].ToString() },
                                 PrecioCompra = Convert.ToDecimal(dr["PrecioCompra"].ToString()),
-                                Cantidad = Convert.ToDecimal(dr["Cantidad"].ToString()), // Cambia a decimal
+                                Cantidad = Convert.ToDecimal(dr["Cantidad"].ToString()), 
                                 MontoTotal = Convert.ToDecimal(dr["MontoTotal"].ToString()),
+                                DescuentoPorcentaje = Convert.ToDecimal(dr["DescuentoPorcentaje"].ToString())
+                            
                             });
                         }
                     }
@@ -187,7 +215,7 @@ namespace CapaDatos
                     query.AppendLine("convert(char(10), c.FechaRegistro, 103) AS FechaRegistro, pr.RazonSocial");
                     query.AppendLine("FROM COMPRA c");
                     query.AppendLine("INNER JOIN PROVEEDOR pr ON pr.IdProveedor = c.IdProveedor");
-                    query.AppendLine("WHERE c.Condicion = 'Credito'"); // Filtrar solo compras a crédito
+                    query.AppendLine("WHERE c.Condicion = 'Credito' AND c.Estado = 'Activa'"); // <-- SOLO ACTIVAS
 
                     SqlCommand cmd = new SqlCommand(query.ToString(), oconexion);
                     cmd.CommandType = CommandType.Text;
@@ -237,7 +265,7 @@ namespace CapaDatos
 
                     oconexion.Open();
                     int filasAfectadas = cmd.ExecuteNonQuery();
-                    resultado = filasAfectadas > 0; // Si se actualizó al menos una fila, el resultado es verdadero
+                    resultado = filasAfectadas > 0; 
                 }
                 catch (Exception ex)
                 {
@@ -261,18 +289,19 @@ namespace CapaDatos
                     cmd.Parameters.AddWithValue("IdProveedor", compra.oProveedor.IdProveedor);
                     cmd.Parameters.AddWithValue("MontoTotal", compra.MontoTotal);
                     cmd.Parameters.AddWithValue("SaldoPendiente", compra.SaldoPendiente);
-                    cmd.Parameters.AddWithValue("FechaVencimiento", compra.FechaVencimiento); // Mantener como string
+                    cmd.Parameters.AddWithValue("FechaVencimiento", compra.FechaVencimiento);
                     cmd.Parameters.AddWithValue("MetodoPago", compra.MetodoPago);
                     cmd.Parameters.AddWithValue("Condicion", compra.Condicion);
-                    cmd.Parameters.AddWithValue("FechaRegistro", compra.FechaRegistro); // Mantener como string
+                    cmd.Parameters.AddWithValue("FechaRegistro", compra.FechaRegistro);
                     cmd.Parameters.AddWithValue("TipoDocumento", compra.TipoDocumento);
                     cmd.Parameters.AddWithValue("NumeroDocumento", compra.NumeroDocumento);
+                    cmd.Parameters.AddWithValue("Impuesto", 0); 
 
                     cmd.CommandType = CommandType.StoredProcedure;
 
                     oconexion.Open();
                     int filasAfectadas = cmd.ExecuteNonQuery();
-                    resultado = filasAfectadas > 0; // Si se insertó al menos una fila, el resultado es verdadero
+                    resultado = filasAfectadas > 0;
                 }
                 catch (Exception ex)
                 {
@@ -281,6 +310,139 @@ namespace CapaDatos
             }
             return resultado;
         }
+
+        public bool AnularCompra(int idCompra, out string mensaje)
+        {
+            bool respuesta = false;
+            mensaje = string.Empty;
+
+            using (SqlConnection oconexion = new SqlConnection(Conexion.cadena))
+            {
+                try
+                {
+                    using (SqlCommand cmd = new SqlCommand("AnularCompra", oconexion))
+                    {
+                        cmd.CommandType = CommandType.StoredProcedure;
+                        cmd.Parameters.AddWithValue("@IdCompra", idCompra);
+
+                        oconexion.Open();
+                        cmd.ExecuteNonQuery();
+                    }
+                    respuesta = true;
+                    mensaje = "Compra anulada correctamente.";
+                }
+                catch (Exception ex)
+                {
+                    mensaje = "Error al anular la compra: " + ex.Message;
+                    respuesta = false;
+                }
+            }
+            return respuesta;
+        }
+
+        public int ObtenerIdCompraPorNumeroDocumento(string numeroDocumento)
+        {
+            int idCompra = 0;
+            using (SqlConnection oconexion = new SqlConnection(Conexion.cadena))
+            {
+                try
+                {
+                    oconexion.Open();
+                    string query = "SELECT IdCompra FROM COMPRA WHERE NumeroDocumento = @NumeroDocumento AND Estado = 'Activa'";
+                    using (SqlCommand cmd = new SqlCommand(query, oconexion))
+                    {
+                        cmd.Parameters.AddWithValue("@NumeroDocumento", numeroDocumento);
+                        var result = cmd.ExecuteScalar();
+                        if (result != null)
+                        {
+                            idCompra = Convert.ToInt32(result);
+                        }
+                    }
+                }
+                catch (Exception ex)
+                {
+                    Console.WriteLine("Error al obtener el ID de la compra: " + ex.Message);
+                }
+            }
+            return idCompra;
+        }
+
+        public List<Compra> ObtenerComprasPorProducto(int idProducto)
+        {
+            List<Compra> lista = new List<Compra>();
+
+            using (SqlConnection conexion = new SqlConnection(Conexion.cadena))
+            {
+                try
+                {
+                    conexion.Open();
+                    StringBuilder query = new StringBuilder();
+                    query.AppendLine("SELECT c.IdCompra, c.NumeroDocumento, c.FechaRegistro");
+                    query.AppendLine("FROM COMPRA c");
+                    query.AppendLine("INNER JOIN DetalleCompra dc ON c.IdCompra = dc.IdCompra");
+                    query.AppendLine("WHERE dc.IdProducto = @idProducto");
+
+                    SqlCommand cmd = new SqlCommand(query.ToString(), conexion);
+                    cmd.Parameters.AddWithValue("@idProducto", idProducto);
+                    cmd.CommandType = CommandType.Text;
+
+                    using (SqlDataReader dr = cmd.ExecuteReader())
+                    {
+                        while (dr.Read())
+                        {
+                            lista.Add(new Compra()
+                            {
+                                IdCompra = Convert.ToInt32(dr["IdCompra"]),
+                                NumeroDocumento = dr["NumeroDocumento"].ToString(),
+                                FechaRegistro = Convert.ToDateTime(dr["FechaRegistro"]).ToString("dd/MM/yyyy HH:mm:ss")
+                            });
+                        }
+                    }
+                }
+                catch (Exception ex)
+                {
+                    Console.WriteLine("Error al obtener compras por producto: " + ex.Message);
+                }
+            }
+            return lista;
+        }
+
+        public List<ResumenAbonoProveedor> ObtenerResumenAbonosPorProveedor(DateTime fechaInicio, DateTime fechaFin, int? idProveedor = null)
+        {
+            var lista = new List<ResumenAbonoProveedor>();
+
+            using (SqlConnection cn = new SqlConnection(Conexion.cadena))
+            {
+                using (SqlCommand cmd = new SqlCommand("dbo.sp_ResumenAbonosPorProveedor", cn))
+                {
+                    cmd.CommandType = CommandType.StoredProcedure;
+                    cmd.Parameters.AddWithValue("@FechaInicio", fechaInicio);
+                    cmd.Parameters.AddWithValue("@FechaFin", fechaFin);
+                    if (idProveedor.HasValue)
+                        cmd.Parameters.AddWithValue("@IdProveedor", idProveedor.Value);
+                    else
+                        cmd.Parameters.AddWithValue("@IdProveedor", DBNull.Value);
+
+                    cn.Open();
+                    using (SqlDataReader dr = cmd.ExecuteReader())
+                    {
+                        while (dr.Read())
+                        {
+                            lista.Add(new ResumenAbonoProveedor
+                            {
+                                IdProveedor = Convert.ToInt32(dr["IdProveedor"]),
+                                Proveedor = dr["Proveedor"].ToString(),
+                                TotalAbonado = Convert.ToDecimal(dr["TotalAbonado"]),
+                                NumeroAbonos = Convert.ToInt32(dr["NumeroAbonos"])
+                            });
+                        }
+                    }
+                }
+            }
+
+            return lista;
+        }
+
 
     }
 }

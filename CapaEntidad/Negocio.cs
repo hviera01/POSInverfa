@@ -12,14 +12,14 @@ namespace CapaEntidad
         public string Nombre { get; set; }
         public string RUC { get; set; }
         public string Direccion { get; set; }
-        public string Telefono { get; set; } // Nuevo campo
-        public DateTime FechaLimiteEmision { get; set; } // Nuevo campo
-        public string CorreoElectronico { get; set; } // Nuevo campo
-        public string CAI { get; set; } // Nuevo campo
+        public string Telefono { get; set; } 
+        public DateTime FechaLimiteEmision { get; set; } 
+        public string CorreoElectronico { get; set; } 
+        public string CAI { get; set; } 
         public string RangoAutorizado { get; set; }
-        public string RangoInicial { get; set; } // Nuevo campo
-        public string Eslogan { get; set; } // Nuevo campo
-        public byte[] Logo { get; set; } // Logo original
+        public string RangoInicial { get; set; } 
+        public string Eslogan { get; set; } 
+        public byte[] Logo { get; set; } 
         public byte[] LogoBlancoNegro { get; set; }
     }
 }

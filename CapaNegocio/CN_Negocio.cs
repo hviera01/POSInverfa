@@ -100,5 +100,6 @@ namespace CapaNegocio
         {
             return objcd_negocio.ActualizarLogoBlancoNegro(imagen, out mensaje);
         }
+
     }
 }

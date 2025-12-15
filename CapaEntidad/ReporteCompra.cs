@@ -12,6 +12,7 @@ namespace CapaEntidad
         public string TipoDocumento { get; set; }
         public string NumeroDocumento { get; set; }
         public string MontoTotal { get; set; }
+        public string Impuesto { get; set; }
         public string UsuarioRegistro { get; set; }
         public string DocumentoProveedor { get; set; }
         public string RazonSocial { get; set; }
@@ -19,5 +20,7 @@ namespace CapaEntidad
         public string Condicion { get; set; }
         public string FechaVencimiento { get; set; }
         public int CantidadProductos { get; set; }
+        public string Estado { get; set; }
+        public string NoFactura { get; set; }
     }
 }

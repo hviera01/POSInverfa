@@ -51,10 +51,9 @@ namespace CapaPresentacion.Modales
                 var result = modal.ShowDialog();
                 if (result == DialogResult.OK)
                 {
-                    // Rellenar los campos con la información del proveedor seleccionado
                     txtproveedor.Text = modal._Proveedor.RazonSocial;
                     txtrtnproveedor.Text = modal._Proveedor.Documento;
-                    txtidproveedor.Text = modal._Proveedor.IdProveedor.ToString(); // Asignar el IdProveedor
+                    txtidproveedor.Text = modal._Proveedor.IdProveedor.ToString(); 
                 }
             }
         }
@@ -66,14 +65,14 @@ namespace CapaPresentacion.Modales
         string.IsNullOrWhiteSpace(dtpfechavencimiento.Text))
             {
                 MessageBox.Show("Por favor, complete todos los campos requeridos.", "Campos Obligatorios", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                return; // Salir del método si hay campos vacíos
+                return; 
             }
 
-            // Convertir la fecha de vencimiento al formato correcto
-            string fechaVencimiento = dtpfechavencimiento.Value.ToString("dd/MM/yyyy"); // Mantener como DD/MM/YYYY
-            string fechaRegistro = DateTime.Now.ToString("dd/MM/yyyy"); // Mantener como DD/MM/YYYY
+          
+            string fechaVencimiento = dtpfechavencimiento.Value.ToString("dd/MM/yyyy"); 
+            string fechaRegistro = DateTime.Now.ToString("dd/MM/yyyy");
 
-            // Crear el objeto de compra
+           
             Compra nuevaCompra = new Compra
             {
                 NoFactura = string.IsNullOrWhiteSpace(txtnofactura.Text) ? "N/A" : txtnofactura.Text,
@@ -85,15 +84,15 @@ namespace CapaPresentacion.Modales
                 },
                 MontoTotal = Convert.ToDecimal(txtmontototal.Text),
                 SaldoPendiente = Convert.ToDecimal(txtsaldopendiente.Text),
-                FechaVencimiento = fechaVencimiento, // Enviar en formato DD/MM/YYYY
+                FechaVencimiento = fechaVencimiento, 
                 MetodoPago = "N/A",
                 Condicion = "Credito",
-                FechaRegistro = fechaRegistro, // Enviar en formato DD/MM/YYYY
+                FechaRegistro = fechaRegistro, 
                 TipoDocumento = "Factura",
-                NumeroDocumento = "000000"
+                NumeroDocumento = "N/A"
             };
 
-            // Guardar la compra en la base de datos
+           
             string mensaje;
             bool resultado = new CN_Compra().RegistrarCredito(nuevaCompra, out mensaje);
 
@@ -113,13 +112,13 @@ namespace CapaPresentacion.Modales
         {
             if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar) && (e.KeyChar != '.'))
             {
-                e.Handled = true; // Evitar la entrada
+                e.Handled = true; 
             }
 
-            // Permitir solo un punto decimal
+            
             if ((e.KeyChar == '.') && (sender as TextBox).Text.IndexOf('.') > -1)
             {
-                e.Handled = true; // Evitar la entrada
+                e.Handled = true; 
             }
         }
 
@@ -127,13 +126,13 @@ namespace CapaPresentacion.Modales
         {
             if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar) && (e.KeyChar != '.'))
             {
-                e.Handled = true; // Evitar la entrada
+                e.Handled = true; 
             }
 
-            // Permitir solo un punto decimal
+           
             if ((e.KeyChar == '.') && (sender as TextBox).Text.IndexOf('.') > -1)
             {
-                e.Handled = true; // Evitar la entrada
+                e.Handled = true;
             }
         }
 
@@ -141,7 +140,7 @@ namespace CapaPresentacion.Modales
         {
             if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar))
             {
-                e.Handled = true; // Evitar la entrada
+                e.Handled = true; 
             }
         }
 

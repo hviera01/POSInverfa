@@ -20,12 +20,17 @@ namespace CapaEntidad
         public decimal SaldoPendiente { get; set; }
         public string MetodoPago { get; set; }
         public decimal Impuesto { get; set; }
-        public string Condicion { get; set; }  // Contado o Crédito
+        public string Condicion { get; set; }
+    
         public DateTime? FechaVencimiento { get; set; }
-        public List<Detalle_Venta> oDetalle_Venta { get; set; }
-        public string FechaRegistro { get; set; }
-       
+        public List<Detalle_Venta> oDetalle_Venta { get; set; } = new List<Detalle_Venta>();
 
+        public decimal PorcentajeTarjeta { get; set; }
+        public string Estado { get; set; }
+        public DateTime FechaRegistro { get; set; }
+
+        public string Descripcion { get; set; }
+        public int CodCliente { get; set; }
 
     }
 }

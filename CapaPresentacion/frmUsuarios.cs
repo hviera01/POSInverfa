@@ -14,14 +14,46 @@ using CapaNegocio;
 
 namespace CapaPresentacion
 {
-    public partial class frmUsuarios : Form
+    public partial class frmUsuarios : ResponsiveFormBase
     {
+        protected override void OnLoad(EventArgs e)
+        {
+            base.OnLoad(e);
+
+            // Si me están embebiendo dentro de un Panel
+            if (!this.TopLevel && this.Parent != null)
+            {
+                // Quita cualquier tope heredado
+                this.MinimumSize = Size.Empty;
+                this.MaximumSize = Size.Empty;
+
+                // Haz que el form embebido “rellene” el contenedor
+                this.FormBorderStyle = FormBorderStyle.None;
+                this.Dock = DockStyle.Fill;
+                this.AutoSize = false;               // por si acaso
+                this.AutoScaleMode = AutoScaleMode.Dpi;
+            }
+        }
+
+        protected override void OnParentChanged(EventArgs e)
+        {
+            base.OnParentChanged(e);
+
+            // Reafirma el Dock cuando cambia de padre (WinForms a veces pierde el Dock)
+            if (!this.TopLevel && this.Parent != null)
+            {
+                this.Dock = DockStyle.Fill;
+                this.MinimumSize = Size.Empty;
+                this.MaximumSize = Size.Empty;
+            }
+        }
+
         public frmUsuarios()
         {
             InitializeComponent();
         }
 
-      
+        protected override Size DesignSize => new Size(1370, 531);
 
         private void frmUsuarios_Load(object sender, EventArgs e)
         {
@@ -335,6 +367,39 @@ namespace CapaPresentacion
 
         private void txtbusqueda_TextChanged(object sender, EventArgs e)
         {
+            FiltrarDatos();
+        }
+
+        private void RefrescarFormulario()
+        {
+            // Limpiar los campos de entrada
+            Limpiar();
+
+            // Volver a cargar los datos
+            CargarUsuarios();
+        }
+
+        private void CargarUsuarios()
+        {
+            dgvdata.Rows.Clear(); // Limpiar el DataGridView antes de agregar nuevos datos
+
+            List<Usuario> listaUsuario = new CN_Usuario().Listar();
+
+            foreach (Usuario item in listaUsuario)
+            {
+                dgvdata.Rows.Add(new object[] { "", item.IdUsuario, item.Documento, item.NombreCompleto, item.Correo, item.Clave, item.oRol.IdRol, item.oRol.Descripcion, item.Estado == true ? 1 : 0, item.Estado == true ? "Activo" : "No activo" });
+            }
+        }
+
+        private void btnrefrescar_Click(object sender, EventArgs e)
+        {
+            RefrescarFormulario();
+            FiltrarDatos();
+        }
+
+        private void iconButton2_Click(object sender, EventArgs e)
+        {
+            RefrescarFormulario();
             FiltrarDatos();
         }
     }

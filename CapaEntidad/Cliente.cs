@@ -8,11 +8,14 @@ namespace CapaEntidad
 {
     public class Cliente
     {
-        public int idCliente {  get; set; }
+        public int idCliente { get; set; }
+        public int CodCliente { get; set; }
         public string Documento { get; set; }
         public string NombreCompleto { get; set; }
-        public string Correo {  get; set; }
-        public string Telefono {  get; set; }
+        public string Correo { get; set; }      // Aquí vas a guardar Profesión u Oficio
+        public string Telefono { get; set; }
+        public string Direccion { get; set; }   // NUEVO: Dirección del cliente
+        public int Puntos { get; set; }
         public bool Estado { get; set; }
         public string FechaRegistro { get; set; }
     }

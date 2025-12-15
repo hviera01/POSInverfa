@@ -110,11 +110,16 @@
   <ItemGroup>
     <Compile Include="Abono.cs" />
     <Compile Include="AbonoCompra.cs" />
+    <Compile Include="AbonoCuota.cs" />
     <Compile Include="Categoria.cs" />
+    <Compile Include="CierreCaja.cs" />
+    <Compile Include="ClaveAcceso.cs" />
     <Compile Include="Cliente.cs" />
     <Compile Include="Compra.cs" />
+    <Compile Include="CuotaCredito.cs" />
     <Compile Include="Detalle_Compra.cs" />
     <Compile Include="Detalle_Venta.cs" />
+    <Compile Include="Egreso.cs" />
     <Compile Include="HistorialStock.cs" />
     <Compile Include="Negocio.cs" />
     <Compile Include="Permiso.cs" />
@@ -122,12 +127,19 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Proveedor.cs" />
     <Compile Include="RegistroColores.cs" />
+    <Compile Include="ReporteCierreCaja.cs" />
     <Compile Include="ReporteCompra.cs" />
+    <Compile Include="ReporteGananciaPorCliente.cs" />
+    <Compile Include="ReporteGananciaProducto.cs" />
+    <Compile Include="ReporteUtilidadBruta.cs" />
+    <Compile Include="ReporteUtilidadNeta.cs" />
     <Compile Include="ReporteVenta.cs" />
     <Compile Include="ResultadoReporteVenta.cs" />
+    <Compile Include="ResumenCuotasCredito.cs" />
     <Compile Include="Rol.cs" />
     <Compile Include="Usuario.cs" />
     <Compile Include="Venta.cs" />
+    <Compile Include="VentaCreditoResumen.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="app.config" />

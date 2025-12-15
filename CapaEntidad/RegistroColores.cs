@@ -13,7 +13,7 @@ namespace CapaEntidad
         public string Cliente { get; set; }
         public string Descripcion { get; set; }
         public string UbicacionFisica { get; set; }
-        public string Pagina { get; set; } // Cambiado a string
+        public string Pagina { get; set; }
         public string FechaRegistro { get; set; }
         public string Observaciones { get; set; }
     }

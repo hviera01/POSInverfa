@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Data.SqlClient;
 using System.Data;
+using System.Data.SqlClient;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -38,7 +38,7 @@ namespace CapaDatos
                                 Descripcion = dr["Descripcion"] != DBNull.Value ? dr["Descripcion"].ToString() : "",
                                 UbicacionFisica = dr["UbicacionFisica"] != DBNull.Value ? dr["UbicacionFisica"].ToString() : "",
                                 Pagina = dr["Pagina"] != DBNull.Value ? dr["Pagina"].ToString() : "",
-                                FechaRegistro = dr["FechaRegistro"] != DBNull.Value ? dr["FechaRegistro"].ToString() : "", // Como es string
+                                FechaRegistro = dr["FechaRegistro"] != DBNull.Value ? dr["FechaRegistro"].ToString() : "",
                                 Observaciones = dr["Observaciones"] != DBNull.Value ? dr["Observaciones"].ToString() : ""
                             });
 
@@ -71,7 +71,7 @@ namespace CapaDatos
                     cmd.Parameters.AddWithValue("Cliente", (object)obj.Cliente ?? DBNull.Value);
                     cmd.Parameters.AddWithValue("Descripcion", (object)obj.Descripcion ?? DBNull.Value);
                     cmd.Parameters.AddWithValue("UbicacionFisica", (object)obj.UbicacionFisica ?? DBNull.Value);
-                    cmd.Parameters.AddWithValue("Pagina", (object)obj.Pagina ?? DBNull.Value); // Ahora es un string
+                    cmd.Parameters.AddWithValue("Pagina", (object)obj.Pagina ?? DBNull.Value);
                     cmd.Parameters.AddWithValue("FechaRegistro", (object)obj.FechaRegistro ?? DBNull.Value);
                     cmd.Parameters.AddWithValue("Observaciones", (object)obj.Observaciones ?? DBNull.Value);
 
@@ -109,7 +109,7 @@ namespace CapaDatos
                     cmd.Parameters.AddWithValue("Cliente", (object)obj.Cliente ?? DBNull.Value);
                     cmd.Parameters.AddWithValue("Descripcion", (object)obj.Descripcion ?? DBNull.Value);
                     cmd.Parameters.AddWithValue("UbicacionFisica", (object)obj.UbicacionFisica ?? DBNull.Value);
-                    cmd.Parameters.AddWithValue("Pagina", (object)obj.Pagina ?? DBNull.Value); // Ahora es un string
+                    cmd.Parameters.AddWithValue("Pagina", (object)obj.Pagina ?? DBNull.Value);
                     cmd.Parameters.AddWithValue("FechaRegistro", (object)obj.FechaRegistro ?? DBNull.Value);
                     cmd.Parameters.AddWithValue("Observaciones", (object)obj.Observaciones ?? DBNull.Value);
 
@@ -154,6 +154,5 @@ namespace CapaDatos
 
             return respuesta;
         }
-
     }
 }

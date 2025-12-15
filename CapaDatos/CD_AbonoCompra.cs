@@ -19,13 +19,14 @@ namespace CapaDatos
             {
                 try
                 {
-                    SqlCommand cmd = new SqlCommand("INSERT INTO AbonoCompra (IdCompra, MontoAbono, FechaAbono, NuevoSaldoPendiente, InteresAplicado, MetodoPago) VALUES (@IdCompra, @MontoAbono, @FechaAbono, @NuevoSaldoPendiente, @InteresAplicado, @MetodoPago)", conexion);
+                    SqlCommand cmd = new SqlCommand("INSERT INTO AbonoCompra (IdCompra, MontoAbono, FechaAbono, NuevoSaldoPendiente, InteresAplicado, MetodoPago, NoRecibo) VALUES (@IdCompra, @MontoAbono, @FechaAbono, @NuevoSaldoPendiente, @InteresAplicado, @MetodoPago,@NoRecibo )", conexion);
                     cmd.Parameters.AddWithValue("@IdCompra", abono.IdCompra);
                     cmd.Parameters.AddWithValue("@MontoAbono", abono.MontoAbono);
                     cmd.Parameters.AddWithValue("@FechaAbono", abono.FechaAbono);
                     cmd.Parameters.AddWithValue("@NuevoSaldoPendiente", abono.NuevoSaldoPendiente);
                     cmd.Parameters.AddWithValue("@InteresAplicado", abono.InteresAplicado);
-                    cmd.Parameters.AddWithValue("@MetodoPago", abono.MetodoPago ?? (object)DBNull.Value); // Manejo de nulos
+                    cmd.Parameters.AddWithValue("@MetodoPago", abono.MetodoPago ?? (object)DBNull.Value);
+                    cmd.Parameters.AddWithValue("@NoRecibo", abono.NoRecibo);
 
                     conexion.Open();
                     cmd.ExecuteNonQuery();
@@ -48,7 +49,7 @@ namespace CapaDatos
             {
                 try
                 {
-                    SqlCommand cmd = new SqlCommand("SELECT FechaAbono, MontoAbono, NuevoSaldoPendiente, InteresAplicado, MetodoPago FROM AbonoCompra WHERE IdCompra = @IdCompra", conexion);
+                    SqlCommand cmd = new SqlCommand("SELECT FechaAbono, MontoAbono, NuevoSaldoPendiente, InteresAplicado, MetodoPago, NoRecibo FROM AbonoCompra WHERE IdCompra = @IdCompra", conexion);
                     cmd.Parameters.AddWithValue("@IdCompra", idCompra);
 
                     conexion.Open();
@@ -62,7 +63,8 @@ namespace CapaDatos
                             MontoAbono = reader.GetDecimal(1),
                             NuevoSaldoPendiente = reader.GetDecimal(2),
                             InteresAplicado = reader.GetDecimal(3),
-                            MetodoPago = reader.IsDBNull(4) ? null : reader.GetString(4) // Manejo de nulos
+                            MetodoPago = reader.IsDBNull(4) ? null : reader.GetString(4),
+                            NoRecibo = reader.IsDBNull(5) ? null : reader.GetString(5)
                         });
                     }
                 }

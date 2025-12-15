@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Cotización Exonerada</title>
+    <style>
+        table.border {
+            border-collapse: collapse;
+            width: 100%;
+        }
+        table.border th {
+            text-align: center;
+            padding: 5px;
+            border: 1px solid black;
+            background-color: #CACACA;
+        }
+        table.border td {
+            text-align: left;
+            padding: 5px;
+            border: 1px solid black;
+        }
+        .description-cell {
+            width: 50%;
+            word-wrap: break-word;
+            overflow-wrap: break-word;
+        }
+        .totales-table {
+            width: 38%;
+            margin-left: auto;
+            border-collapse: collapse;
+            float: right;
+            margin-top: 20px;
+        }
+        .totales-table td {
+            text-align: right;
+            padding: 5px;
+            border: 1px solid black;
+        }
+        .totales-table tr:first-child td {
+            background-color: #CACACA;
+            font-weight: bold;
+        }
+        .totales-table td:first-child { width: 70%; }
+        .totales-table td:last-child  { width: 30%; }
+
+        .space-before-table { margin-top: 20px; }
+        .space-after-user   { margin-bottom: 20px; }
+
+        .small { font-size: 11px; }
+        .bold  { font-weight: bold; }
+    </style>
+</head>
+<body>
+    <table border="0" style="width:100%">
+        <tr>
+            <td style="width:15%" valign="top"></td>
+            <td style="width:60%" valign="top" align="center">
+                <label style="font-size:20px;font-weight:bold;margin-bottom:10px">@nombrenegocio</label><br />
+                <label class="small">Mejor Precio</label><br />
+                <label class="small">Mejor Pintura</label><br />
+                <label class="small">Interiores y Exteriores</label><br />
+                <label class="small">RTN: @docnegocio</label><br />
+                <label class="small">Dirección: @direcnegocio</label><br />
+                <label class="small">Teléfono: @telefono / (+504) 3376-6564</label><br />
+                <label class="small">CAI: @cai</label><br />
+            </td>
+            <td style="width:25%;" align="right" valign="top">
+                <table style="width:100%" class="border">
+                    <tr>
+                        <td align="center" style="background-color:#CACACA">
+                            <label style="font-size:15px;font-weight:bold">@tipodocumento</label>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td align="center">
+                            <label style="font-size:15px;font-weight:bold">@numerodocumento</label>
+                        </td>
+                    </tr>
+                </table>
+            </td>
+        </tr>
+    </table>
+    <hr />
+
+    <!-- Datos del cliente / exoneración -->
+    <table border="0" style="width:100%">
+        <tr>
+            <td style="width:25%"><label class="bold small">DNI/RTN Cliente:</label></td>
+            <td style="width:25%"><label class="small">@doccliente</label></td>
+            <td style="width:25%"><label class="bold small">No.O/C exenta:</label></td>
+            <td style="width:25%"><label class="small">@oc</label></td>
+        </tr>
+        <tr>
+            <td><label class="bold small">Nombre Cliente:</label></td>
+            <td><label class="small">@nombrecliente</label></td>
+            <td><label class="bold small">No.Reg de exonerado:</label></td>
+            <td><label class="small">@exonerado</label></td>
+        </tr>
+        <tr>
+            <td><label class="bold small">Fecha Registro:</label></td>
+            <td><label class="small">@fecharegistro</label></td>
+            <td><label class="bold small">No.De reg de la SAG:</label></td>
+            <td><label class="small">@sag</label></td>
+        </tr>
+        <tr>
+            <td><label class="bold small">Atendido por:</label></td>
+            <td><label class="small">@usuarioregistro</label></td>
+            <td></td><td></td>
+        </tr>
+    </table>
+
+    <div class="space-after-user"></div>
+
+    <!-- Detalle de productos -->
+    <div class="space-before-table">
+        <table class="border">
+            <thead>
+                <tr>
+                    <th class="description-cell">Descripción</th>
+                    <th>Precio unitario</th>
+                    <th>Cantidad</th>
+                    <th>Importe</th>
+                </tr>
+            </thead>
+            <tbody>
+                @filas
+            </tbody>
+        </table>
+    </div>
+
+    <div class="space-after-user"></div>
+
+    <!-- Totales (Exonerado) -->
+    <table class="totales-table">
+        <tr>
+            <td>SubTotal (sin ISV):</td>
+            <td>L. @totalsinimpuesto</td>
+        </tr>
+        <tr>
+            <td>Rebajas y descuentos:</td>
+            <td>L. 0.00</td>
+        </tr>
+        <tr>
+            <td>Importe exonerado (ISV 15%):</td>
+            <td>L. @importeexonerado</td>
+        </tr>
+        <tr>
+            <td>Importe exento:</td>
+            <td>L. 0.00</td>
+        </tr>
+        <tr>
+            <td>Gravado 15%:</td>
+            <td>L. @totalsinimpuesto</td>
+        </tr>
+        <tr>
+            <td>Gravado 18%:</td>
+            <td>L. 0.00</td>
+        </tr>
+        <tr>
+            <td>ISV 15%:</td>
+            <td>L. @impuesto</td>
+        </tr>
+        <tr>
+            <td>ISV 18%:</td>
+            <td>L. 0.00</td>
+        </tr>
+        <tr>
+            <td>Total a pagar (EXONERADO):</td>
+            <td style="font-weight:bold;">L. @totalpagar</td>
+        </tr>
+    </table>
+
+    <p><strong>Total a pagar (EXONERADO):</strong> L. @totalpagar</p>
+    <p><strong>SON:</strong> @totalenletras</p>
+
+    <br /><br /><br /><br /><br /><br />
+    <table style="width:100%; margin-top:50px;">
+        <tr>
+            <td style="text-align:center;">
+                ___________________________
+            </td>
+            <td style="text-align:center;">
+                ___________________________
+            </td>
+        </tr>
+        <tr>
+            <td style="text-align:center; font-weight:bold;">FIRMA DE GERENTE GENERAL</td>
+            <td style="text-align:center; font-weight:bold;">FIRMA DEL COTIZADO</td>
+        </tr>
+    </table>
+
+    <p class="small"><em>Documento no fiscal de referencia. Precios unitarios mostrados incluyen ISV solo a efecto informativo; la operación está exonerada conforme documentos anexos.</em></p>
+</body>
+</html>

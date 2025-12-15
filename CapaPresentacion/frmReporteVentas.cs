@@ -16,10 +16,10 @@ namespace CapaPresentacion
 {
     public partial class frmReporteVentas : Form
     {
-        private string _busqueda;
-        private string _busqueda1;
-        private string _busqueda2;
-        private string _busqueda3;
+        public string Busqueda { get; set; }
+        public string Busqueda1 { get; set; }
+        public string Busqueda2 { get; set; }
+        public string Busqueda3 { get; set; }
         public frmReporteVentas()
         {
             InitializeComponent();
@@ -27,6 +27,17 @@ namespace CapaPresentacion
 
         private void frmReporteVentas_Load(object sender, EventArgs e)
         {
+            txtbusqueda.Text = Busqueda;
+            txtbusqueda1.Text = Busqueda1;
+            txtbusqueda2.Text = Busqueda2;
+            txtbusqueda3.Text = Busqueda3;
+
+            // Inicializar los ComboBoxes
+            cbobusqueda.Items.Clear();
+            cbobusqueda1.Items.Clear();
+            cbobusqueda2.Items.Clear();
+            cbobusqueda3.Items.Clear();
+
             foreach (DataGridViewColumn columna in dgvdata.Columns)
             {
                 OpcionCombo opcion = new OpcionCombo() { Valor = columna.Name, Texto = columna.HeaderText };
@@ -36,6 +47,7 @@ namespace CapaPresentacion
                 cbobusqueda3.Items.Add(opcion);
             }
 
+            // Configurar los ComboBoxes
             cbobusqueda.DisplayMember = "Texto";
             cbobusqueda.ValueMember = "Valor";
             cbobusqueda.SelectedIndex = 0;
@@ -52,24 +64,21 @@ namespace CapaPresentacion
             cbobusqueda3.ValueMember = "Valor";
             cbobusqueda3.SelectedIndex = 0;
 
+            // Asignar el evento Click a todos los botones
             foreach (System.Windows.Forms.Control ctrl in this.Controls)
-
             {
                 if (ctrl is Button btn)
                 {
                     btn.Click += Btn_Click;
                 }
             }
-            txtbusqueda.Text = _busqueda;
-            txtbusqueda1.Text = _busqueda1;
-            txtbusqueda2.Text = _busqueda2;
-            txtbusqueda3.Text = _busqueda3;
 
-            if (!string.IsNullOrEmpty(_busqueda) || !string.IsNullOrEmpty(_busqueda1) || !string.IsNullOrEmpty(_busqueda2) || !string.IsNullOrEmpty(_busqueda3))
+            // Realizar búsqueda si hay valores en los filtros
+            if (!string.IsNullOrEmpty(Busqueda) || !string.IsNullOrEmpty(Busqueda1) ||
+                !string.IsNullOrEmpty(Busqueda2) || !string.IsNullOrEmpty(Busqueda3))
             {
                 btnbuscarresultado.PerformClick();
             }
-
         }
 
         private void Btn_Click(object sender, EventArgs e)
@@ -81,6 +90,7 @@ namespace CapaPresentacion
             }
         }
 
+
         private void CalcularTotalFacturado()
         {
             decimal totalFacturado = 0;
@@ -89,10 +99,12 @@ namespace CapaPresentacion
             {
                 if (row.Visible) // Solo sumar filas visibles
                 {
-                    // Verificar que el tipo de documento no sea "Cotizacion"
-                    if (row.Cells["TipoDocumento"].Value?.ToString() != "Cotizacion")
+                    string tipoDocumento = row.Cells["TipoDocumento"].Value?.ToString();
+                    string estado = row.Cells["Estado"].Value?.ToString();
+
+                    // Excluir "Cotizacion" y "Canje", y solo contar si el estado es "Activa"
+                    if (tipoDocumento != "Cotizacion" && tipoDocumento != "Canje" && estado == "Activa")
                     {
-                        // Asegurarse de que el valor de TotalAPagar sea un número válido
                         if (decimal.TryParse(row.Cells["TotalAPagar"].Value?.ToString(), out decimal totalAPagar))
                         {
                             totalFacturado += totalAPagar;
@@ -104,9 +116,14 @@ namespace CapaPresentacion
             txtTotalFacturado.Text = "L. " + totalFacturado.ToString("N2");
         }
 
-        
+
+
         private async void btnbuscarresultado_Click(object sender, EventArgs e)
         {
+            Busqueda = txtbusqueda.Text;
+            Busqueda1 = txtbusqueda1.Text;
+            Busqueda2 = txtbusqueda2.Text;
+            Busqueda3 = txtbusqueda3.Text;
             btnbuscarresultado.Enabled = false; // Deshabilitar el botón para evitar múltiples clics
 
             try
@@ -120,22 +137,22 @@ namespace CapaPresentacion
                     );
                 });
 
-                // Actualizar el DataGridView en el hilo de la UI
+
                 dgvdata.Rows.Clear();
 
-                // Asignar el producto más vendido al TextBox en el hilo de la UI
+
                 txtProductoMasVendido.Invoke((MethodInvoker)delegate {
-                    txtProductoMasVendido.Text = resultado.ProductoMasVendido; // Asignar el producto más vendido al TextBox
+                    txtProductoMasVendido.Text = resultado.ProductoMasVendido;
                 });
 
                 if (resultado.Ventas == null || resultado.Ventas.Count == 0)
                 {
                     MessageBox.Show("No se encontraron resultados.");
-                    txtTotalFacturado.Text = "0.00"; // Asegúrate de limpiar el total si no hay resultados
+                    txtTotalFacturado.Text = "0.00";
                 }
                 else
                 {
-                    // Filtrar por los tres criterios
+
                     var listaFiltrada = FiltrarResultados(resultado.Ventas);
 
                     foreach (ReporteVenta rv in listaFiltrada)
@@ -144,6 +161,8 @@ namespace CapaPresentacion
                     rv.FechaRegistro,
                     rv.TipoDocumento,
                     rv.NumeroDocumento,
+                    rv.PorcentajeTarjeta,
+                    rv.ComisionBancaria,
                     rv.TotalAPagar,
                     rv.CantidadProductos,
                     rv.MetodoPago,
@@ -157,8 +176,9 @@ namespace CapaPresentacion
                 });
                     }
 
-                    // Calcular el total facturado y actualizar el TextBox
+
                     CalcularTotalFacturado();
+                    FiltrarDatos();
                 }
             }
             catch (Exception ex)
@@ -167,25 +187,25 @@ namespace CapaPresentacion
             }
             finally
             {
-                btnbuscarresultado.Enabled = true; // Volver a habilitar el botón
+                btnbuscarresultado.Enabled = true;
             }
         }
 
         private List<ReporteVenta> FiltrarResultados(List<ReporteVenta> lista)
         {
-            // Filtrar por el primer ComboBox y TextBox
+           
             string columnaFiltro1 = ((OpcionCombo)cbobusqueda1.SelectedItem).Valor.ToString();
             string busqueda1 = txtbusqueda1.Text.Trim().ToUpper();
 
-            // Filtrar por el segundo ComboBox y TextBox
+            
             string columnaFiltro2 = ((OpcionCombo)cbobusqueda2.SelectedItem).Valor.ToString();
             string busqueda2 = txtbusqueda2.Text.Trim().ToUpper();
 
-            // Filtrar por el tercer ComboBox y TextBox
+          
             string columnaFiltro3 = ((OpcionCombo)cbobusqueda3.SelectedItem).Valor.ToString();
             string busqueda3 = txtbusqueda3.Text.Trim().ToUpper();
 
-            // Aplicar los filtros
+            
             var resultadoFiltrado = lista.Where(rv =>
                 (string.IsNullOrEmpty(busqueda1) || rv.GetType().GetProperty(columnaFiltro1).GetValue(rv, null).ToString().ToUpper().Contains(busqueda1)) &&
                 (string.IsNullOrEmpty(busqueda2) || rv.GetType().GetProperty(columnaFiltro2).GetValue(rv, null).ToString().ToUpper().Contains(busqueda2)) &&
@@ -234,47 +254,49 @@ namespace CapaPresentacion
             {
                 DataTable dt = new DataTable();
 
-                // Agregar columnas al DataTable
+               
                 foreach (DataGridViewColumn columna in dgvdata.Columns)
                 {
                     dt.Columns.Add(columna.HeaderText, typeof(string));
                 }
 
-                // Recorrer las filas del DataGridView
+               
                 foreach (DataGridViewRow row in dgvdata.Rows)
                 {
                     if (row.Visible)
                     {
-                        // Verificar si las celdas son null antes de intentar acceder a su valor
+                       
                         dt.Rows.Add(new object[] {
-                    row.Cells[0].Value?.ToString() ?? "",  // FechaRegistro
-                    row.Cells[1].Value?.ToString() ?? "",  // TipoDocumento
-                    row.Cells[2].Value?.ToString() ?? "",  // NumeroDocumento
-                    row.Cells[3].Value?.ToString() ?? "",  // TotalAPagar
-                    row.Cells[4].Value?.ToString() ?? "",  // CantidadProductos
-                    row.Cells[5].Value?.ToString() ?? "",  // MetodoPago
-                    row.Cells[6].Value?.ToString() ?? "",  // UsuarioRegistro
-                    row.Cells[7].Value?.ToString() ?? "",  // DocumentoCliente
-                    row.Cells[8].Value?.ToString() ?? "",  // NombreCliente
-                    row.Cells[9].Value?.ToString() ?? "",  // Impuesto
-                    row.Cells[10].Value?.ToString() ?? "", // Condicion
-                    row.Cells[11].Value?.ToString() ?? "", // FechaVencimiento
-                    row.Cells[12].Value?.ToString() ?? ""  // Estado
+                    row.Cells[0].Value?.ToString() ?? "", 
+                    row.Cells[1].Value?.ToString() ?? "",  
+                    row.Cells[2].Value?.ToString() ?? "", 
+                    row.Cells[3].Value?.ToString() ?? "",  
+                    row.Cells[4].Value?.ToString() ?? "",  
+                    row.Cells[5].Value?.ToString() ?? "", 
+                    row.Cells[6].Value?.ToString() ?? "", 
+                    row.Cells[7].Value?.ToString() ?? "", 
+                    row.Cells[8].Value?.ToString() ?? "",  
+                    row.Cells[9].Value?.ToString() ?? "",  
+                    row.Cells[10].Value?.ToString() ?? "",
+                    row.Cells[11].Value?.ToString() ?? "", 
+                    row.Cells[12].Value?.ToString() ?? "",
+                    row.Cells[13].Value?.ToString() ?? "",
+                    row.Cells[14].Value?.ToString() ?? ""
                 });
                     }
                 }
 
-                // Crear el diálogo para guardar el archivo
+                
                 SaveFileDialog savefile = new SaveFileDialog();
                 savefile.FileName = string.Format("ReporteVentas_{0}.xlsx", DateTime.Now.ToString("ddMMyyyyHHmmss"));
                 savefile.Filter = "Excel Files | *.xlsx";
 
-                // Si se selecciona una ruta para guardar el archivo
+                
                 if (savefile.ShowDialog() == DialogResult.OK)
                 {
                     try
                     {
-                        // Crear el archivo Excel con la librería ClosedXML
+                       
                         XLWorkbook wb = new XLWorkbook();
                         var hoja = wb.Worksheets.Add(dt, "Informe");
                         hoja.ColumnsUsed().AdjustToContents();
@@ -291,26 +313,25 @@ namespace CapaPresentacion
 
         private void dgvdata_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
         {
-            // Verifica si la columna que contiene el estado es la correcta (ajusta el índice de columna si es necesario)
+           
             if (dgvdata.Columns[12].Name == "Estado")
             {
-                // Verifica si el estado es "Anulada"
+             
                 if (e.Value != null && e.Value.ToString() == "Anulada")
                 {
-                    // Cambia el fondo de la celda a rojo
+                   
                     e.CellStyle.BackColor = Color.Red;
-                    // Cambia el color del texto (opcional, para que sea más legible)
+                    
                     e.CellStyle.ForeColor = Color.White;
                 }
             }
             if (dgvdata.Columns[1].Name == "TipoDocumento")
             {
-                // Verifica si el estado es "Anulada"
                 if (e.Value != null && e.Value.ToString() == "Cotizacion")
                 {
-                    // Cambia el fondo de la celda a rojo
+                  
                     e.CellStyle.BackColor = Color.Yellow;
-                    // Cambia el color del texto (opcional, para que sea más legible)
+                    
                     e.CellStyle.ForeColor = Color.Black;
                 }
             }
@@ -320,8 +341,8 @@ namespace CapaPresentacion
         {
             if (e.KeyCode == Keys.Enter)
             {
-                btnbuscar.PerformClick(); // Simula un clic en el botón btnbuscar
-                e.SuppressKeyPress = true; // Evita el sonido de "ding" al presionar Enter
+                btnbuscar.PerformClick(); 
+                e.SuppressKeyPress = true; 
             }
         }
 
@@ -349,7 +370,7 @@ namespace CapaPresentacion
                 {
                     bool visible = true;
 
-                    // Filtrar por el primer ComboBox y TextBox
+                    
                     if (!string.IsNullOrEmpty(busqueda) &&
                        !row.Cells[columnaFiltro].Value.ToString().Trim().ToUpper().Contains(busqueda))
                     {
@@ -361,26 +382,26 @@ namespace CapaPresentacion
                         visible = false;
                     }
 
-                    // Filtrar por el segundo ComboBox y TextBox
+                    
                     if (!string.IsNullOrEmpty(busqueda2) &&
                         !row.Cells[columnaFiltro2].Value.ToString().Trim().ToUpper().Contains(busqueda2))
                     {
                         visible = false;
                     }
 
-                    // Filtrar por el tercer ComboBox y TextBox
+                    
                     if (!string.IsNullOrEmpty(busqueda3) &&
                         !row.Cells[columnaFiltro3].Value.ToString().Trim().ToUpper().Contains(busqueda3))
                     {
                         visible = false;
                     }
 
-                    // Establecer la visibilidad de la fila
+                   
                     row.Visible = visible;
                 }
             }
 
-            // Actualizar el total facturado después de aplicar los filtros
+           
             CalcularTotalFacturado();
         }
 
@@ -397,6 +418,164 @@ namespace CapaPresentacion
         private void txtbusqueda3_TextChanged(object sender, EventArgs e)
         {
             FiltrarDatos();
+        }
+
+        private void RefrescarFormulario()
+        {
+            
+            txtbusqueda.Text = "";
+            txtbusqueda1.Text = "";
+            txtbusqueda2.Text = "";
+            txtbusqueda3.Text = "";
+
+          
+            foreach (DataGridViewRow row in dgvdata.Rows)
+            {
+                row.Visible = true;
+            }
+
+         
+            CargarDatos();
+        }
+
+        private void CargarDatos()
+        {
+            string fechaInicio = txtfechainicio.Value.ToString("dd/MM/yyyy");
+            string fechaFin = txtfechafin.Value.ToString("dd/MM/yyyy");
+
+            
+            ResultadoReporteVenta resultado = new CN_Reporte().Venta(fechaInicio, fechaFin);
+
+            
+            dgvdata.Rows.Clear();
+
+            
+            txtProductoMasVendido.Text = resultado.ProductoMasVendido;
+
+           
+            if (resultado.Ventas == null || resultado.Ventas.Count == 0)
+            {
+                MessageBox.Show("No se encontraron resultados.");
+                txtTotalFacturado.Text = "0.00"; 
+            }
+            else
+            {
+                foreach (ReporteVenta rv in resultado.Ventas)
+                {
+                    dgvdata.Rows.Add(new object[] {
+                rv.FechaRegistro,
+                rv.TipoDocumento,
+                rv.NumeroDocumento,
+                 rv.PorcentajeTarjeta,
+                    rv.ComisionBancaria,
+                rv.TotalAPagar,
+                rv.CantidadProductos,
+                rv.MetodoPago,
+                rv.UsuarioRegistro,
+                rv.DocumentoCliente,
+                rv.NombreCliente,
+                rv.Impuesto,
+                rv.Condicion,
+                rv.FechaVencimiento,
+                rv.Estado
+            });
+                }
+
+                CalcularTotalFacturado();
+            }
+        }
+        private void btnrefrescar_Click(object sender, EventArgs e)
+        {
+            RefrescarFormulario();
+        }
+
+        private void btnborrar_Click(object sender, EventArgs e)
+        {
+            txtbusqueda.Text = "";
+            txtbusqueda1.Text = "";
+            txtbusqueda2.Text = "";
+            txtbusqueda3.Text = "";
+            foreach (DataGridViewRow row in dgvdata.Rows)
+            {
+                row.Visible = true;
+            }
+            FiltrarDatos();
+        }
+
+        private void btnDetalle_Click(object sender, EventArgs e)
+        {
+            if (dgvdata.CurrentRow != null && dgvdata.CurrentRow.Cells["NumeroDocumento"].Value != null)
+            {
+                // Obtener el Número de Documento de la fila seleccionada
+                string numeroDocumento = dgvdata.CurrentRow.Cells["NumeroDocumento"].Value.ToString();
+
+                // Crear instancia del formulario de detalle
+                frmDetalleVenta detalleVentaForm = new frmDetalleVenta();
+
+                // Al cargar el formulario, buscar la venta
+                detalleVentaForm.Load += (s, args) =>
+                {
+                    detalleVentaForm.BuscarPorNumeroDocumento(numeroDocumento);
+                };
+
+                // Mostrar el formulario como diálogo
+                detalleVentaForm.ShowDialog();
+            }
+            else
+            {
+                MessageBox.Show("Seleccione una fila válida.", "Mensaje", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
+        }
+
+        private void btnInsumos_Click(object sender, EventArgs e)
+        {
+            if (dgvdata.CurrentRow == null || dgvdata.CurrentRow.Cells["NumeroDocumento"].Value == null)
+            {
+                MessageBox.Show("Seleccione una venta.", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                return;
+            }
+
+            string numero = dgvdata.CurrentRow.Cells["NumeroDocumento"].Value.ToString();
+            int idVenta = new CN_Venta().ObtenerIdVentaPorNumeroDocumento(numero);
+
+            if (idVenta <= 0)
+            {
+                MessageBox.Show("No se encontró la venta.", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                return;
+            }
+
+            DataTable dt = new CN_Venta().ObtenerPreparacionPorVenta(idVenta);
+
+            if (dt == null || dt.Rows.Count == 0)
+            {
+                MessageBox.Show("Esta venta no tiene preparación registrada.", "Detalle de insumo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                return;
+            }
+
+            Form dlg = new Form();
+            dlg.Text = "Detalle de insumos usados";
+            dlg.StartPosition = FormStartPosition.CenterParent;
+            dlg.MinimizeBox = false;
+            dlg.MaximizeBox = false;
+            dlg.ShowIcon = false;
+            dlg.Size = new Size(720, 420);
+
+            DataGridView g = new DataGridView();
+            g.Dock = DockStyle.Fill;
+            g.ReadOnly = true;
+            g.AllowUserToAddRows = false;
+            g.AllowUserToDeleteRows = false;
+            g.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+            g.DataSource = dt;
+
+            // Formato de la columna CantidadUsada con 2 decimales
+            if (g.Columns.Contains("CantidadUsada"))
+            {
+                g.Columns["CantidadUsada"].DefaultCellStyle.Format = "N2";
+            }
+
+            dlg.Controls.Add(g);
+            dlg.ShowDialog(this);
         }
     }
 }

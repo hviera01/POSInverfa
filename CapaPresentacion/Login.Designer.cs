@@ -71,9 +71,9 @@
             this.label3.AutoSize = true;
             this.label3.Location = new System.Drawing.Point(235, 42);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(105, 13);
+            this.label3.Size = new System.Drawing.Size(93, 13);
             this.label3.TabIndex = 5;
-            this.label3.Text = "Numero de identidad";
+            this.label3.Text = "Codigo de acceso";
             // 
             // label4
             // 
@@ -129,7 +129,7 @@
             // pictureBox1
             // 
             this.pictureBox1.BackColor = System.Drawing.Color.Transparent;
-            this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
+            this.pictureBox1.Image = global::CapaPresentacion.Properties.Resources.logoInverfa_removebg_preview2;
             this.pictureBox1.Location = new System.Drawing.Point(-7, 0);
             this.pictureBox1.Name = "pictureBox1";
             this.pictureBox1.Size = new System.Drawing.Size(224, 192);
@@ -146,7 +146,6 @@
             this.label5.Size = new System.Drawing.Size(166, 20);
             this.label5.TabIndex = 10;
             this.label5.Text = "INICIO DE SESION";
-         
             // 
             // Login
             // 

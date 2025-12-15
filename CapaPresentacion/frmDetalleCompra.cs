@@ -38,9 +38,11 @@ namespace CapaPresentacion
                 txtnproveedor.Text = oCompra.oProveedor.Documento;
                 txtnombreproveedor.Text = oCompra.oProveedor.RazonSocial;
                 txtcondicion.Text = oCompra.Condicion;
-                txtfechavencimiento.Text = oCompra.FechaVencimiento ?? ""; // Asignar directamente
+                txtfechavencimiento.Text = oCompra.FechaVencimiento ?? ""; 
                 txtnfactura.Text = oCompra.NoFactura;
                 txtmetodopago.Text = oCompra.MetodoPago;
+                txtImpuesto.Text = oCompra.Impuesto.ToString("0.00");
+                txtEstado.Text = oCompra.Estado;
 
                 dgvdata.Rows.Clear();
                 foreach (Detalle_Compra dc in oCompra.oDetalleCompra)
@@ -49,7 +51,8 @@ namespace CapaPresentacion
                 dc.oProducto.Nombre,
                 dc.PrecioCompra.ToString("0.00"),
                 dc.Cantidad.ToString("0.00"),
-                dc.MontoTotal.ToString("0.00")
+                dc.MontoTotal.ToString("0.00"),
+                dc.DescuentoPorcentaje.ToString("0.00")
                  });
                 }
 
@@ -79,6 +82,12 @@ namespace CapaPresentacion
 
         }
 
+        public void BuscarPorNumeroDocumento(string numeroDocumento)
+        {
+            txtbusqueda.Text = numeroDocumento;
+            btnbuscar.PerformClick();
+        }
+
         private void Btn_Click(object sender, EventArgs e)
         {
             if (sender is Button btn)
@@ -105,6 +114,8 @@ namespace CapaPresentacion
             dgvdata.Rows.Clear();
             txtmontototal.Text = "0.00";
             txtbusqueda.Select();
+            txtImpuesto.Text = "0.00";
+            txtEstado.Text = "";
         }
 
         private void btndescargar_Click(object sender, EventArgs e)
@@ -148,6 +159,7 @@ namespace CapaPresentacion
             Texto_Html = Texto_Html.Replace("@fechavence", txtfechavencimiento.Text);
             Texto_Html = Texto_Html.Replace("@nofactura", txtnfactura.Text);
             Texto_Html = Texto_Html.Replace("@metodopago", txtmetodopago.Text);
+            Texto_Html = Texto_Html.Replace("@Impuesto", txtImpuesto.Text);
 
             string filas = string.Empty;
             foreach (DataGridViewRow row in dgvdata.Rows)
@@ -205,8 +217,51 @@ namespace CapaPresentacion
         {
             if (e.KeyCode == Keys.Enter)
             {
-                btnbuscar.PerformClick(); // Simula un clic en el botón btnbuscar
-                e.SuppressKeyPress = true; // Evita el sonido de "ding" al presionar Enter
+                btnbuscar.PerformClick(); 
+                e.SuppressKeyPress = true; 
+            }
+        }
+
+        private void btnAnular_Click(object sender, EventArgs e)
+        {
+            Compra oCompra = new CN_Compra().ObtenerCompra(txtbusqueda.Text);
+
+            if (oCompra == null || oCompra.IdCompra == 0)
+            {
+                MessageBox.Show("Debe buscar y cargar una compra válida antes de anular.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+
+            DialogResult resultado = MessageBox.Show("¿Está seguro de anular esta compra?", "Confirmar", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+
+            if (resultado == DialogResult.Yes)
+            {
+                string mensaje;
+
+                if (new CN_Compra().AnularCompra(oCompra.IdCompra, out mensaje))
+                {
+                    MessageBox.Show(mensaje, "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+                    txtbusqueda.Text = "";
+                    txtfecha.Text = "";
+                    txttipodocumento.Text = "";
+                    txtusuario.Text = "";
+                    txtnproveedor.Text = "";
+                    txtnombreproveedor.Text = "";
+                    txtmetodopago.Text = "";
+                    txtnumerodocumento.Text = "";
+                    txtmontototal.Text = "0.00";
+                    txtImpuesto.Text = "0.00";
+                    txtfechavencimiento.Text = "";
+                    txtcondicion.Text = "";
+                    dgvdata.Rows.Clear();
+                    txtnfactura.Text = "";
+                    txtEstado.Text = "";
+                }
+                else
+                {
+                    MessageBox.Show(mensaje, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
             }
         }
     }

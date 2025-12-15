@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using CapaDatos;
 using CapaEntidad;
 using CapaNegocio;
 using CapaPresentacion.Utilidades;
@@ -16,6 +17,7 @@ namespace CapaPresentacion.Modales
     public partial class mdCliente : Form
     {
         public Cliente _Cliente { get; set; }
+        private List<Cliente> _listaClientesCompleta;
         public mdCliente()
         {
             InitializeComponent();
@@ -24,9 +26,20 @@ namespace CapaPresentacion.Modales
         private void mdCliente_Load(object sender, EventArgs e)
         {
             txtbusqueda.Select();
+
+            cbobusqueda.Items.Clear();
+            cbobusqueda.Items.Add(new OpcionCombo() { Valor = "Todo", Texto = "Buscar en todo" });
+
             foreach (DataGridViewColumn columna in dgvdata.Columns)
             {
-                cbobusqueda.Items.Add(new OpcionCombo() { Valor = columna.Name, Texto = columna.HeaderText });
+                if (columna.Visible)
+                {
+                    cbobusqueda.Items.Add(new OpcionCombo()
+                    {
+                        Valor = columna.Name,
+                        Texto = columna.HeaderText
+                    });
+                }
             }
 
             cbobusqueda.DisplayMember = "Texto";
@@ -34,15 +47,11 @@ namespace CapaPresentacion.Modales
             cbobusqueda.SelectedIndex = 0;
 
             List<Cliente> lista = new CN_Cliente().Listar();
+            _listaClientesCompleta = lista.Where(c => c.Estado).ToList();
 
-            foreach (Cliente item in lista)
-            {
-                if (item.Estado)
-                    dgvdata.Rows.Add(new object[] { item.Documento, item.NombreCompleto });
-            }
+            CargarGridClientes(_listaClientesCompleta);
 
-            foreach (System.Windows.Forms.Control ctrl in this.Controls)
-
+            foreach (Control ctrl in this.Controls)
             {
                 if (ctrl is Button btn)
                 {
@@ -50,6 +59,14 @@ namespace CapaPresentacion.Modales
                 }
             }
 
+            HabilitarDoubleBuffering(dgvdata);
+        }
+
+        private void HabilitarDoubleBuffering(DataGridView dgv)
+        {
+            typeof(DataGridView).InvokeMember("DoubleBuffered",
+                System.Reflection.BindingFlags.NonPublic | System.Reflection.BindingFlags.Instance | System.Reflection.BindingFlags.SetProperty,
+                null, dgv, new object[] { true });
         }
 
         private void Btn_Click(object sender, EventArgs e)
@@ -61,33 +78,125 @@ namespace CapaPresentacion.Modales
             }
         }
 
+        private bool ContieneTodasLasPalabras(string campo, string[] terminosUpper)
+        {
+            if (string.IsNullOrWhiteSpace(campo))
+                return false;
+
+            string valor = campo.ToUpperInvariant();
+
+            for (int i = 0; i < terminosUpper.Length; i++)
+            {
+                if (valor.IndexOf(terminosUpper[i], StringComparison.Ordinal) < 0)
+                    return false;
+            }
+
+            return true;
+        }
+
+        private void CargarGridClientes(IEnumerable<Cliente> lista)
+        {
+            dgvdata.SuspendLayout();
+            dgvdata.Rows.Clear();
+
+            foreach (Cliente item in lista)
+            {
+                dgvdata.Rows.Add(new object[]
+                {
+                    item.idCliente,
+                    item.CodCliente,
+                    item.Documento,
+                    item.NombreCompleto
+                });
+            }
+
+            dgvdata.ResumeLayout();
+        }
+
         private void FiltrarDatos()
         {
-            string columnaFiltro = ((OpcionCombo)cbobusqueda.SelectedItem).Valor.ToString();
+            if (_listaClientesCompleta == null || _listaClientesCompleta.Count == 0)
+                return;
 
-            if (dgvdata.Rows.Count > 0)
+            if (cbobusqueda.SelectedItem == null)
+                return;
+
+            string valorFiltro = ((OpcionCombo)cbobusqueda.SelectedItem).Valor.ToString();
+            string texto = (txtbusqueda.Text ?? "").Trim();
+
+            if (string.IsNullOrEmpty(texto))
             {
-                foreach (DataGridViewRow row in dgvdata.Rows)
-                {
-                    if (row.Cells[columnaFiltro].Value.ToString().Trim().ToUpper().Contains(txtbusqueda.Text.Trim().ToUpper()))
-                        row.Visible = true;
-                    else
-                        row.Visible = false;
-                }
+                CargarGridClientes(_listaClientesCompleta);
+                return;
             }
+
+            string[] terminosUpper = texto
+                .Split(new[] { ' ' }, StringSplitOptions.RemoveEmptyEntries)
+                .Select(t => t.ToUpperInvariant())
+                .ToArray();
+
+            IEnumerable<Cliente> lista = _listaClientesCompleta;
+
+            switch (valorFiltro)
+            {
+                case "CodCliente":
+                    if (int.TryParse(texto, out int cod))
+                    {
+                        lista = lista.Where(c => c.CodCliente == cod);
+                    }
+                    else
+                    {
+                        lista = Enumerable.Empty<Cliente>();
+                    }
+                    break;
+
+                case "Documento":
+                    lista = lista.Where(c => ContieneTodasLasPalabras(c.Documento, terminosUpper));
+                    break;
+
+                case "NombreCompleto":
+                    lista = lista.Where(c => ContieneTodasLasPalabras(c.NombreCompleto, terminosUpper));
+                    break;
+
+                case "IdCliente":
+                    if (int.TryParse(texto, out int idc))
+                    {
+                        lista = lista.Where(c => c.idCliente == idc);
+                    }
+                    else
+                    {
+                        lista = Enumerable.Empty<Cliente>();
+                    }
+                    break;
+
+                case "Todo":
+                default:
+                    lista = lista.Where(c =>
+                           ContieneTodasLasPalabras(c.Documento, terminosUpper)
+                        || ContieneTodasLasPalabras(c.NombreCompleto, terminosUpper)
+                        || c.CodCliente.ToString().IndexOf(texto, StringComparison.OrdinalIgnoreCase) >= 0
+                        || c.idCliente.ToString().IndexOf(texto, StringComparison.OrdinalIgnoreCase) >= 0
+                    );
+                    break;
+            }
+
+            CargarGridClientes(lista.ToList());
         }
 
         private void dgvdata_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
             int iRow = e.RowIndex;
             int iColum = e.ColumnIndex;
+
             if (iRow >= 0 && iColum >= 0)
             {
                 _Cliente = new Cliente()
                 {
+                    idCliente = Convert.ToInt32(dgvdata.Rows[iRow].Cells["IdCliente"].Value), // ASIGNACIÓN CLAVE
                     Documento = dgvdata.Rows[iRow].Cells["Documento"].Value.ToString(),
                     NombreCompleto = dgvdata.Rows[iRow].Cells["NombreCompleto"].Value.ToString()
                 };
+
                 this.DialogResult = DialogResult.OK;
                 this.Close();
             }
@@ -95,40 +204,40 @@ namespace CapaPresentacion.Modales
 
         private void iconButton1_Click(object sender, EventArgs e)
         {
-            string columnaFiltro = ((OpcionCombo)cbobusqueda.SelectedItem).Valor.ToString();
-
-            if (dgvdata.Rows.Count > 0)
-            {
-                foreach (DataGridViewRow row in dgvdata.Rows)
-                {
-
-                    if (row.Cells[columnaFiltro].Value.ToString().Trim().ToUpper().Contains(txtbusqueda.Text.Trim().ToUpper()))
-                        row.Visible = true;
-                    else
-                        row.Visible = false;
-                }
-            }
+            FiltrarDatos();
         }
 
         private void btnlimpiarbuscador_Click(object sender, EventArgs e)
         {
-            txtbusqueda.Text = "";
+            if (txtbusqueda.TextLength == 0 && cbobusqueda.SelectedIndex == 0)
+                return;
+
+            txtbusqueda.Clear();
+            cbobusqueda.SelectedIndex = 0;
+
+            dgvdata.SuspendLayout();
+
             foreach (DataGridViewRow row in dgvdata.Rows)
             {
-                row.Visible = true;
+                if (!row.IsNewRow && !row.Visible)
+                    row.Visible = true;
             }
+
+            dgvdata.ResumeLayout();
+            txtbusqueda.Focus();
         }
 
         private void txtbusqueda_TextChanged(object sender, EventArgs e)
         {
-            FiltrarDatos();
+           
         }
 
         private void txtbusqueda_KeyDown(object sender, KeyEventArgs e)
         {
             if (e.KeyCode == Keys.Enter)
             {
-                iconButton1_Click(sender, e); // Llama al método del botón
+                e.SuppressKeyPress = true;
+                FiltrarDatos();
             }
         }
 
@@ -138,7 +247,11 @@ namespace CapaPresentacion.Modales
             {
                 if (dgvdata.CurrentRow != null)
                 {
-                    dgvdata_CellDoubleClick(sender, new DataGridViewCellEventArgs(dgvdata.CurrentCell.ColumnIndex, dgvdata.CurrentCell.RowIndex));
+                    dgvdata_CellDoubleClick(
+                        sender,
+                        new DataGridViewCellEventArgs(
+                            dgvdata.CurrentCell.ColumnIndex,
+                            dgvdata.CurrentCell.RowIndex));
                 }
             }
         }

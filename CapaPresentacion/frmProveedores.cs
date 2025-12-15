@@ -30,12 +30,18 @@ namespace CapaPresentacion
 
             List<Rol> listaRol = new CN_Rol().Listar();
 
+            cbobusqueda.Items.Clear();
+            cbobusqueda.Items.Add(new OpcionCombo() { Valor = "Todo", Texto = "Buscar en todo" });
 
             foreach (DataGridViewColumn columna in dgvdata.Columns)
             {
                 if (columna.Visible == true && columna.Name != "BtnSeleccionar")
                 {
-                    cbobusqueda.Items.Add(new OpcionCombo() { Valor = columna.Name, Texto = columna.HeaderText });
+                    cbobusqueda.Items.Add(new OpcionCombo()
+                    {
+                        Valor = columna.Name,
+                        Texto = columna.HeaderText
+                    });
                 }
             }
             cbobusqueda.DisplayMember = "Texto";
@@ -67,7 +73,7 @@ namespace CapaPresentacion
                     btn.Click += Btn_Click;
                 }
             }
-
+            HabilitarDoubleBuffering(dgvdata);
         }
 
         private void Btn_Click(object sender, EventArgs e)
@@ -78,6 +84,13 @@ namespace CapaPresentacion
                 this.ActiveControl = null;
             }
             txtbusqueda.Select();
+        }
+
+        private void HabilitarDoubleBuffering(DataGridView dgv)
+        {
+            typeof(DataGridView).InvokeMember("DoubleBuffered",
+                System.Reflection.BindingFlags.NonPublic | System.Reflection.BindingFlags.Instance | System.Reflection.BindingFlags.SetProperty,
+                null, dgv, new object[] { true });
         }
 
         private void BtnGuardar_Click(object sender, EventArgs e)
@@ -235,21 +248,7 @@ namespace CapaPresentacion
 
         private void btnbuscar_Click(object sender, EventArgs e)
         {
-            string columnaFiltro = ((OpcionCombo)cbobusqueda.SelectedItem).Valor.ToString();
-
-            if (dgvdata.Rows.Count > 0)
-            {
-                foreach (DataGridViewRow row in dgvdata.Rows)
-                {
-
-                    if (row.Cells[columnaFiltro].Value.ToString().Trim().ToUpper().Contains(txtbusqueda.Text.Trim().ToUpper()))
-
-                        row.Visible = true;
-                    else
-                        row.Visible = false;
-                }
-
-            }
+            FiltrarDatos();
         }
 
         private void btnlimpiarbuscador_Click(object sender, EventArgs e)
@@ -291,22 +290,98 @@ namespace CapaPresentacion
 
         private void FiltrarDatos()
         {
-            string columnaFiltro = ((OpcionCombo)cbobusqueda.SelectedItem).Valor.ToString();
+            if (cbobusqueda.SelectedItem == null)
+                return;
+
+            string valorFiltro = ((OpcionCombo)cbobusqueda.SelectedItem).Valor.ToString();
+            string texto = txtbusqueda.Text.Trim().ToUpper();
 
             if (dgvdata.Rows.Count > 0)
             {
                 foreach (DataGridViewRow row in dgvdata.Rows)
                 {
-                    if (row.Cells[columnaFiltro].Value.ToString().Trim().ToUpper().Contains(txtbusqueda.Text.Trim().ToUpper()))
-                        row.Visible = true;
+                    if (row.IsNewRow) continue;
+
+                    bool visible = false;
+
+                    if (string.IsNullOrEmpty(texto))
+                    {
+                        visible = true;
+                    }
+                    else if (valorFiltro == "Todo")
+                    {
+                        foreach (DataGridViewColumn col in dgvdata.Columns)
+                        {
+                            if (!col.Visible || col.Name == "BtnSeleccionar") continue;
+                            object val = row.Cells[col.Index].Value;
+                            string cellText = val == null ? "" : val.ToString().Trim().ToUpper();
+                            if (cellText.Contains(texto))
+                            {
+                                visible = true;
+                                break;
+                            }
+                        }
+                    }
                     else
-                        row.Visible = false;
+                    {
+                        if (row.Cells[valorFiltro].Value != null)
+                        {
+                            string cellText = row.Cells[valorFiltro].Value.ToString().Trim().ToUpper();
+                            if (cellText.Contains(texto))
+                                visible = true;
+                        }
+                    }
+
+                    row.Visible = visible;
                 }
             }
         }
 
+
         private void txtbusqueda_TextChanged(object sender, EventArgs e)
         {
+            FiltrarDatos();
+        }
+
+        private void RefrescarFormulario()
+        {
+            // Limpiar los campos de entrada
+            Limpiar();
+
+            // Volver a cargar los datos
+            CargarProveedores();
+        }
+
+        private void CargarProveedores()
+        {
+            // Limpiar el DataGridView
+            dgvdata.Rows.Clear();
+
+            // Obtener la lista de proveedores
+            List<Proveedor> lista = new CN_Proveedor().Listar();
+
+            foreach (Proveedor item in lista)
+            {
+                dgvdata.Rows.Add(new object[] { "", item.IdProveedor,
+            item.Documento,
+            item.RazonSocial,
+            item.Correo,
+            item.Telefono,
+            item.Estado == true ? 1 : 0,
+            item.Estado == true ? "Activo" : "No activo"
+        });
+            }
+        }
+
+        private void btnrefrescar_Click(object sender, EventArgs e)
+        {
+            RefrescarFormulario();
+            FiltrarDatos();
+        }
+
+        private void iconButton2_Click(object sender, EventArgs e)
+        {
+            RefrescarFormulario();
             FiltrarDatos();
         }
     }

@@ -35,5 +35,33 @@ namespace CapaNegocio
                 ProductoMasVendido = productoMasVendido
             };
         }
+
+        public List<ReporteUtilidadBruta> ObtenerUtilidadBruta(string fechainicio, string fechafin, string metodoPago, string usuario, string condicion, string estadoFactura)
+        {
+            return objcd_reporte.ObtenerUtilidadBruta(fechainicio, fechafin, metodoPago, usuario, condicion, estadoFactura);
+        }
+
+        public List<ReporteUtilidadNeta> ObtenerUtilidadNeta(string fechainicio, string fechafin)
+        {
+            return objcd_reporte.ObtenerUtilidadNeta(fechainicio, fechafin);
+        }
+
+
+        public List<ReporteGananciaProducto> ObtenerGananciaPorProducto(string fechainicio, string fechafin)
+        {
+            return objcd_reporte.GananciaPorProducto(fechainicio, fechafin);
+        }
+
+
+        public List<ReporteGananciaPorCliente> ObtenerGananciaPorCliente(string fechainicio, string fechafin)
+        {
+            return objcd_reporte.ObtenerGananciaPorCliente(fechainicio, fechafin);
+        }
+
+        public List<ReporteCierreCaja> ObtenerReporteCierresCaja(string fechainicio, string fechafin)
+        {
+            return objcd_reporte.ObtenerReporteCierresCaja(fechainicio, fechafin);
+        }
+
     }
 }

@@ -30,10 +30,7 @@ namespace CapaNegocio
                 Mensaje += "Es necesario el nombre del Producto\n";
             }
 
-            if (obj.Descripcion == "")
-            {
-                Mensaje += "Es necesario la descripcion del Producto\n";
-            }
+          
 
             if (Mensaje != string.Empty)
             {
@@ -60,11 +57,6 @@ namespace CapaNegocio
             if (obj.Nombre == "")
             {
                 Mensaje += "Es necesario el nombre del Producto\n";
-            }
-
-            if (obj.Descripcion == "")
-            {
-                Mensaje += "Es necesario la descripcion del Producto\n";
             }
 
             if (Mensaje != string.Empty)
@@ -95,6 +87,41 @@ namespace CapaNegocio
             Mensaje = string.Empty;
             return objcd_Producto.ActualizarPrecio(obj, out Mensaje);
         }
+
+        public bool ActualizarPrecioCompra(Producto obj, out string Mensaje)
+        {
+            Mensaje = string.Empty;
+            return objcd_Producto.ActualizarPrecioCompra(obj, out Mensaje);
+        }
+        public Producto ObtenerPorCodigo(string codigo)
+        {
+            return new CD_Producto().ObtenerProductoPorCodigo(codigo);
+        }
+
+        public bool ActualizarDescripcion(int idProducto, string nuevaDescripcion, out string mensaje)
+        {
+            return new CD_Producto().ActualizarDescripcion(idProducto, nuevaDescripcion, out mensaje);
+        }
+
+        public int GuardarProductoCompleto(Producto obj, int idUsuario, out string Mensaje)
+        {
+            Mensaje = string.Empty;
+
+            if (string.IsNullOrWhiteSpace(obj.Codigo))
+                Mensaje += "Es necesario el código del Producto\n";
+
+            if (string.IsNullOrWhiteSpace(obj.Nombre))
+                Mensaje += "Es necesario el nombre del Producto\n";
+
+            if (obj.oCategoria == null || obj.oCategoria.IdCategoria == 0)
+                Mensaje += "Seleccione una categoría\n";
+
+            if (!string.IsNullOrEmpty(Mensaje))
+                return 0;
+
+            return objcd_Producto.GuardarProductoCompleto(obj, idUsuario, out Mensaje);
+        }
+
 
     }
 }

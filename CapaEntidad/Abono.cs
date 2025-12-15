@@ -16,5 +16,7 @@ namespace CapaEntidad
         public decimal InteresAplicado { get; set; }
         public string MetodoPago { get; set; }
         public DateTime? FechaUltimoInteres { get; set; }
+        public string NoRecibo { get; set; }
+        public decimal SaldoAnterior { get; set; }
     }
 }

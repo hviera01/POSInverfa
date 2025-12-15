@@ -54,6 +54,8 @@
             this.BtnLimpiar = new FontAwesome.Sharp.IconButton();
             this.BtnEliminar = new FontAwesome.Sharp.IconButton();
             this.BtnGuardar = new FontAwesome.Sharp.IconButton();
+            this.btnrefrescar = new FontAwesome.Sharp.IconButton();
+            this.iconButton2 = new FontAwesome.Sharp.IconButton();
             ((System.ComponentModel.ISupportInitialize)(this.dgvdata)).BeginInit();
             this.SuspendLayout();
             // 
@@ -77,7 +79,7 @@
             this.Descripcion,
             this.EstadoValor,
             this.Estado});
-            this.dgvdata.Location = new System.Drawing.Point(559, 80);
+            this.dgvdata.Location = new System.Drawing.Point(562, 136);
             this.dgvdata.MultiSelect = false;
             this.dgvdata.Name = "dgvdata";
             this.dgvdata.ReadOnly = true;
@@ -85,7 +87,7 @@
             dataGridViewCellStyle2.SelectionForeColor = System.Drawing.Color.Black;
             this.dgvdata.RowsDefaultCellStyle = dataGridViewCellStyle2;
             this.dgvdata.RowTemplate.Height = 28;
-            this.dgvdata.Size = new System.Drawing.Size(329, 289);
+            this.dgvdata.Size = new System.Drawing.Size(329, 421);
             this.dgvdata.TabIndex = 47;
             this.dgvdata.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvdata_CellContentClick);
             this.dgvdata.CellPainting += new System.Windows.Forms.DataGridViewCellPaintingEventHandler(this.dgvdata_CellPainting);
@@ -126,7 +128,7 @@
             // 
             // txtbusqueda
             // 
-            this.txtbusqueda.Location = new System.Drawing.Point(968, 28);
+            this.txtbusqueda.Location = new System.Drawing.Point(801, 79);
             this.txtbusqueda.Name = "txtbusqueda";
             this.txtbusqueda.Size = new System.Drawing.Size(202, 20);
             this.txtbusqueda.TabIndex = 52;
@@ -137,7 +139,7 @@
             // 
             this.cbobusqueda.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbobusqueda.FormattingEnabled = true;
-            this.cbobusqueda.Location = new System.Drawing.Point(817, 28);
+            this.cbobusqueda.Location = new System.Drawing.Point(650, 79);
             this.cbobusqueda.Name = "cbobusqueda";
             this.cbobusqueda.Size = new System.Drawing.Size(145, 21);
             this.cbobusqueda.TabIndex = 51;
@@ -146,7 +148,7 @@
             // 
             this.label11.AutoSize = true;
             this.label11.BackColor = System.Drawing.Color.White;
-            this.label11.Location = new System.Drawing.Point(753, 33);
+            this.label11.Location = new System.Drawing.Point(586, 84);
             this.label11.Name = "label11";
             this.label11.Size = new System.Drawing.Size(58, 13);
             this.label11.TabIndex = 50;
@@ -154,7 +156,7 @@
             // 
             // txtid
             // 
-            this.txtid.Location = new System.Drawing.Point(217, 51);
+            this.txtid.Location = new System.Drawing.Point(217, 107);
             this.txtid.Name = "txtid";
             this.txtid.Size = new System.Drawing.Size(21, 20);
             this.txtid.TabIndex = 49;
@@ -169,14 +171,14 @@
             this.label10.Location = new System.Drawing.Point(276, 9);
             this.label10.Name = "label10";
             this.label10.Padding = new System.Windows.Forms.Padding(10, 0, 0, 0);
-            this.label10.Size = new System.Drawing.Size(1268, 54);
+            this.label10.Size = new System.Drawing.Size(1268, 105);
             this.label10.TabIndex = 48;
             this.label10.Text = "LISTA DE CATEGORIAS";
             this.label10.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // txtindice
             // 
-            this.txtindice.Location = new System.Drawing.Point(190, 51);
+            this.txtindice.Location = new System.Drawing.Point(190, 107);
             this.txtindice.Name = "txtindice";
             this.txtindice.Size = new System.Drawing.Size(21, 20);
             this.txtindice.TabIndex = 55;
@@ -188,7 +190,7 @@
             this.label9.AutoSize = true;
             this.label9.BackColor = System.Drawing.Color.White;
             this.label9.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label9.Location = new System.Drawing.Point(12, 9);
+            this.label9.Location = new System.Drawing.Point(12, 41);
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(241, 25);
             this.label9.TabIndex = 46;
@@ -198,7 +200,7 @@
             // 
             this.CboEstado.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.CboEstado.FormattingEnabled = true;
-            this.CboEstado.Location = new System.Drawing.Point(36, 132);
+            this.CboEstado.Location = new System.Drawing.Point(36, 188);
             this.CboEstado.Name = "CboEstado";
             this.CboEstado.Size = new System.Drawing.Size(202, 21);
             this.CboEstado.TabIndex = 42;
@@ -207,7 +209,7 @@
             // 
             this.label8.AutoSize = true;
             this.label8.BackColor = System.Drawing.Color.White;
-            this.label8.Location = new System.Drawing.Point(33, 116);
+            this.label8.Location = new System.Drawing.Point(33, 172);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(43, 13);
             this.label8.TabIndex = 41;
@@ -215,7 +217,7 @@
             // 
             // TxtDescripcion
             // 
-            this.TxtDescripcion.Location = new System.Drawing.Point(36, 80);
+            this.TxtDescripcion.Location = new System.Drawing.Point(36, 136);
             this.TxtDescripcion.Name = "TxtDescripcion";
             this.TxtDescripcion.Size = new System.Drawing.Size(202, 20);
             this.TxtDescripcion.TabIndex = 32;
@@ -224,7 +226,7 @@
             // 
             this.label2.AutoSize = true;
             this.label2.BackColor = System.Drawing.Color.White;
-            this.label2.Location = new System.Drawing.Point(33, 64);
+            this.label2.Location = new System.Drawing.Point(33, 115);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(66, 13);
             this.label2.TabIndex = 29;
@@ -251,7 +253,7 @@
             this.iconButton1.IconColor = System.Drawing.Color.Black;
             this.iconButton1.IconFont = FontAwesome.Sharp.IconFont.Auto;
             this.iconButton1.IconSize = 18;
-            this.iconButton1.Location = new System.Drawing.Point(1181, 29);
+            this.iconButton1.Location = new System.Drawing.Point(1014, 80);
             this.iconButton1.Name = "iconButton1";
             this.iconButton1.Size = new System.Drawing.Size(36, 21);
             this.iconButton1.TabIndex = 56;
@@ -288,7 +290,7 @@
             this.btnlimpiarbuscador.IconColor = System.Drawing.Color.Black;
             this.btnlimpiarbuscador.IconFont = FontAwesome.Sharp.IconFont.Auto;
             this.btnlimpiarbuscador.IconSize = 18;
-            this.btnlimpiarbuscador.Location = new System.Drawing.Point(1223, 29);
+            this.btnlimpiarbuscador.Location = new System.Drawing.Point(1056, 80);
             this.btnlimpiarbuscador.Name = "btnlimpiarbuscador";
             this.btnlimpiarbuscador.Size = new System.Drawing.Size(36, 21);
             this.btnlimpiarbuscador.TabIndex = 54;
@@ -307,7 +309,7 @@
             this.BtnLimpiar.IconColor = System.Drawing.Color.White;
             this.BtnLimpiar.IconFont = FontAwesome.Sharp.IconFont.Auto;
             this.BtnLimpiar.IconSize = 18;
-            this.BtnLimpiar.Location = new System.Drawing.Point(36, 234);
+            this.BtnLimpiar.Location = new System.Drawing.Point(36, 290);
             this.BtnLimpiar.Name = "BtnLimpiar";
             this.BtnLimpiar.Size = new System.Drawing.Size(202, 23);
             this.BtnLimpiar.TabIndex = 45;
@@ -315,6 +317,7 @@
             this.BtnLimpiar.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.BtnLimpiar.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.BtnLimpiar.UseVisualStyleBackColor = false;
+            this.BtnLimpiar.Click += new System.EventHandler(this.BtnLimpiar_Click);
             // 
             // BtnEliminar
             // 
@@ -327,7 +330,7 @@
             this.BtnEliminar.IconColor = System.Drawing.Color.White;
             this.BtnEliminar.IconFont = FontAwesome.Sharp.IconFont.Auto;
             this.BtnEliminar.IconSize = 16;
-            this.BtnEliminar.Location = new System.Drawing.Point(36, 270);
+            this.BtnEliminar.Location = new System.Drawing.Point(36, 326);
             this.BtnEliminar.Name = "BtnEliminar";
             this.BtnEliminar.Size = new System.Drawing.Size(202, 23);
             this.BtnEliminar.TabIndex = 44;
@@ -348,7 +351,7 @@
             this.BtnGuardar.IconColor = System.Drawing.Color.White;
             this.BtnGuardar.IconFont = FontAwesome.Sharp.IconFont.Auto;
             this.BtnGuardar.IconSize = 16;
-            this.BtnGuardar.Location = new System.Drawing.Point(36, 199);
+            this.BtnGuardar.Location = new System.Drawing.Point(36, 255);
             this.BtnGuardar.Name = "BtnGuardar";
             this.BtnGuardar.Size = new System.Drawing.Size(202, 23);
             this.BtnGuardar.TabIndex = 43;
@@ -358,11 +361,56 @@
             this.BtnGuardar.UseVisualStyleBackColor = false;
             this.BtnGuardar.Click += new System.EventHandler(this.BtnGuardar_Click);
             // 
+            // btnrefrescar
+            // 
+            this.btnrefrescar.BackColor = System.Drawing.SystemColors.Control;
+            this.btnrefrescar.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnrefrescar.FlatAppearance.BorderColor = System.Drawing.Color.Black;
+            this.btnrefrescar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnrefrescar.ForeColor = System.Drawing.Color.Black;
+            this.btnrefrescar.IconChar = FontAwesome.Sharp.IconChar.Sync;
+            this.btnrefrescar.IconColor = System.Drawing.Color.Black;
+            this.btnrefrescar.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            this.btnrefrescar.IconSize = 16;
+            this.btnrefrescar.Location = new System.Drawing.Point(1206, 12);
+            this.btnrefrescar.Name = "btnrefrescar";
+            this.btnrefrescar.Size = new System.Drawing.Size(152, 26);
+            this.btnrefrescar.TabIndex = 66;
+            this.btnrefrescar.Text = "REFRESCAR";
+            this.btnrefrescar.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btnrefrescar.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.btnrefrescar.UseVisualStyleBackColor = false;
+            this.btnrefrescar.Click += new System.EventHandler(this.btnrefrescar_Click);
+            // 
+            // iconButton2
+            // 
+            this.iconButton2.BackColor = System.Drawing.SystemColors.Control;
+            this.iconButton2.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.iconButton2.FlatAppearance.BorderColor = System.Drawing.Color.Black;
+            this.iconButton2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.iconButton2.ForeColor = System.Drawing.Color.Black;
+            this.iconButton2.IconChar = FontAwesome.Sharp.IconChar.Sync;
+            this.iconButton2.IconColor = System.Drawing.Color.Black;
+            this.iconButton2.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            this.iconButton2.IconSize = 16;
+            this.iconButton2.Location = new System.Drawing.Point(992, 20);
+            this.iconButton2.Name = "iconButton2";
+            this.iconButton2.Size = new System.Drawing.Size(152, 26);
+            this.iconButton2.TabIndex = 136;
+            this.iconButton2.Text = "REFRESCAR";
+            this.iconButton2.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.iconButton2.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.iconButton2.UseVisualStyleBackColor = false;
+            this.iconButton2.Visible = false;
+            this.iconButton2.Click += new System.EventHandler(this.iconButton2_Click);
+            // 
             // frmCategoria
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1370, 412);
+            this.Controls.Add(this.iconButton2);
+            this.Controls.Add(this.btnrefrescar);
             this.Controls.Add(this.iconButton1);
             this.Controls.Add(this.btnbuscar);
             this.Controls.Add(this.dgvdata);
@@ -417,5 +465,7 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn EstadoValor;
         private System.Windows.Forms.DataGridViewTextBoxColumn Estado;
         private FontAwesome.Sharp.IconButton iconButton1;
+        private FontAwesome.Sharp.IconButton btnrefrescar;
+        private FontAwesome.Sharp.IconButton iconButton2;
     }
 }

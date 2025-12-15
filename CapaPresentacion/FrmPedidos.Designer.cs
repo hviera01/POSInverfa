@@ -84,7 +84,7 @@
             this.btnagregarproducto.IconChar = FontAwesome.Sharp.IconChar.Plus;
             this.btnagregarproducto.IconColor = System.Drawing.Color.ForestGreen;
             this.btnagregarproducto.IconFont = FontAwesome.Sharp.IconFont.Auto;
-            this.btnagregarproducto.Location = new System.Drawing.Point(1058, 133);
+            this.btnagregarproducto.Location = new System.Drawing.Point(1028, 133);
             this.btnagregarproducto.Name = "btnagregarproducto";
             this.btnagregarproducto.Size = new System.Drawing.Size(81, 59);
             this.btnagregarproducto.TabIndex = 91;
@@ -97,7 +97,7 @@
             // txtcantidad
             // 
             this.txtcantidad.DecimalPlaces = 2;
-            this.txtcantidad.Location = new System.Drawing.Point(974, 150);
+            this.txtcantidad.Location = new System.Drawing.Point(938, 150);
             this.txtcantidad.Maximum = new decimal(new int[] {
             2000,
             0,
@@ -116,7 +116,7 @@
             // 
             this.label11.AutoSize = true;
             this.label11.BackColor = System.Drawing.Color.White;
-            this.label11.Location = new System.Drawing.Point(916, 156);
+            this.label11.Location = new System.Drawing.Point(880, 156);
             this.label11.Name = "label11";
             this.label11.Size = new System.Drawing.Size(52, 13);
             this.label11.TabIndex = 88;
@@ -134,7 +134,7 @@
             this.btnbuscarproducto.IconFont = FontAwesome.Sharp.IconFont.Auto;
             this.btnbuscarproducto.IconSize = 18;
             this.btnbuscarproducto.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnbuscarproducto.Location = new System.Drawing.Point(717, 143);
+            this.btnbuscarproducto.Location = new System.Drawing.Point(681, 143);
             this.btnbuscarproducto.Name = "btnbuscarproducto";
             this.btnbuscarproducto.Size = new System.Drawing.Size(165, 27);
             this.btnbuscarproducto.TabIndex = 87;
@@ -145,7 +145,7 @@
             // txtproducto
             // 
             this.txtproducto.BackColor = System.Drawing.SystemColors.Control;
-            this.txtproducto.Location = new System.Drawing.Point(531, 149);
+            this.txtproducto.Location = new System.Drawing.Point(495, 149);
             this.txtproducto.Name = "txtproducto";
             this.txtproducto.Size = new System.Drawing.Size(162, 20);
             this.txtproducto.TabIndex = 86;
@@ -154,7 +154,7 @@
             // 
             this.label6.AutoSize = true;
             this.label6.BackColor = System.Drawing.Color.White;
-            this.label6.Location = new System.Drawing.Point(475, 156);
+            this.label6.Location = new System.Drawing.Point(439, 156);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(53, 13);
             this.label6.TabIndex = 85;
@@ -163,7 +163,7 @@
             // txtcodproducto
             // 
             this.txtcodproducto.BackColor = System.Drawing.SystemColors.Control;
-            this.txtcodproducto.Location = new System.Drawing.Point(286, 149);
+            this.txtcodproducto.Location = new System.Drawing.Point(250, 149);
             this.txtcodproducto.Name = "txtcodproducto";
             this.txtcodproducto.Size = new System.Drawing.Size(172, 20);
             this.txtcodproducto.TabIndex = 84;
@@ -173,7 +173,7 @@
             // 
             this.label7.AutoSize = true;
             this.label7.BackColor = System.Drawing.Color.White;
-            this.label7.Location = new System.Drawing.Point(192, 156);
+            this.label7.Location = new System.Drawing.Point(156, 156);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(88, 13);
             this.label7.TabIndex = 83;
@@ -198,10 +198,10 @@
             dataGridViewCellStyle1.SelectionForeColor = System.Drawing.Color.Black;
             dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
             this.dgvdata.DefaultCellStyle = dataGridViewCellStyle1;
-            this.dgvdata.Location = new System.Drawing.Point(202, 198);
+            this.dgvdata.Location = new System.Drawing.Point(177, 191);
             this.dgvdata.Name = "dgvdata";
             this.dgvdata.ReadOnly = true;
-            this.dgvdata.Size = new System.Drawing.Size(839, 330);
+            this.dgvdata.Size = new System.Drawing.Size(839, 324);
             this.dgvdata.TabIndex = 90;
             this.dgvdata.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvdata_CellContentClick);
             this.dgvdata.CellPainting += new System.Windows.Forms.DataGridViewCellPaintingEventHandler(this.dgvdata_CellPainting);
@@ -242,7 +242,7 @@
             // 
             // txtidproducto
             // 
-            this.txtidproducto.Location = new System.Drawing.Point(284, 120);
+            this.txtidproducto.Location = new System.Drawing.Point(248, 120);
             this.txtidproducto.Name = "txtidproducto";
             this.txtidproducto.Size = new System.Drawing.Size(21, 20);
             this.txtidproducto.TabIndex = 92;
@@ -259,7 +259,7 @@
             this.BtnExportar.IconColor = System.Drawing.Color.DarkGoldenrod;
             this.BtnExportar.IconFont = FontAwesome.Sharp.IconFont.Auto;
             this.BtnExportar.IconSize = 16;
-            this.BtnExportar.Location = new System.Drawing.Point(1088, 217);
+            this.BtnExportar.Location = new System.Drawing.Point(1052, 217);
             this.BtnExportar.Name = "BtnExportar";
             this.BtnExportar.Size = new System.Drawing.Size(115, 75);
             this.BtnExportar.TabIndex = 117;
@@ -280,7 +280,7 @@
             this.btndescargar.IconColor = System.Drawing.Color.DarkGoldenrod;
             this.btndescargar.IconFont = FontAwesome.Sharp.IconFont.Auto;
             this.btndescargar.IconSize = 16;
-            this.btndescargar.Location = new System.Drawing.Point(1088, 327);
+            this.btndescargar.Location = new System.Drawing.Point(1052, 327);
             this.btndescargar.Name = "btndescargar";
             this.btndescargar.Size = new System.Drawing.Size(115, 67);
             this.btndescargar.TabIndex = 118;
@@ -301,7 +301,7 @@
             this.btnborrar.IconColor = System.Drawing.Color.Black;
             this.btnborrar.IconFont = FontAwesome.Sharp.IconFont.Auto;
             this.btnborrar.IconSize = 18;
-            this.btnborrar.Location = new System.Drawing.Point(943, 47);
+            this.btnborrar.Location = new System.Drawing.Point(1011, 47);
             this.btnborrar.Name = "btnborrar";
             this.btnborrar.Size = new System.Drawing.Size(145, 26);
             this.btnborrar.TabIndex = 119;

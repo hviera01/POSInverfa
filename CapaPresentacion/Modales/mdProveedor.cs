@@ -51,6 +51,7 @@ namespace CapaPresentacion.Modales
                     btn.Click += Btn_Click;
                 }
             }
+            HabilitarDoubleBuffering(dgvdata);
 
         }
 
@@ -61,6 +62,13 @@ namespace CapaPresentacion.Modales
 
                 this.ActiveControl = null;
             }
+        }
+
+        private void HabilitarDoubleBuffering(DataGridView dgv)
+        {
+            typeof(DataGridView).InvokeMember("DoubleBuffered",
+                System.Reflection.BindingFlags.NonPublic | System.Reflection.BindingFlags.Instance | System.Reflection.BindingFlags.SetProperty,
+                null, dgv, new object[] { true });
         }
 
         private void FiltrarDatos()
@@ -136,7 +144,7 @@ namespace CapaPresentacion.Modales
         {
             if (e.KeyCode == Keys.Enter)
             {
-                iconButton1_Click(sender, e); // Llama al método del botón
+                iconButton1_Click(sender, e); 
             }
         }
 

@@ -89,9 +89,16 @@ namespace CapaPresentacion
             string fechaInicio = txtfechainicio.Value.ToString("yyyy-MM-dd"); // Cambia a formato YYYY-MM-DD
             string fechaFin = txtfechafin.Value.ToString("yyyy-MM-dd"); // Cambia a formato YYYY-MM-DD
 
-            List<ReporteCompra> lista = new List<ReporteCompra>();
-            lista = new CN_Reporte().Compra(fechaInicio, fechaFin, idproveedor);
+            // Si la fecha de fin es menor que la fecha de inicio, ajusta la fecha de fin a hoy
+            if (txtfechafin.Value.Date < txtfechainicio.Value.Date)
+            {
+                fechaFin = DateTime.Now.ToString("yyyy-MM-dd"); // Cambiar a la fecha actual
+            }
 
+            // Llamar al método de la capa de negocio para obtener los datos
+            List<ReporteCompra> lista = new CN_Reporte().Compra(fechaInicio, fechaFin, idproveedor);
+
+            // Limpiar el DataGridView antes de agregar nuevos datos
             dgvdata.Rows.Clear();
 
             if (lista == null || lista.Count == 0)
@@ -105,6 +112,7 @@ namespace CapaPresentacion
                     dgvdata.Rows.Add(new object[] {
                 rc.FechaRegistro, // Ya está en formato DD/MM/YYYY
                 rc.TipoDocumento,
+                rc.NoFactura,
                 rc.NumeroDocumento,
                 rc.MontoTotal,
                 rc.CantidadProductos,
@@ -113,11 +121,15 @@ namespace CapaPresentacion
                 rc.RazonSocial,
                 rc.Condicion,
                 rc.MetodoPago,
-                rc.FechaVencimiento // Ya está en formato DD/MM/YYYY
+                rc.FechaVencimiento,
+               rc.Impuesto,
+        rc.Estado
             });
                 }
             }
+            PintarFilasAnuladas();
             CalcularTotalFacturado();
+            FiltrarDatos();
         }
 
         private void CalcularTotalFacturado()
@@ -137,6 +149,24 @@ namespace CapaPresentacion
             }
 
             txtTotalFacturado.Text = "L. " + totalFacturado.ToString("N2");  // Muestra el total en formato numérico
+        }
+
+        private void PintarFilasAnuladas()
+        {
+            foreach (DataGridViewRow row in dgvdata.Rows)
+            {
+                if (row.Cells["Estado"].Value != null && row.Cells["Estado"].Value.ToString() != "Activa")
+                {
+                    row.Cells["Estado"].Style.BackColor = Color.Red;
+                    row.Cells["Estado"].Style.ForeColor = Color.White;
+                }
+                else
+                {
+                    // Restaurar color para activas
+                    row.Cells["Estado"].Style.BackColor = Color.White;
+                    row.Cells["Estado"].Style.ForeColor = Color.Black;
+                }
+            }
         }
 
         private void BtnExportar_Click(object sender, EventArgs e)
@@ -172,13 +202,17 @@ namespace CapaPresentacion
                     row.Cells[7].Value?.ToString() ?? "",
                     row.Cells[8].Value?.ToString() ?? "",
                     row.Cells[9].Value?.ToString() ?? "",
-                    row.Cells[10].Value?.ToString() ?? ""
-                   
+                    row.Cells[10].Value?.ToString() ?? "",
+                    row.Cells[11].Value?.ToString() ?? "",
+                    row.Cells[12].Value?.ToString() ?? "",
+                    row.Cells[13].Value?.ToString() ?? "",
+                    row.Cells[14].Value?.ToString() ?? ""
+
                 });
                     }
                 }
 
-                // Crear el diálogo para guardar el archivo
+
                 SaveFileDialog savefile = new SaveFileDialog();
                 savefile.FileName = string.Format("ReporteCompras_{0}.xlsx", DateTime.Now.ToString("ddMMyyyyHHmmss"));
                 savefile.Filter = "Excel Files | *.xlsx";
@@ -201,7 +235,6 @@ namespace CapaPresentacion
                     }
                 }
             }
-
 
         }
 
@@ -314,6 +347,113 @@ namespace CapaPresentacion
         private void txtbusqueda3_TextChanged(object sender, EventArgs e)
         {
             FiltrarDatos();
+        }
+
+        private void CargarDatos()
+        {
+            // Obtener las compras entre las fechas seleccionadas
+            string fechaInicio = txtfechainicio.Value.ToString("yyyy-MM-dd"); // Cambia a formato YYYY-MM-DD
+            string fechaFin = txtfechafin.Value.ToString("yyyy-MM-dd"); // Cambia a formato YYYY-MM-DD
+            int idproveedor = Convert.ToInt32(((OpcionCombo)cboproveedor.SelectedItem).Valor);
+
+            // Llamar al método de la capa de negocio para obtener los datos
+            List<ReporteCompra> lista = new CN_Reporte().Compra(fechaInicio, fechaFin, idproveedor);
+
+            // Limpiar el DataGridView antes de agregar nuevos datos
+            dgvdata.Rows.Clear();
+
+            if (lista == null || lista.Count == 0)
+            {
+                MessageBox.Show("No se encontraron resultados.");
+            }
+            else
+            {
+                foreach (ReporteCompra rc in lista)
+                {
+                    dgvdata.Rows.Add(new object[] {
+                rc.FechaRegistro, // Ya está en formato DD/MM/YYYY
+                rc.TipoDocumento,
+                rc.NoFactura,
+                rc.NumeroDocumento,
+                rc.MontoTotal,
+                rc.CantidadProductos,
+                rc.UsuarioRegistro,
+                rc.DocumentoProveedor,
+                rc.RazonSocial,
+                rc.Condicion,
+                rc.MetodoPago,
+                rc.FechaVencimiento,
+               rc.Impuesto,
+        rc.Estado
+            });
+                }
+            }
+            CalcularTotalFacturado();
+            PintarFilasAnuladas();
+        }
+
+        private void RefrescarFormulario()
+        {
+            // Limpiar los campos de búsqueda
+            txtbusqueda.Text = "";
+            txtbusqueda1.Text = "";
+            txtbusqueda2.Text = "";
+            txtbusqueda3.Text = "";
+
+            // Hacer visibles todas las filas del DataGridView
+            foreach (DataGridViewRow row in dgvdata.Rows)
+            {
+                row.Visible = true;
+            }
+
+            // Volver a cargar los datos
+            CargarDatos();
+        }
+
+        private void btnrefrescar_Click(object sender, EventArgs e)
+        {
+            RefrescarFormulario();
+        }
+
+        private void btnborrar_Click(object sender, EventArgs e)
+        {
+            txtbusqueda.Text = "";
+            txtbusqueda1.Text = "";
+            txtbusqueda2.Text = "";
+            txtbusqueda3.Text = "";
+
+            foreach (DataGridViewRow row in dgvdata.Rows)
+            {
+                row.Visible = true;
+            }
+
+            CalcularTotalFacturado();
+            FiltrarDatos();
+        }
+
+        private void btnDetalle_Click(object sender, EventArgs e)
+        {
+            if (dgvdata.CurrentRow != null && dgvdata.CurrentRow.Cells["NumeroDocumento"].Value != null)
+            {
+                // Obtener el Número de Documento de la fila seleccionada
+                string numeroDocumento = dgvdata.CurrentRow.Cells["NumeroDocumento"].Value.ToString();
+
+                // Crear instancia del formulario de detalle
+                frmDetalleCompra detalleComptaForm = new frmDetalleCompra();
+
+                // Al cargar el formulario, buscar la venta
+                detalleComptaForm.Load += (s, args) =>
+                {
+                    detalleComptaForm.BuscarPorNumeroDocumento(numeroDocumento);
+                };
+
+                // Mostrar el formulario como diálogo
+                detalleComptaForm.ShowDialog();
+            }
+            else
+            {
+                MessageBox.Show("Seleccione una fila válida.", "Mensaje", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
         }
     }
  }

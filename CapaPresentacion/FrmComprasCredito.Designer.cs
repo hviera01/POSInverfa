@@ -53,6 +53,10 @@
             this.btnregistrarcompracredito = new FontAwesome.Sharp.IconButton();
             this.txtTotalSaldoPendiente = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
+            this.btnrefrescar = new FontAwesome.Sharp.IconButton();
+            this.label1 = new System.Windows.Forms.Label();
+            this.cboEstadoFiltro = new System.Windows.Forms.ComboBox();
+            this.iconButton1 = new FontAwesome.Sharp.IconButton();
             ((System.ComponentModel.ISupportInitialize)(this.dgvComprasCredito)).BeginInit();
             this.SuspendLayout();
             // 
@@ -67,7 +71,7 @@
             this.btnregistrarabono.IconColor = System.Drawing.Color.Black;
             this.btnregistrarabono.IconFont = FontAwesome.Sharp.IconFont.Auto;
             this.btnregistrarabono.IconSize = 16;
-            this.btnregistrarabono.Location = new System.Drawing.Point(165, 68);
+            this.btnregistrarabono.Location = new System.Drawing.Point(137, 68);
             this.btnregistrarabono.Name = "btnregistrarabono";
             this.btnregistrarabono.Size = new System.Drawing.Size(115, 37);
             this.btnregistrarabono.TabIndex = 127;
@@ -82,11 +86,11 @@
             this.dgvComprasCredito.AllowUserToAddRows = false;
             this.dgvComprasCredito.BackgroundColor = System.Drawing.Color.White;
             this.dgvComprasCredito.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvComprasCredito.Location = new System.Drawing.Point(27, 111);
+            this.dgvComprasCredito.Location = new System.Drawing.Point(21, 125);
             this.dgvComprasCredito.MultiSelect = false;
             this.dgvComprasCredito.Name = "dgvComprasCredito";
             this.dgvComprasCredito.ReadOnly = true;
-            this.dgvComprasCredito.Size = new System.Drawing.Size(1319, 406);
+            this.dgvComprasCredito.Size = new System.Drawing.Size(1328, 399);
             this.dgvComprasCredito.TabIndex = 120;
             // 
             // label10
@@ -109,7 +113,7 @@
             this.label4.Location = new System.Drawing.Point(1, 44);
             this.label4.Name = "label4";
             this.label4.Padding = new System.Windows.Forms.Padding(10, 0, 0, 0);
-            this.label4.Size = new System.Drawing.Size(1368, 488);
+            this.label4.Size = new System.Drawing.Size(1368, 652);
             this.label4.TabIndex = 122;
             // 
             // dataGridViewTextBoxColumn13
@@ -201,7 +205,7 @@
             this.btnlimpiarbuscador.IconColor = System.Drawing.Color.Black;
             this.btnlimpiarbuscador.IconFont = FontAwesome.Sharp.IconFont.Auto;
             this.btnlimpiarbuscador.IconSize = 18;
-            this.btnlimpiarbuscador.Location = new System.Drawing.Point(634, 84);
+            this.btnlimpiarbuscador.Location = new System.Drawing.Point(708, 86);
             this.btnlimpiarbuscador.Name = "btnlimpiarbuscador";
             this.btnlimpiarbuscador.Size = new System.Drawing.Size(36, 21);
             this.btnlimpiarbuscador.TabIndex = 125;
@@ -211,7 +215,7 @@
             // 
             // txtbusqueda
             // 
-            this.txtbusqueda.Location = new System.Drawing.Point(417, 85);
+            this.txtbusqueda.Location = new System.Drawing.Point(498, 87);
             this.txtbusqueda.Name = "txtbusqueda";
             this.txtbusqueda.Size = new System.Drawing.Size(202, 20);
             this.txtbusqueda.TabIndex = 124;
@@ -221,7 +225,7 @@
             // 
             this.label11.AutoSize = true;
             this.label11.BackColor = System.Drawing.Color.White;
-            this.label11.Location = new System.Drawing.Point(368, 89);
+            this.label11.Location = new System.Drawing.Point(455, 92);
             this.label11.Name = "label11";
             this.label11.Size = new System.Drawing.Size(43, 13);
             this.label11.TabIndex = 123;
@@ -244,7 +248,7 @@
             this.BtnExportar.IconColor = System.Drawing.Color.DarkGoldenrod;
             this.BtnExportar.IconFont = FontAwesome.Sharp.IconFont.Auto;
             this.BtnExportar.IconSize = 16;
-            this.BtnExportar.Location = new System.Drawing.Point(27, 68);
+            this.BtnExportar.Location = new System.Drawing.Point(14, 68);
             this.BtnExportar.Name = "BtnExportar";
             this.BtnExportar.Size = new System.Drawing.Size(115, 37);
             this.BtnExportar.TabIndex = 126;
@@ -265,7 +269,7 @@
             this.btnregistrarcompracredito.IconColor = System.Drawing.Color.Black;
             this.btnregistrarcompracredito.IconFont = FontAwesome.Sharp.IconFont.Auto;
             this.btnregistrarcompracredito.IconSize = 16;
-            this.btnregistrarcompracredito.Location = new System.Drawing.Point(705, 68);
+            this.btnregistrarcompracredito.Location = new System.Drawing.Point(258, 68);
             this.btnregistrarcompracredito.Name = "btnregistrarcompracredito";
             this.btnregistrarcompracredito.Size = new System.Drawing.Size(115, 37);
             this.btnregistrarcompracredito.TabIndex = 128;
@@ -278,7 +282,7 @@
             // txtTotalSaldoPendiente
             // 
             this.txtTotalSaldoPendiente.Font = new System.Drawing.Font("Microsoft Sans Serif", 34F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtTotalSaldoPendiente.Location = new System.Drawing.Point(999, 51);
+            this.txtTotalSaldoPendiente.Location = new System.Drawing.Point(988, 51);
             this.txtTotalSaldoPendiente.Multiline = true;
             this.txtTotalSaldoPendiente.Name = "txtTotalSaldoPendiente";
             this.txtTotalSaldoPendiente.Size = new System.Drawing.Size(359, 54);
@@ -290,17 +294,84 @@
             this.label3.AutoSize = true;
             this.label3.BackColor = System.Drawing.Color.White;
             this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 6.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(837, 89);
+            this.label3.Location = new System.Drawing.Point(826, 55);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(156, 12);
             this.label3.TabIndex = 130;
             this.label3.Text = "TOTAL CREDITO PENDIENTE";
+            // 
+            // btnrefrescar
+            // 
+            this.btnrefrescar.BackColor = System.Drawing.SystemColors.Control;
+            this.btnrefrescar.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnrefrescar.FlatAppearance.BorderColor = System.Drawing.Color.Black;
+            this.btnrefrescar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnrefrescar.ForeColor = System.Drawing.Color.Black;
+            this.btnrefrescar.IconChar = FontAwesome.Sharp.IconChar.Sync;
+            this.btnrefrescar.IconColor = System.Drawing.Color.Black;
+            this.btnrefrescar.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            this.btnrefrescar.IconSize = 16;
+            this.btnrefrescar.Location = new System.Drawing.Point(1187, 8);
+            this.btnrefrescar.Name = "btnrefrescar";
+            this.btnrefrescar.Size = new System.Drawing.Size(152, 26);
+            this.btnrefrescar.TabIndex = 131;
+            this.btnrefrescar.Text = "REFRESCAR";
+            this.btnrefrescar.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btnrefrescar.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.btnrefrescar.UseVisualStyleBackColor = false;
+            this.btnrefrescar.Click += new System.EventHandler(this.btnrefrescar_Click);
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.BackColor = System.Drawing.Color.White;
+            this.label1.Location = new System.Drawing.Point(948, 20);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(90, 13);
+            this.label1.TabIndex = 140;
+            this.label1.Text = "Filtrar creditos por";
+            this.label1.Click += new System.EventHandler(this.label1_Click);
+            // 
+            // cboEstadoFiltro
+            // 
+            this.cboEstadoFiltro.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cboEstadoFiltro.FormattingEnabled = true;
+            this.cboEstadoFiltro.Location = new System.Drawing.Point(1043, 13);
+            this.cboEstadoFiltro.Name = "cboEstadoFiltro";
+            this.cboEstadoFiltro.Size = new System.Drawing.Size(116, 21);
+            this.cboEstadoFiltro.TabIndex = 139;
+            this.cboEstadoFiltro.SelectedIndexChanged += new System.EventHandler(this.cboEstadoFiltro_SelectedIndexChanged);
+            // 
+            // iconButton1
+            // 
+            this.iconButton1.BackColor = System.Drawing.Color.White;
+            this.iconButton1.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.iconButton1.FlatAppearance.BorderColor = System.Drawing.Color.Black;
+            this.iconButton1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.iconButton1.ForeColor = System.Drawing.Color.Black;
+            this.iconButton1.IconChar = FontAwesome.Sharp.IconChar.GetPocket;
+            this.iconButton1.IconColor = System.Drawing.Color.Black;
+            this.iconButton1.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            this.iconButton1.IconSize = 16;
+            this.iconButton1.Location = new System.Drawing.Point(662, 8);
+            this.iconButton1.Name = "iconButton1";
+            this.iconButton1.Size = new System.Drawing.Size(143, 26);
+            this.iconButton1.TabIndex = 141;
+            this.iconButton1.Text = "Resumen de abonos";
+            this.iconButton1.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.iconButton1.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.iconButton1.UseVisualStyleBackColor = false;
+            this.iconButton1.Click += new System.EventHandler(this.iconButton1_Click);
             // 
             // FrmComprasCredito
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1370, 531);
+            this.Controls.Add(this.iconButton1);
+            this.Controls.Add(this.label1);
+            this.Controls.Add(this.cboEstadoFiltro);
+            this.Controls.Add(this.btnrefrescar);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.txtTotalSaldoPendiente);
             this.Controls.Add(this.btnregistrarcompracredito);
@@ -348,5 +419,9 @@
         private FontAwesome.Sharp.IconButton btnregistrarcompracredito;
         private System.Windows.Forms.TextBox txtTotalSaldoPendiente;
         private System.Windows.Forms.Label label3;
+        private FontAwesome.Sharp.IconButton btnrefrescar;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.ComboBox cboEstadoFiltro;
+        private FontAwesome.Sharp.IconButton iconButton1;
     }
 }

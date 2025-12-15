@@ -50,6 +50,25 @@ namespace CapaNegocio
             return objcd_compra.RegistrarCredito(compra, out mensaje);
         }
 
+        public bool AnularCompra(int idCompra, out string mensaje)
+        {
+            return objcd_compra.AnularCompra(idCompra, out mensaje);
+        }
+
+        public int ObtenerIdCompraPorNumeroDocumento(string numeroDocumento)
+        {
+            return objcd_compra.ObtenerIdCompraPorNumeroDocumento(numeroDocumento);
+        }
+
+        public List<Compra> ObtenerComprasPorProducto(int idProducto)
+        {
+            return objcd_compra.ObtenerComprasPorProducto(idProducto);
+        }
+
+        public List<ResumenAbonoProveedor> ObtenerResumenAbonosPorProveedor(DateTime fechaInicio, DateTime fechaFin, int? idProveedor = null)
+        {
+            return objcd_compra.ObtenerResumenAbonosPorProveedor(fechaInicio, fechaFin, idProveedor);
+        }
 
     }
 }

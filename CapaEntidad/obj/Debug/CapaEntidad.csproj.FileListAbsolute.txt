@@ -53,3 +53,346 @@ C:\Users\User\Documents\Proyecto sistema de ventas SP\ProyectoSistemaVentas\Capa
 C:\Users\User\Documents\Proyecto sistema de ventas SP\ProyectoSistemaVentas\CapaEntidad\bin\Debug\System.Threading.Tasks.Extensions.xml
 C:\Users\User\Documents\Proyecto sistema de ventas SP\ProyectoSistemaVentas\CapaEntidad\bin\Debug\System.ValueTuple.xml
 C:\Users\User\Documents\Proyecto sistema de ventas SP\ProyectoSistemaVentas\CapaEntidad\obj\Debug\CapaEnti.526B9C87.Up2Date
+C:\Users\USUUARIO\Desktop\Proyecto sistema de ventas SP\ProyectoSistemaVentas\CapaEntidad\bin\Debug\CapaEntidadSP.dll.config
+C:\Users\USUUARIO\Desktop\Proyecto sistema de ventas SP\ProyectoSistemaVentas\CapaEntidad\bin\Debug\CapaEntidadSP.dll
+C:\Users\USUUARIO\Desktop\Proyecto sistema de ventas SP\ProyectoSistemaVentas\CapaEntidad\bin\Debug\CapaEntidadSP.pdb
+C:\Users\USUUARIO\Desktop\Proyecto sistema de ventas SP\ProyectoSistemaVentas\CapaEntidad\bin\Debug\ESCPOS_NET.dll
+C:\Users\USUUARIO\Desktop\Proyecto sistema de ventas SP\ProyectoSistemaVentas\CapaEntidad\bin\Debug\Microsoft.Bcl.AsyncInterfaces.dll
+C:\Users\USUUARIO\Desktop\Proyecto sistema de ventas SP\ProyectoSistemaVentas\CapaEntidad\bin\Debug\Microsoft.Extensions.DependencyInjection.Abstractions.dll
+C:\Users\USUUARIO\Desktop\Proyecto sistema de ventas SP\ProyectoSistemaVentas\CapaEntidad\bin\Debug\Microsoft.Extensions.DependencyInjection.dll
+C:\Users\USUUARIO\Desktop\Proyecto sistema de ventas SP\ProyectoSistemaVentas\CapaEntidad\bin\Debug\Microsoft.Extensions.Logging.Abstractions.dll
+C:\Users\USUUARIO\Desktop\Proyecto sistema de ventas SP\ProyectoSistemaVentas\CapaEntidad\bin\Debug\Microsoft.Extensions.Logging.dll
+C:\Users\USUUARIO\Desktop\Proyecto sistema de ventas SP\ProyectoSistemaVentas\CapaEntidad\bin\Debug\Microsoft.Extensions.Options.dll
+C:\Users\USUUARIO\Desktop\Proyecto sistema de ventas SP\ProyectoSistemaVentas\CapaEntidad\bin\Debug\Microsoft.Extensions.Primitives.dll
+C:\Users\USUUARIO\Desktop\Proyecto sistema de ventas SP\ProyectoSistemaVentas\CapaEntidad\bin\Debug\SimpleTcp.dll
+C:\Users\USUUARIO\Desktop\Proyecto sistema de ventas SP\ProyectoSistemaVentas\CapaEntidad\bin\Debug\SixLabors.ImageSharp.dll
+C:\Users\USUUARIO\Desktop\Proyecto sistema de ventas SP\ProyectoSistemaVentas\CapaEntidad\bin\Debug\System.Buffers.dll
+C:\Users\USUUARIO\Desktop\Proyecto sistema de ventas SP\ProyectoSistemaVentas\CapaEntidad\bin\Debug\System.Diagnostics.DiagnosticSource.dll
+C:\Users\USUUARIO\Desktop\Proyecto sistema de ventas SP\ProyectoSistemaVentas\CapaEntidad\bin\Debug\System.IO.Ports.dll
+C:\Users\USUUARIO\Desktop\Proyecto sistema de ventas SP\ProyectoSistemaVentas\CapaEntidad\bin\Debug\System.Memory.dll
+C:\Users\USUUARIO\Desktop\Proyecto sistema de ventas SP\ProyectoSistemaVentas\CapaEntidad\bin\Debug\System.Numerics.Vectors.dll
+C:\Users\USUUARIO\Desktop\Proyecto sistema de ventas SP\ProyectoSistemaVentas\CapaEntidad\bin\Debug\System.Runtime.CompilerServices.Unsafe.dll
+C:\Users\USUUARIO\Desktop\Proyecto sistema de ventas SP\ProyectoSistemaVentas\CapaEntidad\bin\Debug\System.Text.Encoding.CodePages.dll
+C:\Users\USUUARIO\Desktop\Proyecto sistema de ventas SP\ProyectoSistemaVentas\CapaEntidad\bin\Debug\System.Text.Encodings.Web.dll
+C:\Users\USUUARIO\Desktop\Proyecto sistema de ventas SP\ProyectoSistemaVentas\CapaEntidad\bin\Debug\System.Text.Json.dll
+C:\Users\USUUARIO\Desktop\Proyecto sistema de ventas SP\ProyectoSistemaVentas\CapaEntidad\bin\Debug\System.Threading.Tasks.Extensions.dll
+C:\Users\USUUARIO\Desktop\Proyecto sistema de ventas SP\ProyectoSistemaVentas\CapaEntidad\bin\Debug\System.ValueTuple.dll
+C:\Users\USUUARIO\Desktop\Proyecto sistema de ventas SP\ProyectoSistemaVentas\CapaEntidad\bin\Debug\Microsoft.Bcl.AsyncInterfaces.xml
+C:\Users\USUUARIO\Desktop\Proyecto sistema de ventas SP\ProyectoSistemaVentas\CapaEntidad\bin\Debug\Microsoft.Extensions.DependencyInjection.xml
+C:\Users\USUUARIO\Desktop\Proyecto sistema de ventas SP\ProyectoSistemaVentas\CapaEntidad\bin\Debug\Microsoft.Extensions.DependencyInjection.Abstractions.xml
+C:\Users\USUUARIO\Desktop\Proyecto sistema de ventas SP\ProyectoSistemaVentas\CapaEntidad\bin\Debug\Microsoft.Extensions.Logging.xml
+C:\Users\USUUARIO\Desktop\Proyecto sistema de ventas SP\ProyectoSistemaVentas\CapaEntidad\bin\Debug\Microsoft.Extensions.Logging.Abstractions.xml
+C:\Users\USUUARIO\Desktop\Proyecto sistema de ventas SP\ProyectoSistemaVentas\CapaEntidad\bin\Debug\Microsoft.Extensions.Options.xml
+C:\Users\USUUARIO\Desktop\Proyecto sistema de ventas SP\ProyectoSistemaVentas\CapaEntidad\bin\Debug\Microsoft.Extensions.Primitives.xml
+C:\Users\USUUARIO\Desktop\Proyecto sistema de ventas SP\ProyectoSistemaVentas\CapaEntidad\bin\Debug\SimpleTcp.xml
+C:\Users\USUUARIO\Desktop\Proyecto sistema de ventas SP\ProyectoSistemaVentas\CapaEntidad\bin\Debug\SixLabors.ImageSharp.xml
+C:\Users\USUUARIO\Desktop\Proyecto sistema de ventas SP\ProyectoSistemaVentas\CapaEntidad\bin\Debug\System.Buffers.xml
+C:\Users\USUUARIO\Desktop\Proyecto sistema de ventas SP\ProyectoSistemaVentas\CapaEntidad\bin\Debug\System.Diagnostics.DiagnosticSource.xml
+C:\Users\USUUARIO\Desktop\Proyecto sistema de ventas SP\ProyectoSistemaVentas\CapaEntidad\bin\Debug\System.IO.Ports.xml
+C:\Users\USUUARIO\Desktop\Proyecto sistema de ventas SP\ProyectoSistemaVentas\CapaEntidad\bin\Debug\System.Memory.xml
+C:\Users\USUUARIO\Desktop\Proyecto sistema de ventas SP\ProyectoSistemaVentas\CapaEntidad\bin\Debug\System.Numerics.Vectors.xml
+C:\Users\USUUARIO\Desktop\Proyecto sistema de ventas SP\ProyectoSistemaVentas\CapaEntidad\bin\Debug\System.Runtime.CompilerServices.Unsafe.xml
+C:\Users\USUUARIO\Desktop\Proyecto sistema de ventas SP\ProyectoSistemaVentas\CapaEntidad\bin\Debug\System.Text.Encoding.CodePages.xml
+C:\Users\USUUARIO\Desktop\Proyecto sistema de ventas SP\ProyectoSistemaVentas\CapaEntidad\bin\Debug\System.Text.Encodings.Web.xml
+C:\Users\USUUARIO\Desktop\Proyecto sistema de ventas SP\ProyectoSistemaVentas\CapaEntidad\bin\Debug\System.Text.Json.xml
+C:\Users\USUUARIO\Desktop\Proyecto sistema de ventas SP\ProyectoSistemaVentas\CapaEntidad\bin\Debug\System.Threading.Tasks.Extensions.xml
+C:\Users\USUUARIO\Desktop\Proyecto sistema de ventas SP\ProyectoSistemaVentas\CapaEntidad\bin\Debug\System.ValueTuple.xml
+C:\Users\USUUARIO\Desktop\Proyecto sistema de ventas SP\ProyectoSistemaVentas\CapaEntidad\obj\Debug\CapaEntidad.csproj.AssemblyReference.cache
+C:\Users\USUUARIO\Desktop\Proyecto sistema de ventas SP\ProyectoSistemaVentas\CapaEntidad\obj\Debug\CapaEntidad.csproj.CoreCompileInputs.cache
+C:\Users\USUUARIO\Desktop\Proyecto sistema de ventas SP\ProyectoSistemaVentas\CapaEntidad\obj\Debug\CapaEnti.526B9C87.Up2Date
+C:\Users\USUUARIO\Desktop\Proyecto sistema de ventas SP\ProyectoSistemaVentas\CapaEntidad\obj\Debug\CapaEntidadSP.dll
+C:\Users\USUUARIO\Desktop\Proyecto sistema de ventas SP\ProyectoSistemaVentas\CapaEntidad\obj\Debug\CapaEntidadSP.pdb
+C:\SistemaAutoFrenosOriente\SistemaAutoFrenosOriente\CapaEntidad\bin\Debug\CapaEntidadSP.dll.config
+C:\SistemaAutoFrenosOriente\SistemaAutoFrenosOriente\CapaEntidad\bin\Debug\CapaEntidadSP.dll
+C:\SistemaAutoFrenosOriente\SistemaAutoFrenosOriente\CapaEntidad\bin\Debug\CapaEntidadSP.pdb
+C:\SistemaAutoFrenosOriente\SistemaAutoFrenosOriente\CapaEntidad\bin\Debug\ESCPOS_NET.dll
+C:\SistemaAutoFrenosOriente\SistemaAutoFrenosOriente\CapaEntidad\bin\Debug\Microsoft.Bcl.AsyncInterfaces.dll
+C:\SistemaAutoFrenosOriente\SistemaAutoFrenosOriente\CapaEntidad\bin\Debug\Microsoft.Extensions.DependencyInjection.Abstractions.dll
+C:\SistemaAutoFrenosOriente\SistemaAutoFrenosOriente\CapaEntidad\bin\Debug\Microsoft.Extensions.DependencyInjection.dll
+C:\SistemaAutoFrenosOriente\SistemaAutoFrenosOriente\CapaEntidad\bin\Debug\Microsoft.Extensions.Logging.Abstractions.dll
+C:\SistemaAutoFrenosOriente\SistemaAutoFrenosOriente\CapaEntidad\bin\Debug\Microsoft.Extensions.Logging.dll
+C:\SistemaAutoFrenosOriente\SistemaAutoFrenosOriente\CapaEntidad\bin\Debug\Microsoft.Extensions.Options.dll
+C:\SistemaAutoFrenosOriente\SistemaAutoFrenosOriente\CapaEntidad\bin\Debug\Microsoft.Extensions.Primitives.dll
+C:\SistemaAutoFrenosOriente\SistemaAutoFrenosOriente\CapaEntidad\bin\Debug\SimpleTcp.dll
+C:\SistemaAutoFrenosOriente\SistemaAutoFrenosOriente\CapaEntidad\bin\Debug\SixLabors.ImageSharp.dll
+C:\SistemaAutoFrenosOriente\SistemaAutoFrenosOriente\CapaEntidad\bin\Debug\System.Buffers.dll
+C:\SistemaAutoFrenosOriente\SistemaAutoFrenosOriente\CapaEntidad\bin\Debug\System.Diagnostics.DiagnosticSource.dll
+C:\SistemaAutoFrenosOriente\SistemaAutoFrenosOriente\CapaEntidad\bin\Debug\System.IO.Ports.dll
+C:\SistemaAutoFrenosOriente\SistemaAutoFrenosOriente\CapaEntidad\bin\Debug\System.Memory.dll
+C:\SistemaAutoFrenosOriente\SistemaAutoFrenosOriente\CapaEntidad\bin\Debug\System.Numerics.Vectors.dll
+C:\SistemaAutoFrenosOriente\SistemaAutoFrenosOriente\CapaEntidad\bin\Debug\System.Runtime.CompilerServices.Unsafe.dll
+C:\SistemaAutoFrenosOriente\SistemaAutoFrenosOriente\CapaEntidad\bin\Debug\System.Text.Encoding.CodePages.dll
+C:\SistemaAutoFrenosOriente\SistemaAutoFrenosOriente\CapaEntidad\bin\Debug\System.Text.Encodings.Web.dll
+C:\SistemaAutoFrenosOriente\SistemaAutoFrenosOriente\CapaEntidad\bin\Debug\System.Text.Json.dll
+C:\SistemaAutoFrenosOriente\SistemaAutoFrenosOriente\CapaEntidad\bin\Debug\System.Threading.Tasks.Extensions.dll
+C:\SistemaAutoFrenosOriente\SistemaAutoFrenosOriente\CapaEntidad\bin\Debug\System.ValueTuple.dll
+C:\SistemaAutoFrenosOriente\SistemaAutoFrenosOriente\CapaEntidad\bin\Debug\Microsoft.Bcl.AsyncInterfaces.xml
+C:\SistemaAutoFrenosOriente\SistemaAutoFrenosOriente\CapaEntidad\bin\Debug\Microsoft.Extensions.DependencyInjection.xml
+C:\SistemaAutoFrenosOriente\SistemaAutoFrenosOriente\CapaEntidad\bin\Debug\Microsoft.Extensions.DependencyInjection.Abstractions.xml
+C:\SistemaAutoFrenosOriente\SistemaAutoFrenosOriente\CapaEntidad\bin\Debug\Microsoft.Extensions.Logging.xml
+C:\SistemaAutoFrenosOriente\SistemaAutoFrenosOriente\CapaEntidad\bin\Debug\Microsoft.Extensions.Logging.Abstractions.xml
+C:\SistemaAutoFrenosOriente\SistemaAutoFrenosOriente\CapaEntidad\bin\Debug\Microsoft.Extensions.Options.xml
+C:\SistemaAutoFrenosOriente\SistemaAutoFrenosOriente\CapaEntidad\bin\Debug\Microsoft.Extensions.Primitives.xml
+C:\SistemaAutoFrenosOriente\SistemaAutoFrenosOriente\CapaEntidad\bin\Debug\SimpleTcp.xml
+C:\SistemaAutoFrenosOriente\SistemaAutoFrenosOriente\CapaEntidad\bin\Debug\SixLabors.ImageSharp.xml
+C:\SistemaAutoFrenosOriente\SistemaAutoFrenosOriente\CapaEntidad\bin\Debug\System.Buffers.xml
+C:\SistemaAutoFrenosOriente\SistemaAutoFrenosOriente\CapaEntidad\bin\Debug\System.Diagnostics.DiagnosticSource.xml
+C:\SistemaAutoFrenosOriente\SistemaAutoFrenosOriente\CapaEntidad\bin\Debug\System.IO.Ports.xml
+C:\SistemaAutoFrenosOriente\SistemaAutoFrenosOriente\CapaEntidad\bin\Debug\System.Memory.xml
+C:\SistemaAutoFrenosOriente\SistemaAutoFrenosOriente\CapaEntidad\bin\Debug\System.Numerics.Vectors.xml
+C:\SistemaAutoFrenosOriente\SistemaAutoFrenosOriente\CapaEntidad\bin\Debug\System.Runtime.CompilerServices.Unsafe.xml
+C:\SistemaAutoFrenosOriente\SistemaAutoFrenosOriente\CapaEntidad\bin\Debug\System.Text.Encoding.CodePages.xml
+C:\SistemaAutoFrenosOriente\SistemaAutoFrenosOriente\CapaEntidad\bin\Debug\System.Text.Encodings.Web.xml
+C:\SistemaAutoFrenosOriente\SistemaAutoFrenosOriente\CapaEntidad\bin\Debug\System.Text.Json.xml
+C:\SistemaAutoFrenosOriente\SistemaAutoFrenosOriente\CapaEntidad\bin\Debug\System.Threading.Tasks.Extensions.xml
+C:\SistemaAutoFrenosOriente\SistemaAutoFrenosOriente\CapaEntidad\bin\Debug\System.ValueTuple.xml
+C:\SistemaAutoFrenosOriente\SistemaAutoFrenosOriente\CapaEntidad\obj\Debug\CapaEntidad.csproj.AssemblyReference.cache
+C:\SistemaAutoFrenosOriente\SistemaAutoFrenosOriente\CapaEntidad\obj\Debug\CapaEntidad.csproj.CoreCompileInputs.cache
+C:\SistemaAutoFrenosOriente\SistemaAutoFrenosOriente\CapaEntidad\obj\Debug\CapaEnti.526B9C87.Up2Date
+C:\SistemaAutoFrenosOriente\SistemaAutoFrenosOriente\CapaEntidad\obj\Debug\CapaEntidadSP.dll
+C:\SistemaAutoFrenosOriente\SistemaAutoFrenosOriente\CapaEntidad\obj\Debug\CapaEntidadSP.pdb
+C:\Sistemas\SistemaAutoFrenosOriente\SistemaAutoFrenosOriente\CapaEntidad\bin\Debug\CapaEntidadSP.dll.config
+C:\Sistemas\SistemaAutoFrenosOriente\SistemaAutoFrenosOriente\CapaEntidad\bin\Debug\CapaEntidadSP.dll
+C:\Sistemas\SistemaAutoFrenosOriente\SistemaAutoFrenosOriente\CapaEntidad\bin\Debug\CapaEntidadSP.pdb
+C:\Sistemas\SistemaAutoFrenosOriente\SistemaAutoFrenosOriente\CapaEntidad\bin\Debug\ESCPOS_NET.dll
+C:\Sistemas\SistemaAutoFrenosOriente\SistemaAutoFrenosOriente\CapaEntidad\bin\Debug\Microsoft.Bcl.AsyncInterfaces.dll
+C:\Sistemas\SistemaAutoFrenosOriente\SistemaAutoFrenosOriente\CapaEntidad\bin\Debug\Microsoft.Extensions.DependencyInjection.Abstractions.dll
+C:\Sistemas\SistemaAutoFrenosOriente\SistemaAutoFrenosOriente\CapaEntidad\bin\Debug\Microsoft.Extensions.DependencyInjection.dll
+C:\Sistemas\SistemaAutoFrenosOriente\SistemaAutoFrenosOriente\CapaEntidad\bin\Debug\Microsoft.Extensions.Logging.Abstractions.dll
+C:\Sistemas\SistemaAutoFrenosOriente\SistemaAutoFrenosOriente\CapaEntidad\bin\Debug\Microsoft.Extensions.Logging.dll
+C:\Sistemas\SistemaAutoFrenosOriente\SistemaAutoFrenosOriente\CapaEntidad\bin\Debug\Microsoft.Extensions.Options.dll
+C:\Sistemas\SistemaAutoFrenosOriente\SistemaAutoFrenosOriente\CapaEntidad\bin\Debug\Microsoft.Extensions.Primitives.dll
+C:\Sistemas\SistemaAutoFrenosOriente\SistemaAutoFrenosOriente\CapaEntidad\bin\Debug\SimpleTcp.dll
+C:\Sistemas\SistemaAutoFrenosOriente\SistemaAutoFrenosOriente\CapaEntidad\bin\Debug\SixLabors.ImageSharp.dll
+C:\Sistemas\SistemaAutoFrenosOriente\SistemaAutoFrenosOriente\CapaEntidad\bin\Debug\System.Buffers.dll
+C:\Sistemas\SistemaAutoFrenosOriente\SistemaAutoFrenosOriente\CapaEntidad\bin\Debug\System.Diagnostics.DiagnosticSource.dll
+C:\Sistemas\SistemaAutoFrenosOriente\SistemaAutoFrenosOriente\CapaEntidad\bin\Debug\System.IO.Ports.dll
+C:\Sistemas\SistemaAutoFrenosOriente\SistemaAutoFrenosOriente\CapaEntidad\bin\Debug\System.Memory.dll
+C:\Sistemas\SistemaAutoFrenosOriente\SistemaAutoFrenosOriente\CapaEntidad\bin\Debug\System.Numerics.Vectors.dll
+C:\Sistemas\SistemaAutoFrenosOriente\SistemaAutoFrenosOriente\CapaEntidad\bin\Debug\System.Runtime.CompilerServices.Unsafe.dll
+C:\Sistemas\SistemaAutoFrenosOriente\SistemaAutoFrenosOriente\CapaEntidad\bin\Debug\System.Text.Encoding.CodePages.dll
+C:\Sistemas\SistemaAutoFrenosOriente\SistemaAutoFrenosOriente\CapaEntidad\bin\Debug\System.Text.Encodings.Web.dll
+C:\Sistemas\SistemaAutoFrenosOriente\SistemaAutoFrenosOriente\CapaEntidad\bin\Debug\System.Text.Json.dll
+C:\Sistemas\SistemaAutoFrenosOriente\SistemaAutoFrenosOriente\CapaEntidad\bin\Debug\System.Threading.Tasks.Extensions.dll
+C:\Sistemas\SistemaAutoFrenosOriente\SistemaAutoFrenosOriente\CapaEntidad\bin\Debug\System.ValueTuple.dll
+C:\Sistemas\SistemaAutoFrenosOriente\SistemaAutoFrenosOriente\CapaEntidad\bin\Debug\Microsoft.Bcl.AsyncInterfaces.xml
+C:\Sistemas\SistemaAutoFrenosOriente\SistemaAutoFrenosOriente\CapaEntidad\bin\Debug\Microsoft.Extensions.DependencyInjection.xml
+C:\Sistemas\SistemaAutoFrenosOriente\SistemaAutoFrenosOriente\CapaEntidad\bin\Debug\Microsoft.Extensions.DependencyInjection.Abstractions.xml
+C:\Sistemas\SistemaAutoFrenosOriente\SistemaAutoFrenosOriente\CapaEntidad\bin\Debug\Microsoft.Extensions.Logging.xml
+C:\Sistemas\SistemaAutoFrenosOriente\SistemaAutoFrenosOriente\CapaEntidad\bin\Debug\Microsoft.Extensions.Logging.Abstractions.xml
+C:\Sistemas\SistemaAutoFrenosOriente\SistemaAutoFrenosOriente\CapaEntidad\bin\Debug\Microsoft.Extensions.Options.xml
+C:\Sistemas\SistemaAutoFrenosOriente\SistemaAutoFrenosOriente\CapaEntidad\bin\Debug\Microsoft.Extensions.Primitives.xml
+C:\Sistemas\SistemaAutoFrenosOriente\SistemaAutoFrenosOriente\CapaEntidad\bin\Debug\SimpleTcp.xml
+C:\Sistemas\SistemaAutoFrenosOriente\SistemaAutoFrenosOriente\CapaEntidad\bin\Debug\SixLabors.ImageSharp.xml
+C:\Sistemas\SistemaAutoFrenosOriente\SistemaAutoFrenosOriente\CapaEntidad\bin\Debug\System.Buffers.xml
+C:\Sistemas\SistemaAutoFrenosOriente\SistemaAutoFrenosOriente\CapaEntidad\bin\Debug\System.Diagnostics.DiagnosticSource.xml
+C:\Sistemas\SistemaAutoFrenosOriente\SistemaAutoFrenosOriente\CapaEntidad\bin\Debug\System.IO.Ports.xml
+C:\Sistemas\SistemaAutoFrenosOriente\SistemaAutoFrenosOriente\CapaEntidad\bin\Debug\System.Memory.xml
+C:\Sistemas\SistemaAutoFrenosOriente\SistemaAutoFrenosOriente\CapaEntidad\bin\Debug\System.Numerics.Vectors.xml
+C:\Sistemas\SistemaAutoFrenosOriente\SistemaAutoFrenosOriente\CapaEntidad\bin\Debug\System.Runtime.CompilerServices.Unsafe.xml
+C:\Sistemas\SistemaAutoFrenosOriente\SistemaAutoFrenosOriente\CapaEntidad\bin\Debug\System.Text.Encoding.CodePages.xml
+C:\Sistemas\SistemaAutoFrenosOriente\SistemaAutoFrenosOriente\CapaEntidad\bin\Debug\System.Text.Encodings.Web.xml
+C:\Sistemas\SistemaAutoFrenosOriente\SistemaAutoFrenosOriente\CapaEntidad\bin\Debug\System.Text.Json.xml
+C:\Sistemas\SistemaAutoFrenosOriente\SistemaAutoFrenosOriente\CapaEntidad\bin\Debug\System.Threading.Tasks.Extensions.xml
+C:\Sistemas\SistemaAutoFrenosOriente\SistemaAutoFrenosOriente\CapaEntidad\bin\Debug\System.ValueTuple.xml
+C:\Sistemas\SistemaAutoFrenosOriente\SistemaAutoFrenosOriente\CapaEntidad\obj\Debug\CapaEntidad.csproj.AssemblyReference.cache
+C:\Sistemas\SistemaAutoFrenosOriente\SistemaAutoFrenosOriente\CapaEntidad\obj\Debug\CapaEntidad.csproj.CoreCompileInputs.cache
+C:\Sistemas\SistemaAutoFrenosOriente\SistemaAutoFrenosOriente\CapaEntidad\obj\Debug\CapaEnti.526B9C87.Up2Date
+C:\Sistemas\SistemaAutoFrenosOriente\SistemaAutoFrenosOriente\CapaEntidad\obj\Debug\CapaEntidadSP.dll
+C:\Sistemas\SistemaAutoFrenosOriente\SistemaAutoFrenosOriente\CapaEntidad\obj\Debug\CapaEntidadSP.pdb
+C:\Sistemas\SistemaVariedadesLopsi\SistemaVariedadesLopsi\CapaEntidad\bin\Debug\CapaEntidadSP.dll.config
+C:\Sistemas\SistemaVariedadesLopsi\SistemaVariedadesLopsi\CapaEntidad\bin\Debug\CapaEntidadSP.dll
+C:\Sistemas\SistemaVariedadesLopsi\SistemaVariedadesLopsi\CapaEntidad\bin\Debug\CapaEntidadSP.pdb
+C:\Sistemas\SistemaVariedadesLopsi\SistemaVariedadesLopsi\CapaEntidad\bin\Debug\ESCPOS_NET.dll
+C:\Sistemas\SistemaVariedadesLopsi\SistemaVariedadesLopsi\CapaEntidad\bin\Debug\Microsoft.Bcl.AsyncInterfaces.dll
+C:\Sistemas\SistemaVariedadesLopsi\SistemaVariedadesLopsi\CapaEntidad\bin\Debug\Microsoft.Extensions.DependencyInjection.Abstractions.dll
+C:\Sistemas\SistemaVariedadesLopsi\SistemaVariedadesLopsi\CapaEntidad\bin\Debug\Microsoft.Extensions.DependencyInjection.dll
+C:\Sistemas\SistemaVariedadesLopsi\SistemaVariedadesLopsi\CapaEntidad\bin\Debug\Microsoft.Extensions.Logging.Abstractions.dll
+C:\Sistemas\SistemaVariedadesLopsi\SistemaVariedadesLopsi\CapaEntidad\bin\Debug\Microsoft.Extensions.Logging.dll
+C:\Sistemas\SistemaVariedadesLopsi\SistemaVariedadesLopsi\CapaEntidad\bin\Debug\Microsoft.Extensions.Options.dll
+C:\Sistemas\SistemaVariedadesLopsi\SistemaVariedadesLopsi\CapaEntidad\bin\Debug\Microsoft.Extensions.Primitives.dll
+C:\Sistemas\SistemaVariedadesLopsi\SistemaVariedadesLopsi\CapaEntidad\bin\Debug\SimpleTcp.dll
+C:\Sistemas\SistemaVariedadesLopsi\SistemaVariedadesLopsi\CapaEntidad\bin\Debug\SixLabors.ImageSharp.dll
+C:\Sistemas\SistemaVariedadesLopsi\SistemaVariedadesLopsi\CapaEntidad\bin\Debug\System.Buffers.dll
+C:\Sistemas\SistemaVariedadesLopsi\SistemaVariedadesLopsi\CapaEntidad\bin\Debug\System.Diagnostics.DiagnosticSource.dll
+C:\Sistemas\SistemaVariedadesLopsi\SistemaVariedadesLopsi\CapaEntidad\bin\Debug\System.IO.Ports.dll
+C:\Sistemas\SistemaVariedadesLopsi\SistemaVariedadesLopsi\CapaEntidad\bin\Debug\System.Memory.dll
+C:\Sistemas\SistemaVariedadesLopsi\SistemaVariedadesLopsi\CapaEntidad\bin\Debug\System.Numerics.Vectors.dll
+C:\Sistemas\SistemaVariedadesLopsi\SistemaVariedadesLopsi\CapaEntidad\bin\Debug\System.Runtime.CompilerServices.Unsafe.dll
+C:\Sistemas\SistemaVariedadesLopsi\SistemaVariedadesLopsi\CapaEntidad\bin\Debug\System.Text.Encoding.CodePages.dll
+C:\Sistemas\SistemaVariedadesLopsi\SistemaVariedadesLopsi\CapaEntidad\bin\Debug\System.Text.Encodings.Web.dll
+C:\Sistemas\SistemaVariedadesLopsi\SistemaVariedadesLopsi\CapaEntidad\bin\Debug\System.Text.Json.dll
+C:\Sistemas\SistemaVariedadesLopsi\SistemaVariedadesLopsi\CapaEntidad\bin\Debug\System.Threading.Tasks.Extensions.dll
+C:\Sistemas\SistemaVariedadesLopsi\SistemaVariedadesLopsi\CapaEntidad\bin\Debug\System.ValueTuple.dll
+C:\Sistemas\SistemaVariedadesLopsi\SistemaVariedadesLopsi\CapaEntidad\bin\Debug\Microsoft.Bcl.AsyncInterfaces.xml
+C:\Sistemas\SistemaVariedadesLopsi\SistemaVariedadesLopsi\CapaEntidad\bin\Debug\Microsoft.Extensions.DependencyInjection.xml
+C:\Sistemas\SistemaVariedadesLopsi\SistemaVariedadesLopsi\CapaEntidad\bin\Debug\Microsoft.Extensions.DependencyInjection.Abstractions.xml
+C:\Sistemas\SistemaVariedadesLopsi\SistemaVariedadesLopsi\CapaEntidad\bin\Debug\Microsoft.Extensions.Logging.xml
+C:\Sistemas\SistemaVariedadesLopsi\SistemaVariedadesLopsi\CapaEntidad\bin\Debug\Microsoft.Extensions.Logging.Abstractions.xml
+C:\Sistemas\SistemaVariedadesLopsi\SistemaVariedadesLopsi\CapaEntidad\bin\Debug\Microsoft.Extensions.Options.xml
+C:\Sistemas\SistemaVariedadesLopsi\SistemaVariedadesLopsi\CapaEntidad\bin\Debug\Microsoft.Extensions.Primitives.xml
+C:\Sistemas\SistemaVariedadesLopsi\SistemaVariedadesLopsi\CapaEntidad\bin\Debug\SimpleTcp.xml
+C:\Sistemas\SistemaVariedadesLopsi\SistemaVariedadesLopsi\CapaEntidad\bin\Debug\SixLabors.ImageSharp.xml
+C:\Sistemas\SistemaVariedadesLopsi\SistemaVariedadesLopsi\CapaEntidad\bin\Debug\System.Buffers.xml
+C:\Sistemas\SistemaVariedadesLopsi\SistemaVariedadesLopsi\CapaEntidad\bin\Debug\System.Diagnostics.DiagnosticSource.xml
+C:\Sistemas\SistemaVariedadesLopsi\SistemaVariedadesLopsi\CapaEntidad\bin\Debug\System.IO.Ports.xml
+C:\Sistemas\SistemaVariedadesLopsi\SistemaVariedadesLopsi\CapaEntidad\bin\Debug\System.Memory.xml
+C:\Sistemas\SistemaVariedadesLopsi\SistemaVariedadesLopsi\CapaEntidad\bin\Debug\System.Numerics.Vectors.xml
+C:\Sistemas\SistemaVariedadesLopsi\SistemaVariedadesLopsi\CapaEntidad\bin\Debug\System.Runtime.CompilerServices.Unsafe.xml
+C:\Sistemas\SistemaVariedadesLopsi\SistemaVariedadesLopsi\CapaEntidad\bin\Debug\System.Text.Encoding.CodePages.xml
+C:\Sistemas\SistemaVariedadesLopsi\SistemaVariedadesLopsi\CapaEntidad\bin\Debug\System.Text.Encodings.Web.xml
+C:\Sistemas\SistemaVariedadesLopsi\SistemaVariedadesLopsi\CapaEntidad\bin\Debug\System.Text.Json.xml
+C:\Sistemas\SistemaVariedadesLopsi\SistemaVariedadesLopsi\CapaEntidad\bin\Debug\System.Threading.Tasks.Extensions.xml
+C:\Sistemas\SistemaVariedadesLopsi\SistemaVariedadesLopsi\CapaEntidad\bin\Debug\System.ValueTuple.xml
+C:\Sistemas\SistemaVariedadesLopsi\SistemaVariedadesLopsi\CapaEntidad\obj\Debug\CapaEntidad.csproj.AssemblyReference.cache
+C:\Sistemas\SistemaVariedadesLopsi\SistemaVariedadesLopsi\CapaEntidad\obj\Debug\CapaEntidad.csproj.CoreCompileInputs.cache
+C:\Sistemas\SistemaVariedadesLopsi\SistemaVariedadesLopsi\CapaEntidad\obj\Debug\CapaEnti.526B9C87.Up2Date
+C:\Sistemas\SistemaVariedadesLopsi\SistemaVariedadesLopsi\CapaEntidad\obj\Debug\CapaEntidadSP.dll
+C:\Sistemas\SistemaVariedadesLopsi\SistemaVariedadesLopsi\CapaEntidad\obj\Debug\CapaEntidadSP.pdb
+C:\Sistemas\SistemaAmericanColor\SistemaAmericanColor\CapaEntidad\bin\Debug\CapaEntidadSP.dll.config
+C:\Sistemas\SistemaAmericanColor\SistemaAmericanColor\CapaEntidad\bin\Debug\CapaEntidadSP.dll
+C:\Sistemas\SistemaAmericanColor\SistemaAmericanColor\CapaEntidad\bin\Debug\CapaEntidadSP.pdb
+C:\Sistemas\SistemaAmericanColor\SistemaAmericanColor\CapaEntidad\bin\Debug\ESCPOS_NET.dll
+C:\Sistemas\SistemaAmericanColor\SistemaAmericanColor\CapaEntidad\bin\Debug\Microsoft.Bcl.AsyncInterfaces.dll
+C:\Sistemas\SistemaAmericanColor\SistemaAmericanColor\CapaEntidad\bin\Debug\Microsoft.Extensions.DependencyInjection.Abstractions.dll
+C:\Sistemas\SistemaAmericanColor\SistemaAmericanColor\CapaEntidad\bin\Debug\Microsoft.Extensions.DependencyInjection.dll
+C:\Sistemas\SistemaAmericanColor\SistemaAmericanColor\CapaEntidad\bin\Debug\Microsoft.Extensions.Logging.Abstractions.dll
+C:\Sistemas\SistemaAmericanColor\SistemaAmericanColor\CapaEntidad\bin\Debug\Microsoft.Extensions.Logging.dll
+C:\Sistemas\SistemaAmericanColor\SistemaAmericanColor\CapaEntidad\bin\Debug\Microsoft.Extensions.Options.dll
+C:\Sistemas\SistemaAmericanColor\SistemaAmericanColor\CapaEntidad\bin\Debug\Microsoft.Extensions.Primitives.dll
+C:\Sistemas\SistemaAmericanColor\SistemaAmericanColor\CapaEntidad\bin\Debug\SimpleTcp.dll
+C:\Sistemas\SistemaAmericanColor\SistemaAmericanColor\CapaEntidad\bin\Debug\SixLabors.ImageSharp.dll
+C:\Sistemas\SistemaAmericanColor\SistemaAmericanColor\CapaEntidad\bin\Debug\System.Buffers.dll
+C:\Sistemas\SistemaAmericanColor\SistemaAmericanColor\CapaEntidad\bin\Debug\System.Diagnostics.DiagnosticSource.dll
+C:\Sistemas\SistemaAmericanColor\SistemaAmericanColor\CapaEntidad\bin\Debug\System.IO.Ports.dll
+C:\Sistemas\SistemaAmericanColor\SistemaAmericanColor\CapaEntidad\bin\Debug\System.Memory.dll
+C:\Sistemas\SistemaAmericanColor\SistemaAmericanColor\CapaEntidad\bin\Debug\System.Numerics.Vectors.dll
+C:\Sistemas\SistemaAmericanColor\SistemaAmericanColor\CapaEntidad\bin\Debug\System.Runtime.CompilerServices.Unsafe.dll
+C:\Sistemas\SistemaAmericanColor\SistemaAmericanColor\CapaEntidad\bin\Debug\System.Text.Encoding.CodePages.dll
+C:\Sistemas\SistemaAmericanColor\SistemaAmericanColor\CapaEntidad\bin\Debug\System.Text.Encodings.Web.dll
+C:\Sistemas\SistemaAmericanColor\SistemaAmericanColor\CapaEntidad\bin\Debug\System.Text.Json.dll
+C:\Sistemas\SistemaAmericanColor\SistemaAmericanColor\CapaEntidad\bin\Debug\System.Threading.Tasks.Extensions.dll
+C:\Sistemas\SistemaAmericanColor\SistemaAmericanColor\CapaEntidad\bin\Debug\System.ValueTuple.dll
+C:\Sistemas\SistemaAmericanColor\SistemaAmericanColor\CapaEntidad\bin\Debug\Microsoft.Bcl.AsyncInterfaces.xml
+C:\Sistemas\SistemaAmericanColor\SistemaAmericanColor\CapaEntidad\bin\Debug\Microsoft.Extensions.DependencyInjection.xml
+C:\Sistemas\SistemaAmericanColor\SistemaAmericanColor\CapaEntidad\bin\Debug\Microsoft.Extensions.DependencyInjection.Abstractions.xml
+C:\Sistemas\SistemaAmericanColor\SistemaAmericanColor\CapaEntidad\bin\Debug\Microsoft.Extensions.Logging.xml
+C:\Sistemas\SistemaAmericanColor\SistemaAmericanColor\CapaEntidad\bin\Debug\Microsoft.Extensions.Logging.Abstractions.xml
+C:\Sistemas\SistemaAmericanColor\SistemaAmericanColor\CapaEntidad\bin\Debug\Microsoft.Extensions.Options.xml
+C:\Sistemas\SistemaAmericanColor\SistemaAmericanColor\CapaEntidad\bin\Debug\Microsoft.Extensions.Primitives.xml
+C:\Sistemas\SistemaAmericanColor\SistemaAmericanColor\CapaEntidad\bin\Debug\SimpleTcp.xml
+C:\Sistemas\SistemaAmericanColor\SistemaAmericanColor\CapaEntidad\bin\Debug\SixLabors.ImageSharp.xml
+C:\Sistemas\SistemaAmericanColor\SistemaAmericanColor\CapaEntidad\bin\Debug\System.Buffers.xml
+C:\Sistemas\SistemaAmericanColor\SistemaAmericanColor\CapaEntidad\bin\Debug\System.Diagnostics.DiagnosticSource.xml
+C:\Sistemas\SistemaAmericanColor\SistemaAmericanColor\CapaEntidad\bin\Debug\System.IO.Ports.xml
+C:\Sistemas\SistemaAmericanColor\SistemaAmericanColor\CapaEntidad\bin\Debug\System.Memory.xml
+C:\Sistemas\SistemaAmericanColor\SistemaAmericanColor\CapaEntidad\bin\Debug\System.Numerics.Vectors.xml
+C:\Sistemas\SistemaAmericanColor\SistemaAmericanColor\CapaEntidad\bin\Debug\System.Runtime.CompilerServices.Unsafe.xml
+C:\Sistemas\SistemaAmericanColor\SistemaAmericanColor\CapaEntidad\bin\Debug\System.Text.Encoding.CodePages.xml
+C:\Sistemas\SistemaAmericanColor\SistemaAmericanColor\CapaEntidad\bin\Debug\System.Text.Encodings.Web.xml
+C:\Sistemas\SistemaAmericanColor\SistemaAmericanColor\CapaEntidad\bin\Debug\System.Text.Json.xml
+C:\Sistemas\SistemaAmericanColor\SistemaAmericanColor\CapaEntidad\bin\Debug\System.Threading.Tasks.Extensions.xml
+C:\Sistemas\SistemaAmericanColor\SistemaAmericanColor\CapaEntidad\bin\Debug\System.ValueTuple.xml
+C:\Sistemas\SistemaAmericanColor\SistemaAmericanColor\CapaEntidad\obj\Debug\CapaEntidad.csproj.AssemblyReference.cache
+C:\Sistemas\SistemaAmericanColor\SistemaAmericanColor\CapaEntidad\obj\Debug\CapaEntidad.csproj.CoreCompileInputs.cache
+C:\Sistemas\SistemaAmericanColor\SistemaAmericanColor\CapaEntidad\obj\Debug\CapaEnti.526B9C87.Up2Date
+C:\Sistemas\SistemaAmericanColor\SistemaAmericanColor\CapaEntidad\obj\Debug\CapaEntidadSP.dll
+C:\Sistemas\SistemaAmericanColor\SistemaAmericanColor\CapaEntidad\obj\Debug\CapaEntidadSP.pdb
+C:\Sistemas\PlantillaSistema\PlantillaSistema\CapaEntidad\bin\Debug\CapaEntidadSP.dll.config
+C:\Sistemas\PlantillaSistema\PlantillaSistema\CapaEntidad\bin\Debug\CapaEntidadSP.dll
+C:\Sistemas\PlantillaSistema\PlantillaSistema\CapaEntidad\bin\Debug\CapaEntidadSP.pdb
+C:\Sistemas\PlantillaSistema\PlantillaSistema\CapaEntidad\bin\Debug\ESCPOS_NET.dll
+C:\Sistemas\PlantillaSistema\PlantillaSistema\CapaEntidad\bin\Debug\Microsoft.Bcl.AsyncInterfaces.dll
+C:\Sistemas\PlantillaSistema\PlantillaSistema\CapaEntidad\bin\Debug\Microsoft.Extensions.DependencyInjection.Abstractions.dll
+C:\Sistemas\PlantillaSistema\PlantillaSistema\CapaEntidad\bin\Debug\Microsoft.Extensions.DependencyInjection.dll
+C:\Sistemas\PlantillaSistema\PlantillaSistema\CapaEntidad\bin\Debug\Microsoft.Extensions.Logging.Abstractions.dll
+C:\Sistemas\PlantillaSistema\PlantillaSistema\CapaEntidad\bin\Debug\Microsoft.Extensions.Logging.dll
+C:\Sistemas\PlantillaSistema\PlantillaSistema\CapaEntidad\bin\Debug\Microsoft.Extensions.Options.dll
+C:\Sistemas\PlantillaSistema\PlantillaSistema\CapaEntidad\bin\Debug\Microsoft.Extensions.Primitives.dll
+C:\Sistemas\PlantillaSistema\PlantillaSistema\CapaEntidad\bin\Debug\SimpleTcp.dll
+C:\Sistemas\PlantillaSistema\PlantillaSistema\CapaEntidad\bin\Debug\SixLabors.ImageSharp.dll
+C:\Sistemas\PlantillaSistema\PlantillaSistema\CapaEntidad\bin\Debug\System.Buffers.dll
+C:\Sistemas\PlantillaSistema\PlantillaSistema\CapaEntidad\bin\Debug\System.Diagnostics.DiagnosticSource.dll
+C:\Sistemas\PlantillaSistema\PlantillaSistema\CapaEntidad\bin\Debug\System.IO.Ports.dll
+C:\Sistemas\PlantillaSistema\PlantillaSistema\CapaEntidad\bin\Debug\System.Memory.dll
+C:\Sistemas\PlantillaSistema\PlantillaSistema\CapaEntidad\bin\Debug\System.Numerics.Vectors.dll
+C:\Sistemas\PlantillaSistema\PlantillaSistema\CapaEntidad\bin\Debug\System.Runtime.CompilerServices.Unsafe.dll
+C:\Sistemas\PlantillaSistema\PlantillaSistema\CapaEntidad\bin\Debug\System.Text.Encoding.CodePages.dll
+C:\Sistemas\PlantillaSistema\PlantillaSistema\CapaEntidad\bin\Debug\System.Text.Encodings.Web.dll
+C:\Sistemas\PlantillaSistema\PlantillaSistema\CapaEntidad\bin\Debug\System.Text.Json.dll
+C:\Sistemas\PlantillaSistema\PlantillaSistema\CapaEntidad\bin\Debug\System.Threading.Tasks.Extensions.dll
+C:\Sistemas\PlantillaSistema\PlantillaSistema\CapaEntidad\bin\Debug\System.ValueTuple.dll
+C:\Sistemas\PlantillaSistema\PlantillaSistema\CapaEntidad\bin\Debug\Microsoft.Bcl.AsyncInterfaces.xml
+C:\Sistemas\PlantillaSistema\PlantillaSistema\CapaEntidad\bin\Debug\Microsoft.Extensions.DependencyInjection.xml
+C:\Sistemas\PlantillaSistema\PlantillaSistema\CapaEntidad\bin\Debug\Microsoft.Extensions.DependencyInjection.Abstractions.xml
+C:\Sistemas\PlantillaSistema\PlantillaSistema\CapaEntidad\bin\Debug\Microsoft.Extensions.Logging.xml
+C:\Sistemas\PlantillaSistema\PlantillaSistema\CapaEntidad\bin\Debug\Microsoft.Extensions.Logging.Abstractions.xml
+C:\Sistemas\PlantillaSistema\PlantillaSistema\CapaEntidad\bin\Debug\Microsoft.Extensions.Options.xml
+C:\Sistemas\PlantillaSistema\PlantillaSistema\CapaEntidad\bin\Debug\Microsoft.Extensions.Primitives.xml
+C:\Sistemas\PlantillaSistema\PlantillaSistema\CapaEntidad\bin\Debug\SimpleTcp.xml
+C:\Sistemas\PlantillaSistema\PlantillaSistema\CapaEntidad\bin\Debug\SixLabors.ImageSharp.xml
+C:\Sistemas\PlantillaSistema\PlantillaSistema\CapaEntidad\bin\Debug\System.Buffers.xml
+C:\Sistemas\PlantillaSistema\PlantillaSistema\CapaEntidad\bin\Debug\System.Diagnostics.DiagnosticSource.xml
+C:\Sistemas\PlantillaSistema\PlantillaSistema\CapaEntidad\bin\Debug\System.IO.Ports.xml
+C:\Sistemas\PlantillaSistema\PlantillaSistema\CapaEntidad\bin\Debug\System.Memory.xml
+C:\Sistemas\PlantillaSistema\PlantillaSistema\CapaEntidad\bin\Debug\System.Numerics.Vectors.xml
+C:\Sistemas\PlantillaSistema\PlantillaSistema\CapaEntidad\bin\Debug\System.Runtime.CompilerServices.Unsafe.xml
+C:\Sistemas\PlantillaSistema\PlantillaSistema\CapaEntidad\bin\Debug\System.Text.Encoding.CodePages.xml
+C:\Sistemas\PlantillaSistema\PlantillaSistema\CapaEntidad\bin\Debug\System.Text.Encodings.Web.xml
+C:\Sistemas\PlantillaSistema\PlantillaSistema\CapaEntidad\bin\Debug\System.Text.Json.xml
+C:\Sistemas\PlantillaSistema\PlantillaSistema\CapaEntidad\bin\Debug\System.Threading.Tasks.Extensions.xml
+C:\Sistemas\PlantillaSistema\PlantillaSistema\CapaEntidad\bin\Debug\System.ValueTuple.xml
+C:\Sistemas\PlantillaSistema\PlantillaSistema\CapaEntidad\obj\Debug\CapaEntidad.csproj.AssemblyReference.cache
+C:\Sistemas\PlantillaSistema\PlantillaSistema\CapaEntidad\obj\Debug\CapaEntidad.csproj.CoreCompileInputs.cache
+C:\Sistemas\PlantillaSistema\PlantillaSistema\CapaEntidad\obj\Debug\CapaEnti.526B9C87.Up2Date
+C:\Sistemas\PlantillaSistema\PlantillaSistema\CapaEntidad\obj\Debug\CapaEntidadSP.dll
+C:\Sistemas\PlantillaSistema\PlantillaSistema\CapaEntidad\obj\Debug\CapaEntidadSP.pdb
+C:\Sistemas\SistemaInverfa\SistemaInverfa\CapaEntidad\bin\Debug\CapaEntidadSP.dll.config
+C:\Sistemas\SistemaInverfa\SistemaInverfa\CapaEntidad\bin\Debug\CapaEntidadSP.dll
+C:\Sistemas\SistemaInverfa\SistemaInverfa\CapaEntidad\bin\Debug\CapaEntidadSP.pdb
+C:\Sistemas\SistemaInverfa\SistemaInverfa\CapaEntidad\bin\Debug\ESCPOS_NET.dll
+C:\Sistemas\SistemaInverfa\SistemaInverfa\CapaEntidad\bin\Debug\Microsoft.Bcl.AsyncInterfaces.dll
+C:\Sistemas\SistemaInverfa\SistemaInverfa\CapaEntidad\bin\Debug\Microsoft.Extensions.DependencyInjection.Abstractions.dll
+C:\Sistemas\SistemaInverfa\SistemaInverfa\CapaEntidad\bin\Debug\Microsoft.Extensions.DependencyInjection.dll
+C:\Sistemas\SistemaInverfa\SistemaInverfa\CapaEntidad\bin\Debug\Microsoft.Extensions.Logging.Abstractions.dll
+C:\Sistemas\SistemaInverfa\SistemaInverfa\CapaEntidad\bin\Debug\Microsoft.Extensions.Logging.dll
+C:\Sistemas\SistemaInverfa\SistemaInverfa\CapaEntidad\bin\Debug\Microsoft.Extensions.Options.dll
+C:\Sistemas\SistemaInverfa\SistemaInverfa\CapaEntidad\bin\Debug\Microsoft.Extensions.Primitives.dll
+C:\Sistemas\SistemaInverfa\SistemaInverfa\CapaEntidad\bin\Debug\SimpleTcp.dll
+C:\Sistemas\SistemaInverfa\SistemaInverfa\CapaEntidad\bin\Debug\SixLabors.ImageSharp.dll
+C:\Sistemas\SistemaInverfa\SistemaInverfa\CapaEntidad\bin\Debug\System.Buffers.dll
+C:\Sistemas\SistemaInverfa\SistemaInverfa\CapaEntidad\bin\Debug\System.Diagnostics.DiagnosticSource.dll
+C:\Sistemas\SistemaInverfa\SistemaInverfa\CapaEntidad\bin\Debug\System.IO.Ports.dll
+C:\Sistemas\SistemaInverfa\SistemaInverfa\CapaEntidad\bin\Debug\System.Memory.dll
+C:\Sistemas\SistemaInverfa\SistemaInverfa\CapaEntidad\bin\Debug\System.Numerics.Vectors.dll
+C:\Sistemas\SistemaInverfa\SistemaInverfa\CapaEntidad\bin\Debug\System.Runtime.CompilerServices.Unsafe.dll
+C:\Sistemas\SistemaInverfa\SistemaInverfa\CapaEntidad\bin\Debug\System.Text.Encoding.CodePages.dll
+C:\Sistemas\SistemaInverfa\SistemaInverfa\CapaEntidad\bin\Debug\System.Text.Encodings.Web.dll
+C:\Sistemas\SistemaInverfa\SistemaInverfa\CapaEntidad\bin\Debug\System.Text.Json.dll
+C:\Sistemas\SistemaInverfa\SistemaInverfa\CapaEntidad\bin\Debug\System.Threading.Tasks.Extensions.dll
+C:\Sistemas\SistemaInverfa\SistemaInverfa\CapaEntidad\bin\Debug\System.ValueTuple.dll
+C:\Sistemas\SistemaInverfa\SistemaInverfa\CapaEntidad\bin\Debug\Microsoft.Bcl.AsyncInterfaces.xml
+C:\Sistemas\SistemaInverfa\SistemaInverfa\CapaEntidad\bin\Debug\Microsoft.Extensions.DependencyInjection.xml
+C:\Sistemas\SistemaInverfa\SistemaInverfa\CapaEntidad\bin\Debug\Microsoft.Extensions.DependencyInjection.Abstractions.xml
+C:\Sistemas\SistemaInverfa\SistemaInverfa\CapaEntidad\bin\Debug\Microsoft.Extensions.Logging.xml
+C:\Sistemas\SistemaInverfa\SistemaInverfa\CapaEntidad\bin\Debug\Microsoft.Extensions.Logging.Abstractions.xml
+C:\Sistemas\SistemaInverfa\SistemaInverfa\CapaEntidad\bin\Debug\Microsoft.Extensions.Options.xml
+C:\Sistemas\SistemaInverfa\SistemaInverfa\CapaEntidad\bin\Debug\Microsoft.Extensions.Primitives.xml
+C:\Sistemas\SistemaInverfa\SistemaInverfa\CapaEntidad\bin\Debug\SimpleTcp.xml
+C:\Sistemas\SistemaInverfa\SistemaInverfa\CapaEntidad\bin\Debug\SixLabors.ImageSharp.xml
+C:\Sistemas\SistemaInverfa\SistemaInverfa\CapaEntidad\bin\Debug\System.Buffers.xml
+C:\Sistemas\SistemaInverfa\SistemaInverfa\CapaEntidad\bin\Debug\System.Diagnostics.DiagnosticSource.xml
+C:\Sistemas\SistemaInverfa\SistemaInverfa\CapaEntidad\bin\Debug\System.IO.Ports.xml
+C:\Sistemas\SistemaInverfa\SistemaInverfa\CapaEntidad\bin\Debug\System.Memory.xml
+C:\Sistemas\SistemaInverfa\SistemaInverfa\CapaEntidad\bin\Debug\System.Numerics.Vectors.xml
+C:\Sistemas\SistemaInverfa\SistemaInverfa\CapaEntidad\bin\Debug\System.Runtime.CompilerServices.Unsafe.xml
+C:\Sistemas\SistemaInverfa\SistemaInverfa\CapaEntidad\bin\Debug\System.Text.Encoding.CodePages.xml
+C:\Sistemas\SistemaInverfa\SistemaInverfa\CapaEntidad\bin\Debug\System.Text.Encodings.Web.xml
+C:\Sistemas\SistemaInverfa\SistemaInverfa\CapaEntidad\bin\Debug\System.Text.Json.xml
+C:\Sistemas\SistemaInverfa\SistemaInverfa\CapaEntidad\bin\Debug\System.Threading.Tasks.Extensions.xml
+C:\Sistemas\SistemaInverfa\SistemaInverfa\CapaEntidad\bin\Debug\System.ValueTuple.xml
+C:\Sistemas\SistemaInverfa\SistemaInverfa\CapaEntidad\obj\Debug\CapaEntidad.csproj.AssemblyReference.cache
+C:\Sistemas\SistemaInverfa\SistemaInverfa\CapaEntidad\obj\Debug\CapaEntidad.csproj.CoreCompileInputs.cache
+C:\Sistemas\SistemaInverfa\SistemaInverfa\CapaEntidad\obj\Debug\CapaEnti.526B9C87.Up2Date
+C:\Sistemas\SistemaInverfa\SistemaInverfa\CapaEntidad\obj\Debug\CapaEntidadSP.dll
+C:\Sistemas\SistemaInverfa\SistemaInverfa\CapaEntidad\obj\Debug\CapaEntidadSP.pdb

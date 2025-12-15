@@ -20,12 +20,13 @@ namespace CapaDatos
                 try
                 {
                     StringBuilder query = new StringBuilder();
-                    query.AppendLine("SELECT hs.ID, hs.IdProducto, hs.Stock_Anterior, hs.Stock_Nuevo, hs.Fecha, u.NombreCompleto AS Usuario, p.Codigo, p.Nombre");
+                    query.AppendLine("SELECT hs.ID, hs.IdProducto, hs.Stock_Anterior, hs.Stock_Nuevo, hs.Fecha,");
+                    query.AppendLine("u.NombreCompleto AS Usuario, p.Codigo, p.Nombre, hs.TipoMovimiento, hs.NumeroDocumento");
                     query.AppendLine("FROM HistorialStock hs");
                     query.AppendLine("INNER JOIN Producto p ON hs.IdProducto = p.IdProducto");
                     query.AppendLine("INNER JOIN USUARIO u ON u.IdUsuario = hs.IdUsuario");
                     query.AppendLine("WHERE hs.IdProducto = @IdProducto");
-                    query.AppendLine("ORDER BY hs.Fecha DESC;");
+                    query.AppendLine("ORDER BY hs.Fecha DESC");
 
                     SqlCommand cmd = new SqlCommand(query.ToString(), oconexion);
                     cmd.Parameters.AddWithValue("@IdProducto", idProducto);
@@ -43,9 +44,11 @@ namespace CapaDatos
                                 IdProducto = Convert.ToInt32(dr["IdProducto"]),
                                 Codigo = dr["Codigo"].ToString(),
                                 Nombre = dr["Nombre"].ToString(),
-                                Stock_Anterior = Convert.ToDecimal(dr["Stock_Anterior"]), // Cambiado a decimal
-                                Stock_Nuevo = Convert.ToDecimal(dr["Stock_Nuevo"]), // Cambiado a decimal
+                                Stock_Anterior = Convert.ToDecimal(dr["Stock_Anterior"]),
+                                Stock_Nuevo = Convert.ToDecimal(dr["Stock_Nuevo"]),
                                 Fecha = Convert.ToDateTime(dr["Fecha"]),
+                                TipoMovimiento = dr["TipoMovimiento"].ToString(),
+                                NumeroDocumento = dr["NumeroDocumento"] == DBNull.Value ? "" : dr["NumeroDocumento"].ToString(),
                                 oUsuario = new Usuario() { NombreCompleto = dr["Usuario"].ToString() }
                             });
                         }
@@ -57,6 +60,7 @@ namespace CapaDatos
                     lista = new List<HistorialStock>();
                 }
             }
+
             return lista;
         }
     }

@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8" />
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            padding: 20px;
+        }
+
+        h1 {
+            text-align: center;
+            font-size: 18px;
+            margin-bottom: 10px;
+        }
+
+        p {
+            font-size: 13px;
+            margin: 0 0 10px 0;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 11px;
+            table-layout: fixed;
+        }
+
+        th, td {
+            border: 1px solid #aaa;
+            padding: 6px 4px;
+            text-align: center;
+            word-break: keep-all;
+            white-space: nowrap;
+        }
+
+        th {
+            background-color: #f0f0f0;
+        }
+    </style>
+</head>
+<body>
+    <h1>REPORTE DE CIERRES DE CAJA</h1>
+    <p><strong>Desde:</strong> @fechainicio &nbsp;&nbsp;&nbsp;&nbsp; <strong>Hasta:</strong> @fechafin</p>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Inicio</th>
+                <th>Cierre</th>
+                <th>Usuario</th>
+                <th>Monto Inicial (L)</th>
+                <th>Gran Total (L)</th>
+                <th>Total Real (L)</th>
+                <th>Diferencia (L)</th>
+            </tr>
+        </thead>
+        <tbody>
+            @tabla
+        </tbody>
+    </table>
+</body>
+</html>

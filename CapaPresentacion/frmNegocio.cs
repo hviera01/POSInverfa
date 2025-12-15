@@ -1,9 +1,11 @@
 ﻿using CapaEntidad;
 using CapaNegocio;
+using CapaPresentacion.Modales;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Diagnostics;
 using System.Drawing;
 using System.IO;
 using System.Linq;
@@ -171,6 +173,98 @@ namespace CapaPresentacion
                     picLogoBlancoNegro.Image = ByteToImage(byteimage);
                 else
                     MessageBox.Show(mensaje, "Mensaje", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+            }
+        }
+
+        private void CargarDatos()
+        {
+            // Obtener y cargar el logo
+            bool obtenido = true;
+            byte[] byteimage = new CN_Negocio().ObtenerLogo(out obtenido);
+            if (obtenido)
+                picLogo.Image = ByteToImage(byteimage);
+
+            // Obtener los datos del negocio
+            Negocio datos = new CN_Negocio().ObtenerDatos();
+            if (datos.FechaLimiteEmision >= dtpfechalimite.MinDate && datos.FechaLimiteEmision <= dtpfechalimite.MaxDate)
+            {
+                dtpfechalimite.Value = datos.FechaLimiteEmision; // Asignar la fecha si es válida
+            }
+            else
+            {
+                dtpfechalimite.Value = dtpfechalimite.MinDate; // Asignar un valor por defecto si no es válida
+            }
+
+            // Cargar los datos en los TextBox y otros controles
+            txtnombre.Text = datos.Nombre;
+            txtruc.Text = datos.RUC;
+            txtdireccion.Text = datos.Direccion;
+            txttelefono.Text = datos.Telefono; // Nuevo campo
+            txtcorreo.Text = datos.CorreoElectronico; // Nuevo campo
+            txtcai.Text = datos.CAI;
+            txteslogan.Text = datos.Eslogan; // Nuevo campo
+
+            // Cargar el rango autorizado en los TextBox correspondientes
+            if (!string.IsNullOrEmpty(datos.RangoAutorizado))
+            {
+                string[] partesRango = datos.RangoAutorizado.Split(new[] { " al " }, StringSplitOptions.None);
+                if (partesRango.Length == 2)
+                {
+                    // Asignar la parte inicial del rango (sin los últimos 8 dígitos)
+                    txtRangoInicial.Text = partesRango[0].Substring(0, partesRango[0].Length - 8); // Parte inicial del rango
+                                                                                                   // Asignar los últimos 8 dígitos de la parte inicial
+                    txtRangoInicialNumerico.Text = partesRango[0].Substring(partesRango[0].Length - 8); // Últimos 8 dígitos de la parte inicial
+                                                                                                        // Asignar los últimos 8 dígitos de la parte final
+                    txtRangoFinalNumerico.Text = partesRango[1].Substring(partesRango[1].Length - 8);
+                }
+            }
+
+            // Cargar logo en blanco y negro si es necesario
+            byte[] logoBlancoNegro = new CN_Negocio().ObtenerLogoBlancoNegro(out obtenido);
+            if (obtenido)
+                picLogoBlancoNegro.Image = ByteToImage(logoBlancoNegro);
+        }
+
+        private void btnrefrescar_Click(object sender, EventArgs e)
+        {
+            CargarDatos();
+        }
+
+        private void iconButton1_Click(object sender, EventArgs e)
+        {
+            MdCambiarClaveMenu cambiarClaveForm = new MdCambiarClaveMenu();
+            if (cambiarClaveForm.ShowDialog() == DialogResult.OK)
+            {
+                // Opcional: acciones después de cerrar exitosamente el modal
+            }
+        }
+
+        private void btnActualizar_Click(object sender, EventArgs e)
+        {
+            string rutaActualizador = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "Actualizador.exe");
+            string rutaUpdate = Path.Combine(@"C:\Actualizaciones", "update.zip"); // Podés cambiar la ruta
+
+            if (!File.Exists(rutaUpdate))
+            {
+                MessageBox.Show("No se encontró el archivo de actualización en: " + rutaUpdate, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+
+            if (!File.Exists(rutaActualizador))
+            {
+                MessageBox.Show("No se encontró el archivo Actualizador.exe en la carpeta del sistema.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+
+            // Ejecutar el actualizador
+            try
+            {
+                Process.Start(rutaActualizador);
+                Application.Exit(); // Cerrar el sistema principal para permitir la actualización
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error al intentar actualizar: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
     }

@@ -18,11 +18,16 @@ namespace CapaPresentacion
     public partial class frmCompras : Form
     {
         private Usuario _Usuario;
+        private decimal ultimoImpuesto = 0;
+        private string bufferCodigoScanner = "";
+        private DateTime ultimaTecla = DateTime.Now;
+        private decimal ultimaRebaja = 0;
 
         public frmCompras(Usuario oUsuario = null)
         {
             _Usuario = oUsuario;
             InitializeComponent();
+            this.KeyPreview = true;
         }
 
 
@@ -39,14 +44,14 @@ namespace CapaPresentacion
             cbometodopago.Items.Add("Efectivo");
             cbometodopago.Items.Add("Tarjeta");
             cbometodopago.Items.Add("Transferencia");
-            cbometodopago.SelectedIndex = 0; // Seleccionar el primer método por defecto
+            cbometodopago.SelectedIndex = 0;
 
-            // Inicializar el ComboBox de condiciones
+
             cbocondicion.Items.Add("Contado");
             cbocondicion.Items.Add("Credito");
-            cbocondicion.SelectedIndex = 0; // Seleccionar el primer estado por defecto
+            cbocondicion.SelectedIndex = 0;
 
-            // Configurar el DateTimePicker
+
             dtpFechaVencimiento.Visible = false;
 
             txtfecha.Text = DateTime.Now.ToString("dd/MM/yyyy");
@@ -63,6 +68,7 @@ namespace CapaPresentacion
                 }
             }
 
+            this.Focus();
         }
 
       
@@ -78,65 +84,67 @@ namespace CapaPresentacion
 
         private void btnagregarproducto_Click(object sender, EventArgs e)
         {
-            decimal preciocompra = 0;
-            decimal precioventa = 0;
-            bool producto_existe = false;
-
             if (int.Parse(txtidproducto.Text) == 0)
             {
                 MessageBox.Show("Debe seleccionar un producto", "Mensaje", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
                 return;
             }
 
-            if (!decimal.TryParse(txtpreciocompra.Text, out preciocompra))
+            if (int.TryParse(txtidproducto.Text, out int idProdExistente) && idProdExistente != 0)
             {
-                MessageBox.Show("Precio Compra - Formato moneda incorrecto", "Mensaje", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
-                txtpreciocompra.Select();
-                return;
-            }
-
-            if (!decimal.TryParse(txtprecioventa.Text, out precioventa))
-            {
-                MessageBox.Show("Precio Venta - Formato moneda incorrecto", "Mensaje", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
-                txtprecioventa.Select();
-                return;
-            }
-
-            foreach (DataGridViewRow fila in dgvdata.Rows)
-            {
-                //Console.WriteLine(fila);
-                //Object IdProducto = fila.Cells["IdProducto"].Value;
-                //if (IdProducto != null) {
-
-                //}
-                //Console.WriteLine(prueba);
-                if (fila.Cells["IdProducto"].Value.ToString() == txtidproducto.Text)
+                Producto productoBD = new CN_Producto().Listar().FirstOrDefault(p => p.IdProducto == idProdExistente);
+                if (productoBD != null && productoBD.Descripcion != txtdescripcion.Text.Trim())
                 {
-                    producto_existe = true;
-                    break;
+                    string mensaje = "";
+                    bool actualizado = new CN_Producto().ActualizarDescripcion(idProdExistente, txtdescripcion.Text.Trim(), out mensaje);
+                    if (!actualizado)
+                    {
+                        MessageBox.Show("No se pudo actualizar la descripción: " + mensaje, "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    }
                 }
             }
 
-            if (!producto_existe)
+            // Verificar si ya fue agregado
+            foreach (DataGridViewRow fila in dgvdata.Rows)
             {
-
-                dgvdata.Rows.Add(new object[] {
-                    txtidproducto.Text,
-                    txtproducto.Text,
-                    txtdescripcion.Text,
-                    preciocompra.ToString("0.00"),
-                    precioventa.ToString("0.00"),
-                    txtcantidad.Value.ToString(),
-                    (txtcantidad.Value * preciocompra).ToString("0.00")
-
-                });
-
-                calcularTotal();
-                limpiarProducto();
-                txtcodproducto.Select();
-
+                if (fila.Cells["IdProducto"].Value.ToString() == txtidproducto.Text)
+                {
+                    MessageBox.Show("El producto ya fue agregado.", "Mensaje", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    return;
+                }
             }
 
+            if (!decimal.TryParse(txtpreciocompra.Text, out decimal precioCompra))
+            {
+                MessageBox.Show("Precio de compra inválido", "Mensaje", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                return;
+            }
+
+            if (!decimal.TryParse(txtprecioventa.Text, out decimal precioVenta))
+            {
+                MessageBox.Show("Precio de venta inválido", "Mensaje", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                return;
+            }
+
+            decimal cantidad = txtcantidad.Value;
+            decimal descuento = 0;
+            decimal.TryParse(txtdescuento.Text, out descuento);
+
+            decimal subtotal = precioCompra * cantidad;
+
+            dgvdata.Rows.Add(
+                txtidproducto.Text,
+                txtproducto.Text,            // Producto
+                txtdescripcion.Text,         // Descripción
+                precioCompra.ToString("0.00"), // Precio Compra
+                precioVenta.ToString("0.00"),  // Precio Venta
+                cantidad.ToString(),         // Cantidad
+                subtotal.ToString("0.00"),   // SubTotal
+                descuento.ToString("0.00")   // % D
+            );
+
+            limpiarProducto();
+            calcularTotal();
         }
 
         private void limpiarProducto()
@@ -153,15 +161,27 @@ namespace CapaPresentacion
 
         private void calcularTotal()
         {
-            decimal total = 0;
-            if (dgvdata.Rows.Count > 0)
+            decimal subtotal = 0;
+
+            foreach (DataGridViewRow row in dgvdata.Rows)
             {
-                foreach (DataGridViewRow row in dgvdata.Rows)
-                    total += Convert.ToDecimal(row.Cells["SubTotal"].Value.ToString());
+                if (row.Cells["SubTotal"].Value != null)
+                {
+                    subtotal += Convert.ToDecimal(row.Cells["SubTotal"].Value);
+                }
             }
+
+            txtsubtotal.Text = subtotal.ToString("0.00");
+
+            decimal rebaja = 0;
+            decimal.TryParse(txtrebaja.Text, out rebaja);
+
+            decimal impuesto = 0;
+            decimal.TryParse(txtimpuesto.Text, out impuesto);
+
+            decimal total = subtotal - rebaja + impuesto;
             txttotalpagar.Text = total.ToString("0.00");
         }
-
 
 
         private void btnbuscarproveedor_Click(object sender, EventArgs e)
@@ -211,35 +231,50 @@ namespace CapaPresentacion
         {
             if (e.KeyData == Keys.Enter)
             {
-
-                Producto oProducto = new CN_Producto().Listar().Where(p => p.Codigo == txtcodproducto.Text && p.Estado == true).FirstOrDefault();
+                Producto oProducto = new CN_Producto().Listar()
+                    .FirstOrDefault(p => p.Codigo == txtcodproducto.Text && p.Estado == true);
 
                 if (oProducto != null)
                 {
                     txtcodproducto.BackColor = Color.Honeydew;
                     txtidproducto.Text = oProducto.IdProducto.ToString();
                     txtproducto.Text = oProducto.Nombre;
+                    txtdescripcion.Text = oProducto.Descripcion;
                     txtpreciocompra.Select();
                 }
                 else
                 {
-                    txtcodproducto.BackColor = Color.MistyRose;
-                    txtidproducto.Text = "0";
-                    txtproducto.Text = "";
+                    var modal = new mdNuevoProductoDesdeCompra(txtcodproducto.Text);
+                    var result = modal.ShowDialog();
+
+                    if (result == DialogResult.OK)
+                    {
+                        Producto nuevo = modal.ProductoNuevo;
+                        txtcodproducto.BackColor = Color.Honeydew;
+                        txtidproducto.Text = nuevo.IdProducto.ToString();
+                        txtproducto.Text = nuevo.Nombre;
+                        txtdescripcion.Text = nuevo.Descripcion;
+                        txtpreciocompra.Select();
+                    }
+                    else
+                    {
+                        txtcodproducto.BackColor = Color.MistyRose;
+                        txtidproducto.Text = "0";
+                        txtproducto.Text = "";
+                    }
                 }
-
-
             }
         }
 
         private void dgvdata_CellPainting(object sender, DataGridViewCellPaintingEventArgs e)
         {
-            if (e.RowIndex < 0)
-                return;
+            if (e.RowIndex < 0) return;
 
-            if (e.ColumnIndex == 7)
+            // Usa el índice real de la columna por nombre
+            int colEliminar = dgvdata.Columns["btneliminar"].Index;
+
+            if (e.ColumnIndex == colEliminar)
             {
-
                 e.Paint(e.CellBounds, DataGridViewPaintParts.All);
 
                 var w = Properties.Resources.delete25.Width;
@@ -335,27 +370,46 @@ namespace CapaPresentacion
             }
 
             DataTable detalle_compra = new DataTable();
-
             detalle_compra.Columns.Add("IdProducto", typeof(int));
             detalle_compra.Columns.Add("PrecioCompra", typeof(decimal));
             detalle_compra.Columns.Add("PrecioVenta", typeof(decimal));
             detalle_compra.Columns.Add("Cantidad", typeof(decimal));
             detalle_compra.Columns.Add("MontoTotal", typeof(decimal));
+            detalle_compra.Columns.Add("DescuentoPorcentaje", typeof(decimal)); // NUEVO
+
+            decimal subtotal = 0;
 
             foreach (DataGridViewRow row in dgvdata.Rows)
             {
+                decimal precioCompra = Convert.ToDecimal(row.Cells["PrecioCompra"].Value);
+                decimal cantidad = Convert.ToDecimal(row.Cells["Cantidad"].Value);
+                decimal descuento = 0;
+                decimal.TryParse(row.Cells["DescuentoPorcentaje"].Value?.ToString(), out descuento);
+
+                decimal montoTotal = precioCompra * cantidad;
+
                 detalle_compra.Rows.Add(
-                    new object[] {
-                Convert.ToInt32(row.Cells["IdProducto"].Value.ToString()),
-                row.Cells["PrecioCompra"].Value.ToString(),
-                row.Cells["PrecioVenta"].Value.ToString(),
-               Convert.ToDecimal(row.Cells["Cantidad"].Value.ToString()),
-                row.Cells["SubTotal"].Value.ToString()
-                    });
+                    Convert.ToInt32(row.Cells["IdProducto"].Value),
+                    precioCompra,
+                    Convert.ToDecimal(row.Cells["PrecioVenta"].Value),
+                    cantidad,
+                    montoTotal,
+                    descuento
+                );
+
+                subtotal += montoTotal;
             }
 
             int idcorrelativo = new CN_Compra().ObtenerCorrelativo();
             string numerodocumento = string.Format("{0:00000}", idcorrelativo);
+
+            decimal impuesto = 0;
+            decimal.TryParse(txtimpuesto.Text, out impuesto);
+
+            decimal montoTotalFinal = subtotal;
+
+            if (impuesto > 0)
+                montoTotalFinal += impuesto;
 
             Compra oCompra = new Compra()
             {
@@ -364,10 +418,11 @@ namespace CapaPresentacion
                 TipoDocumento = ((OpcionCombo)cbotipodocumento.SelectedItem).Texto,
                 NumeroDocumento = numerodocumento,
                 NoFactura = txtnfactura.Text.ToString(),
-                MontoTotal = Convert.ToDecimal(txttotalpagar.Text),
+                MontoTotal = montoTotalFinal,
+                Impuesto = impuesto,
                 MetodoPago = cbocondicion.SelectedItem.ToString() == "Credito" ? "N/A" : cbometodopago.SelectedItem.ToString(),
                 Condicion = cbocondicion.SelectedItem.ToString(),
-                FechaVencimiento = cbocondicion.SelectedItem.ToString() == "Credito" ? dtpFechaVencimiento.Value.ToString("dd/MM/yyyy") : null // Convertir a string
+                FechaVencimiento = cbocondicion.SelectedItem.ToString() == "Credito" ? dtpFechaVencimiento.Value.ToString("dd/MM/yyyy") : null
             };
 
             string mensaje = string.Empty;
@@ -375,22 +430,12 @@ namespace CapaPresentacion
 
             if (respuesta)
             {
-                var result = MessageBox.Show("Numero de compra generada:\n" + numerodocumento + "\n\n¿Desea copiar al portapapeles?", "Mensaje", MessageBoxButtons.YesNo, MessageBoxIcon.Information);
+                var result = MessageBox.Show("Número de compra generada:\n" + numerodocumento + "\n\n¿Desea copiar al portapapeles?", "Mensaje", MessageBoxButtons.YesNo, MessageBoxIcon.Information);
 
                 if (result == DialogResult.Yes)
                     Clipboard.SetText(numerodocumento);
 
-                // Restablecer todos los controles a su estado inicial
-                txtidproveedor.Text = "0";
-                txtdocproveedor.Text = "";
-                txtnombreproveedor.Text = "";
-                txtnfactura.Text = "";
-                dgvdata.Rows.Clear();
-                calcularTotal();
-                cbometodopago.SelectedIndex = 0; // Restablecer el método de pago
-                cbocondicion.SelectedIndex = 0; // Restablecer la condición
-                dtpFechaVencimiento.Visible = false; // Ocultar el DateTimePicker
-                txtfecha.Text = DateTime.Now.ToString("dd/MM/yyyy"); // Restablecer la fecha
+                LimpiarFormulario();
             }
             else
             {
@@ -402,14 +447,180 @@ namespace CapaPresentacion
         {
             if (cbocondicion.SelectedItem.ToString() == "Credito")
             {
-                dtpFechaVencimiento.Visible = true; // Mostrar el DateTimePicker
-                cbometodopago.Enabled = false; // Deshabilitar el ComboBox de método de pago
-                cbometodopago.SelectedItem = "N/A"; // Establecer el método de pago a "N/A"
+                dtpFechaVencimiento.Visible = true; 
+                cbometodopago.Enabled = false; 
+                cbometodopago.SelectedItem = "N/A"; 
             }
             else
             {
-                dtpFechaVencimiento.Visible = false; // Ocultar el DateTimePicker
-                cbometodopago.Enabled = true; // Habilitar el ComboBox de método de pago
+                dtpFechaVencimiento.Visible = false; 
+                cbometodopago.Enabled = true; 
+            }
+        }
+
+        private void LimpiarFormulario()
+        {
+            txtidproveedor.Text = "0";
+            txtdocproveedor.Text = "";
+            txtnombreproveedor.Text = "";
+            txtnfactura.Text = "";
+            txtidproducto.Text = "0";
+            txtcodproducto.Text = "";
+            txtproducto.Text = "";
+            txtdescripcion.Text = "";
+            txtpreciocompra.Text = "";
+            txtprecioventa.Text = "";
+            txtcantidad.Value = 1;
+            txttotalpagar.Text = "0.00";
+            txtimpuesto.Text = "0.00";
+            dgvdata.Rows.Clear();
+            cbometodopago.SelectedIndex = 0;
+            cbocondicion.SelectedIndex = 0;
+            dtpFechaVencimiento.Visible = false;
+            txtfecha.Text = DateTime.Now.ToString("dd/MM/yyyy");
+            txtimpuesto.Text = "0.00";
+            ultimoImpuesto = 0;
+            ultimaRebaja = 0;
+            txtdescuento.Text = "0";
+            txtrebaja.Text = "0";
+        }
+
+        private void btnrefrescar_Click(object sender, EventArgs e)
+        {
+            LimpiarFormulario();
+        }
+
+        private void txtimpuesto_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyData == Keys.Enter)
+            {
+                decimal impuesto = 0;
+                if (decimal.TryParse(txtimpuesto.Text, out impuesto))
+                {
+   
+                    decimal totalActual = Convert.ToDecimal(txttotalpagar.Text);
+                    decimal nuevoTotal = totalActual - ultimoImpuesto + impuesto; 
+                    txttotalpagar.Text = nuevoTotal.ToString("0.00");
+                    ultimoImpuesto = impuesto; 
+                    txtimpuesto.Text = impuesto.ToString("0.00");
+                    txtimpuesto.Select();
+                }
+                else
+                {
+                    MessageBox.Show("Formato de impuesto incorrecto", "Mensaje", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                    txtimpuesto.Select();
+                }
+            }
+        }
+
+        private void txtimpuesto_Leave(object sender, EventArgs e)
+        {
+            decimal impuesto;
+            if (decimal.TryParse(txtimpuesto.Text, out impuesto))
+            {
+                txtimpuesto.Text = impuesto.ToString("0.00");
+            }
+            else
+            {
+                txtimpuesto.Text = "0.00"; 
+            }
+        }
+
+        private void frmCompras_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.F1)
+            {
+
+                btnregistrar.PerformClick();
+
+                e.Handled = true;
+            }
+        }
+
+        private void frmCompras_Activated(object sender, EventArgs e)
+        {
+            this.Focus();
+        }
+
+        private void frmCompras_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            TimeSpan diff = DateTime.Now - ultimaTecla;
+
+            if (diff.TotalMilliseconds > 500)
+                bufferCodigoScanner = "";
+
+            ultimaTecla = DateTime.Now;
+
+            if (e.KeyChar == (char)Keys.Enter)
+            {
+                string codigoEscaneado = bufferCodigoScanner.Trim();
+                bufferCodigoScanner = "";
+
+                if (!string.IsNullOrEmpty(codigoEscaneado))
+                {
+                    BuscarProductoPorCodigo(codigoEscaneado);
+                }
+            }
+            else
+            {
+                bufferCodigoScanner += e.KeyChar;
+            }
+        }
+        private void BuscarProductoPorCodigo(string codigo)
+        {
+            Producto oProducto = new CN_Producto().ObtenerPorCodigo(codigo);
+
+            if (oProducto != null)
+            {
+                txtidproducto.Text = oProducto.IdProducto.ToString(); // <-- ESTA ES LA QUE FALTABA
+                txtcodproducto.Text = oProducto.Codigo;
+                txtproducto.Text = oProducto.Nombre;
+                txtdescripcion.Text = oProducto.Descripcion;
+                txtcodproducto.BackColor = Color.Honeydew;
+                txtpreciocompra.Select(); // Para que sigas el flujo normal
+            }
+            else
+            {
+                txtidproducto.Text = "0"; // IMPORTANTE: poner en 0 si no se encontró
+                txtcodproducto.Text = codigo; // Muestra el código que se escaneó
+                txtproducto.Text = "";
+                txtdescripcion.Text = "";
+                txtcodproducto.BackColor = Color.MistyRose;
+            }
+        }
+
+        private void txtrebaja_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyData == Keys.Enter)
+            {
+                decimal rebaja = 0;
+                if (decimal.TryParse(txtrebaja.Text, out rebaja))
+                {
+                    decimal totalActual = Convert.ToDecimal(txttotalpagar.Text);
+                    decimal nuevoTotal = totalActual + ultimaRebaja - rebaja; // Se resta la nueva y se suma la anterior para ajustar correctamente
+                    txttotalpagar.Text = nuevoTotal.ToString("0.00");
+                    ultimaRebaja = rebaja;
+                    txtrebaja.Text = rebaja.ToString("0.00");
+                    txtrebaja.Select();
+                }
+                else
+                {
+                    MessageBox.Show("Formato de rebaja incorrecto", "Mensaje", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                    txtrebaja.Select();
+                }
+            }
+        }
+
+        private void txtrebaja_Leave(object sender, EventArgs e)
+        {
+            decimal rebaja;
+            if (decimal.TryParse(txtrebaja.Text, out rebaja))
+            {
+                txtrebaja.Text = rebaja.ToString("0.00");
+            }
+            else
+            {
+                txtrebaja.Text = "0.00";
             }
         }
     }

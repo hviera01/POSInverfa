@@ -27,7 +27,7 @@ namespace CapaPresentacion.Modales
             CargarHistorialAbonos();
             txtMontoAbono.Select();
 
-            // Inicializar el ComboBox de métodos de pago
+          
             if (!cmbMetodoPago.Items.Contains("Efectivo"))
             {
                 cmbMetodoPago.Items.Insert(0, "Efectivo");
@@ -35,16 +35,15 @@ namespace CapaPresentacion.Modales
 
             cmbMetodoPago.SelectedIndex = 0;
 
-            // Inicializar el ComboBox de aplicar interés
+           
             cmbAplicarInteres.Items.Add("Sí");
             cmbAplicarInteres.Items.Add("No");
-            cmbAplicarInteres.SelectedIndex = 1; // Por defecto "No"
+            cmbAplicarInteres.SelectedIndex = 1; 
 
             cmbInteresAplicadoA.Items.Add("Saldo Pendiente");
             cmbInteresAplicadoA.Items.Add("Monto Total");
             cmbInteresAplicadoA.SelectedIndex = 0;
 
-            // Suscribirse al evento de cambio de selección
             cmbAplicarInteres.SelectedIndexChanged += cmbAplicarInteres_SelectedIndexChanged;
             cmbAplicarInteres_SelectedIndexChanged(null, null);
 
@@ -69,25 +68,65 @@ namespace CapaPresentacion.Modales
         }
         public void SetFacturaData(string numeroDocumento, string nombreProveedor, decimal montoTotal, DateTime fechaVencimiento, decimal saldoPendiente, string estado)
         {
-            TxtNumeroDocumento.Text = numeroDocumento; // Aquí se muestra el NoFactura
+            TxtNumeroDocumento.Text = numeroDocumento; 
             TxtNombreCliente.Text = nombreProveedor;
             TxtMontoTotal.Text = montoTotal.ToString("0.00");
-            TxtFechaVencimiento.Text = fechaVencimiento.ToString("dd/MM/yyyy"); // Asegúrate de que el formato sea correcto
+            TxtFechaVencimiento.Text = fechaVencimiento.ToString("dd/MM/yyyy"); 
             TxtSaldoPendiente.Text = saldoPendiente.ToString("0.00");
             TxtEstado.Text = estado;
         }
 
         public void SetidCompra(int id)
         {
-            idCompra = id; // Almacena el ID de la venta
+            idCompra = id; 
         }
 
         private void btnregistrarabono_Click(object sender, EventArgs e)
         {
+            if (string.IsNullOrWhiteSpace(txtMontoAbono.Text))
+            {
+                MessageBox.Show("Por favor, ingrese un monto de abono.", "Campo Obligatorio", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                txtMontoAbono.Focus();
+                return;
+            }
+
+            if (string.IsNullOrWhiteSpace(TxtSaldoPendiente.Text))
+            {
+                MessageBox.Show("El saldo pendiente no puede estar vacío.", "Campo Obligatorio", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                txtMontoAbono.Focus();
+                return;
+            }
+
+            if (string.IsNullOrWhiteSpace(txtTotalAPagar.Text))
+            {
+                MessageBox.Show("Debe de presionar enter despues de poner el monto del abono.", "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                txtMontoAbono.Focus();
+                return;
+            }
+
+            if (cmbMetodoPago.SelectedItem == null)
+            {
+                MessageBox.Show("Por favor, seleccione un método de pago.", "Campo Obligatorio", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                cmbMetodoPago.Focus();
+                return;
+            }
+
+
+            if (string.IsNullOrWhiteSpace(txtMontoAbono.Text))
+            {
+                MessageBox.Show("Por favor, ingrese un monto de abono.", "Campo Obligatorio", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+            if (TxtEstado.Text == "Liquidada")
+            {
+                MessageBox.Show("No se puede registrar un abono en una factura liquidada.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+
             decimal saldoPendiente = Convert.ToDecimal(TxtSaldoPendiente.Text);
             decimal montoAbono = Convert.ToDecimal(txtMontoAbono.Text);
 
-            // Validar que el monto del abono no sea mayor que el saldo pendiente
+           
             if (montoAbono > saldoPendiente)
             {
                 MessageBox.Show("El monto del abono no puede ser mayor que el saldo pendiente.");
@@ -96,11 +135,14 @@ namespace CapaPresentacion.Modales
             if (TxtEstado.Text == "Liquidada")
             {
                 MessageBox.Show("No se puede registrar un abono en una factura liquidada.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                return; // Salir del método si la factura está liquidada
+                return; 
             }
 
+            if (string.IsNullOrWhiteSpace(txtrecibo.Text))
+            {
+                txtrecibo.Text = "N/A";
+            }
 
-            // Calcular el interés si se aplica
             decimal interes = 0;
             if (cmbAplicarInteres.SelectedItem.ToString() == "Sí")
             {
@@ -108,7 +150,7 @@ namespace CapaPresentacion.Modales
                 if (!decimal.TryParse(txtPorcentajeInteres.Text, out porcentajeInteres))
                 {
                     MessageBox.Show("Ingrese un porcentaje de interés válido.");
-                    return; // Salir del método si la conversión falla
+                    return; 
                 }
 
                 if (cmbInteresAplicadoA.SelectedItem.ToString() == "Saldo Pendiente")
@@ -122,27 +164,28 @@ namespace CapaPresentacion.Modales
                 }
             }
 
-            // Calcular el nuevo saldo pendiente después de aplicar el abono y el interés
+           
             decimal nuevoSaldoPendiente = saldoPendiente - montoAbono + interes;
 
-            // Crear el nuevo abono
+
             AbonoCompra nuevoAbono = new AbonoCompra
             {
                 IdCompra = idCompra,
                 MontoAbono = montoAbono,
                 FechaAbono = DateTime.Now,
                 NuevoSaldoPendiente = nuevoSaldoPendiente,
-                InteresAplicado = interes, // Guardar el interés aplicado
-                MetodoPago = cmbMetodoPago.SelectedItem.ToString()
-            };
+                InteresAplicado = interes,
+                MetodoPago = cmbMetodoPago.SelectedItem.ToString(),
+                NoRecibo = txtrecibo.Text
+            }; 
 
-            // Guardar el abono en la base de datos
+            
             string mensaje;
             bool resultado = new CN_AbonoCompra().Registrar(nuevoAbono, out mensaje);
 
             if (resultado)
             {
-                // Actualizar el saldo pendiente en la tabla de compras
+                
                 bool saldoActualizado = new CN_Compra().ActualizarSaldoPendiente(idCompra, nuevoSaldoPendiente, out mensaje);
 
                 if (saldoActualizado)
@@ -152,9 +195,9 @@ namespace CapaPresentacion.Modales
                     LimpiarCampos();
                     txtMontoAbono.Select();
 
-                    // Actualizar el saldo pendiente en el campo del modal
+                   
                     TxtSaldoPendiente.Text = nuevoSaldoPendiente.ToString("0.00");
-                    (this.Owner as FrmComprasCredito)?.ActualizarDataGrid();
+                    (this.Owner as FrmComprasCredito)?.RefrescarFormulario();
                 }
                 else
                 {
@@ -168,13 +211,14 @@ namespace CapaPresentacion.Modales
         }
         private void LimpiarCampos()
         {
-            txtMontoAbono.Text = string.Empty; // Limpiar el campo de monto de abono
-            txtNuevoSaldoPendiente.Text = string.Empty; // Limpiar el campo de nuevo saldo pendiente
-            txtInteresAplicado.Text = "0.00"; // Restablecer interés a 0
-            txtTotalAPagar.Text = string.Empty; // Limpiar el campo de total a pagar
-            cmbMetodoPago.SelectedIndex = 0; // Restablecer el método de pago a "Efectivo"
-            txtMontoAbono.Select(); // Volver a seleccionar el campo de monto de abono
+            txtMontoAbono.Text = string.Empty; 
+            txtNuevoSaldoPendiente.Text = string.Empty; 
+            txtInteresAplicado.Text = "0.00";
+            txtTotalAPagar.Text = string.Empty; 
+            cmbMetodoPago.SelectedIndex = 0; 
+            txtMontoAbono.Select(); 
             txtPorcentajeInteres.Text = "";
+            txtrecibo.Text = "";
         }
 
         private void txtMontoAbono_KeyDown(object sender, KeyEventArgs e)
@@ -187,7 +231,7 @@ namespace CapaPresentacion.Modales
                     decimal saldoPendiente = Convert.ToDecimal(TxtSaldoPendiente.Text);
                     decimal nuevoSaldoPendiente = saldoPendiente - montoAbono;
 
-                    // Calcular el interés si se aplica
+                   
                     if (cmbAplicarInteres.SelectedItem.ToString() == "Sí")
                     {
                         decimal porcentajeInteres;
@@ -205,8 +249,8 @@ namespace CapaPresentacion.Modales
                                 interes = (montoTotal * porcentajeInteres) / 100;
                             }
 
-                            nuevoSaldoPendiente += interes; // Sumar el interés al nuevo saldo
-                            txtInteresAplicado.Text = interes.ToString("0.00"); // Mostrar el interés aplicado
+                            nuevoSaldoPendiente += interes;
+                            txtInteresAplicado.Text = interes.ToString("0.00"); 
                         }
                     }
 
@@ -236,11 +280,12 @@ namespace CapaPresentacion.Modales
                 foreach (var abono in historialAbonos)
                 {
                     dgvHistorial.Rows.Add(
-                        abono.FechaAbono.ToString("dd/MM/yyyy"), // Asegúrate de que el formato sea correcto
+                        abono.FechaAbono.ToString("dd/MM/yyyy"), 
                         abono.MontoAbono.ToString("0.00"),
                         abono.NuevoSaldoPendiente.ToString("0.00"),
                         abono.InteresAplicado.ToString("0.00"),
                         abono.MetodoPago ?? "No especificado"
+                        , abono.NoRecibo ?? "N/A"
                     );
                 }
             }
@@ -259,10 +304,10 @@ namespace CapaPresentacion.Modales
         {
             if (!char.IsDigit(e.KeyChar) && e.KeyChar != '.' && e.KeyChar != (char)Keys.Back)
             {
-                e.Handled = true; // Bloquea caracteres no permitidos
+                e.Handled = true; 
             }
 
-            // Solo permitir un punto decimal
+           
             if (e.KeyChar == '.' && txtMontoAbono.Text.Contains("."))
             {
                 e.Handled = true;

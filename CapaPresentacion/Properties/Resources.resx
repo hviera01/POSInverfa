@@ -118,43 +118,94 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
-  <data name="anydo_104098" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\anydo_104098.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="delete25" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\delete25.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
   <data name="iconfinder_trash_4341321_120557" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\iconfinder-trash-4341321_120557.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="loading" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\loading.gif;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="Imagen_de_WhatsApp_2025_05_10_a_las_12_26_15_ba29d3e1_modified" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Imagen de WhatsApp 2025-05-10 a las 12.26.15_ba29d3e1-modified.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="PlantillaCompra" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\PlantillaCompra.html;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
-  </data>
-  <data name="PlantillaCompraCedito" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\PlantillaCompraCedito.html;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
-  </data>
-  <data name="PlantillaCotizacion" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\PlantillaCotizacion.html;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
-  </data>
-  <data name="PlantillaPedido" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\PlantillaPedido.html;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
-  </data>
-  <data name="PlantillaVenta" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\PlantillaVenta.html;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
-  </data>
-  <data name="PlantillaVentaCredito" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\PlantillaVentaCredito.html;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
-  </data>
-  <data name="PlantillaVentaTarjeta" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\PlantillaVentaTarjeta.html;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  <data name="Plantilla_CierreCajaFiltrado" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Plantilla_CierreCajaFiltrado.html;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;Windows-1252</value>
   </data>
   <data name="PlantillaVentaTransferencia" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\PlantillaVentaTransferencia.html;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
   </data>
-  <data name="_304908626_495760195887043_1293945670494512987_n_removebg_preview_removebg_preview" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\304908626_495760195887043_1293945670494512987_n-removebg-preview-removebg-preview.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="PlantillaCompra" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\PlantillaCompra.html;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
+  <data name="PlantillaEgresos" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\PlantillaEgresos.html;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
+  <data name="fbIcono" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\fbIcono.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="PlantillaUtilidadBruta" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\PlantillaUtilidadBruta.html;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
+  <data name="anydo_104098" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\anydo_104098.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="PlantillaUtilidadNeta" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\PlantillaUtilidadNeta.html;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
+  <data name="PlantillaCompraCedito" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\PlantillaCompraCedito.html;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
+  <data name="PlantillaVenta" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\PlantillaVenta.html;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
+  <data name="PlantillaCotizacionExonerada" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\PlantillaCotizacionExonerada.html;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
+  <data name="PlantillaVentaTarjeta" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\PlantillaVentaTarjeta.html;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
+  <data name="Plantilla_GananciaPorducto" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Plantilla_GananciaPorducto.html;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;Windows-1252</value>
+  </data>
+  <data name="Plantilla_CierreCaja" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Plantilla_CierreCaja.html;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;Windows-1252</value>
+  </data>
+  <data name="image_modified" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\image-modified.ico;System.Drawing.Icon, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="logoInverfa-removebg-preview1" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\logoInverfa-removebg-preview1.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="logoInverfa-modified" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\logoInverfa-modified.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="wtIcono" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\wtIcono.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="delete25" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\delete25.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Imagen_de_WhatsApp_2025_08_07_a_las_10_53_01_fb5c47bf_removebg_preview" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Imagen_de_WhatsApp_2025-08-07_a_las_10.53.01_fb5c47bf-removebg-preview.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="igIcono" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\igIcono.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="ttIcono" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\ttIcono.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="logoInverfa-removebg-preview" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\logoInverfa-removebg-preview.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="PlantillaPedido" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\PlantillaPedido.html;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
+  <data name="PlantillaVentaCredito" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\PlantillaVentaCredito.html;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
+  <data name="PlantillaCotizacion" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\PlantillaCotizacion.html;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
+  <data name="Plantilla_InformeCompleto" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Plantilla_InformeCompleto.html;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
+  <data name="logoInverfa-removebg-preview2" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\logoInverfa-removebg-preview2.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
 </root>

@@ -28,8 +28,8 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             this.txtTotalAPagar = new System.Windows.Forms.TextBox();
             this.label7 = new System.Windows.Forms.Label();
             this.BtnCancelar = new FontAwesome.Sharp.IconButton();
@@ -38,7 +38,6 @@
             this.txtNuevoSaldoPendiente = new System.Windows.Forms.TextBox();
             this.txtMontoAbono = new System.Windows.Forms.TextBox();
             this.label8 = new System.Windows.Forms.Label();
-            this.MetodoPago = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.label13 = new System.Windows.Forms.Label();
             this.cmbMetodoPago = new System.Windows.Forms.ComboBox();
             this.txtInteresAplicado = new System.Windows.Forms.TextBox();
@@ -46,12 +45,22 @@
             this.label11 = new System.Windows.Forms.Label();
             this.label12 = new System.Windows.Forms.Label();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
-            this.InteresAplicado = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.SaldoRestante = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.txtrecibo = new System.Windows.Forms.TextBox();
+            this.label17 = new System.Windows.Forms.Label();
+            this.txtPorcentajeInteres = new System.Windows.Forms.TextBox();
+            this.cmbInteresAplicadoA = new System.Windows.Forms.ComboBox();
+            this.label16 = new System.Windows.Forms.Label();
+            this.label15 = new System.Windows.Forms.Label();
+            this.cmbAplicarInteres = new System.Windows.Forms.ComboBox();
+            this.label14 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.dgvHistorial = new System.Windows.Forms.DataGridView();
             this.FechaAbono = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.MontoAbonado = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.SaldoRestante = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.InteresAplicado = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.MetodoPago = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.NoRecibo = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.label6 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
@@ -65,12 +74,6 @@
             this.TxtNombreCliente = new System.Windows.Forms.TextBox();
             this.TxtNumeroDocumento = new System.Windows.Forms.TextBox();
             this.label10 = new System.Windows.Forms.Label();
-            this.label14 = new System.Windows.Forms.Label();
-            this.cmbAplicarInteres = new System.Windows.Forms.ComboBox();
-            this.label15 = new System.Windows.Forms.Label();
-            this.cmbInteresAplicadoA = new System.Windows.Forms.ComboBox();
-            this.label16 = new System.Windows.Forms.Label();
-            this.txtPorcentajeInteres = new System.Windows.Forms.TextBox();
             this.groupBox2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvHistorial)).BeginInit();
             this.groupBox1.SuspendLayout();
@@ -147,7 +150,7 @@
             // 
             // txtNuevoSaldoPendiente
             // 
-            this.txtNuevoSaldoPendiente.Location = new System.Drawing.Point(665, 23);
+            this.txtNuevoSaldoPendiente.Location = new System.Drawing.Point(632, 99);
             this.txtNuevoSaldoPendiente.Name = "txtNuevoSaldoPendiente";
             this.txtNuevoSaldoPendiente.ReadOnly = true;
             this.txtNuevoSaldoPendiente.Size = new System.Drawing.Size(113, 20);
@@ -170,12 +173,6 @@
             this.label8.Size = new System.Drawing.Size(88, 13);
             this.label8.TabIndex = 0;
             this.label8.Text = "Monto de abono:";
-            // 
-            // MetodoPago
-            // 
-            this.MetodoPago.HeaderText = "Metodo de pago";
-            this.MetodoPago.Name = "MetodoPago";
-            this.MetodoPago.ReadOnly = true;
             // 
             // label13
             // 
@@ -228,7 +225,7 @@
             // label12
             // 
             this.label12.AutoSize = true;
-            this.label12.Location = new System.Drawing.Point(543, 26);
+            this.label12.Location = new System.Drawing.Point(510, 102);
             this.label12.Name = "label12";
             this.label12.Size = new System.Drawing.Size(120, 13);
             this.label12.TabIndex = 2;
@@ -236,6 +233,8 @@
             // 
             // groupBox2
             // 
+            this.groupBox2.Controls.Add(this.txtrecibo);
+            this.groupBox2.Controls.Add(this.label17);
             this.groupBox2.Controls.Add(this.txtPorcentajeInteres);
             this.groupBox2.Controls.Add(this.cmbInteresAplicadoA);
             this.groupBox2.Controls.Add(this.label16);
@@ -256,26 +255,81 @@
             this.groupBox2.Controls.Add(this.label8);
             this.groupBox2.Controls.Add(this.label11);
             this.groupBox2.Controls.Add(this.label12);
-            this.groupBox2.Location = new System.Drawing.Point(35, 144);
+            this.groupBox2.Location = new System.Drawing.Point(122, 144);
             this.groupBox2.Name = "groupBox2";
             this.groupBox2.Size = new System.Drawing.Size(787, 165);
             this.groupBox2.TabIndex = 70;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "INFORMACION DEL ABONO:";
             // 
-            // InteresAplicado
+            // txtrecibo
             // 
-            this.InteresAplicado.HeaderText = "Interes aplicado";
-            this.InteresAplicado.Name = "InteresAplicado";
-            this.InteresAplicado.ReadOnly = true;
-            this.InteresAplicado.Width = 180;
+            this.txtrecibo.Location = new System.Drawing.Point(571, 21);
+            this.txtrecibo.Name = "txtrecibo";
+            this.txtrecibo.Size = new System.Drawing.Size(136, 20);
+            this.txtrecibo.TabIndex = 136;
             // 
-            // SaldoRestante
+            // label17
             // 
-            this.SaldoRestante.HeaderText = "Saldo Restante";
-            this.SaldoRestante.Name = "SaldoRestante";
-            this.SaldoRestante.ReadOnly = true;
-            this.SaldoRestante.Width = 180;
+            this.label17.AutoSize = true;
+            this.label17.Location = new System.Drawing.Point(500, 24);
+            this.label17.Name = "label17";
+            this.label17.Size = new System.Drawing.Size(71, 13);
+            this.label17.TabIndex = 135;
+            this.label17.Text = "No de recibo:";
+            // 
+            // txtPorcentajeInteres
+            // 
+            this.txtPorcentajeInteres.Location = new System.Drawing.Point(250, 67);
+            this.txtPorcentajeInteres.Name = "txtPorcentajeInteres";
+            this.txtPorcentajeInteres.Size = new System.Drawing.Size(52, 20);
+            this.txtPorcentajeInteres.TabIndex = 134;
+            // 
+            // cmbInteresAplicadoA
+            // 
+            this.cmbInteresAplicadoA.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cmbInteresAplicadoA.FormattingEnabled = true;
+            this.cmbInteresAplicadoA.Location = new System.Drawing.Point(409, 67);
+            this.cmbInteresAplicadoA.Name = "cmbInteresAplicadoA";
+            this.cmbInteresAplicadoA.Size = new System.Drawing.Size(116, 21);
+            this.cmbInteresAplicadoA.TabIndex = 133;
+            // 
+            // label16
+            // 
+            this.label16.AutoSize = true;
+            this.label16.Location = new System.Drawing.Point(315, 72);
+            this.label16.Name = "label16";
+            this.label16.Size = new System.Drawing.Size(94, 13);
+            this.label16.TabIndex = 132;
+            this.label16.Text = "Interes aplicado a:";
+            // 
+            // label15
+            // 
+            this.label15.AutoSize = true;
+            this.label15.Location = new System.Drawing.Point(137, 72);
+            this.label15.Name = "label15";
+            this.label15.Size = new System.Drawing.Size(110, 13);
+            this.label15.TabIndex = 130;
+            this.label15.Text = "Porcentaje de interes:";
+            // 
+            // cmbAplicarInteres
+            // 
+            this.cmbAplicarInteres.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cmbAplicarInteres.FormattingEnabled = true;
+            this.cmbAplicarInteres.Location = new System.Drawing.Point(81, 67);
+            this.cmbAplicarInteres.Name = "cmbAplicarInteres";
+            this.cmbAplicarInteres.Size = new System.Drawing.Size(47, 21);
+            this.cmbAplicarInteres.TabIndex = 129;
+            this.cmbAplicarInteres.SelectedIndexChanged += new System.EventHandler(this.cmbAplicarInteres_SelectedIndexChanged);
+            // 
+            // label14
+            // 
+            this.label14.AutoSize = true;
+            this.label14.Location = new System.Drawing.Point(6, 70);
+            this.label14.Name = "label14";
+            this.label14.Size = new System.Drawing.Size(74, 13);
+            this.label14.TabIndex = 128;
+            this.label14.Text = "Aplicar Interes";
             // 
             // label1
             // 
@@ -290,32 +344,33 @@
             // 
             this.dgvHistorial.AllowUserToAddRows = false;
             this.dgvHistorial.BackgroundColor = System.Drawing.Color.White;
-            dataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle7.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle7.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle7.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle7.Padding = new System.Windows.Forms.Padding(2);
-            dataGridViewCellStyle7.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle7.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle7.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvHistorial.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle7;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle1.Padding = new System.Windows.Forms.Padding(2);
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvHistorial.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             this.dgvHistorial.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvHistorial.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.FechaAbono,
             this.MontoAbonado,
             this.SaldoRestante,
             this.InteresAplicado,
-            this.MetodoPago});
+            this.MetodoPago,
+            this.NoRecibo});
             this.dgvHistorial.Location = new System.Drawing.Point(8, 315);
             this.dgvHistorial.MultiSelect = false;
             this.dgvHistorial.Name = "dgvHistorial";
             this.dgvHistorial.ReadOnly = true;
-            dataGridViewCellStyle8.SelectionBackColor = System.Drawing.SystemColors.ActiveCaption;
-            dataGridViewCellStyle8.SelectionForeColor = System.Drawing.Color.Black;
-            this.dgvHistorial.RowsDefaultCellStyle = dataGridViewCellStyle8;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.ActiveCaption;
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.Color.Black;
+            this.dgvHistorial.RowsDefaultCellStyle = dataGridViewCellStyle2;
             this.dgvHistorial.RowTemplate.Height = 28;
             this.dgvHistorial.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvHistorial.Size = new System.Drawing.Size(857, 329);
+            this.dgvHistorial.Size = new System.Drawing.Size(1017, 329);
             this.dgvHistorial.TabIndex = 69;
             // 
             // FechaAbono
@@ -331,6 +386,33 @@
             this.MontoAbonado.Name = "MontoAbonado";
             this.MontoAbonado.ReadOnly = true;
             this.MontoAbonado.Width = 180;
+            // 
+            // SaldoRestante
+            // 
+            this.SaldoRestante.HeaderText = "Saldo Restante";
+            this.SaldoRestante.Name = "SaldoRestante";
+            this.SaldoRestante.ReadOnly = true;
+            this.SaldoRestante.Width = 180;
+            // 
+            // InteresAplicado
+            // 
+            this.InteresAplicado.HeaderText = "Interes aplicado";
+            this.InteresAplicado.Name = "InteresAplicado";
+            this.InteresAplicado.ReadOnly = true;
+            this.InteresAplicado.Width = 180;
+            // 
+            // MetodoPago
+            // 
+            this.MetodoPago.HeaderText = "Metodo de pago";
+            this.MetodoPago.Name = "MetodoPago";
+            this.MetodoPago.ReadOnly = true;
+            // 
+            // NoRecibo
+            // 
+            this.NoRecibo.HeaderText = "No de recibo";
+            this.NoRecibo.Name = "NoRecibo";
+            this.NoRecibo.ReadOnly = true;
+            this.NoRecibo.Width = 155;
             // 
             // label6
             // 
@@ -391,7 +473,7 @@
             this.groupBox1.Controls.Add(this.label5);
             this.groupBox1.Controls.Add(this.label3);
             this.groupBox1.Controls.Add(this.label4);
-            this.groupBox1.Location = new System.Drawing.Point(35, 55);
+            this.groupBox1.Location = new System.Drawing.Point(126, 55);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Size = new System.Drawing.Size(787, 83);
             this.groupBox1.TabIndex = 68;
@@ -454,73 +536,21 @@
             this.label10.Location = new System.Drawing.Point(2, 1);
             this.label10.Name = "label10";
             this.label10.Padding = new System.Windows.Forms.Padding(3, 6, 0, 0);
-            this.label10.Size = new System.Drawing.Size(916, 47);
+            this.label10.Size = new System.Drawing.Size(1045, 47);
             this.label10.TabIndex = 67;
             this.label10.Text = "ABONOS DE FACTURAS DE COMPRA A CREDITO";
-            // 
-            // label14
-            // 
-            this.label14.AutoSize = true;
-            this.label14.Location = new System.Drawing.Point(6, 70);
-            this.label14.Name = "label14";
-            this.label14.Size = new System.Drawing.Size(74, 13);
-            this.label14.TabIndex = 128;
-            this.label14.Text = "Aplicar Interes";
-            // 
-            // cmbAplicarInteres
-            // 
-            this.cmbAplicarInteres.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cmbAplicarInteres.FormattingEnabled = true;
-            this.cmbAplicarInteres.Location = new System.Drawing.Point(81, 67);
-            this.cmbAplicarInteres.Name = "cmbAplicarInteres";
-            this.cmbAplicarInteres.Size = new System.Drawing.Size(47, 21);
-            this.cmbAplicarInteres.TabIndex = 129;
-            this.cmbAplicarInteres.SelectedIndexChanged += new System.EventHandler(this.cmbAplicarInteres_SelectedIndexChanged);
-            // 
-            // label15
-            // 
-            this.label15.AutoSize = true;
-            this.label15.Location = new System.Drawing.Point(137, 72);
-            this.label15.Name = "label15";
-            this.label15.Size = new System.Drawing.Size(110, 13);
-            this.label15.TabIndex = 130;
-            this.label15.Text = "Porcentaje de interes:";
-            // 
-            // cmbInteresAplicadoA
-            // 
-            this.cmbInteresAplicadoA.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cmbInteresAplicadoA.FormattingEnabled = true;
-            this.cmbInteresAplicadoA.Location = new System.Drawing.Point(409, 67);
-            this.cmbInteresAplicadoA.Name = "cmbInteresAplicadoA";
-            this.cmbInteresAplicadoA.Size = new System.Drawing.Size(116, 21);
-            this.cmbInteresAplicadoA.TabIndex = 133;
-            // 
-            // label16
-            // 
-            this.label16.AutoSize = true;
-            this.label16.Location = new System.Drawing.Point(315, 72);
-            this.label16.Name = "label16";
-            this.label16.Size = new System.Drawing.Size(94, 13);
-            this.label16.TabIndex = 132;
-            this.label16.Text = "Interes aplicado a:";
-            // 
-            // txtPorcentajeInteres
-            // 
-            this.txtPorcentajeInteres.Location = new System.Drawing.Point(250, 67);
-            this.txtPorcentajeInteres.Name = "txtPorcentajeInteres";
-            this.txtPorcentajeInteres.Size = new System.Drawing.Size(52, 20);
-            this.txtPorcentajeInteres.TabIndex = 134;
             // 
             // MdAbonosCompra
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(875, 658);
+            this.ClientSize = new System.Drawing.Size(1037, 658);
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.dgvHistorial);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.label10);
             this.Name = "MdAbonosCompra";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Abonos Compras Credito";
             this.Load += new System.EventHandler(this.MdAbonosCompra_Load);
             this.groupBox2.ResumeLayout(false);
@@ -542,7 +572,6 @@
         private System.Windows.Forms.TextBox txtNuevoSaldoPendiente;
         private System.Windows.Forms.TextBox txtMontoAbono;
         private System.Windows.Forms.Label label8;
-        private System.Windows.Forms.DataGridViewTextBoxColumn MetodoPago;
         private System.Windows.Forms.Label label13;
         private System.Windows.Forms.ComboBox cmbMetodoPago;
         private System.Windows.Forms.TextBox txtInteresAplicado;
@@ -550,12 +579,8 @@
         private System.Windows.Forms.Label label11;
         private System.Windows.Forms.Label label12;
         private System.Windows.Forms.GroupBox groupBox2;
-        private System.Windows.Forms.DataGridViewTextBoxColumn InteresAplicado;
-        private System.Windows.Forms.DataGridViewTextBoxColumn SaldoRestante;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.DataGridView dgvHistorial;
-        private System.Windows.Forms.DataGridViewTextBoxColumn FechaAbono;
-        private System.Windows.Forms.DataGridViewTextBoxColumn MontoAbonado;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label5;
@@ -575,5 +600,13 @@
         private System.Windows.Forms.Label label16;
         private System.Windows.Forms.Label label15;
         private System.Windows.Forms.ComboBox cmbAplicarInteres;
+        private System.Windows.Forms.TextBox txtrecibo;
+        private System.Windows.Forms.Label label17;
+        private System.Windows.Forms.DataGridViewTextBoxColumn FechaAbono;
+        private System.Windows.Forms.DataGridViewTextBoxColumn MontoAbonado;
+        private System.Windows.Forms.DataGridViewTextBoxColumn SaldoRestante;
+        private System.Windows.Forms.DataGridViewTextBoxColumn InteresAplicado;
+        private System.Windows.Forms.DataGridViewTextBoxColumn MetodoPago;
+        private System.Windows.Forms.DataGridViewTextBoxColumn NoRecibo;
     }
 }

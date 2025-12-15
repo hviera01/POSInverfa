@@ -15,5 +15,6 @@ namespace CapaEntidad
         public decimal Cantidad { get; set; }
         public decimal MontoTotal { get; set; }
         public string FechaRegistro { get; set; }
+        public decimal DescuentoPorcentaje { get; set; }
     }
 }

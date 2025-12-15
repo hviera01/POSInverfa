@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <style>
+        @page {
+            size: A4 landscape;
+            margin: 18mm 14mm 18mm 14mm;
+        }
+
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+            color: #222;
+            font-size: 11px;
+        }
+
+        .header {
+            display: grid;
+            grid-template-columns: 1fr auto;
+            gap: 10px;
+            align-items: center;
+            border-bottom: 2px solid #4a6fa5;
+            padding-bottom: 6px;
+            margin-bottom: 10px;
+        }
+
+        .brand {
+            font-size: 18px;
+            font-weight: bold;
+            color: #2f4f77;
+        }
+
+        .meta {
+            text-align: right;
+        }
+
+            .meta div {
+                margin: 2px 0;
+            }
+
+        .pill {
+            display: inline-block;
+            padding: 2px 8px;
+            border-radius: 999px;
+            background: #eef3fb;
+            color: #2f4f77;
+            font-weight: bold;
+            border: 1px solid #d6e2f3;
+            margin-left: 6px;
+        }
+
+        .filters, .totals {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 8px 0 14px;
+        }
+
+            .filters td, .totals td {
+                padding: 6px 8px;
+                vertical-align: top;
+            }
+
+            .filters .k {
+                color: #666;
+                width: 120px;
+                font-weight: bold;
+            }
+
+        .totals {
+            border: 1px solid #dbe6f3;
+            background: #f8fbff;
+            border-radius: 4px;
+        }
+
+            .totals .ttl {
+                font-weight: bold;
+                color: #2f4f77;
+                text-align: right;
+                width: 70%;
+            }
+
+            .totals .val {
+                text-align: right;
+                font-weight: bold;
+            }
+
+        .table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+            .table thead th {
+                background: #f1f5fb;
+                color: #34495e;
+                padding: 6px;
+                border-bottom: 1px solid #dbe6f3;
+                text-align: left;
+            }
+
+            .table tbody td {
+                padding: 6px;
+                border-bottom: 1px solid #eee;
+            }
+
+            .table tbody tr:nth-child(even) {
+                background: #fafbfe;
+            }
+
+        .right {
+            text-align: right;
+        }
+
+        .center {
+            text-align: center;
+        }
+
+        .footer {
+            margin-top: 10px;
+            font-size: 10px;
+            color: #666;
+            text-align: right;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="header">
+        <div class="brand">Libro Financiero</div>
+        <div class="meta">
+            <div>Generado por: <span class="pill">@usuario</span></div>
+            <div>Fecha: <span class="pill">@fecha</span></div>
+            <div>Rango: <span class="pill">@fechainicio - @fechafin</span></div>
+        </div>
+    </div>
+
+    <table class="filters">
+        <tr>
+            <td class="k">Vista</td>
+            <td>@vista</td>
+            <td class="k">Tipo</td>
+            <td>@filtrotipo</td>
+            <td class="k">Método</td>
+            <td>@filtrometodo</td>
+        </tr>
+        <tr>
+            <td class="k">Categoría</td>
+            <td>@filtrocategoria</td>
+            <td class="k">Estado</td>
+            <td>@filtropagado</td>
+            <td class="k">Descripción</td>
+            <td>@filtrodesc</td>
+        </tr>
+    </table>
+
+    <!-- DESGLOSE DE TOTALES -->
+    <table class="totals">
+        <tr>
+            <td class="ttl">Total Ingresos</td>
+            <td class="val">L. @totalingresos</td>
+        </tr>
+        <tr>
+            <td class="ttl">A Proveedores (Compras contado + Abonos compra crédito)</td>
+            <td class="val">L. @totalproveedores</td>
+        </tr>
+        <tr>
+            <td class="ttl">Gastos Operativos (Negocio)</td>
+            <td class="val">L. @gastosnegocio</td>
+        </tr>
+        <tr>
+            <td class="ttl">Gastos Casa</td>
+            <td class="val">L. @gastoscasa</td>
+        </tr>
+        <tr>
+            <td class="ttl">Utilidad / Diferencia</td>
+            <td class="val">L. @utilidad</td>
+        </tr>
+    </table>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th class="center" style="width:30px;">#</th>
+                <th style="width:120px;">Fecha</th>
+                <th style="width:120px;">Movimiento</th>
+                <th>Descripción</th>
+                <th class="right" style="width:80px;">Ingreso</th>
+                <th class="right" style="width:80px;">Egreso</th>
+                <th style="width:90px;">Método</th>
+                <th style="width:80px;">Categoría</th>
+                <th style="width:80px;">Estado</th>
+                <th style="width:120px;">Fecha Pago</th>
+                <th style="width:120px;">Usuario</th>
+            </tr>
+        </thead>
+        <tbody>
+            @filas
+        </tbody>
+    </table>
+
+    <div class="footer">Total registros: @totalregistros</div>
+</body>
+</html>

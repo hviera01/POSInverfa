@@ -52,7 +52,7 @@
             this.txtsaldopendiente.Location = new System.Drawing.Point(477, 95);
             this.txtsaldopendiente.Name = "txtsaldopendiente";
             this.txtsaldopendiente.Size = new System.Drawing.Size(125, 20);
-            this.txtsaldopendiente.TabIndex = 7;
+            this.txtsaldopendiente.TabIndex = 14;
             this.txtsaldopendiente.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtsaldopendiente_KeyPress);
             // 
             // txtmontototal
@@ -60,7 +60,7 @@
             this.txtmontototal.Location = new System.Drawing.Point(474, 55);
             this.txtmontototal.Name = "txtmontototal";
             this.txtmontototal.Size = new System.Drawing.Size(125, 20);
-            this.txtmontototal.TabIndex = 8;
+            this.txtmontototal.TabIndex = 13;
             this.txtmontototal.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtmontototal_KeyPress);
             // 
             // txtrtnproveedor
@@ -156,7 +156,7 @@
             this.btnregistrarcredito.Location = new System.Drawing.Point(292, 212);
             this.btnregistrarcredito.Name = "btnregistrarcredito";
             this.btnregistrarcredito.Size = new System.Drawing.Size(143, 52);
-            this.btnregistrarcredito.TabIndex = 121;
+            this.btnregistrarcredito.TabIndex = 16;
             this.btnregistrarcredito.Text = "Registrar Credito";
             this.btnregistrarcredito.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.btnregistrarcredito.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
@@ -177,7 +177,7 @@
             this.BtnCancelar.Location = new System.Drawing.Point(477, 212);
             this.BtnCancelar.Name = "BtnCancelar";
             this.BtnCancelar.Size = new System.Drawing.Size(143, 52);
-            this.BtnCancelar.TabIndex = 122;
+            this.BtnCancelar.TabIndex = 17;
             this.BtnCancelar.Text = "Cancelar";
             this.BtnCancelar.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.BtnCancelar.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
@@ -200,7 +200,7 @@
             this.dtpfechavencimiento.Location = new System.Drawing.Point(501, 138);
             this.dtpfechavencimiento.Name = "dtpfechavencimiento";
             this.dtpfechavencimiento.Size = new System.Drawing.Size(101, 20);
-            this.dtpfechavencimiento.TabIndex = 124;
+            this.dtpfechavencimiento.TabIndex = 15;
             this.dtpfechavencimiento.Value = new System.DateTime(2025, 3, 7, 16, 25, 45, 0);
             // 
             // btnbuscarproveedor
@@ -217,7 +217,7 @@
             this.btnbuscarproveedor.Location = new System.Drawing.Point(292, 74);
             this.btnbuscarproveedor.Name = "btnbuscarproveedor";
             this.btnbuscarproveedor.Size = new System.Drawing.Size(36, 20);
-            this.btnbuscarproveedor.TabIndex = 125;
+            this.btnbuscarproveedor.TabIndex = 12;
             this.btnbuscarproveedor.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.btnbuscarproveedor.UseVisualStyleBackColor = false;
             this.btnbuscarproveedor.Click += new System.EventHandler(this.btnbuscarproveedor_Click);
@@ -253,6 +253,7 @@
             this.Controls.Add(this.txtmontototal);
             this.Controls.Add(this.txtsaldopendiente);
             this.Name = "Md_RegistrarCredito";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Registrar Credito";
             this.Load += new System.EventHandler(this.Md_RegistrarCredito_Load);
             this.ResumeLayout(false);

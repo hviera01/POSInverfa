@@ -111,9 +111,14 @@
   <ItemGroup>
     <Compile Include="CD_Abono.cs" />
     <Compile Include="CD_AbonoCompra.cs" />
+    <Compile Include="CD_AbonoCuota.cs" />
     <Compile Include="CD_Categoria.cs" />
+    <Compile Include="CD_CierreCaja.cs" />
+    <Compile Include="CD_ClaveAcceso.cs" />
     <Compile Include="CD_Clientes.cs" />
     <Compile Include="CD_Compra.cs" />
+    <Compile Include="CD_CuotaCredito.cs" />
+    <Compile Include="CD_Egreso.cs" />
     <Compile Include="CD_HistorialStock.cs" />
     <Compile Include="CD_Negocio.cs" />
     <Compile Include="CD_PERMISO.cs" />

@@ -24,9 +24,6 @@ namespace CapaPresentacion.Modales
 
         private void frmHistorialStock_Load(object sender, EventArgs e)
         {
-           
-
-            // Cargar los datos en el DataGridView
             CargarHistorial(_idProducto);
 
             foreach (System.Windows.Forms.Control ctrl in this.Controls)
@@ -51,25 +48,36 @@ namespace CapaPresentacion.Modales
 
         private void CargarHistorial(int idProducto)
         {
-            List<HistorialStock> lista = new CN_HistorialStock().Listar(_idProducto);
+            var lista = new CN_HistorialStock().Listar(idProducto)
+                .Select(h => new
+                {
+                    h.Fecha,
+                    h.Stock_Anterior,
+                    h.Stock_Nuevo,
+                    Movimiento = h.TipoMovimiento == "AJUSTE"
+                        ? "Ajuste manual"
+                        : h.TipoMovimiento + " #" + h.NumeroDocumento,
+                    Usuario = h.NombreUsuario
+                }).ToList();
+
             dgvHistorial.DataSource = lista;
-            dgvHistorial.Columns["IdProducto"].Visible = false; // Ocultar columna si no es necesaria
-            dgvHistorial.Columns["ID"].Visible = false;
+
+            dgvHistorial.Columns["Fecha"].HeaderText = "Fecha";
             dgvHistorial.Columns["Stock_Anterior"].HeaderText = "Stock Anterior";
             dgvHistorial.Columns["Stock_Nuevo"].HeaderText = "Stock Nuevo";
-            dgvHistorial.Columns["Fecha"].HeaderText = "Fecha";
-            dgvHistorial.Columns["oUsuario"].Visible = false;
+            dgvHistorial.Columns["Movimiento"].HeaderText = "Tipo Movimiento";
+            dgvHistorial.Columns["Usuario"].HeaderText = "Usuario";
 
-            dgvHistorial.Columns["Stock_Anterior"].DefaultCellStyle.Format = "N2"; // Formato decimal
+            dgvHistorial.Columns["Fecha"].Width = 150;
+            dgvHistorial.Columns["Stock_Anterior"].Width = 100;
+            dgvHistorial.Columns["Stock_Nuevo"].Width = 100;
+            dgvHistorial.Columns["Movimiento"].Width = 250;
+            dgvHistorial.Columns["Usuario"].Width = 200;
+
+            dgvHistorial.Columns["Stock_Anterior"].DefaultCellStyle.Format = "N2";
             dgvHistorial.Columns["Stock_Nuevo"].DefaultCellStyle.Format = "N2";
-
-
-            dgvHistorial.Columns["ID"].Width = 50; // Ancho de la columna ID
-            dgvHistorial.Columns["Stock_Anterior"].Width = 100; // Ancho de la columna Stock Anterior
-            dgvHistorial.Columns["Stock_Nuevo"].Width = 100; // Ancho de la columna Stock Nuevo
-            dgvHistorial.Columns["Fecha"].Width = 150; // Ancho de la columna Fecha
-            dgvHistorial.Columns["oUsuario"].Width = 150;
-            dgvHistorial.Columns["Nombre"].Width = 200;
         }
+
+
     }
 }

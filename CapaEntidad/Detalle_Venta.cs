@@ -15,6 +15,9 @@ namespace CapaEntidad
         public decimal SubTotal { get; set; }
         public string FechaRegistro { get; set; }
         public string NombreProducto { get; set; }
-
+        public decimal PrecioCompraUsado { get; set; }
+        public decimal PrimaProducto { get; set; }
+        public int NumeroCuotasProducto { get; set; }
+        public DateTime? FechaInicioCreditoProducto { get; set; }
     }
 }

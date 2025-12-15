@@ -7,12 +7,15 @@
     <ProjectGuid>{3C754509-135E-4821-868F-1AA1B091E782}</ProjectGuid>
     <OutputType>WinExe</OutputType>
     <RootNamespace>CapaPresentacion</RootNamespace>
-    <AssemblyName>CapaPresentacionSP</AssemblyName>
+    <AssemblyName>COMERCIAL INVERFA</AssemblyName>
     <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
     <Deterministic>true</Deterministic>
-    <PublishUrl>publish\</PublishUrl>
+    <IsWebBootstrapper>false</IsWebBootstrapper>
+    <NuGetPackageImportStamp>
+    </NuGetPackageImportStamp>
+    <PublishUrl>C:\Sistemas\SistemaInverfaEjecutable\</PublishUrl>
     <Install>true</Install>
     <InstallFrom>Disk</InstallFrom>
     <UpdateEnabled>false</UpdateEnabled>
@@ -22,13 +25,11 @@
     <UpdatePeriodically>false</UpdatePeriodically>
     <UpdateRequired>false</UpdateRequired>
     <MapFileExtensions>true</MapFileExtensions>
-    <ApplicationRevision>0</ApplicationRevision>
+    <ApplicationRevision>58</ApplicationRevision>
     <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
-    <IsWebBootstrapper>false</IsWebBootstrapper>
     <UseApplicationTrust>false</UseApplicationTrust>
+    <PublishWizardCompleted>true</PublishWizardCompleted>
     <BootstrapperEnabled>true</BootstrapperEnabled>
-    <NuGetPackageImportStamp>
-    </NuGetPackageImportStamp>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <PlatformTarget>AnyCPU</PlatformTarget>
@@ -38,7 +39,7 @@
     <OutputPath>bin\Debug\</OutputPath>
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
-    <WarningLevel>4</WarningLevel>
+    <WarningLevel>5</WarningLevel>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <PlatformTarget>AnyCPU</PlatformTarget>
@@ -48,6 +49,25 @@
     <DefineConstants>TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup />
+  <PropertyGroup>
+    <ApplicationIcon>logoInverfa-modified.ico</ApplicationIcon>
+  </PropertyGroup>
+  <PropertyGroup>
+    <SignManifests>true</SignManifests>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ManifestCertificateThumbprint>90F5BCFA0504049CD804444751FC5580F694A8D0</ManifestCertificateThumbprint>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ManifestKeyFile>CapaPresentacion_TemporaryKey.pfx</ManifestKeyFile>
+  </PropertyGroup>
+  <PropertyGroup>
+    <GenerateManifests>true</GenerateManifests>
+  </PropertyGroup>
+  <PropertyGroup>
+    <NoWin32Manifest>true</NoWin32Manifest>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="BouncyCastle.Cryptography, Version=2.0.0.0, Culture=neutral, PublicKeyToken=072edcf4a5328938, processorArchitecture=MSIL">
@@ -107,6 +127,7 @@
     <Reference Include="Microsoft.Extensions.Primitives, Version=6.0.0.0, Culture=neutral, PublicKeyToken=adb9793829ddae60, processorArchitecture=MSIL">
       <HintPath>..\packages\Microsoft.Extensions.Primitives.6.0.0\lib\net461\Microsoft.Extensions.Primitives.dll</HintPath>
     </Reference>
+    <Reference Include="Microsoft.VisualBasic" />
     <Reference Include="PresentationCore" />
     <Reference Include="PresentationFramework" />
     <Reference Include="RBush, Version=4.0.0.0, Culture=neutral, processorArchitecture=MSIL">
@@ -161,6 +182,7 @@
     <Reference Include="System.ValueTuple, Version=4.0.3.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
       <HintPath>..\packages\System.ValueTuple.4.5.0\lib\net47\System.ValueTuple.dll</HintPath>
     </Reference>
+    <Reference Include="System.Web" />
     <Reference Include="System.Xaml" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
@@ -172,6 +194,9 @@
     <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml" />
     <Reference Include="WindowsBase" />
+    <Reference Include="Zen.Barcode.Core, Version=3.1.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Zen.Barcode.Core.Code128.3.1.0\lib\net45\Zen.Barcode.Core.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="frmCategoria.cs">
@@ -179,6 +204,12 @@
     </Compile>
     <Compile Include="frmCategoria.Designer.cs">
       <DependentUpon>frmCategoria.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmCierreCaja.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmCierreCaja.Designer.cs">
+      <DependentUpon>frmCierreCaja.cs</DependentUpon>
     </Compile>
     <Compile Include="frmClientes.cs">
       <SubType>Form</SubType>
@@ -210,6 +241,18 @@
     <Compile Include="frmDetalleVenta.Designer.cs">
       <DependentUpon>frmDetalleVenta.cs</DependentUpon>
     </Compile>
+    <Compile Include="FrmEgresos.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmEgresos.Designer.cs">
+      <DependentUpon>FrmEgresos.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmFinanzas.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmFinanzas.Designer.cs">
+      <DependentUpon>frmFinanzas.cs</DependentUpon>
+    </Compile>
     <Compile Include="frmNegocio.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -222,6 +265,9 @@
     <Compile Include="FrmPedidos.Designer.cs">
       <DependentUpon>FrmPedidos.cs</DependentUpon>
     </Compile>
+    <Compile Include="FrmPlanCuotasPreview.cs">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="frmProducto.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -233,12 +279,6 @@
     </Compile>
     <Compile Include="frmProveedores.Designer.cs">
       <DependentUpon>frmProveedores.cs</DependentUpon>
-    </Compile>
-    <Compile Include="FrmRegistroColores.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="FrmRegistroColores.Designer.cs">
-      <DependentUpon>FrmRegistroColores.cs</DependentUpon>
     </Compile>
     <Compile Include="frmReporteCompras.cs">
       <SubType>Form</SubType>
@@ -288,6 +328,12 @@
     <Compile Include="Login.Designer.cs">
       <DependentUpon>Login.cs</DependentUpon>
     </Compile>
+    <Compile Include="md_ProductoCredito.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="md_ProductoCredito.Designer.cs">
+      <DependentUpon>md_ProductoCredito.cs</DependentUpon>
+    </Compile>
     <Compile Include="Modales\FrmCredito.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -300,11 +346,11 @@
     <Compile Include="Modales\frmHistorialStock.Designer.cs">
       <DependentUpon>frmHistorialStock.cs</DependentUpon>
     </Compile>
-    <Compile Include="Modales\frmMostrarExcel.cs">
+    <Compile Include="Modales\FrmResumenAbonosProveedor.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Modales\frmMostrarExcel.Designer.cs">
-      <DependentUpon>frmMostrarExcel.cs</DependentUpon>
+    <Compile Include="Modales\FrmResumenAbonosProveedor.Designer.cs">
+      <DependentUpon>FrmResumenAbonosProveedor.cs</DependentUpon>
     </Compile>
     <Compile Include="Modales\MdAbonosCompra.cs">
       <SubType>Form</SubType>
@@ -312,17 +358,35 @@
     <Compile Include="Modales\MdAbonosCompra.Designer.cs">
       <DependentUpon>MdAbonosCompra.cs</DependentUpon>
     </Compile>
+    <Compile Include="Modales\MdAcceso.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Modales\MdAcceso.Designer.cs">
+      <DependentUpon>MdAcceso.cs</DependentUpon>
+    </Compile>
     <Compile Include="Modales\mdAcercade.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Modales\mdAcercade.Designer.cs">
       <DependentUpon>mdAcercade.cs</DependentUpon>
     </Compile>
+    <Compile Include="Modales\MdCambiarClaveMenu.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Modales\MdCambiarClaveMenu.Designer.cs">
+      <DependentUpon>MdCambiarClaveMenu.cs</DependentUpon>
+    </Compile>
     <Compile Include="Modales\mdCliente.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Modales\mdCliente.Designer.cs">
       <DependentUpon>mdCliente.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Modales\mdNuevoProductoDesdeCompra.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Modales\mdNuevoProductoDesdeCompra.Designer.cs">
+      <DependentUpon>mdNuevoProductoDesdeCompra.cs</DependentUpon>
     </Compile>
     <Compile Include="Modales\mdProducto.cs">
       <SubType>Form</SubType>
@@ -335,6 +399,30 @@
     </Compile>
     <Compile Include="Modales\mdProveedor.Designer.cs">
       <DependentUpon>mdProveedor.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Modales\md_CobrarFactura.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Modales\md_CobrarFactura.Designer.cs">
+      <DependentUpon>md_CobrarFactura.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Modales\Md_ProductoCompras.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Modales\Md_ProductoCompras.Designer.cs">
+      <DependentUpon>Md_ProductoCompras.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Modales\md_ProductoNuevo.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Modales\md_ProductoNuevo.Designer.cs">
+      <DependentUpon>md_ProductoNuevo.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Modales\Md_ProductoVentas.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Modales\Md_ProductoVentas.Designer.cs">
+      <DependentUpon>Md_ProductoVentas.cs</DependentUpon>
     </Compile>
     <Compile Include="Modales\Md_RegistrarCredito.cs">
       <SubType>Form</SubType>
@@ -350,9 +438,17 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Resources\ImageToEscPosConverter.cs" />
+    <Compile Include="Resources\RawPrinterHelper.cs" />
+    <Compile Include="ResponsiveFormBase.cs">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="Utilidades\OpcionCombo.cs" />
     <EmbeddedResource Include="frmCategoria.resx">
       <DependentUpon>frmCategoria.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmCierreCaja.resx">
+      <DependentUpon>frmCierreCaja.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frmClientes.resx">
       <DependentUpon>frmClientes.cs</DependentUpon>
@@ -369,6 +465,12 @@
     <EmbeddedResource Include="frmDetalleVenta.resx">
       <DependentUpon>frmDetalleVenta.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="FrmEgresos.resx">
+      <DependentUpon>FrmEgresos.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmFinanzas.resx">
+      <DependentUpon>frmFinanzas.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="frmNegocio.resx">
       <DependentUpon>frmNegocio.cs</DependentUpon>
     </EmbeddedResource>
@@ -380,9 +482,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="frmProveedores.resx">
       <DependentUpon>frmProveedores.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="FrmRegistroColores.resx">
-      <DependentUpon>FrmRegistroColores.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frmReporteCompras.resx">
       <DependentUpon>frmReporteCompras.cs</DependentUpon>
@@ -408,29 +507,53 @@
     <EmbeddedResource Include="Login.resx">
       <DependentUpon>Login.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="md_ProductoCredito.resx">
+      <DependentUpon>md_ProductoCredito.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Modales\FrmCredito.resx">
       <DependentUpon>FrmCredito.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Modales\frmHistorialStock.resx">
       <DependentUpon>frmHistorialStock.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Modales\frmMostrarExcel.resx">
-      <DependentUpon>frmMostrarExcel.cs</DependentUpon>
+    <EmbeddedResource Include="Modales\FrmResumenAbonosProveedor.resx">
+      <DependentUpon>FrmResumenAbonosProveedor.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Modales\MdAbonosCompra.resx">
       <DependentUpon>MdAbonosCompra.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Modales\MdAcceso.resx">
+      <DependentUpon>MdAcceso.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Modales\mdAcercade.resx">
       <DependentUpon>mdAcercade.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Modales\MdCambiarClaveMenu.resx">
+      <DependentUpon>MdCambiarClaveMenu.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Modales\mdCliente.resx">
       <DependentUpon>mdCliente.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Modales\mdNuevoProductoDesdeCompra.resx">
+      <DependentUpon>mdNuevoProductoDesdeCompra.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Modales\mdProducto.resx">
       <DependentUpon>mdProducto.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Modales\mdProveedor.resx">
       <DependentUpon>mdProveedor.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Modales\md_CobrarFactura.resx">
+      <DependentUpon>md_CobrarFactura.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Modales\Md_ProductoCompras.resx">
+      <DependentUpon>Md_ProductoCompras.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Modales\md_ProductoNuevo.resx">
+      <DependentUpon>md_ProductoNuevo.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Modales\Md_ProductoVentas.resx">
+      <DependentUpon>Md_ProductoVentas.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Modales\Md_RegistrarCredito.resx">
       <DependentUpon>Md_RegistrarCredito.cs</DependentUpon>
@@ -448,6 +571,7 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
+    <None Include="CapaPresentacion_TemporaryKey.pfx" />
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
@@ -507,7 +631,34 @@
     <None Include="Resources\PlantillaVentaTarjeta.html" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="1-0b265317.ico" />
+    <Content Include="1-51d95ac7.ico" />
     <Content Include="304908626_495760195887043_1293945670494512987_n-removebg-preview-removebg-preview.png" />
+    <Content Include="Imagen de WhatsApp 2025-05-10 a las 12.26.15_ba29d3e1-modified.ico" />
+    <Content Include="Imagen-de-WhatsApp-2025-08-07-a-las-10.53.01_fb5c47bf-modified.ico" />
+    <Content Include="logoInverfa-modified.ico" />
+    <Content Include="Modern Elegant Circle Signature Typography Logo-modified.ico" />
+    <None Include="Resources\logoInverfa-removebg-preview2.png" />
+    <None Include="Resources\logoInverfa-modified.png" />
+    <None Include="Resources\logoInverfa-removebg-preview1.png" />
+    <None Include="Resources\logoInverfa-removebg-preview.png" />
+    <None Include="Resources\PlantillaCotizacionExonerada.html" />
+    <None Include="Resources\Imagen_de_WhatsApp_2025-08-07_a_las_10.53.01_fb5c47bf-removebg-preview.png" />
+    <None Include="Resources\Plantilla_InformeCompleto.html" />
+    <None Include="Resources\Plantilla_CierreCajaFiltrado.html" />
+    <None Include="Resources\Plantilla_GananciaPorducto.html" />
+    <None Include="Resources\PlantillaUtilidadNeta.html" />
+    <None Include="Resources\PlantillaUtilidadBruta.html" />
+    <None Include="Resources\image-modified.ico" />
+    <None Include="Resources\Plantilla_CierreCaja.html" />
+    <None Include="Resources\PlantillaEgresos.html" />
+    <None Include="Resources\wtIcono.png" />
+    <None Include="Resources\fbIcono.png" />
+    <None Include="Resources\igIcono.png" />
+    <None Include="Resources\ttIcono.png" />
+    <None Include="Resources\Imagen de WhatsApp 2025-05-10 a las 12.26.15_ba29d3e1-modified.png" />
+    <None Include="Resources\Modern Elegant Circle Signature Typography Logo.png" />
+    <None Include="Resources\Modern Elegant Circle Signature Typography Logo-modified.png" />
     <None Include="Resources\loading.gif" />
     <None Include="Resources\PlantillaCompraCedito.html" />
     <None Include="Resources\PlantillaVentaCredito.html" />

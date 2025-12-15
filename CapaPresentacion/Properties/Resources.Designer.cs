@@ -63,17 +63,6 @@ namespace CapaPresentacion.Properties {
         /// <summary>
         ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap _304908626_495760195887043_1293945670494512987_n_removebg_preview_removebg_preview {
-            get {
-                object obj = ResourceManager.GetObject("_304908626_495760195887043_1293945670494512987_n_removebg_preview_removebg_previe" +
-                        "w", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
-        /// </summary>
         internal static System.Drawing.Bitmap anydo_104098 {
             get {
                 object obj = ResourceManager.GetObject("anydo_104098", resourceCulture);
@@ -94,6 +83,16 @@ namespace CapaPresentacion.Properties {
         /// <summary>
         ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap fbIcono {
+            get {
+                object obj = ResourceManager.GetObject("fbIcono", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap iconfinder_trash_4341321_120557 {
             get {
                 object obj = ResourceManager.GetObject("iconfinder_trash_4341321_120557", resourceCulture);
@@ -104,10 +103,214 @@ namespace CapaPresentacion.Properties {
         /// <summary>
         ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap loading {
+        internal static System.Drawing.Bitmap igIcono {
             get {
-                object obj = ResourceManager.GetObject("loading", resourceCulture);
+                object obj = ResourceManager.GetObject("igIcono", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Icon similar a (Icono).
+        /// </summary>
+        internal static System.Drawing.Icon image_modified {
+            get {
+                object obj = ResourceManager.GetObject("image_modified", resourceCulture);
+                return ((System.Drawing.Icon)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap Imagen_de_WhatsApp_2025_05_10_a_las_12_26_15_ba29d3e1_modified {
+            get {
+                object obj = ResourceManager.GetObject("Imagen_de_WhatsApp_2025_05_10_a_las_12_26_15_ba29d3e1_modified", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap Imagen_de_WhatsApp_2025_08_07_a_las_10_53_01_fb5c47bf_removebg_preview {
+            get {
+                object obj = ResourceManager.GetObject("Imagen_de_WhatsApp_2025_08_07_a_las_10_53_01_fb5c47bf_removebg_preview", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap logoInverfa_modified {
+            get {
+                object obj = ResourceManager.GetObject("logoInverfa-modified", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap logoInverfa_removebg_preview {
+            get {
+                object obj = ResourceManager.GetObject("logoInverfa-removebg-preview", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap logoInverfa_removebg_preview1 {
+            get {
+                object obj = ResourceManager.GetObject("logoInverfa-removebg-preview1", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap logoInverfa_removebg_preview2 {
+            get {
+                object obj = ResourceManager.GetObject("logoInverfa-removebg-preview2", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a &lt;html&gt;
+        ///&lt;head&gt;
+        ///    &lt;style type=&quot;text/css&quot;&gt;
+        ///        body {
+        ///            font-family: Arial, sans-serif;
+        ///            font-size: 11pt;
+        ///            color: #333;
+        ///        }
+        ///
+        ///        h2 {
+        ///            text-align: center;
+        ///            margin-bottom: 20px;
+        ///        }
+        ///
+        ///        p {
+        ///            margin: 5px 0;
+        ///        }
+        ///
+        ///        table {
+        ///            width: 100%;
+        ///            border-collapse: collapse;
+        ///            margin-top: 20px;
+        ///        }
+        ///
+        ///        th, td {
+        ///            border: 1px solid #888;
+        ///        [resto de la cadena truncado]&quot;;.
+        /// </summary>
+        internal static string Plantilla_CierreCaja {
+            get {
+                return ResourceManager.GetString("Plantilla_CierreCaja", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a &lt;!DOCTYPE html&gt;
+        ///&lt;html lang=&quot;es&quot;&gt;
+        ///&lt;head&gt;
+        ///    &lt;meta charset=&quot;UTF-8&quot; /&gt;
+        ///    &lt;style&gt;
+        ///        body {
+        ///            font-family: Arial, sans-serif;
+        ///            padding: 20px;
+        ///        }
+        ///
+        ///        h1 {
+        ///            text-align: center;
+        ///            font-size: 18px;
+        ///            margin-bottom: 10px;
+        ///        }
+        ///
+        ///        p {
+        ///            font-size: 13px;
+        ///            margin: 0 0 10px 0;
+        ///        }
+        ///
+        ///        table {
+        ///            width: 100%;
+        ///            border-collapse: collapse;
+        ///            font-size: 11px; [resto de la cadena truncado]&quot;;.
+        /// </summary>
+        internal static string Plantilla_CierreCajaFiltrado {
+            get {
+                return ResourceManager.GetString("Plantilla_CierreCajaFiltrado", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a &lt;!DOCTYPE html&gt;
+        ///&lt;html lang=&quot;es&quot;&gt;
+        ///&lt;head&gt;
+        ///    &lt;meta charset=&quot;UTF-8&quot; /&gt;
+        ///    &lt;style&gt;
+        ///        body {
+        ///            font-family: Arial, sans-serif;
+        ///            padding: 20px;
+        ///        }
+        ///
+        ///        h1 {
+        ///            text-align: center;
+        ///            color: #222;
+        ///        }
+        ///
+        ///        table {
+        ///            width: 100%;
+        ///            border-collapse: collapse;
+        ///            margin-top: 20px;
+        ///        }
+        ///
+        ///        th, td {
+        ///            border: 1px solid #ccc;
+        ///            padding: 8px;
+        ///            text-align: cente [resto de la cadena truncado]&quot;;.
+        /// </summary>
+        internal static string Plantilla_GananciaPorducto {
+            get {
+                return ResourceManager.GetString("Plantilla_GananciaPorducto", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a &lt;!DOCTYPE html&gt;
+        ///&lt;html lang=&quot;es&quot;&gt;
+        ///&lt;head&gt;
+        ///    &lt;meta charset=&quot;UTF-8&quot; /&gt;
+        ///    &lt;style&gt;
+        ///        body {
+        ///            font-family: Arial, sans-serif;
+        ///            padding: 25px;
+        ///        }
+        ///
+        ///        h1, h2 {
+        ///            text-align: center;
+        ///            color: #2c3e50;
+        ///        }
+        ///
+        ///        table {
+        ///            width: 100%;
+        ///            border-collapse: collapse;
+        ///            margin: 20px 0;
+        ///        }
+        ///
+        ///        th, td {
+        ///            border: 1px solid #aaa;
+        ///            padding: 8px;
+        ///            text-align:  [resto de la cadena truncado]&quot;;.
+        /// </summary>
+        internal static string Plantilla_InformeCompleto {
+            get {
+                return ResourceManager.GetString("Plantilla_InformeCompleto", resourceCulture);
             }
         }
         
@@ -208,6 +411,65 @@ namespace CapaPresentacion.Properties {
         ///   Busca una cadena traducida similar a &lt;!DOCTYPE html&gt;
         ///&lt;html&gt;
         ///&lt;head&gt;
+        ///    &lt;title&gt;Cotización Exonerada&lt;/title&gt;
+        ///    &lt;style&gt;
+        ///        table.border {
+        ///            border-collapse: collapse;
+        ///            width: 100%;
+        ///        }
+        ///        table.border th {
+        ///            text-align: center;
+        ///            padding: 5px;
+        ///            border: 1px solid black;
+        ///            background-color: #CACACA;
+        ///        }
+        ///        table.border td {
+        ///            text-align: left;
+        ///            padding: 5px;
+        ///            border: 1px solid black;
+        ///        }
+        ///        .descr [resto de la cadena truncado]&quot;;.
+        /// </summary>
+        internal static string PlantillaCotizacionExonerada {
+            get {
+                return ResourceManager.GetString("PlantillaCotizacionExonerada", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a &lt;!DOCTYPE html&gt;
+        ///&lt;html&gt;
+        ///&lt;head&gt;
+        ///    &lt;meta charset=&quot;utf-8&quot; /&gt;
+        ///    &lt;style&gt;
+        ///        @page {
+        ///            size: A4 landscape;
+        ///            margin: 18mm 14mm 18mm 14mm;
+        ///        }
+        ///
+        ///        body {
+        ///            font-family: Arial, Helvetica, sans-serif;
+        ///            color: #222;
+        ///            font-size: 11px;
+        ///        }
+        ///
+        ///        .header {
+        ///            display: grid;
+        ///            grid-template-columns: 1fr auto;
+        ///            gap: 10px;
+        ///            align-items: center;
+        ///            border-bottom: 2px solid #4 [resto de la cadena truncado]&quot;;.
+        /// </summary>
+        internal static string PlantillaEgresos {
+            get {
+                return ResourceManager.GetString("PlantillaEgresos", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a &lt;!DOCTYPE html&gt;
+        ///&lt;html&gt;
+        ///&lt;head&gt;
         ///    &lt;title&gt;Web Page Design&lt;/title&gt;
         ///    &lt;style&gt;
         ///        table.border {
@@ -230,6 +492,74 @@ namespace CapaPresentacion.Properties {
         internal static string PlantillaPedido {
             get {
                 return ResourceManager.GetString("PlantillaPedido", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a &lt;!DOCTYPE html&gt;
+        ///&lt;html lang=&quot;es&quot;&gt;
+        ///&lt;head&gt;
+        ///    &lt;meta charset=&quot;UTF-8&quot; /&gt;
+        ///    &lt;style&gt;
+        ///        body {
+        ///            font-family: Arial, sans-serif;
+        ///            padding: 20px;
+        ///        }
+        ///
+        ///        h1 {
+        ///            text-align: center;
+        ///            color: #333;
+        ///        }
+        ///
+        ///        table {
+        ///            width: 100%;
+        ///            border-collapse: collapse;
+        ///            margin-top: 20px;
+        ///        }
+        ///
+        ///        th, td {
+        ///            border: 1px solid #ccc;
+        ///            padding: 8px;
+        ///            text-align: cente [resto de la cadena truncado]&quot;;.
+        /// </summary>
+        internal static string PlantillaUtilidadBruta {
+            get {
+                return ResourceManager.GetString("PlantillaUtilidadBruta", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a &lt;!DOCTYPE html&gt;
+        ///&lt;html lang=&quot;es&quot;&gt;
+        ///&lt;head&gt;
+        ///    &lt;meta charset=&quot;UTF-8&quot; /&gt;
+        ///    &lt;style&gt;
+        ///        body {
+        ///            font-family: Arial, sans-serif;
+        ///            padding: 20px;
+        ///        }
+        ///
+        ///        h1 {
+        ///            text-align: center;
+        ///            color: #333;
+        ///        }
+        ///
+        ///        .datos {
+        ///            margin-top: 20px;
+        ///            font-size: 16px;
+        ///        }
+        ///
+        ///            .datos p {
+        ///                margin: 8px 0;
+        ///            }
+        ///
+        ///            .datos span {
+        ///                font-weight: bold;
+        ///           [resto de la cadena truncado]&quot;;.
+        /// </summary>
+        internal static string PlantillaUtilidadNeta {
+            get {
+                return ResourceManager.GetString("PlantillaUtilidadNeta", resourceCulture);
             }
         }
         
@@ -346,6 +676,26 @@ namespace CapaPresentacion.Properties {
         internal static string PlantillaVentaTransferencia {
             get {
                 return ResourceManager.GetString("PlantillaVentaTransferencia", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap ttIcono {
+            get {
+                object obj = ResourceManager.GetObject("ttIcono", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap wtIcono {
+            get {
+                object obj = ResourceManager.GetObject("wtIcono", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
             }
         }
     }

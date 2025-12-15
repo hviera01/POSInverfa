@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8" />
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            padding: 20px;
+        }
+
+        h1 {
+            text-align: center;
+            color: #333;
+        }
+
+        .datos {
+            margin-top: 20px;
+            font-size: 16px;
+        }
+
+            .datos p {
+                margin: 8px 0;
+            }
+
+            .datos span {
+                font-weight: bold;
+            }
+
+        .resumen {
+            margin-top: 30px;
+            font-size: 18px;
+        }
+
+            .resumen p {
+                margin: 5px 0;
+            }
+
+            .resumen span {
+                font-weight: bold;
+            }
+
+        .resumen-final {
+            margin-top: 40px;
+            font-size: 14px;
+            color: #555;
+        }
+    </style>
+</head>
+<body>
+    <h1>REPORTE DE UTILIDAD NETA</h1>
+
+    <div class="datos">
+        <p><span>Desde:</span> @fechainicio</p>
+        <p><span>Hasta:</span> @fechafin</p>
+    </div>
+
+    <div class="resumen">
+        <p><span>Total Ventas:</span> @totalventas</p>
+        <p><span>Total Costos:</span> @totalcostos</p>
+        <p><span>Total Egresos:</span> @totalegresos</p>
+        <p><span>Utilidad Neta:</span> <strong> @utilidadneta</strong></p>
+    </div>
+
+    <div class="resumen-final">
+        <p>
+            Este reporte refleja la utilidad neta del negocio en el período indicado, considerando el ingreso total,
+            el costo de los productos vendidos y los egresos generales.
+        </p>
+    </div>
+</body>
+</html>

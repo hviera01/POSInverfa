@@ -14,8 +14,11 @@ namespace CapaEntidad
         public decimal Stock_Nuevo { get; set; }
         public DateTime Fecha { get; set; }
         public Usuario oUsuario { get; set; }
-        public string Codigo { get; set; } // Nueva propiedad para el código
+        public string Codigo { get; set; } 
         public string Nombre { get; set; }
+        public string TipoMovimiento { get; set; }       // NUEVO
+        public string NumeroDocumento { get; set; }      // NUEVO
+        public Nullable<int> IdReferencia { get; set; }
         public string NombreUsuario => oUsuario?.NombreCompleto;
     }
 }

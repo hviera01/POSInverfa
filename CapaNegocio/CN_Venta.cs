@@ -4,6 +4,7 @@ using System.Data;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Xml.Linq;
 using CapaDatos;
 using CapaEntidad;
 
@@ -12,6 +13,11 @@ namespace CapaNegocio
     public class CN_Venta
     {
         private CD_Venta objcd_venta = new CD_Venta();
+
+        public int ObtenerCorrelativo()
+        {
+            return objcd_venta.ObtenerCorrelativo();
+        }
 
         public bool RestarStock(int idproducto, decimal cantidad)
         {
@@ -22,10 +28,6 @@ namespace CapaNegocio
             return objcd_venta.SumarStock(idproducto, cantidad);
         }
 
-        public int ObtenerCorrelativo()
-        {
-            return objcd_venta.ObtenerCorrelativo();
-        }
         public int ObtenerCorrelativoCotizacion()
         {
             return objcd_venta.ObtenerCorrelativoCotizacion();
@@ -35,27 +37,31 @@ namespace CapaNegocio
             return objcd_venta.ObtenerCorrelativoVentaSinFacturar();
         }
 
-        public List<Venta> ObtenerFacturasCredito()
+        public int ObtenerCorrelativoCanje()
+        {
+            return objcd_venta.ObtenerCorrelativoCanje();
+        }
+
+        public List<VentaCreditoResumen> ObtenerFacturasCredito()
         {
             return objcd_venta.ObtenerFacturasCredito();
         }
 
-        public bool Registrar(Venta obj, DataTable DetalleVenta, out string Mensaje)
+        public int Registrar(Venta obj, DataTable DetalleVenta, out string Mensaje)
         {
-            // Verifica el método de pago y calcula el cambio si es efectivo
+            Mensaje = "";
+
             if (obj.MetodoPago == "Efectivo")
             {
-                // Calcula el cambio
                 obj.MontoCambio = obj.MontoPago - obj.MontoTotal;
             }
             else if (obj.MetodoPago == "Tarjeta")
             {
-                // No se requiere MontoPago ni MontoCambio
                 obj.MontoPago = 0;
                 obj.MontoCambio = 0;
             }
 
-            // Llamada al método de registro en la capa de datos
+            // retorna Id generado (int)
             return objcd_venta.Registrar(obj, DetalleVenta, out Mensaje);
         }
 
@@ -84,5 +90,37 @@ namespace CapaNegocio
         {
             return objcd_venta.RegistrarCredito(obj, out mensaje);
         }
+
+
+        public List<Venta> ObtenerVentasPorProducto(int idProducto)
+        {
+            return objcd_venta.ObtenerVentasPorProducto(idProducto);
+        }
+        public DataTable ObtenerPreparacionPorVenta(int idVenta)
+        {
+            return new CD_Venta().ObtenerPreparacionPorVenta(idVenta);
+        }
+        public int ObtenerIdVentaPorNumeroDocumento(string numero)
+        {
+            return new CD_Venta().ObtenerIdVentaPorNumeroDocumento(numero);
+        }
+        public bool EliminarVentaCredito(int idVenta, out string mensaje)
+            => objcd_venta.EliminarVentaCredito(idVenta, out mensaje);
+
+        public Venta ObtenerVentaCreditoPorId(int idVenta)
+            => objcd_venta.ObtenerVentaCreditoPorId(idVenta);
+        public bool EliminarCreditoCompleto(int idVenta, out string mensaje)
+        {
+            return new CD_Venta().EliminarCreditoCompleto(idVenta, out mensaje);
+        }
+        public bool ActualizarDatosCredito(Venta v, out string mensaje)
+        {
+            return new CD_Venta().ActualizarDatosCredito(v, out mensaje);
+        }
+        public bool ExisteNumeroDocumento(string numeroDocumento)
+        {
+            return objcd_venta.ExisteNumeroDocumento(numeroDocumento);
+        }
+
     }
 }

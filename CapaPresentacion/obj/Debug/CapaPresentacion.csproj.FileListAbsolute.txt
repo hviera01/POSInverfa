@@ -87,9 +87,6 @@ C:\Users\User\Documents\Proyecto sistema de ventas SP\ProyectoSistemaVentas\Capa
 C:\Users\User\Documents\Proyecto sistema de ventas SP\ProyectoSistemaVentas\CapaPresentacion\obj\Debug\CapaPresentacion.Properties.Resources.resources
 C:\Users\User\Documents\Proyecto sistema de ventas SP\ProyectoSistemaVentas\CapaPresentacion\obj\Debug\CapaPresentacion.csproj.GenerateResource.cache
 C:\Users\User\Documents\Proyecto sistema de ventas SP\ProyectoSistemaVentas\CapaPresentacion\obj\Debug\CapaPresentacion.csproj.CoreCompileInputs.cache
-C:\Users\User\Documents\Proyecto sistema de ventas SP\ProyectoSistemaVentas\CapaPresentacion\bin\Debug\CapaPresentacionSP.exe.config
-C:\Users\User\Documents\Proyecto sistema de ventas SP\ProyectoSistemaVentas\CapaPresentacion\bin\Debug\CapaPresentacionSP.exe
-C:\Users\User\Documents\Proyecto sistema de ventas SP\ProyectoSistemaVentas\CapaPresentacion\bin\Debug\CapaPresentacionSP.pdb
 C:\Users\User\Documents\Proyecto sistema de ventas SP\ProyectoSistemaVentas\CapaPresentacion\bin\Debug\BouncyCastle.Cryptography.dll
 C:\Users\User\Documents\Proyecto sistema de ventas SP\ProyectoSistemaVentas\CapaPresentacion\bin\Debug\CapaDatosSP.dll
 C:\Users\User\Documents\Proyecto sistema de ventas SP\ProyectoSistemaVentas\CapaPresentacion\bin\Debug\CapaEntidadSP.dll
@@ -163,8 +160,6 @@ C:\Users\User\Documents\Proyecto sistema de ventas SP\ProyectoSistemaVentas\Capa
 C:\Users\User\Documents\Proyecto sistema de ventas SP\ProyectoSistemaVentas\CapaPresentacion\bin\Debug\System.Threading.Tasks.Extensions.xml
 C:\Users\User\Documents\Proyecto sistema de ventas SP\ProyectoSistemaVentas\CapaPresentacion\bin\Debug\System.ValueTuple.xml
 C:\Users\User\Documents\Proyecto sistema de ventas SP\ProyectoSistemaVentas\CapaPresentacion\obj\Debug\CapaPres.61CA7C38.Up2Date
-C:\Users\User\Documents\Proyecto sistema de ventas SP\ProyectoSistemaVentas\CapaPresentacion\obj\Debug\CapaPresentacionSP.exe
-C:\Users\User\Documents\Proyecto sistema de ventas SP\ProyectoSistemaVentas\CapaPresentacion\obj\Debug\CapaPresentacionSP.pdb
 C:\Users\User\Documents\Proyecto sistema de ventas SP\ProyectoSistemaVentas\CapaPresentacion\bin\Debug\CapaDatosSP.dll.config
 C:\Users\User\Documents\Proyecto sistema de ventas SP\ProyectoSistemaVentas\CapaPresentacion\bin\Debug\CapaEntidadSP.dll.config
 C:\Users\User\Documents\Proyecto sistema de ventas SP\ProyectoSistemaVentas\CapaPresentacion\bin\Debug\CapaNegocioSP.dll.config
@@ -178,3 +173,886 @@ C:\Users\User\Documents\Proyecto sistema de ventas SP\ProyectoSistemaVentas\Capa
 C:\Users\User\Documents\Proyecto sistema de ventas SP\ProyectoSistemaVentas\CapaPresentacion\obj\Debug\CapaPresentacion.Modales.Md_RegistrarCredito.resources
 C:\Users\User\Documents\Proyecto sistema de ventas SP\ProyectoSistemaVentas\CapaPresentacion\obj\Debug\CapaPresentacion.Modales.md_RegistrarVentaCredito.resources
 C:\Users\User\Documents\Proyecto sistema de ventas SP\ProyectoSistemaVentas\CapaPresentacion\obj\Debug\CapaPresentacion.Modales.frmMostrarExcel.resources
+C:\Users\User\Documents\Proyecto sistema de ventas SP\ProyectoSistemaVentas\CapaPresentacion\bin\Debug\SUPER COLOR.exe.config
+C:\Users\User\Documents\Proyecto sistema de ventas SP\ProyectoSistemaVentas\CapaPresentacion\bin\Debug\SUPER COLOR.exe
+C:\Users\User\Documents\Proyecto sistema de ventas SP\ProyectoSistemaVentas\CapaPresentacion\bin\Debug\SUPER COLOR.pdb
+C:\Users\User\Documents\Proyecto sistema de ventas SP\ProyectoSistemaVentas\CapaPresentacion\obj\Debug\SUPER COLOR.exe
+C:\Users\User\Documents\Proyecto sistema de ventas SP\ProyectoSistemaVentas\CapaPresentacion\obj\Debug\SUPER COLOR.pdb
+C:\Users\User\Documents\Proyecto sistema de ventas SP\ProyectoSistemaVentas\CapaPresentacion\bin\Debug\SUPER COLOR.exe.manifest
+C:\Users\User\Documents\Proyecto sistema de ventas SP\ProyectoSistemaVentas\CapaPresentacion\bin\Debug\SUPER COLOR.application
+C:\Users\User\Documents\Proyecto sistema de ventas SP\ProyectoSistemaVentas\CapaPresentacion\obj\Debug\SUPER COLOR.exe.manifest
+C:\Users\User\Documents\Proyecto sistema de ventas SP\ProyectoSistemaVentas\CapaPresentacion\obj\Debug\SUPER COLOR.application
+C:\Users\USUUARIO\Desktop\Proyecto sistema de ventas SP\ProyectoSistemaVentas\CapaPresentacion\bin\Debug\SUPER COLOR.exe.config
+C:\Users\USUUARIO\Desktop\Proyecto sistema de ventas SP\ProyectoSistemaVentas\CapaPresentacion\bin\Debug\SUPER COLOR.exe.manifest
+C:\Users\USUUARIO\Desktop\Proyecto sistema de ventas SP\ProyectoSistemaVentas\CapaPresentacion\bin\Debug\SUPER COLOR.application
+C:\Users\USUUARIO\Desktop\Proyecto sistema de ventas SP\ProyectoSistemaVentas\CapaPresentacion\bin\Debug\SUPER COLOR.exe
+C:\Users\USUUARIO\Desktop\Proyecto sistema de ventas SP\ProyectoSistemaVentas\CapaPresentacion\bin\Debug\SUPER COLOR.pdb
+C:\Users\USUUARIO\Desktop\Proyecto sistema de ventas SP\ProyectoSistemaVentas\CapaPresentacion\bin\Debug\BouncyCastle.Cryptography.dll
+C:\Users\USUUARIO\Desktop\Proyecto sistema de ventas SP\ProyectoSistemaVentas\CapaPresentacion\bin\Debug\CapaDatosSP.dll
+C:\Users\USUUARIO\Desktop\Proyecto sistema de ventas SP\ProyectoSistemaVentas\CapaPresentacion\bin\Debug\CapaEntidadSP.dll
+C:\Users\USUUARIO\Desktop\Proyecto sistema de ventas SP\ProyectoSistemaVentas\CapaPresentacion\bin\Debug\CapaNegocioSP.dll
+C:\Users\USUUARIO\Desktop\Proyecto sistema de ventas SP\ProyectoSistemaVentas\CapaPresentacion\bin\Debug\ClosedXML.dll
+C:\Users\USUUARIO\Desktop\Proyecto sistema de ventas SP\ProyectoSistemaVentas\CapaPresentacion\bin\Debug\ClosedXML.Parser.dll
+C:\Users\USUUARIO\Desktop\Proyecto sistema de ventas SP\ProyectoSistemaVentas\CapaPresentacion\bin\Debug\DocumentFormat.OpenXml.dll
+C:\Users\USUUARIO\Desktop\Proyecto sistema de ventas SP\ProyectoSistemaVentas\CapaPresentacion\bin\Debug\DocumentFormat.OpenXml.Framework.dll
+C:\Users\USUUARIO\Desktop\Proyecto sistema de ventas SP\ProyectoSistemaVentas\CapaPresentacion\bin\Debug\ESC-POS-USB-NET.dll
+C:\Users\USUUARIO\Desktop\Proyecto sistema de ventas SP\ProyectoSistemaVentas\CapaPresentacion\bin\Debug\ESCPOS_NET.dll
+C:\Users\USUUARIO\Desktop\Proyecto sistema de ventas SP\ProyectoSistemaVentas\CapaPresentacion\bin\Debug\ExcelNumberFormat.dll
+C:\Users\USUUARIO\Desktop\Proyecto sistema de ventas SP\ProyectoSistemaVentas\CapaPresentacion\bin\Debug\FontAwesome.Sharp.dll
+C:\Users\USUUARIO\Desktop\Proyecto sistema de ventas SP\ProyectoSistemaVentas\CapaPresentacion\bin\Debug\itextsharp.dll
+C:\Users\USUUARIO\Desktop\Proyecto sistema de ventas SP\ProyectoSistemaVentas\CapaPresentacion\bin\Debug\itextsharp.xmlworker.dll
+C:\Users\USUUARIO\Desktop\Proyecto sistema de ventas SP\ProyectoSistemaVentas\CapaPresentacion\bin\Debug\Microsoft.Bcl.AsyncInterfaces.dll
+C:\Users\USUUARIO\Desktop\Proyecto sistema de ventas SP\ProyectoSistemaVentas\CapaPresentacion\bin\Debug\Microsoft.Bcl.HashCode.dll
+C:\Users\USUUARIO\Desktop\Proyecto sistema de ventas SP\ProyectoSistemaVentas\CapaPresentacion\bin\Debug\Microsoft.Extensions.DependencyInjection.Abstractions.dll
+C:\Users\USUUARIO\Desktop\Proyecto sistema de ventas SP\ProyectoSistemaVentas\CapaPresentacion\bin\Debug\Microsoft.Extensions.DependencyInjection.dll
+C:\Users\USUUARIO\Desktop\Proyecto sistema de ventas SP\ProyectoSistemaVentas\CapaPresentacion\bin\Debug\Microsoft.Extensions.Logging.Abstractions.dll
+C:\Users\USUUARIO\Desktop\Proyecto sistema de ventas SP\ProyectoSistemaVentas\CapaPresentacion\bin\Debug\Microsoft.Extensions.Logging.dll
+C:\Users\USUUARIO\Desktop\Proyecto sistema de ventas SP\ProyectoSistemaVentas\CapaPresentacion\bin\Debug\Microsoft.Extensions.Options.dll
+C:\Users\USUUARIO\Desktop\Proyecto sistema de ventas SP\ProyectoSistemaVentas\CapaPresentacion\bin\Debug\Microsoft.Extensions.Primitives.dll
+C:\Users\USUUARIO\Desktop\Proyecto sistema de ventas SP\ProyectoSistemaVentas\CapaPresentacion\bin\Debug\RBush.dll
+C:\Users\USUUARIO\Desktop\Proyecto sistema de ventas SP\ProyectoSistemaVentas\CapaPresentacion\bin\Debug\SimpleTcp.dll
+C:\Users\USUUARIO\Desktop\Proyecto sistema de ventas SP\ProyectoSistemaVentas\CapaPresentacion\bin\Debug\SixLabors.Fonts.dll
+C:\Users\USUUARIO\Desktop\Proyecto sistema de ventas SP\ProyectoSistemaVentas\CapaPresentacion\bin\Debug\SixLabors.ImageSharp.dll
+C:\Users\USUUARIO\Desktop\Proyecto sistema de ventas SP\ProyectoSistemaVentas\CapaPresentacion\bin\Debug\System.Buffers.dll
+C:\Users\USUUARIO\Desktop\Proyecto sistema de ventas SP\ProyectoSistemaVentas\CapaPresentacion\bin\Debug\System.Diagnostics.DiagnosticSource.dll
+C:\Users\USUUARIO\Desktop\Proyecto sistema de ventas SP\ProyectoSistemaVentas\CapaPresentacion\bin\Debug\System.Drawing.Common.dll
+C:\Users\USUUARIO\Desktop\Proyecto sistema de ventas SP\ProyectoSistemaVentas\CapaPresentacion\bin\Debug\System.IO.Ports.dll
+C:\Users\USUUARIO\Desktop\Proyecto sistema de ventas SP\ProyectoSistemaVentas\CapaPresentacion\bin\Debug\System.Memory.dll
+C:\Users\USUUARIO\Desktop\Proyecto sistema de ventas SP\ProyectoSistemaVentas\CapaPresentacion\bin\Debug\System.Numerics.Vectors.dll
+C:\Users\USUUARIO\Desktop\Proyecto sistema de ventas SP\ProyectoSistemaVentas\CapaPresentacion\bin\Debug\System.Runtime.CompilerServices.Unsafe.dll
+C:\Users\USUUARIO\Desktop\Proyecto sistema de ventas SP\ProyectoSistemaVentas\CapaPresentacion\bin\Debug\System.Text.Encoding.CodePages.dll
+C:\Users\USUUARIO\Desktop\Proyecto sistema de ventas SP\ProyectoSistemaVentas\CapaPresentacion\bin\Debug\System.Text.Encodings.Web.dll
+C:\Users\USUUARIO\Desktop\Proyecto sistema de ventas SP\ProyectoSistemaVentas\CapaPresentacion\bin\Debug\System.Text.Json.dll
+C:\Users\USUUARIO\Desktop\Proyecto sistema de ventas SP\ProyectoSistemaVentas\CapaPresentacion\bin\Debug\System.Threading.Tasks.Extensions.dll
+C:\Users\USUUARIO\Desktop\Proyecto sistema de ventas SP\ProyectoSistemaVentas\CapaPresentacion\bin\Debug\System.ValueTuple.dll
+C:\Users\USUUARIO\Desktop\Proyecto sistema de ventas SP\ProyectoSistemaVentas\CapaPresentacion\bin\Debug\CapaDatosSP.pdb
+C:\Users\USUUARIO\Desktop\Proyecto sistema de ventas SP\ProyectoSistemaVentas\CapaPresentacion\bin\Debug\CapaDatosSP.dll.config
+C:\Users\USUUARIO\Desktop\Proyecto sistema de ventas SP\ProyectoSistemaVentas\CapaPresentacion\bin\Debug\CapaEntidadSP.pdb
+C:\Users\USUUARIO\Desktop\Proyecto sistema de ventas SP\ProyectoSistemaVentas\CapaPresentacion\bin\Debug\CapaEntidadSP.dll.config
+C:\Users\USUUARIO\Desktop\Proyecto sistema de ventas SP\ProyectoSistemaVentas\CapaPresentacion\bin\Debug\CapaNegocioSP.pdb
+C:\Users\USUUARIO\Desktop\Proyecto sistema de ventas SP\ProyectoSistemaVentas\CapaPresentacion\bin\Debug\CapaNegocioSP.dll.config
+C:\Users\USUUARIO\Desktop\Proyecto sistema de ventas SP\ProyectoSistemaVentas\CapaPresentacion\bin\Debug\BouncyCastle.Cryptography.xml
+C:\Users\USUUARIO\Desktop\Proyecto sistema de ventas SP\ProyectoSistemaVentas\CapaPresentacion\bin\Debug\ClosedXML.pdb
+C:\Users\USUUARIO\Desktop\Proyecto sistema de ventas SP\ProyectoSistemaVentas\CapaPresentacion\bin\Debug\ClosedXML.xml
+C:\Users\USUUARIO\Desktop\Proyecto sistema de ventas SP\ProyectoSistemaVentas\CapaPresentacion\bin\Debug\ClosedXML.Parser.xml
+C:\Users\USUUARIO\Desktop\Proyecto sistema de ventas SP\ProyectoSistemaVentas\CapaPresentacion\bin\Debug\DocumentFormat.OpenXml.xml
+C:\Users\USUUARIO\Desktop\Proyecto sistema de ventas SP\ProyectoSistemaVentas\CapaPresentacion\bin\Debug\DocumentFormat.OpenXml.Framework.xml
+C:\Users\USUUARIO\Desktop\Proyecto sistema de ventas SP\ProyectoSistemaVentas\CapaPresentacion\bin\Debug\ExcelNumberFormat.xml
+C:\Users\USUUARIO\Desktop\Proyecto sistema de ventas SP\ProyectoSistemaVentas\CapaPresentacion\bin\Debug\itextsharp.xml
+C:\Users\USUUARIO\Desktop\Proyecto sistema de ventas SP\ProyectoSistemaVentas\CapaPresentacion\bin\Debug\Microsoft.Bcl.AsyncInterfaces.xml
+C:\Users\USUUARIO\Desktop\Proyecto sistema de ventas SP\ProyectoSistemaVentas\CapaPresentacion\bin\Debug\Microsoft.Bcl.HashCode.xml
+C:\Users\USUUARIO\Desktop\Proyecto sistema de ventas SP\ProyectoSistemaVentas\CapaPresentacion\bin\Debug\Microsoft.Extensions.DependencyInjection.xml
+C:\Users\USUUARIO\Desktop\Proyecto sistema de ventas SP\ProyectoSistemaVentas\CapaPresentacion\bin\Debug\Microsoft.Extensions.DependencyInjection.Abstractions.xml
+C:\Users\USUUARIO\Desktop\Proyecto sistema de ventas SP\ProyectoSistemaVentas\CapaPresentacion\bin\Debug\Microsoft.Extensions.Logging.xml
+C:\Users\USUUARIO\Desktop\Proyecto sistema de ventas SP\ProyectoSistemaVentas\CapaPresentacion\bin\Debug\Microsoft.Extensions.Logging.Abstractions.xml
+C:\Users\USUUARIO\Desktop\Proyecto sistema de ventas SP\ProyectoSistemaVentas\CapaPresentacion\bin\Debug\Microsoft.Extensions.Options.xml
+C:\Users\USUUARIO\Desktop\Proyecto sistema de ventas SP\ProyectoSistemaVentas\CapaPresentacion\bin\Debug\Microsoft.Extensions.Primitives.xml
+C:\Users\USUUARIO\Desktop\Proyecto sistema de ventas SP\ProyectoSistemaVentas\CapaPresentacion\bin\Debug\RBush.xml
+C:\Users\USUUARIO\Desktop\Proyecto sistema de ventas SP\ProyectoSistemaVentas\CapaPresentacion\bin\Debug\SimpleTcp.xml
+C:\Users\USUUARIO\Desktop\Proyecto sistema de ventas SP\ProyectoSistemaVentas\CapaPresentacion\bin\Debug\SixLabors.Fonts.xml
+C:\Users\USUUARIO\Desktop\Proyecto sistema de ventas SP\ProyectoSistemaVentas\CapaPresentacion\bin\Debug\SixLabors.ImageSharp.xml
+C:\Users\USUUARIO\Desktop\Proyecto sistema de ventas SP\ProyectoSistemaVentas\CapaPresentacion\bin\Debug\System.Buffers.xml
+C:\Users\USUUARIO\Desktop\Proyecto sistema de ventas SP\ProyectoSistemaVentas\CapaPresentacion\bin\Debug\System.Diagnostics.DiagnosticSource.xml
+C:\Users\USUUARIO\Desktop\Proyecto sistema de ventas SP\ProyectoSistemaVentas\CapaPresentacion\bin\Debug\System.IO.Ports.xml
+C:\Users\USUUARIO\Desktop\Proyecto sistema de ventas SP\ProyectoSistemaVentas\CapaPresentacion\bin\Debug\System.Memory.xml
+C:\Users\USUUARIO\Desktop\Proyecto sistema de ventas SP\ProyectoSistemaVentas\CapaPresentacion\bin\Debug\System.Numerics.Vectors.xml
+C:\Users\USUUARIO\Desktop\Proyecto sistema de ventas SP\ProyectoSistemaVentas\CapaPresentacion\bin\Debug\System.Runtime.CompilerServices.Unsafe.xml
+C:\Users\USUUARIO\Desktop\Proyecto sistema de ventas SP\ProyectoSistemaVentas\CapaPresentacion\bin\Debug\System.Text.Encoding.CodePages.xml
+C:\Users\USUUARIO\Desktop\Proyecto sistema de ventas SP\ProyectoSistemaVentas\CapaPresentacion\bin\Debug\System.Text.Encodings.Web.xml
+C:\Users\USUUARIO\Desktop\Proyecto sistema de ventas SP\ProyectoSistemaVentas\CapaPresentacion\bin\Debug\System.Text.Json.xml
+C:\Users\USUUARIO\Desktop\Proyecto sistema de ventas SP\ProyectoSistemaVentas\CapaPresentacion\bin\Debug\System.Threading.Tasks.Extensions.xml
+C:\Users\USUUARIO\Desktop\Proyecto sistema de ventas SP\ProyectoSistemaVentas\CapaPresentacion\bin\Debug\System.ValueTuple.xml
+C:\Users\USUUARIO\Desktop\Proyecto sistema de ventas SP\ProyectoSistemaVentas\CapaPresentacion\obj\Debug\CapaPresentacion.csproj.AssemblyReference.cache
+C:\Users\USUUARIO\Desktop\Proyecto sistema de ventas SP\ProyectoSistemaVentas\CapaPresentacion\obj\Debug\CapaPresentacion.frmCategoria.resources
+C:\Users\USUUARIO\Desktop\Proyecto sistema de ventas SP\ProyectoSistemaVentas\CapaPresentacion\obj\Debug\CapaPresentacion.frmClientes.resources
+C:\Users\USUUARIO\Desktop\Proyecto sistema de ventas SP\ProyectoSistemaVentas\CapaPresentacion\obj\Debug\CapaPresentacion.frmCompras.resources
+C:\Users\USUUARIO\Desktop\Proyecto sistema de ventas SP\ProyectoSistemaVentas\CapaPresentacion\obj\Debug\CapaPresentacion.FrmComprasCredito.resources
+C:\Users\USUUARIO\Desktop\Proyecto sistema de ventas SP\ProyectoSistemaVentas\CapaPresentacion\obj\Debug\CapaPresentacion.frmDetalleCompra.resources
+C:\Users\USUUARIO\Desktop\Proyecto sistema de ventas SP\ProyectoSistemaVentas\CapaPresentacion\obj\Debug\CapaPresentacion.frmDetalleVenta.resources
+C:\Users\USUUARIO\Desktop\Proyecto sistema de ventas SP\ProyectoSistemaVentas\CapaPresentacion\obj\Debug\CapaPresentacion.frmNegocio.resources
+C:\Users\USUUARIO\Desktop\Proyecto sistema de ventas SP\ProyectoSistemaVentas\CapaPresentacion\obj\Debug\CapaPresentacion.FrmPedidos.resources
+C:\Users\USUUARIO\Desktop\Proyecto sistema de ventas SP\ProyectoSistemaVentas\CapaPresentacion\obj\Debug\CapaPresentacion.frmProducto.resources
+C:\Users\USUUARIO\Desktop\Proyecto sistema de ventas SP\ProyectoSistemaVentas\CapaPresentacion\obj\Debug\CapaPresentacion.frmProveedores.resources
+C:\Users\USUUARIO\Desktop\Proyecto sistema de ventas SP\ProyectoSistemaVentas\CapaPresentacion\obj\Debug\CapaPresentacion.FrmRegistroColores.resources
+C:\Users\USUUARIO\Desktop\Proyecto sistema de ventas SP\ProyectoSistemaVentas\CapaPresentacion\obj\Debug\CapaPresentacion.frmReporteCompras.resources
+C:\Users\USUUARIO\Desktop\Proyecto sistema de ventas SP\ProyectoSistemaVentas\CapaPresentacion\obj\Debug\CapaPresentacion.frmReportes.resources
+C:\Users\USUUARIO\Desktop\Proyecto sistema de ventas SP\ProyectoSistemaVentas\CapaPresentacion\obj\Debug\CapaPresentacion.frmReporteVentas.resources
+C:\Users\USUUARIO\Desktop\Proyecto sistema de ventas SP\ProyectoSistemaVentas\CapaPresentacion\obj\Debug\CapaPresentacion.frmUsuarios.resources
+C:\Users\USUUARIO\Desktop\Proyecto sistema de ventas SP\ProyectoSistemaVentas\CapaPresentacion\obj\Debug\CapaPresentacion.frmVentas.resources
+C:\Users\USUUARIO\Desktop\Proyecto sistema de ventas SP\ProyectoSistemaVentas\CapaPresentacion\obj\Debug\CapaPresentacion.FrmVentasCredito.resources
+C:\Users\USUUARIO\Desktop\Proyecto sistema de ventas SP\ProyectoSistemaVentas\CapaPresentacion\obj\Debug\CapaPresentacion.Inicio.resources
+C:\Users\USUUARIO\Desktop\Proyecto sistema de ventas SP\ProyectoSistemaVentas\CapaPresentacion\obj\Debug\CapaPresentacion.Login.resources
+C:\Users\USUUARIO\Desktop\Proyecto sistema de ventas SP\ProyectoSistemaVentas\CapaPresentacion\obj\Debug\CapaPresentacion.Modales.FrmCredito.resources
+C:\Users\USUUARIO\Desktop\Proyecto sistema de ventas SP\ProyectoSistemaVentas\CapaPresentacion\obj\Debug\CapaPresentacion.Modales.frmHistorialStock.resources
+C:\Users\USUUARIO\Desktop\Proyecto sistema de ventas SP\ProyectoSistemaVentas\CapaPresentacion\obj\Debug\CapaPresentacion.Modales.frmMostrarExcel.resources
+C:\Users\USUUARIO\Desktop\Proyecto sistema de ventas SP\ProyectoSistemaVentas\CapaPresentacion\obj\Debug\CapaPresentacion.Modales.MdAbonosCompra.resources
+C:\Users\USUUARIO\Desktop\Proyecto sistema de ventas SP\ProyectoSistemaVentas\CapaPresentacion\obj\Debug\CapaPresentacion.Modales.mdAcercade.resources
+C:\Users\USUUARIO\Desktop\Proyecto sistema de ventas SP\ProyectoSistemaVentas\CapaPresentacion\obj\Debug\CapaPresentacion.Modales.mdCliente.resources
+C:\Users\USUUARIO\Desktop\Proyecto sistema de ventas SP\ProyectoSistemaVentas\CapaPresentacion\obj\Debug\CapaPresentacion.Modales.mdProducto.resources
+C:\Users\USUUARIO\Desktop\Proyecto sistema de ventas SP\ProyectoSistemaVentas\CapaPresentacion\obj\Debug\CapaPresentacion.Modales.mdProveedor.resources
+C:\Users\USUUARIO\Desktop\Proyecto sistema de ventas SP\ProyectoSistemaVentas\CapaPresentacion\obj\Debug\CapaPresentacion.Modales.Md_RegistrarCredito.resources
+C:\Users\USUUARIO\Desktop\Proyecto sistema de ventas SP\ProyectoSistemaVentas\CapaPresentacion\obj\Debug\CapaPresentacion.Modales.md_RegistrarVentaCredito.resources
+C:\Users\USUUARIO\Desktop\Proyecto sistema de ventas SP\ProyectoSistemaVentas\CapaPresentacion\obj\Debug\CapaPresentacion.Properties.Resources.resources
+C:\Users\USUUARIO\Desktop\Proyecto sistema de ventas SP\ProyectoSistemaVentas\CapaPresentacion\obj\Debug\CapaPresentacion.csproj.GenerateResource.cache
+C:\Users\USUUARIO\Desktop\Proyecto sistema de ventas SP\ProyectoSistemaVentas\CapaPresentacion\obj\Debug\CapaPresentacion.csproj.CoreCompileInputs.cache
+C:\Users\USUUARIO\Desktop\Proyecto sistema de ventas SP\ProyectoSistemaVentas\CapaPresentacion\obj\Debug\SUPER COLOR.exe.manifest
+C:\Users\USUUARIO\Desktop\Proyecto sistema de ventas SP\ProyectoSistemaVentas\CapaPresentacion\obj\Debug\SUPER COLOR.application
+C:\Users\USUUARIO\Desktop\Proyecto sistema de ventas SP\ProyectoSistemaVentas\CapaPresentacion\obj\Debug\CapaPres.61CA7C38.Up2Date
+C:\Users\USUUARIO\Desktop\Proyecto sistema de ventas SP\ProyectoSistemaVentas\CapaPresentacion\obj\Debug\SUPER COLOR.exe
+C:\Users\USUUARIO\Desktop\Proyecto sistema de ventas SP\ProyectoSistemaVentas\CapaPresentacion\obj\Debug\SUPER COLOR.pdb
+C:\SistemaAutoFrenosOriente\SistemaAutoFrenosOriente\CapaPresentacion\bin\Debug\AUTO FRENOS DE ORIENTE.exe.config
+C:\SistemaAutoFrenosOriente\SistemaAutoFrenosOriente\CapaPresentacion\bin\Debug\AUTO FRENOS DE ORIENTE.exe.manifest
+C:\SistemaAutoFrenosOriente\SistemaAutoFrenosOriente\CapaPresentacion\bin\Debug\AUTO FRENOS DE ORIENTE.application
+C:\SistemaAutoFrenosOriente\SistemaAutoFrenosOriente\CapaPresentacion\bin\Debug\AUTO FRENOS DE ORIENTE.exe
+C:\SistemaAutoFrenosOriente\SistemaAutoFrenosOriente\CapaPresentacion\bin\Debug\AUTO FRENOS DE ORIENTE.pdb
+C:\SistemaAutoFrenosOriente\SistemaAutoFrenosOriente\CapaPresentacion\bin\Debug\BouncyCastle.Cryptography.dll
+C:\SistemaAutoFrenosOriente\SistemaAutoFrenosOriente\CapaPresentacion\bin\Debug\CapaDatosSP.dll
+C:\SistemaAutoFrenosOriente\SistemaAutoFrenosOriente\CapaPresentacion\bin\Debug\CapaEntidadSP.dll
+C:\SistemaAutoFrenosOriente\SistemaAutoFrenosOriente\CapaPresentacion\bin\Debug\CapaNegocioSP.dll
+C:\SistemaAutoFrenosOriente\SistemaAutoFrenosOriente\CapaPresentacion\bin\Debug\ClosedXML.dll
+C:\SistemaAutoFrenosOriente\SistemaAutoFrenosOriente\CapaPresentacion\bin\Debug\ClosedXML.Parser.dll
+C:\SistemaAutoFrenosOriente\SistemaAutoFrenosOriente\CapaPresentacion\bin\Debug\DocumentFormat.OpenXml.dll
+C:\SistemaAutoFrenosOriente\SistemaAutoFrenosOriente\CapaPresentacion\bin\Debug\DocumentFormat.OpenXml.Framework.dll
+C:\SistemaAutoFrenosOriente\SistemaAutoFrenosOriente\CapaPresentacion\bin\Debug\ESC-POS-USB-NET.dll
+C:\SistemaAutoFrenosOriente\SistemaAutoFrenosOriente\CapaPresentacion\bin\Debug\ESCPOS_NET.dll
+C:\SistemaAutoFrenosOriente\SistemaAutoFrenosOriente\CapaPresentacion\bin\Debug\ExcelNumberFormat.dll
+C:\SistemaAutoFrenosOriente\SistemaAutoFrenosOriente\CapaPresentacion\bin\Debug\FontAwesome.Sharp.dll
+C:\SistemaAutoFrenosOriente\SistemaAutoFrenosOriente\CapaPresentacion\bin\Debug\itextsharp.dll
+C:\SistemaAutoFrenosOriente\SistemaAutoFrenosOriente\CapaPresentacion\bin\Debug\itextsharp.xmlworker.dll
+C:\SistemaAutoFrenosOriente\SistemaAutoFrenosOriente\CapaPresentacion\bin\Debug\Microsoft.Bcl.AsyncInterfaces.dll
+C:\SistemaAutoFrenosOriente\SistemaAutoFrenosOriente\CapaPresentacion\bin\Debug\Microsoft.Bcl.HashCode.dll
+C:\SistemaAutoFrenosOriente\SistemaAutoFrenosOriente\CapaPresentacion\bin\Debug\Microsoft.Extensions.DependencyInjection.Abstractions.dll
+C:\SistemaAutoFrenosOriente\SistemaAutoFrenosOriente\CapaPresentacion\bin\Debug\Microsoft.Extensions.DependencyInjection.dll
+C:\SistemaAutoFrenosOriente\SistemaAutoFrenosOriente\CapaPresentacion\bin\Debug\Microsoft.Extensions.Logging.Abstractions.dll
+C:\SistemaAutoFrenosOriente\SistemaAutoFrenosOriente\CapaPresentacion\bin\Debug\Microsoft.Extensions.Logging.dll
+C:\SistemaAutoFrenosOriente\SistemaAutoFrenosOriente\CapaPresentacion\bin\Debug\Microsoft.Extensions.Options.dll
+C:\SistemaAutoFrenosOriente\SistemaAutoFrenosOriente\CapaPresentacion\bin\Debug\Microsoft.Extensions.Primitives.dll
+C:\SistemaAutoFrenosOriente\SistemaAutoFrenosOriente\CapaPresentacion\bin\Debug\RBush.dll
+C:\SistemaAutoFrenosOriente\SistemaAutoFrenosOriente\CapaPresentacion\bin\Debug\SimpleTcp.dll
+C:\SistemaAutoFrenosOriente\SistemaAutoFrenosOriente\CapaPresentacion\bin\Debug\SixLabors.Fonts.dll
+C:\SistemaAutoFrenosOriente\SistemaAutoFrenosOriente\CapaPresentacion\bin\Debug\SixLabors.ImageSharp.dll
+C:\SistemaAutoFrenosOriente\SistemaAutoFrenosOriente\CapaPresentacion\bin\Debug\System.Buffers.dll
+C:\SistemaAutoFrenosOriente\SistemaAutoFrenosOriente\CapaPresentacion\bin\Debug\System.Diagnostics.DiagnosticSource.dll
+C:\SistemaAutoFrenosOriente\SistemaAutoFrenosOriente\CapaPresentacion\bin\Debug\System.Drawing.Common.dll
+C:\SistemaAutoFrenosOriente\SistemaAutoFrenosOriente\CapaPresentacion\bin\Debug\System.IO.Ports.dll
+C:\SistemaAutoFrenosOriente\SistemaAutoFrenosOriente\CapaPresentacion\bin\Debug\System.Memory.dll
+C:\SistemaAutoFrenosOriente\SistemaAutoFrenosOriente\CapaPresentacion\bin\Debug\System.Numerics.Vectors.dll
+C:\SistemaAutoFrenosOriente\SistemaAutoFrenosOriente\CapaPresentacion\bin\Debug\System.Runtime.CompilerServices.Unsafe.dll
+C:\SistemaAutoFrenosOriente\SistemaAutoFrenosOriente\CapaPresentacion\bin\Debug\System.Text.Encoding.CodePages.dll
+C:\SistemaAutoFrenosOriente\SistemaAutoFrenosOriente\CapaPresentacion\bin\Debug\System.Text.Encodings.Web.dll
+C:\SistemaAutoFrenosOriente\SistemaAutoFrenosOriente\CapaPresentacion\bin\Debug\System.Text.Json.dll
+C:\SistemaAutoFrenosOriente\SistemaAutoFrenosOriente\CapaPresentacion\bin\Debug\System.Threading.Tasks.Extensions.dll
+C:\SistemaAutoFrenosOriente\SistemaAutoFrenosOriente\CapaPresentacion\bin\Debug\System.ValueTuple.dll
+C:\SistemaAutoFrenosOriente\SistemaAutoFrenosOriente\CapaPresentacion\bin\Debug\CapaDatosSP.pdb
+C:\SistemaAutoFrenosOriente\SistemaAutoFrenosOriente\CapaPresentacion\bin\Debug\CapaDatosSP.dll.config
+C:\SistemaAutoFrenosOriente\SistemaAutoFrenosOriente\CapaPresentacion\bin\Debug\CapaEntidadSP.pdb
+C:\SistemaAutoFrenosOriente\SistemaAutoFrenosOriente\CapaPresentacion\bin\Debug\CapaEntidadSP.dll.config
+C:\SistemaAutoFrenosOriente\SistemaAutoFrenosOriente\CapaPresentacion\bin\Debug\CapaNegocioSP.pdb
+C:\SistemaAutoFrenosOriente\SistemaAutoFrenosOriente\CapaPresentacion\bin\Debug\CapaNegocioSP.dll.config
+C:\SistemaAutoFrenosOriente\SistemaAutoFrenosOriente\CapaPresentacion\bin\Debug\BouncyCastle.Cryptography.xml
+C:\SistemaAutoFrenosOriente\SistemaAutoFrenosOriente\CapaPresentacion\bin\Debug\ClosedXML.pdb
+C:\SistemaAutoFrenosOriente\SistemaAutoFrenosOriente\CapaPresentacion\bin\Debug\ClosedXML.xml
+C:\SistemaAutoFrenosOriente\SistemaAutoFrenosOriente\CapaPresentacion\bin\Debug\ClosedXML.Parser.xml
+C:\SistemaAutoFrenosOriente\SistemaAutoFrenosOriente\CapaPresentacion\bin\Debug\DocumentFormat.OpenXml.xml
+C:\SistemaAutoFrenosOriente\SistemaAutoFrenosOriente\CapaPresentacion\bin\Debug\DocumentFormat.OpenXml.Framework.xml
+C:\SistemaAutoFrenosOriente\SistemaAutoFrenosOriente\CapaPresentacion\bin\Debug\ExcelNumberFormat.xml
+C:\SistemaAutoFrenosOriente\SistemaAutoFrenosOriente\CapaPresentacion\bin\Debug\itextsharp.xml
+C:\SistemaAutoFrenosOriente\SistemaAutoFrenosOriente\CapaPresentacion\bin\Debug\Microsoft.Bcl.AsyncInterfaces.xml
+C:\SistemaAutoFrenosOriente\SistemaAutoFrenosOriente\CapaPresentacion\bin\Debug\Microsoft.Bcl.HashCode.xml
+C:\SistemaAutoFrenosOriente\SistemaAutoFrenosOriente\CapaPresentacion\bin\Debug\Microsoft.Extensions.DependencyInjection.xml
+C:\SistemaAutoFrenosOriente\SistemaAutoFrenosOriente\CapaPresentacion\bin\Debug\Microsoft.Extensions.DependencyInjection.Abstractions.xml
+C:\SistemaAutoFrenosOriente\SistemaAutoFrenosOriente\CapaPresentacion\bin\Debug\Microsoft.Extensions.Logging.xml
+C:\SistemaAutoFrenosOriente\SistemaAutoFrenosOriente\CapaPresentacion\bin\Debug\Microsoft.Extensions.Logging.Abstractions.xml
+C:\SistemaAutoFrenosOriente\SistemaAutoFrenosOriente\CapaPresentacion\bin\Debug\Microsoft.Extensions.Options.xml
+C:\SistemaAutoFrenosOriente\SistemaAutoFrenosOriente\CapaPresentacion\bin\Debug\Microsoft.Extensions.Primitives.xml
+C:\SistemaAutoFrenosOriente\SistemaAutoFrenosOriente\CapaPresentacion\bin\Debug\RBush.xml
+C:\SistemaAutoFrenosOriente\SistemaAutoFrenosOriente\CapaPresentacion\bin\Debug\SimpleTcp.xml
+C:\SistemaAutoFrenosOriente\SistemaAutoFrenosOriente\CapaPresentacion\bin\Debug\SixLabors.Fonts.xml
+C:\SistemaAutoFrenosOriente\SistemaAutoFrenosOriente\CapaPresentacion\bin\Debug\SixLabors.ImageSharp.xml
+C:\SistemaAutoFrenosOriente\SistemaAutoFrenosOriente\CapaPresentacion\bin\Debug\System.Buffers.xml
+C:\SistemaAutoFrenosOriente\SistemaAutoFrenosOriente\CapaPresentacion\bin\Debug\System.Diagnostics.DiagnosticSource.xml
+C:\SistemaAutoFrenosOriente\SistemaAutoFrenosOriente\CapaPresentacion\bin\Debug\System.IO.Ports.xml
+C:\SistemaAutoFrenosOriente\SistemaAutoFrenosOriente\CapaPresentacion\bin\Debug\System.Memory.xml
+C:\SistemaAutoFrenosOriente\SistemaAutoFrenosOriente\CapaPresentacion\bin\Debug\System.Numerics.Vectors.xml
+C:\SistemaAutoFrenosOriente\SistemaAutoFrenosOriente\CapaPresentacion\bin\Debug\System.Runtime.CompilerServices.Unsafe.xml
+C:\SistemaAutoFrenosOriente\SistemaAutoFrenosOriente\CapaPresentacion\bin\Debug\System.Text.Encoding.CodePages.xml
+C:\SistemaAutoFrenosOriente\SistemaAutoFrenosOriente\CapaPresentacion\bin\Debug\System.Text.Encodings.Web.xml
+C:\SistemaAutoFrenosOriente\SistemaAutoFrenosOriente\CapaPresentacion\bin\Debug\System.Text.Json.xml
+C:\SistemaAutoFrenosOriente\SistemaAutoFrenosOriente\CapaPresentacion\bin\Debug\System.Threading.Tasks.Extensions.xml
+C:\SistemaAutoFrenosOriente\SistemaAutoFrenosOriente\CapaPresentacion\bin\Debug\System.ValueTuple.xml
+C:\SistemaAutoFrenosOriente\SistemaAutoFrenosOriente\CapaPresentacion\obj\Debug\CapaPresentacion.csproj.AssemblyReference.cache
+C:\SistemaAutoFrenosOriente\SistemaAutoFrenosOriente\CapaPresentacion\obj\Debug\CapaPresentacion.frmCategoria.resources
+C:\SistemaAutoFrenosOriente\SistemaAutoFrenosOriente\CapaPresentacion\obj\Debug\CapaPresentacion.frmClientes.resources
+C:\SistemaAutoFrenosOriente\SistemaAutoFrenosOriente\CapaPresentacion\obj\Debug\CapaPresentacion.frmCompras.resources
+C:\SistemaAutoFrenosOriente\SistemaAutoFrenosOriente\CapaPresentacion\obj\Debug\CapaPresentacion.FrmComprasCredito.resources
+C:\SistemaAutoFrenosOriente\SistemaAutoFrenosOriente\CapaPresentacion\obj\Debug\CapaPresentacion.frmDetalleCompra.resources
+C:\SistemaAutoFrenosOriente\SistemaAutoFrenosOriente\CapaPresentacion\obj\Debug\CapaPresentacion.frmDetalleVenta.resources
+C:\SistemaAutoFrenosOriente\SistemaAutoFrenosOriente\CapaPresentacion\obj\Debug\CapaPresentacion.frmNegocio.resources
+C:\SistemaAutoFrenosOriente\SistemaAutoFrenosOriente\CapaPresentacion\obj\Debug\CapaPresentacion.FrmPedidos.resources
+C:\SistemaAutoFrenosOriente\SistemaAutoFrenosOriente\CapaPresentacion\obj\Debug\CapaPresentacion.frmProducto.resources
+C:\SistemaAutoFrenosOriente\SistemaAutoFrenosOriente\CapaPresentacion\obj\Debug\CapaPresentacion.frmProveedores.resources
+C:\SistemaAutoFrenosOriente\SistemaAutoFrenosOriente\CapaPresentacion\obj\Debug\CapaPresentacion.frmReporteCompras.resources
+C:\SistemaAutoFrenosOriente\SistemaAutoFrenosOriente\CapaPresentacion\obj\Debug\CapaPresentacion.frmReportes.resources
+C:\SistemaAutoFrenosOriente\SistemaAutoFrenosOriente\CapaPresentacion\obj\Debug\CapaPresentacion.frmReporteVentas.resources
+C:\SistemaAutoFrenosOriente\SistemaAutoFrenosOriente\CapaPresentacion\obj\Debug\CapaPresentacion.frmUsuarios.resources
+C:\SistemaAutoFrenosOriente\SistemaAutoFrenosOriente\CapaPresentacion\obj\Debug\CapaPresentacion.frmVentas.resources
+C:\SistemaAutoFrenosOriente\SistemaAutoFrenosOriente\CapaPresentacion\obj\Debug\CapaPresentacion.FrmVentasCredito.resources
+C:\SistemaAutoFrenosOriente\SistemaAutoFrenosOriente\CapaPresentacion\obj\Debug\CapaPresentacion.Inicio.resources
+C:\SistemaAutoFrenosOriente\SistemaAutoFrenosOriente\CapaPresentacion\obj\Debug\CapaPresentacion.Login.resources
+C:\SistemaAutoFrenosOriente\SistemaAutoFrenosOriente\CapaPresentacion\obj\Debug\CapaPresentacion.Modales.FrmCredito.resources
+C:\SistemaAutoFrenosOriente\SistemaAutoFrenosOriente\CapaPresentacion\obj\Debug\CapaPresentacion.Modales.frmHistorialStock.resources
+C:\SistemaAutoFrenosOriente\SistemaAutoFrenosOriente\CapaPresentacion\obj\Debug\CapaPresentacion.Modales.frmMostrarExcel.resources
+C:\SistemaAutoFrenosOriente\SistemaAutoFrenosOriente\CapaPresentacion\obj\Debug\CapaPresentacion.Modales.MdAbonosCompra.resources
+C:\SistemaAutoFrenosOriente\SistemaAutoFrenosOriente\CapaPresentacion\obj\Debug\CapaPresentacion.Modales.mdAcercade.resources
+C:\SistemaAutoFrenosOriente\SistemaAutoFrenosOriente\CapaPresentacion\obj\Debug\CapaPresentacion.Modales.mdCliente.resources
+C:\SistemaAutoFrenosOriente\SistemaAutoFrenosOriente\CapaPresentacion\obj\Debug\CapaPresentacion.Modales.mdProducto.resources
+C:\SistemaAutoFrenosOriente\SistemaAutoFrenosOriente\CapaPresentacion\obj\Debug\CapaPresentacion.Modales.mdProveedor.resources
+C:\SistemaAutoFrenosOriente\SistemaAutoFrenosOriente\CapaPresentacion\obj\Debug\CapaPresentacion.Modales.Md_RegistrarCredito.resources
+C:\SistemaAutoFrenosOriente\SistemaAutoFrenosOriente\CapaPresentacion\obj\Debug\CapaPresentacion.Modales.md_RegistrarVentaCredito.resources
+C:\SistemaAutoFrenosOriente\SistemaAutoFrenosOriente\CapaPresentacion\obj\Debug\CapaPresentacion.Properties.Resources.resources
+C:\SistemaAutoFrenosOriente\SistemaAutoFrenosOriente\CapaPresentacion\obj\Debug\CapaPresentacion.csproj.GenerateResource.cache
+C:\SistemaAutoFrenosOriente\SistemaAutoFrenosOriente\CapaPresentacion\obj\Debug\CapaPresentacion.csproj.CoreCompileInputs.cache
+C:\SistemaAutoFrenosOriente\SistemaAutoFrenosOriente\CapaPresentacion\obj\Debug\AUTO FRENOS DE ORIENTE.exe.manifest
+C:\SistemaAutoFrenosOriente\SistemaAutoFrenosOriente\CapaPresentacion\obj\Debug\AUTO FRENOS DE ORIENTE.application
+C:\SistemaAutoFrenosOriente\SistemaAutoFrenosOriente\CapaPresentacion\obj\Debug\CapaPres.61CA7C38.Up2Date
+C:\SistemaAutoFrenosOriente\SistemaAutoFrenosOriente\CapaPresentacion\obj\Debug\AUTO FRENOS DE ORIENTE.exe
+C:\SistemaAutoFrenosOriente\SistemaAutoFrenosOriente\CapaPresentacion\obj\Debug\AUTO FRENOS DE ORIENTE.pdb
+C:\SistemaAutoFrenosOriente\SistemaAutoFrenosOriente\CapaPresentacion\obj\Debug\CapaPresentacion.Modales.frmRegistrarVehiculo.resources
+C:\SistemaAutoFrenosOriente\SistemaAutoFrenosOriente\CapaPresentacion\obj\Debug\CapaPresentacion.Modales.frmVehiculosRegistrados.resources
+C:\SistemaAutoFrenosOriente\SistemaAutoFrenosOriente\CapaPresentacion\obj\Debug\CapaPresentacion.Modales.MdAutoPorCliente.resources
+C:\SistemaAutoFrenosOriente\SistemaAutoFrenosOriente\CapaPresentacion\obj\Debug\CapaPresentacion.Modales.Md_ProductoVentas.resources
+C:\Sistemas\SistemaAutoFrenosOriente\SistemaAutoFrenosOriente\CapaPresentacion\bin\Debug\AUTO FRENOS DE ORIENTE.exe.config
+C:\Sistemas\SistemaAutoFrenosOriente\SistemaAutoFrenosOriente\CapaPresentacion\bin\Debug\AUTO FRENOS DE ORIENTE.exe.manifest
+C:\Sistemas\SistemaAutoFrenosOriente\SistemaAutoFrenosOriente\CapaPresentacion\bin\Debug\AUTO FRENOS DE ORIENTE.application
+C:\Sistemas\SistemaAutoFrenosOriente\SistemaAutoFrenosOriente\CapaPresentacion\bin\Debug\AUTO FRENOS DE ORIENTE.exe
+C:\Sistemas\SistemaAutoFrenosOriente\SistemaAutoFrenosOriente\CapaPresentacion\bin\Debug\AUTO FRENOS DE ORIENTE.pdb
+C:\Sistemas\SistemaAutoFrenosOriente\SistemaAutoFrenosOriente\CapaPresentacion\bin\Debug\BouncyCastle.Cryptography.dll
+C:\Sistemas\SistemaAutoFrenosOriente\SistemaAutoFrenosOriente\CapaPresentacion\bin\Debug\CapaDatosSP.dll
+C:\Sistemas\SistemaAutoFrenosOriente\SistemaAutoFrenosOriente\CapaPresentacion\bin\Debug\CapaEntidadSP.dll
+C:\Sistemas\SistemaAutoFrenosOriente\SistemaAutoFrenosOriente\CapaPresentacion\bin\Debug\CapaNegocioSP.dll
+C:\Sistemas\SistemaAutoFrenosOriente\SistemaAutoFrenosOriente\CapaPresentacion\bin\Debug\ClosedXML.dll
+C:\Sistemas\SistemaAutoFrenosOriente\SistemaAutoFrenosOriente\CapaPresentacion\bin\Debug\ClosedXML.Parser.dll
+C:\Sistemas\SistemaAutoFrenosOriente\SistemaAutoFrenosOriente\CapaPresentacion\bin\Debug\DocumentFormat.OpenXml.dll
+C:\Sistemas\SistemaAutoFrenosOriente\SistemaAutoFrenosOriente\CapaPresentacion\bin\Debug\DocumentFormat.OpenXml.Framework.dll
+C:\Sistemas\SistemaAutoFrenosOriente\SistemaAutoFrenosOriente\CapaPresentacion\bin\Debug\ESC-POS-USB-NET.dll
+C:\Sistemas\SistemaAutoFrenosOriente\SistemaAutoFrenosOriente\CapaPresentacion\bin\Debug\ESCPOS_NET.dll
+C:\Sistemas\SistemaAutoFrenosOriente\SistemaAutoFrenosOriente\CapaPresentacion\bin\Debug\ExcelNumberFormat.dll
+C:\Sistemas\SistemaAutoFrenosOriente\SistemaAutoFrenosOriente\CapaPresentacion\bin\Debug\FontAwesome.Sharp.dll
+C:\Sistemas\SistemaAutoFrenosOriente\SistemaAutoFrenosOriente\CapaPresentacion\bin\Debug\itextsharp.dll
+C:\Sistemas\SistemaAutoFrenosOriente\SistemaAutoFrenosOriente\CapaPresentacion\bin\Debug\itextsharp.xmlworker.dll
+C:\Sistemas\SistemaAutoFrenosOriente\SistemaAutoFrenosOriente\CapaPresentacion\bin\Debug\Microsoft.Bcl.AsyncInterfaces.dll
+C:\Sistemas\SistemaAutoFrenosOriente\SistemaAutoFrenosOriente\CapaPresentacion\bin\Debug\Microsoft.Bcl.HashCode.dll
+C:\Sistemas\SistemaAutoFrenosOriente\SistemaAutoFrenosOriente\CapaPresentacion\bin\Debug\Microsoft.Extensions.DependencyInjection.Abstractions.dll
+C:\Sistemas\SistemaAutoFrenosOriente\SistemaAutoFrenosOriente\CapaPresentacion\bin\Debug\Microsoft.Extensions.DependencyInjection.dll
+C:\Sistemas\SistemaAutoFrenosOriente\SistemaAutoFrenosOriente\CapaPresentacion\bin\Debug\Microsoft.Extensions.Logging.Abstractions.dll
+C:\Sistemas\SistemaAutoFrenosOriente\SistemaAutoFrenosOriente\CapaPresentacion\bin\Debug\Microsoft.Extensions.Logging.dll
+C:\Sistemas\SistemaAutoFrenosOriente\SistemaAutoFrenosOriente\CapaPresentacion\bin\Debug\Microsoft.Extensions.Options.dll
+C:\Sistemas\SistemaAutoFrenosOriente\SistemaAutoFrenosOriente\CapaPresentacion\bin\Debug\Microsoft.Extensions.Primitives.dll
+C:\Sistemas\SistemaAutoFrenosOriente\SistemaAutoFrenosOriente\CapaPresentacion\bin\Debug\RBush.dll
+C:\Sistemas\SistemaAutoFrenosOriente\SistemaAutoFrenosOriente\CapaPresentacion\bin\Debug\SimpleTcp.dll
+C:\Sistemas\SistemaAutoFrenosOriente\SistemaAutoFrenosOriente\CapaPresentacion\bin\Debug\SixLabors.Fonts.dll
+C:\Sistemas\SistemaAutoFrenosOriente\SistemaAutoFrenosOriente\CapaPresentacion\bin\Debug\SixLabors.ImageSharp.dll
+C:\Sistemas\SistemaAutoFrenosOriente\SistemaAutoFrenosOriente\CapaPresentacion\bin\Debug\System.Buffers.dll
+C:\Sistemas\SistemaAutoFrenosOriente\SistemaAutoFrenosOriente\CapaPresentacion\bin\Debug\System.Diagnostics.DiagnosticSource.dll
+C:\Sistemas\SistemaAutoFrenosOriente\SistemaAutoFrenosOriente\CapaPresentacion\bin\Debug\System.Drawing.Common.dll
+C:\Sistemas\SistemaAutoFrenosOriente\SistemaAutoFrenosOriente\CapaPresentacion\bin\Debug\System.IO.Ports.dll
+C:\Sistemas\SistemaAutoFrenosOriente\SistemaAutoFrenosOriente\CapaPresentacion\bin\Debug\System.Memory.dll
+C:\Sistemas\SistemaAutoFrenosOriente\SistemaAutoFrenosOriente\CapaPresentacion\bin\Debug\System.Numerics.Vectors.dll
+C:\Sistemas\SistemaAutoFrenosOriente\SistemaAutoFrenosOriente\CapaPresentacion\bin\Debug\System.Runtime.CompilerServices.Unsafe.dll
+C:\Sistemas\SistemaAutoFrenosOriente\SistemaAutoFrenosOriente\CapaPresentacion\bin\Debug\System.Text.Encoding.CodePages.dll
+C:\Sistemas\SistemaAutoFrenosOriente\SistemaAutoFrenosOriente\CapaPresentacion\bin\Debug\System.Text.Encodings.Web.dll
+C:\Sistemas\SistemaAutoFrenosOriente\SistemaAutoFrenosOriente\CapaPresentacion\bin\Debug\System.Text.Json.dll
+C:\Sistemas\SistemaAutoFrenosOriente\SistemaAutoFrenosOriente\CapaPresentacion\bin\Debug\System.Threading.Tasks.Extensions.dll
+C:\Sistemas\SistemaAutoFrenosOriente\SistemaAutoFrenosOriente\CapaPresentacion\bin\Debug\System.ValueTuple.dll
+C:\Sistemas\SistemaAutoFrenosOriente\SistemaAutoFrenosOriente\CapaPresentacion\bin\Debug\CapaDatosSP.pdb
+C:\Sistemas\SistemaAutoFrenosOriente\SistemaAutoFrenosOriente\CapaPresentacion\bin\Debug\CapaDatosSP.dll.config
+C:\Sistemas\SistemaAutoFrenosOriente\SistemaAutoFrenosOriente\CapaPresentacion\bin\Debug\CapaEntidadSP.pdb
+C:\Sistemas\SistemaAutoFrenosOriente\SistemaAutoFrenosOriente\CapaPresentacion\bin\Debug\CapaEntidadSP.dll.config
+C:\Sistemas\SistemaAutoFrenosOriente\SistemaAutoFrenosOriente\CapaPresentacion\bin\Debug\CapaNegocioSP.pdb
+C:\Sistemas\SistemaAutoFrenosOriente\SistemaAutoFrenosOriente\CapaPresentacion\bin\Debug\CapaNegocioSP.dll.config
+C:\Sistemas\SistemaAutoFrenosOriente\SistemaAutoFrenosOriente\CapaPresentacion\bin\Debug\BouncyCastle.Cryptography.xml
+C:\Sistemas\SistemaAutoFrenosOriente\SistemaAutoFrenosOriente\CapaPresentacion\bin\Debug\ClosedXML.pdb
+C:\Sistemas\SistemaAutoFrenosOriente\SistemaAutoFrenosOriente\CapaPresentacion\bin\Debug\ClosedXML.xml
+C:\Sistemas\SistemaAutoFrenosOriente\SistemaAutoFrenosOriente\CapaPresentacion\bin\Debug\ClosedXML.Parser.xml
+C:\Sistemas\SistemaAutoFrenosOriente\SistemaAutoFrenosOriente\CapaPresentacion\bin\Debug\DocumentFormat.OpenXml.xml
+C:\Sistemas\SistemaAutoFrenosOriente\SistemaAutoFrenosOriente\CapaPresentacion\bin\Debug\DocumentFormat.OpenXml.Framework.xml
+C:\Sistemas\SistemaAutoFrenosOriente\SistemaAutoFrenosOriente\CapaPresentacion\bin\Debug\ExcelNumberFormat.xml
+C:\Sistemas\SistemaAutoFrenosOriente\SistemaAutoFrenosOriente\CapaPresentacion\bin\Debug\itextsharp.xml
+C:\Sistemas\SistemaAutoFrenosOriente\SistemaAutoFrenosOriente\CapaPresentacion\bin\Debug\Microsoft.Bcl.AsyncInterfaces.xml
+C:\Sistemas\SistemaAutoFrenosOriente\SistemaAutoFrenosOriente\CapaPresentacion\bin\Debug\Microsoft.Bcl.HashCode.xml
+C:\Sistemas\SistemaAutoFrenosOriente\SistemaAutoFrenosOriente\CapaPresentacion\bin\Debug\Microsoft.Extensions.DependencyInjection.xml
+C:\Sistemas\SistemaAutoFrenosOriente\SistemaAutoFrenosOriente\CapaPresentacion\bin\Debug\Microsoft.Extensions.DependencyInjection.Abstractions.xml
+C:\Sistemas\SistemaAutoFrenosOriente\SistemaAutoFrenosOriente\CapaPresentacion\bin\Debug\Microsoft.Extensions.Logging.xml
+C:\Sistemas\SistemaAutoFrenosOriente\SistemaAutoFrenosOriente\CapaPresentacion\bin\Debug\Microsoft.Extensions.Logging.Abstractions.xml
+C:\Sistemas\SistemaAutoFrenosOriente\SistemaAutoFrenosOriente\CapaPresentacion\bin\Debug\Microsoft.Extensions.Options.xml
+C:\Sistemas\SistemaAutoFrenosOriente\SistemaAutoFrenosOriente\CapaPresentacion\bin\Debug\Microsoft.Extensions.Primitives.xml
+C:\Sistemas\SistemaAutoFrenosOriente\SistemaAutoFrenosOriente\CapaPresentacion\bin\Debug\RBush.xml
+C:\Sistemas\SistemaAutoFrenosOriente\SistemaAutoFrenosOriente\CapaPresentacion\bin\Debug\SimpleTcp.xml
+C:\Sistemas\SistemaAutoFrenosOriente\SistemaAutoFrenosOriente\CapaPresentacion\bin\Debug\SixLabors.Fonts.xml
+C:\Sistemas\SistemaAutoFrenosOriente\SistemaAutoFrenosOriente\CapaPresentacion\bin\Debug\SixLabors.ImageSharp.xml
+C:\Sistemas\SistemaAutoFrenosOriente\SistemaAutoFrenosOriente\CapaPresentacion\bin\Debug\System.Buffers.xml
+C:\Sistemas\SistemaAutoFrenosOriente\SistemaAutoFrenosOriente\CapaPresentacion\bin\Debug\System.Diagnostics.DiagnosticSource.xml
+C:\Sistemas\SistemaAutoFrenosOriente\SistemaAutoFrenosOriente\CapaPresentacion\bin\Debug\System.IO.Ports.xml
+C:\Sistemas\SistemaAutoFrenosOriente\SistemaAutoFrenosOriente\CapaPresentacion\bin\Debug\System.Memory.xml
+C:\Sistemas\SistemaAutoFrenosOriente\SistemaAutoFrenosOriente\CapaPresentacion\bin\Debug\System.Numerics.Vectors.xml
+C:\Sistemas\SistemaAutoFrenosOriente\SistemaAutoFrenosOriente\CapaPresentacion\bin\Debug\System.Runtime.CompilerServices.Unsafe.xml
+C:\Sistemas\SistemaAutoFrenosOriente\SistemaAutoFrenosOriente\CapaPresentacion\bin\Debug\System.Text.Encoding.CodePages.xml
+C:\Sistemas\SistemaAutoFrenosOriente\SistemaAutoFrenosOriente\CapaPresentacion\bin\Debug\System.Text.Encodings.Web.xml
+C:\Sistemas\SistemaAutoFrenosOriente\SistemaAutoFrenosOriente\CapaPresentacion\bin\Debug\System.Text.Json.xml
+C:\Sistemas\SistemaAutoFrenosOriente\SistemaAutoFrenosOriente\CapaPresentacion\bin\Debug\System.Threading.Tasks.Extensions.xml
+C:\Sistemas\SistemaAutoFrenosOriente\SistemaAutoFrenosOriente\CapaPresentacion\bin\Debug\System.ValueTuple.xml
+C:\Sistemas\SistemaAutoFrenosOriente\SistemaAutoFrenosOriente\CapaPresentacion\obj\Debug\CapaPresentacion.csproj.AssemblyReference.cache
+C:\Sistemas\SistemaAutoFrenosOriente\SistemaAutoFrenosOriente\CapaPresentacion\obj\Debug\CapaPresentacion.frmCategoria.resources
+C:\Sistemas\SistemaAutoFrenosOriente\SistemaAutoFrenosOriente\CapaPresentacion\obj\Debug\CapaPresentacion.frmClientes.resources
+C:\Sistemas\SistemaAutoFrenosOriente\SistemaAutoFrenosOriente\CapaPresentacion\obj\Debug\CapaPresentacion.frmCompras.resources
+C:\Sistemas\SistemaAutoFrenosOriente\SistemaAutoFrenosOriente\CapaPresentacion\obj\Debug\CapaPresentacion.FrmComprasCredito.resources
+C:\Sistemas\SistemaAutoFrenosOriente\SistemaAutoFrenosOriente\CapaPresentacion\obj\Debug\CapaPresentacion.frmDetalleCompra.resources
+C:\Sistemas\SistemaAutoFrenosOriente\SistemaAutoFrenosOriente\CapaPresentacion\obj\Debug\CapaPresentacion.frmDetalleVenta.resources
+C:\Sistemas\SistemaAutoFrenosOriente\SistemaAutoFrenosOriente\CapaPresentacion\obj\Debug\CapaPresentacion.frmNegocio.resources
+C:\Sistemas\SistemaAutoFrenosOriente\SistemaAutoFrenosOriente\CapaPresentacion\obj\Debug\CapaPresentacion.FrmPedidos.resources
+C:\Sistemas\SistemaAutoFrenosOriente\SistemaAutoFrenosOriente\CapaPresentacion\obj\Debug\CapaPresentacion.frmProducto.resources
+C:\Sistemas\SistemaAutoFrenosOriente\SistemaAutoFrenosOriente\CapaPresentacion\obj\Debug\CapaPresentacion.frmProveedores.resources
+C:\Sistemas\SistemaAutoFrenosOriente\SistemaAutoFrenosOriente\CapaPresentacion\obj\Debug\CapaPresentacion.frmReporteCompras.resources
+C:\Sistemas\SistemaAutoFrenosOriente\SistemaAutoFrenosOriente\CapaPresentacion\obj\Debug\CapaPresentacion.frmReportes.resources
+C:\Sistemas\SistemaAutoFrenosOriente\SistemaAutoFrenosOriente\CapaPresentacion\obj\Debug\CapaPresentacion.frmReporteVentas.resources
+C:\Sistemas\SistemaAutoFrenosOriente\SistemaAutoFrenosOriente\CapaPresentacion\obj\Debug\CapaPresentacion.frmUsuarios.resources
+C:\Sistemas\SistemaAutoFrenosOriente\SistemaAutoFrenosOriente\CapaPresentacion\obj\Debug\CapaPresentacion.frmVentas.resources
+C:\Sistemas\SistemaAutoFrenosOriente\SistemaAutoFrenosOriente\CapaPresentacion\obj\Debug\CapaPresentacion.FrmVentasCredito.resources
+C:\Sistemas\SistemaAutoFrenosOriente\SistemaAutoFrenosOriente\CapaPresentacion\obj\Debug\CapaPresentacion.Inicio.resources
+C:\Sistemas\SistemaAutoFrenosOriente\SistemaAutoFrenosOriente\CapaPresentacion\obj\Debug\CapaPresentacion.Login.resources
+C:\Sistemas\SistemaAutoFrenosOriente\SistemaAutoFrenosOriente\CapaPresentacion\obj\Debug\CapaPresentacion.Modales.FrmCredito.resources
+C:\Sistemas\SistemaAutoFrenosOriente\SistemaAutoFrenosOriente\CapaPresentacion\obj\Debug\CapaPresentacion.Modales.frmHistorialStock.resources
+C:\Sistemas\SistemaAutoFrenosOriente\SistemaAutoFrenosOriente\CapaPresentacion\obj\Debug\CapaPresentacion.Modales.frmMostrarExcel.resources
+C:\Sistemas\SistemaAutoFrenosOriente\SistemaAutoFrenosOriente\CapaPresentacion\obj\Debug\CapaPresentacion.Modales.frmRegistrarVehiculo.resources
+C:\Sistemas\SistemaAutoFrenosOriente\SistemaAutoFrenosOriente\CapaPresentacion\obj\Debug\CapaPresentacion.Modales.frmVehiculosRegistrados.resources
+C:\Sistemas\SistemaAutoFrenosOriente\SistemaAutoFrenosOriente\CapaPresentacion\obj\Debug\CapaPresentacion.Modales.MdAbonosCompra.resources
+C:\Sistemas\SistemaAutoFrenosOriente\SistemaAutoFrenosOriente\CapaPresentacion\obj\Debug\CapaPresentacion.Modales.mdAcercade.resources
+C:\Sistemas\SistemaAutoFrenosOriente\SistemaAutoFrenosOriente\CapaPresentacion\obj\Debug\CapaPresentacion.Modales.MdAutoPorCliente.resources
+C:\Sistemas\SistemaAutoFrenosOriente\SistemaAutoFrenosOriente\CapaPresentacion\obj\Debug\CapaPresentacion.Modales.mdCliente.resources
+C:\Sistemas\SistemaAutoFrenosOriente\SistemaAutoFrenosOriente\CapaPresentacion\obj\Debug\CapaPresentacion.Modales.mdProducto.resources
+C:\Sistemas\SistemaAutoFrenosOriente\SistemaAutoFrenosOriente\CapaPresentacion\obj\Debug\CapaPresentacion.Modales.mdProveedor.resources
+C:\Sistemas\SistemaAutoFrenosOriente\SistemaAutoFrenosOriente\CapaPresentacion\obj\Debug\CapaPresentacion.Modales.Md_ProductoVentas.resources
+C:\Sistemas\SistemaAutoFrenosOriente\SistemaAutoFrenosOriente\CapaPresentacion\obj\Debug\CapaPresentacion.Modales.Md_RegistrarCredito.resources
+C:\Sistemas\SistemaAutoFrenosOriente\SistemaAutoFrenosOriente\CapaPresentacion\obj\Debug\CapaPresentacion.Modales.md_RegistrarVentaCredito.resources
+C:\Sistemas\SistemaAutoFrenosOriente\SistemaAutoFrenosOriente\CapaPresentacion\obj\Debug\CapaPresentacion.Properties.Resources.resources
+C:\Sistemas\SistemaAutoFrenosOriente\SistemaAutoFrenosOriente\CapaPresentacion\obj\Debug\CapaPresentacion.csproj.GenerateResource.cache
+C:\Sistemas\SistemaAutoFrenosOriente\SistemaAutoFrenosOriente\CapaPresentacion\obj\Debug\CapaPresentacion.csproj.CoreCompileInputs.cache
+C:\Sistemas\SistemaAutoFrenosOriente\SistemaAutoFrenosOriente\CapaPresentacion\obj\Debug\AUTO FRENOS DE ORIENTE.exe.manifest
+C:\Sistemas\SistemaAutoFrenosOriente\SistemaAutoFrenosOriente\CapaPresentacion\obj\Debug\AUTO FRENOS DE ORIENTE.application
+C:\Sistemas\SistemaAutoFrenosOriente\SistemaAutoFrenosOriente\CapaPresentacion\obj\Debug\CapaPres.61CA7C38.Up2Date
+C:\Sistemas\SistemaAutoFrenosOriente\SistemaAutoFrenosOriente\CapaPresentacion\obj\Debug\AUTO FRENOS DE ORIENTE.exe
+C:\Sistemas\SistemaAutoFrenosOriente\SistemaAutoFrenosOriente\CapaPresentacion\obj\Debug\AUTO FRENOS DE ORIENTE.pdb
+C:\Sistemas\SistemaAutoFrenosOriente\SistemaAutoFrenosOriente\CapaPresentacion\obj\Debug\CapaPresentacion.Modales.MdAcceso.resources
+C:\Sistemas\SistemaAutoFrenosOriente\SistemaAutoFrenosOriente\CapaPresentacion\obj\Debug\CapaPresentacion.Modales.MdCambiarClaveMenu.resources
+C:\Sistemas\SistemaVariedadesLopsi\SistemaVariedadesLopsi\CapaPresentacion\bin\Debug\VARIEDADES LOPSI.exe.config
+C:\Sistemas\SistemaVariedadesLopsi\SistemaVariedadesLopsi\CapaPresentacion\bin\Debug\VARIEDADES LOPSI.exe.manifest
+C:\Sistemas\SistemaVariedadesLopsi\SistemaVariedadesLopsi\CapaPresentacion\bin\Debug\VARIEDADES LOPSI.application
+C:\Sistemas\SistemaVariedadesLopsi\SistemaVariedadesLopsi\CapaPresentacion\bin\Debug\VARIEDADES LOPSI.exe
+C:\Sistemas\SistemaVariedadesLopsi\SistemaVariedadesLopsi\CapaPresentacion\bin\Debug\VARIEDADES LOPSI.pdb
+C:\Sistemas\SistemaVariedadesLopsi\SistemaVariedadesLopsi\CapaPresentacion\bin\Debug\BouncyCastle.Cryptography.dll
+C:\Sistemas\SistemaVariedadesLopsi\SistemaVariedadesLopsi\CapaPresentacion\bin\Debug\CapaDatosSP.dll
+C:\Sistemas\SistemaVariedadesLopsi\SistemaVariedadesLopsi\CapaPresentacion\bin\Debug\CapaEntidadSP.dll
+C:\Sistemas\SistemaVariedadesLopsi\SistemaVariedadesLopsi\CapaPresentacion\bin\Debug\CapaNegocioSP.dll
+C:\Sistemas\SistemaVariedadesLopsi\SistemaVariedadesLopsi\CapaPresentacion\bin\Debug\ClosedXML.dll
+C:\Sistemas\SistemaVariedadesLopsi\SistemaVariedadesLopsi\CapaPresentacion\bin\Debug\ClosedXML.Parser.dll
+C:\Sistemas\SistemaVariedadesLopsi\SistemaVariedadesLopsi\CapaPresentacion\bin\Debug\DocumentFormat.OpenXml.dll
+C:\Sistemas\SistemaVariedadesLopsi\SistemaVariedadesLopsi\CapaPresentacion\bin\Debug\DocumentFormat.OpenXml.Framework.dll
+C:\Sistemas\SistemaVariedadesLopsi\SistemaVariedadesLopsi\CapaPresentacion\bin\Debug\ESC-POS-USB-NET.dll
+C:\Sistemas\SistemaVariedadesLopsi\SistemaVariedadesLopsi\CapaPresentacion\bin\Debug\ESCPOS_NET.dll
+C:\Sistemas\SistemaVariedadesLopsi\SistemaVariedadesLopsi\CapaPresentacion\bin\Debug\ExcelNumberFormat.dll
+C:\Sistemas\SistemaVariedadesLopsi\SistemaVariedadesLopsi\CapaPresentacion\bin\Debug\FontAwesome.Sharp.dll
+C:\Sistemas\SistemaVariedadesLopsi\SistemaVariedadesLopsi\CapaPresentacion\bin\Debug\itextsharp.dll
+C:\Sistemas\SistemaVariedadesLopsi\SistemaVariedadesLopsi\CapaPresentacion\bin\Debug\itextsharp.xmlworker.dll
+C:\Sistemas\SistemaVariedadesLopsi\SistemaVariedadesLopsi\CapaPresentacion\bin\Debug\Microsoft.Bcl.AsyncInterfaces.dll
+C:\Sistemas\SistemaVariedadesLopsi\SistemaVariedadesLopsi\CapaPresentacion\bin\Debug\Microsoft.Bcl.HashCode.dll
+C:\Sistemas\SistemaVariedadesLopsi\SistemaVariedadesLopsi\CapaPresentacion\bin\Debug\Microsoft.Extensions.DependencyInjection.Abstractions.dll
+C:\Sistemas\SistemaVariedadesLopsi\SistemaVariedadesLopsi\CapaPresentacion\bin\Debug\Microsoft.Extensions.DependencyInjection.dll
+C:\Sistemas\SistemaVariedadesLopsi\SistemaVariedadesLopsi\CapaPresentacion\bin\Debug\Microsoft.Extensions.Logging.Abstractions.dll
+C:\Sistemas\SistemaVariedadesLopsi\SistemaVariedadesLopsi\CapaPresentacion\bin\Debug\Microsoft.Extensions.Logging.dll
+C:\Sistemas\SistemaVariedadesLopsi\SistemaVariedadesLopsi\CapaPresentacion\bin\Debug\Microsoft.Extensions.Options.dll
+C:\Sistemas\SistemaVariedadesLopsi\SistemaVariedadesLopsi\CapaPresentacion\bin\Debug\Microsoft.Extensions.Primitives.dll
+C:\Sistemas\SistemaVariedadesLopsi\SistemaVariedadesLopsi\CapaPresentacion\bin\Debug\RBush.dll
+C:\Sistemas\SistemaVariedadesLopsi\SistemaVariedadesLopsi\CapaPresentacion\bin\Debug\SimpleTcp.dll
+C:\Sistemas\SistemaVariedadesLopsi\SistemaVariedadesLopsi\CapaPresentacion\bin\Debug\SixLabors.Fonts.dll
+C:\Sistemas\SistemaVariedadesLopsi\SistemaVariedadesLopsi\CapaPresentacion\bin\Debug\SixLabors.ImageSharp.dll
+C:\Sistemas\SistemaVariedadesLopsi\SistemaVariedadesLopsi\CapaPresentacion\bin\Debug\System.Buffers.dll
+C:\Sistemas\SistemaVariedadesLopsi\SistemaVariedadesLopsi\CapaPresentacion\bin\Debug\System.Diagnostics.DiagnosticSource.dll
+C:\Sistemas\SistemaVariedadesLopsi\SistemaVariedadesLopsi\CapaPresentacion\bin\Debug\System.Drawing.Common.dll
+C:\Sistemas\SistemaVariedadesLopsi\SistemaVariedadesLopsi\CapaPresentacion\bin\Debug\System.IO.Ports.dll
+C:\Sistemas\SistemaVariedadesLopsi\SistemaVariedadesLopsi\CapaPresentacion\bin\Debug\System.Memory.dll
+C:\Sistemas\SistemaVariedadesLopsi\SistemaVariedadesLopsi\CapaPresentacion\bin\Debug\System.Numerics.Vectors.dll
+C:\Sistemas\SistemaVariedadesLopsi\SistemaVariedadesLopsi\CapaPresentacion\bin\Debug\System.Runtime.CompilerServices.Unsafe.dll
+C:\Sistemas\SistemaVariedadesLopsi\SistemaVariedadesLopsi\CapaPresentacion\bin\Debug\System.Text.Encoding.CodePages.dll
+C:\Sistemas\SistemaVariedadesLopsi\SistemaVariedadesLopsi\CapaPresentacion\bin\Debug\System.Text.Encodings.Web.dll
+C:\Sistemas\SistemaVariedadesLopsi\SistemaVariedadesLopsi\CapaPresentacion\bin\Debug\System.Text.Json.dll
+C:\Sistemas\SistemaVariedadesLopsi\SistemaVariedadesLopsi\CapaPresentacion\bin\Debug\System.Threading.Tasks.Extensions.dll
+C:\Sistemas\SistemaVariedadesLopsi\SistemaVariedadesLopsi\CapaPresentacion\bin\Debug\System.ValueTuple.dll
+C:\Sistemas\SistemaVariedadesLopsi\SistemaVariedadesLopsi\CapaPresentacion\bin\Debug\CapaDatosSP.pdb
+C:\Sistemas\SistemaVariedadesLopsi\SistemaVariedadesLopsi\CapaPresentacion\bin\Debug\CapaDatosSP.dll.config
+C:\Sistemas\SistemaVariedadesLopsi\SistemaVariedadesLopsi\CapaPresentacion\bin\Debug\CapaEntidadSP.pdb
+C:\Sistemas\SistemaVariedadesLopsi\SistemaVariedadesLopsi\CapaPresentacion\bin\Debug\CapaEntidadSP.dll.config
+C:\Sistemas\SistemaVariedadesLopsi\SistemaVariedadesLopsi\CapaPresentacion\bin\Debug\CapaNegocioSP.pdb
+C:\Sistemas\SistemaVariedadesLopsi\SistemaVariedadesLopsi\CapaPresentacion\bin\Debug\CapaNegocioSP.dll.config
+C:\Sistemas\SistemaVariedadesLopsi\SistemaVariedadesLopsi\CapaPresentacion\bin\Debug\BouncyCastle.Cryptography.xml
+C:\Sistemas\SistemaVariedadesLopsi\SistemaVariedadesLopsi\CapaPresentacion\bin\Debug\ClosedXML.pdb
+C:\Sistemas\SistemaVariedadesLopsi\SistemaVariedadesLopsi\CapaPresentacion\bin\Debug\ClosedXML.xml
+C:\Sistemas\SistemaVariedadesLopsi\SistemaVariedadesLopsi\CapaPresentacion\bin\Debug\ClosedXML.Parser.xml
+C:\Sistemas\SistemaVariedadesLopsi\SistemaVariedadesLopsi\CapaPresentacion\bin\Debug\DocumentFormat.OpenXml.xml
+C:\Sistemas\SistemaVariedadesLopsi\SistemaVariedadesLopsi\CapaPresentacion\bin\Debug\DocumentFormat.OpenXml.Framework.xml
+C:\Sistemas\SistemaVariedadesLopsi\SistemaVariedadesLopsi\CapaPresentacion\bin\Debug\ExcelNumberFormat.xml
+C:\Sistemas\SistemaVariedadesLopsi\SistemaVariedadesLopsi\CapaPresentacion\bin\Debug\itextsharp.xml
+C:\Sistemas\SistemaVariedadesLopsi\SistemaVariedadesLopsi\CapaPresentacion\bin\Debug\Microsoft.Bcl.AsyncInterfaces.xml
+C:\Sistemas\SistemaVariedadesLopsi\SistemaVariedadesLopsi\CapaPresentacion\bin\Debug\Microsoft.Bcl.HashCode.xml
+C:\Sistemas\SistemaVariedadesLopsi\SistemaVariedadesLopsi\CapaPresentacion\bin\Debug\Microsoft.Extensions.DependencyInjection.xml
+C:\Sistemas\SistemaVariedadesLopsi\SistemaVariedadesLopsi\CapaPresentacion\bin\Debug\Microsoft.Extensions.DependencyInjection.Abstractions.xml
+C:\Sistemas\SistemaVariedadesLopsi\SistemaVariedadesLopsi\CapaPresentacion\bin\Debug\Microsoft.Extensions.Logging.xml
+C:\Sistemas\SistemaVariedadesLopsi\SistemaVariedadesLopsi\CapaPresentacion\bin\Debug\Microsoft.Extensions.Logging.Abstractions.xml
+C:\Sistemas\SistemaVariedadesLopsi\SistemaVariedadesLopsi\CapaPresentacion\bin\Debug\Microsoft.Extensions.Options.xml
+C:\Sistemas\SistemaVariedadesLopsi\SistemaVariedadesLopsi\CapaPresentacion\bin\Debug\Microsoft.Extensions.Primitives.xml
+C:\Sistemas\SistemaVariedadesLopsi\SistemaVariedadesLopsi\CapaPresentacion\bin\Debug\RBush.xml
+C:\Sistemas\SistemaVariedadesLopsi\SistemaVariedadesLopsi\CapaPresentacion\bin\Debug\SimpleTcp.xml
+C:\Sistemas\SistemaVariedadesLopsi\SistemaVariedadesLopsi\CapaPresentacion\bin\Debug\SixLabors.Fonts.xml
+C:\Sistemas\SistemaVariedadesLopsi\SistemaVariedadesLopsi\CapaPresentacion\bin\Debug\SixLabors.ImageSharp.xml
+C:\Sistemas\SistemaVariedadesLopsi\SistemaVariedadesLopsi\CapaPresentacion\bin\Debug\System.Buffers.xml
+C:\Sistemas\SistemaVariedadesLopsi\SistemaVariedadesLopsi\CapaPresentacion\bin\Debug\System.Diagnostics.DiagnosticSource.xml
+C:\Sistemas\SistemaVariedadesLopsi\SistemaVariedadesLopsi\CapaPresentacion\bin\Debug\System.IO.Ports.xml
+C:\Sistemas\SistemaVariedadesLopsi\SistemaVariedadesLopsi\CapaPresentacion\bin\Debug\System.Memory.xml
+C:\Sistemas\SistemaVariedadesLopsi\SistemaVariedadesLopsi\CapaPresentacion\bin\Debug\System.Numerics.Vectors.xml
+C:\Sistemas\SistemaVariedadesLopsi\SistemaVariedadesLopsi\CapaPresentacion\bin\Debug\System.Runtime.CompilerServices.Unsafe.xml
+C:\Sistemas\SistemaVariedadesLopsi\SistemaVariedadesLopsi\CapaPresentacion\bin\Debug\System.Text.Encoding.CodePages.xml
+C:\Sistemas\SistemaVariedadesLopsi\SistemaVariedadesLopsi\CapaPresentacion\bin\Debug\System.Text.Encodings.Web.xml
+C:\Sistemas\SistemaVariedadesLopsi\SistemaVariedadesLopsi\CapaPresentacion\bin\Debug\System.Text.Json.xml
+C:\Sistemas\SistemaVariedadesLopsi\SistemaVariedadesLopsi\CapaPresentacion\bin\Debug\System.Threading.Tasks.Extensions.xml
+C:\Sistemas\SistemaVariedadesLopsi\SistemaVariedadesLopsi\CapaPresentacion\bin\Debug\System.ValueTuple.xml
+C:\Sistemas\SistemaVariedadesLopsi\SistemaVariedadesLopsi\CapaPresentacion\obj\Debug\CapaPresentacion.csproj.AssemblyReference.cache
+C:\Sistemas\SistemaVariedadesLopsi\SistemaVariedadesLopsi\CapaPresentacion\obj\Debug\CapaPresentacion.frmCategoria.resources
+C:\Sistemas\SistemaVariedadesLopsi\SistemaVariedadesLopsi\CapaPresentacion\obj\Debug\CapaPresentacion.frmClientes.resources
+C:\Sistemas\SistemaVariedadesLopsi\SistemaVariedadesLopsi\CapaPresentacion\obj\Debug\CapaPresentacion.frmCompras.resources
+C:\Sistemas\SistemaVariedadesLopsi\SistemaVariedadesLopsi\CapaPresentacion\obj\Debug\CapaPresentacion.FrmComprasCredito.resources
+C:\Sistemas\SistemaVariedadesLopsi\SistemaVariedadesLopsi\CapaPresentacion\obj\Debug\CapaPresentacion.frmDetalleCompra.resources
+C:\Sistemas\SistemaVariedadesLopsi\SistemaVariedadesLopsi\CapaPresentacion\obj\Debug\CapaPresentacion.frmDetalleVenta.resources
+C:\Sistemas\SistemaVariedadesLopsi\SistemaVariedadesLopsi\CapaPresentacion\obj\Debug\CapaPresentacion.frmNegocio.resources
+C:\Sistemas\SistemaVariedadesLopsi\SistemaVariedadesLopsi\CapaPresentacion\obj\Debug\CapaPresentacion.FrmPedidos.resources
+C:\Sistemas\SistemaVariedadesLopsi\SistemaVariedadesLopsi\CapaPresentacion\obj\Debug\CapaPresentacion.frmProducto.resources
+C:\Sistemas\SistemaVariedadesLopsi\SistemaVariedadesLopsi\CapaPresentacion\obj\Debug\CapaPresentacion.frmProveedores.resources
+C:\Sistemas\SistemaVariedadesLopsi\SistemaVariedadesLopsi\CapaPresentacion\obj\Debug\CapaPresentacion.frmReporteCompras.resources
+C:\Sistemas\SistemaVariedadesLopsi\SistemaVariedadesLopsi\CapaPresentacion\obj\Debug\CapaPresentacion.frmReportes.resources
+C:\Sistemas\SistemaVariedadesLopsi\SistemaVariedadesLopsi\CapaPresentacion\obj\Debug\CapaPresentacion.frmReporteVentas.resources
+C:\Sistemas\SistemaVariedadesLopsi\SistemaVariedadesLopsi\CapaPresentacion\obj\Debug\CapaPresentacion.frmUsuarios.resources
+C:\Sistemas\SistemaVariedadesLopsi\SistemaVariedadesLopsi\CapaPresentacion\obj\Debug\CapaPresentacion.frmVentas.resources
+C:\Sistemas\SistemaVariedadesLopsi\SistemaVariedadesLopsi\CapaPresentacion\obj\Debug\CapaPresentacion.FrmVentasCredito.resources
+C:\Sistemas\SistemaVariedadesLopsi\SistemaVariedadesLopsi\CapaPresentacion\obj\Debug\CapaPresentacion.Inicio.resources
+C:\Sistemas\SistemaVariedadesLopsi\SistemaVariedadesLopsi\CapaPresentacion\obj\Debug\CapaPresentacion.Login.resources
+C:\Sistemas\SistemaVariedadesLopsi\SistemaVariedadesLopsi\CapaPresentacion\obj\Debug\CapaPresentacion.Modales.FrmCredito.resources
+C:\Sistemas\SistemaVariedadesLopsi\SistemaVariedadesLopsi\CapaPresentacion\obj\Debug\CapaPresentacion.Modales.frmHistorialStock.resources
+C:\Sistemas\SistemaVariedadesLopsi\SistemaVariedadesLopsi\CapaPresentacion\obj\Debug\CapaPresentacion.Modales.MdAbonosCompra.resources
+C:\Sistemas\SistemaVariedadesLopsi\SistemaVariedadesLopsi\CapaPresentacion\obj\Debug\CapaPresentacion.Modales.MdAcceso.resources
+C:\Sistemas\SistemaVariedadesLopsi\SistemaVariedadesLopsi\CapaPresentacion\obj\Debug\CapaPresentacion.Modales.mdAcercade.resources
+C:\Sistemas\SistemaVariedadesLopsi\SistemaVariedadesLopsi\CapaPresentacion\obj\Debug\CapaPresentacion.Modales.MdCambiarClaveMenu.resources
+C:\Sistemas\SistemaVariedadesLopsi\SistemaVariedadesLopsi\CapaPresentacion\obj\Debug\CapaPresentacion.Modales.mdCliente.resources
+C:\Sistemas\SistemaVariedadesLopsi\SistemaVariedadesLopsi\CapaPresentacion\obj\Debug\CapaPresentacion.Modales.mdProducto.resources
+C:\Sistemas\SistemaVariedadesLopsi\SistemaVariedadesLopsi\CapaPresentacion\obj\Debug\CapaPresentacion.Modales.mdProveedor.resources
+C:\Sistemas\SistemaVariedadesLopsi\SistemaVariedadesLopsi\CapaPresentacion\obj\Debug\CapaPresentacion.Modales.Md_ProductoVentas.resources
+C:\Sistemas\SistemaVariedadesLopsi\SistemaVariedadesLopsi\CapaPresentacion\obj\Debug\CapaPresentacion.Modales.Md_RegistrarCredito.resources
+C:\Sistemas\SistemaVariedadesLopsi\SistemaVariedadesLopsi\CapaPresentacion\obj\Debug\CapaPresentacion.Modales.md_RegistrarVentaCredito.resources
+C:\Sistemas\SistemaVariedadesLopsi\SistemaVariedadesLopsi\CapaPresentacion\obj\Debug\CapaPresentacion.Properties.Resources.resources
+C:\Sistemas\SistemaVariedadesLopsi\SistemaVariedadesLopsi\CapaPresentacion\obj\Debug\CapaPresentacion.csproj.GenerateResource.cache
+C:\Sistemas\SistemaVariedadesLopsi\SistemaVariedadesLopsi\CapaPresentacion\obj\Debug\CapaPresentacion.csproj.CoreCompileInputs.cache
+C:\Sistemas\SistemaVariedadesLopsi\SistemaVariedadesLopsi\CapaPresentacion\obj\Debug\VARIEDADES LOPSI.exe.manifest
+C:\Sistemas\SistemaVariedadesLopsi\SistemaVariedadesLopsi\CapaPresentacion\obj\Debug\VARIEDADES LOPSI.application
+C:\Sistemas\SistemaVariedadesLopsi\SistemaVariedadesLopsi\CapaPresentacion\obj\Debug\CapaPres.61CA7C38.Up2Date
+C:\Sistemas\SistemaVariedadesLopsi\SistemaVariedadesLopsi\CapaPresentacion\obj\Debug\VARIEDADES LOPSI.exe
+C:\Sistemas\SistemaVariedadesLopsi\SistemaVariedadesLopsi\CapaPresentacion\obj\Debug\VARIEDADES LOPSI.pdb
+C:\Sistemas\SistemaVariedadesLopsi\SistemaVariedadesLopsi\CapaPresentacion\obj\Debug\CapaPresentacion.Modales.MdPuntos.resources
+C:\Sistemas\SistemaVariedadesLopsi\SistemaVariedadesLopsi\CapaPresentacion\obj\Debug\CapaPresentacion.frmCierreCaja.resources
+C:\Sistemas\SistemaVariedadesLopsi\SistemaVariedadesLopsi\CapaPresentacion\obj\Debug\CapaPresentacion.frmEgresos.resources
+C:\Sistemas\SistemaVariedadesLopsi\SistemaVariedadesLopsi\CapaPresentacion\obj\Debug\CapaPresentacion.frmFinanzas.resources
+C:\Sistemas\SistemaVariedadesLopsi\SistemaVariedadesLopsi\CapaPresentacion\bin\Debug\Zen.Barcode.Core.dll
+C:\Sistemas\SistemaVariedadesLopsi\SistemaVariedadesLopsi\CapaPresentacion\obj\Debug\VARIEDADES LOPSI.exe.config
+C:\Sistemas\SistemaAmericanColor\SistemaAmericanColor\CapaPresentacion\obj\Debug\CapaPresentacion.csproj.AssemblyReference.cache
+C:\Sistemas\SistemaAmericanColor\SistemaAmericanColor\CapaPresentacion\obj\Debug\CapaPresentacion.frmCategoria.resources
+C:\Sistemas\SistemaAmericanColor\SistemaAmericanColor\CapaPresentacion\obj\Debug\CapaPresentacion.frmCierreCaja.resources
+C:\Sistemas\SistemaAmericanColor\SistemaAmericanColor\CapaPresentacion\obj\Debug\CapaPresentacion.frmClientes.resources
+C:\Sistemas\SistemaAmericanColor\SistemaAmericanColor\CapaPresentacion\obj\Debug\CapaPresentacion.frmCompras.resources
+C:\Sistemas\SistemaAmericanColor\SistemaAmericanColor\CapaPresentacion\obj\Debug\CapaPresentacion.FrmComprasCredito.resources
+C:\Sistemas\SistemaAmericanColor\SistemaAmericanColor\CapaPresentacion\obj\Debug\CapaPresentacion.frmDetalleCompra.resources
+C:\Sistemas\SistemaAmericanColor\SistemaAmericanColor\CapaPresentacion\obj\Debug\CapaPresentacion.frmDetalleVenta.resources
+C:\Sistemas\SistemaAmericanColor\SistemaAmericanColor\CapaPresentacion\obj\Debug\CapaPresentacion.frmEgresos.resources
+C:\Sistemas\SistemaAmericanColor\SistemaAmericanColor\CapaPresentacion\obj\Debug\CapaPresentacion.frmFinanzas.resources
+C:\Sistemas\SistemaAmericanColor\SistemaAmericanColor\CapaPresentacion\obj\Debug\CapaPresentacion.frmNegocio.resources
+C:\Sistemas\SistemaAmericanColor\SistemaAmericanColor\CapaPresentacion\obj\Debug\CapaPresentacion.FrmPedidos.resources
+C:\Sistemas\SistemaAmericanColor\SistemaAmericanColor\CapaPresentacion\obj\Debug\CapaPresentacion.frmProducto.resources
+C:\Sistemas\SistemaAmericanColor\SistemaAmericanColor\CapaPresentacion\obj\Debug\CapaPresentacion.frmProveedores.resources
+C:\Sistemas\SistemaAmericanColor\SistemaAmericanColor\CapaPresentacion\obj\Debug\CapaPresentacion.frmReporteCompras.resources
+C:\Sistemas\SistemaAmericanColor\SistemaAmericanColor\CapaPresentacion\obj\Debug\CapaPresentacion.frmReportes.resources
+C:\Sistemas\SistemaAmericanColor\SistemaAmericanColor\CapaPresentacion\obj\Debug\CapaPresentacion.frmReporteVentas.resources
+C:\Sistemas\SistemaAmericanColor\SistemaAmericanColor\CapaPresentacion\obj\Debug\CapaPresentacion.frmUsuarios.resources
+C:\Sistemas\SistemaAmericanColor\SistemaAmericanColor\CapaPresentacion\obj\Debug\CapaPresentacion.frmVentas.resources
+C:\Sistemas\SistemaAmericanColor\SistemaAmericanColor\CapaPresentacion\obj\Debug\CapaPresentacion.FrmVentasCredito.resources
+C:\Sistemas\SistemaAmericanColor\SistemaAmericanColor\CapaPresentacion\obj\Debug\CapaPresentacion.Inicio.resources
+C:\Sistemas\SistemaAmericanColor\SistemaAmericanColor\CapaPresentacion\obj\Debug\CapaPresentacion.Login.resources
+C:\Sistemas\SistemaAmericanColor\SistemaAmericanColor\CapaPresentacion\obj\Debug\CapaPresentacion.Modales.FrmCredito.resources
+C:\Sistemas\SistemaAmericanColor\SistemaAmericanColor\CapaPresentacion\obj\Debug\CapaPresentacion.Modales.frmHistorialStock.resources
+C:\Sistemas\SistemaAmericanColor\SistemaAmericanColor\CapaPresentacion\obj\Debug\CapaPresentacion.Modales.MdAbonosCompra.resources
+C:\Sistemas\SistemaAmericanColor\SistemaAmericanColor\CapaPresentacion\obj\Debug\CapaPresentacion.Modales.MdAcceso.resources
+C:\Sistemas\SistemaAmericanColor\SistemaAmericanColor\CapaPresentacion\obj\Debug\CapaPresentacion.Modales.mdAcercade.resources
+C:\Sistemas\SistemaAmericanColor\SistemaAmericanColor\CapaPresentacion\obj\Debug\CapaPresentacion.Modales.MdCambiarClaveMenu.resources
+C:\Sistemas\SistemaAmericanColor\SistemaAmericanColor\CapaPresentacion\obj\Debug\CapaPresentacion.Modales.mdCliente.resources
+C:\Sistemas\SistemaAmericanColor\SistemaAmericanColor\CapaPresentacion\obj\Debug\CapaPresentacion.Modales.mdProducto.resources
+C:\Sistemas\SistemaAmericanColor\SistemaAmericanColor\CapaPresentacion\obj\Debug\CapaPresentacion.Modales.mdProveedor.resources
+C:\Sistemas\SistemaAmericanColor\SistemaAmericanColor\CapaPresentacion\obj\Debug\CapaPresentacion.Modales.Md_ProductoVentas.resources
+C:\Sistemas\SistemaAmericanColor\SistemaAmericanColor\CapaPresentacion\obj\Debug\CapaPresentacion.Modales.Md_RegistrarCredito.resources
+C:\Sistemas\SistemaAmericanColor\SistemaAmericanColor\CapaPresentacion\obj\Debug\CapaPresentacion.Modales.md_RegistrarVentaCredito.resources
+C:\Sistemas\SistemaAmericanColor\SistemaAmericanColor\CapaPresentacion\obj\Debug\CapaPresentacion.Properties.Resources.resources
+C:\Sistemas\SistemaAmericanColor\SistemaAmericanColor\CapaPresentacion\obj\Debug\CapaPresentacion.csproj.GenerateResource.cache
+C:\Sistemas\SistemaAmericanColor\SistemaAmericanColor\CapaPresentacion\obj\Debug\CapaPresentacion.csproj.CoreCompileInputs.cache
+C:\Sistemas\SistemaAmericanColor\SistemaAmericanColor\CapaPresentacion\bin\Debug\BouncyCastle.Cryptography.dll
+C:\Sistemas\SistemaAmericanColor\SistemaAmericanColor\CapaPresentacion\bin\Debug\CapaDatosSP.dll
+C:\Sistemas\SistemaAmericanColor\SistemaAmericanColor\CapaPresentacion\bin\Debug\CapaEntidadSP.dll
+C:\Sistemas\SistemaAmericanColor\SistemaAmericanColor\CapaPresentacion\bin\Debug\CapaNegocioSP.dll
+C:\Sistemas\SistemaAmericanColor\SistemaAmericanColor\CapaPresentacion\bin\Debug\ClosedXML.dll
+C:\Sistemas\SistemaAmericanColor\SistemaAmericanColor\CapaPresentacion\bin\Debug\ClosedXML.Parser.dll
+C:\Sistemas\SistemaAmericanColor\SistemaAmericanColor\CapaPresentacion\bin\Debug\DocumentFormat.OpenXml.dll
+C:\Sistemas\SistemaAmericanColor\SistemaAmericanColor\CapaPresentacion\bin\Debug\DocumentFormat.OpenXml.Framework.dll
+C:\Sistemas\SistemaAmericanColor\SistemaAmericanColor\CapaPresentacion\bin\Debug\ESC-POS-USB-NET.dll
+C:\Sistemas\SistemaAmericanColor\SistemaAmericanColor\CapaPresentacion\bin\Debug\ESCPOS_NET.dll
+C:\Sistemas\SistemaAmericanColor\SistemaAmericanColor\CapaPresentacion\bin\Debug\ExcelNumberFormat.dll
+C:\Sistemas\SistemaAmericanColor\SistemaAmericanColor\CapaPresentacion\bin\Debug\FontAwesome.Sharp.dll
+C:\Sistemas\SistemaAmericanColor\SistemaAmericanColor\CapaPresentacion\bin\Debug\itextsharp.dll
+C:\Sistemas\SistemaAmericanColor\SistemaAmericanColor\CapaPresentacion\bin\Debug\itextsharp.xmlworker.dll
+C:\Sistemas\SistemaAmericanColor\SistemaAmericanColor\CapaPresentacion\bin\Debug\Microsoft.Bcl.AsyncInterfaces.dll
+C:\Sistemas\SistemaAmericanColor\SistemaAmericanColor\CapaPresentacion\bin\Debug\Microsoft.Bcl.HashCode.dll
+C:\Sistemas\SistemaAmericanColor\SistemaAmericanColor\CapaPresentacion\bin\Debug\Microsoft.Extensions.DependencyInjection.Abstractions.dll
+C:\Sistemas\SistemaAmericanColor\SistemaAmericanColor\CapaPresentacion\bin\Debug\Microsoft.Extensions.DependencyInjection.dll
+C:\Sistemas\SistemaAmericanColor\SistemaAmericanColor\CapaPresentacion\bin\Debug\Microsoft.Extensions.Logging.Abstractions.dll
+C:\Sistemas\SistemaAmericanColor\SistemaAmericanColor\CapaPresentacion\bin\Debug\Microsoft.Extensions.Logging.dll
+C:\Sistemas\SistemaAmericanColor\SistemaAmericanColor\CapaPresentacion\bin\Debug\Microsoft.Extensions.Options.dll
+C:\Sistemas\SistemaAmericanColor\SistemaAmericanColor\CapaPresentacion\bin\Debug\Microsoft.Extensions.Primitives.dll
+C:\Sistemas\SistemaAmericanColor\SistemaAmericanColor\CapaPresentacion\bin\Debug\RBush.dll
+C:\Sistemas\SistemaAmericanColor\SistemaAmericanColor\CapaPresentacion\bin\Debug\SimpleTcp.dll
+C:\Sistemas\SistemaAmericanColor\SistemaAmericanColor\CapaPresentacion\bin\Debug\SixLabors.Fonts.dll
+C:\Sistemas\SistemaAmericanColor\SistemaAmericanColor\CapaPresentacion\bin\Debug\SixLabors.ImageSharp.dll
+C:\Sistemas\SistemaAmericanColor\SistemaAmericanColor\CapaPresentacion\bin\Debug\System.Buffers.dll
+C:\Sistemas\SistemaAmericanColor\SistemaAmericanColor\CapaPresentacion\bin\Debug\System.Diagnostics.DiagnosticSource.dll
+C:\Sistemas\SistemaAmericanColor\SistemaAmericanColor\CapaPresentacion\bin\Debug\System.Drawing.Common.dll
+C:\Sistemas\SistemaAmericanColor\SistemaAmericanColor\CapaPresentacion\bin\Debug\System.IO.Ports.dll
+C:\Sistemas\SistemaAmericanColor\SistemaAmericanColor\CapaPresentacion\bin\Debug\System.Memory.dll
+C:\Sistemas\SistemaAmericanColor\SistemaAmericanColor\CapaPresentacion\bin\Debug\System.Numerics.Vectors.dll
+C:\Sistemas\SistemaAmericanColor\SistemaAmericanColor\CapaPresentacion\bin\Debug\System.Runtime.CompilerServices.Unsafe.dll
+C:\Sistemas\SistemaAmericanColor\SistemaAmericanColor\CapaPresentacion\bin\Debug\System.Text.Encoding.CodePages.dll
+C:\Sistemas\SistemaAmericanColor\SistemaAmericanColor\CapaPresentacion\bin\Debug\System.Text.Encodings.Web.dll
+C:\Sistemas\SistemaAmericanColor\SistemaAmericanColor\CapaPresentacion\bin\Debug\System.Text.Json.dll
+C:\Sistemas\SistemaAmericanColor\SistemaAmericanColor\CapaPresentacion\bin\Debug\System.Threading.Tasks.Extensions.dll
+C:\Sistemas\SistemaAmericanColor\SistemaAmericanColor\CapaPresentacion\bin\Debug\System.ValueTuple.dll
+C:\Sistemas\SistemaAmericanColor\SistemaAmericanColor\CapaPresentacion\bin\Debug\Zen.Barcode.Core.dll
+C:\Sistemas\SistemaAmericanColor\SistemaAmericanColor\CapaPresentacion\bin\Debug\CapaDatosSP.pdb
+C:\Sistemas\SistemaAmericanColor\SistemaAmericanColor\CapaPresentacion\bin\Debug\CapaDatosSP.dll.config
+C:\Sistemas\SistemaAmericanColor\SistemaAmericanColor\CapaPresentacion\bin\Debug\CapaEntidadSP.pdb
+C:\Sistemas\SistemaAmericanColor\SistemaAmericanColor\CapaPresentacion\bin\Debug\CapaEntidadSP.dll.config
+C:\Sistemas\SistemaAmericanColor\SistemaAmericanColor\CapaPresentacion\bin\Debug\CapaNegocioSP.pdb
+C:\Sistemas\SistemaAmericanColor\SistemaAmericanColor\CapaPresentacion\bin\Debug\CapaNegocioSP.dll.config
+C:\Sistemas\SistemaAmericanColor\SistemaAmericanColor\CapaPresentacion\bin\Debug\BouncyCastle.Cryptography.xml
+C:\Sistemas\SistemaAmericanColor\SistemaAmericanColor\CapaPresentacion\bin\Debug\ClosedXML.pdb
+C:\Sistemas\SistemaAmericanColor\SistemaAmericanColor\CapaPresentacion\bin\Debug\ClosedXML.xml
+C:\Sistemas\SistemaAmericanColor\SistemaAmericanColor\CapaPresentacion\bin\Debug\ClosedXML.Parser.xml
+C:\Sistemas\SistemaAmericanColor\SistemaAmericanColor\CapaPresentacion\bin\Debug\DocumentFormat.OpenXml.xml
+C:\Sistemas\SistemaAmericanColor\SistemaAmericanColor\CapaPresentacion\bin\Debug\DocumentFormat.OpenXml.Framework.xml
+C:\Sistemas\SistemaAmericanColor\SistemaAmericanColor\CapaPresentacion\bin\Debug\ExcelNumberFormat.xml
+C:\Sistemas\SistemaAmericanColor\SistemaAmericanColor\CapaPresentacion\bin\Debug\itextsharp.xml
+C:\Sistemas\SistemaAmericanColor\SistemaAmericanColor\CapaPresentacion\bin\Debug\Microsoft.Bcl.AsyncInterfaces.xml
+C:\Sistemas\SistemaAmericanColor\SistemaAmericanColor\CapaPresentacion\bin\Debug\Microsoft.Bcl.HashCode.xml
+C:\Sistemas\SistemaAmericanColor\SistemaAmericanColor\CapaPresentacion\bin\Debug\Microsoft.Extensions.DependencyInjection.xml
+C:\Sistemas\SistemaAmericanColor\SistemaAmericanColor\CapaPresentacion\bin\Debug\Microsoft.Extensions.DependencyInjection.Abstractions.xml
+C:\Sistemas\SistemaAmericanColor\SistemaAmericanColor\CapaPresentacion\bin\Debug\Microsoft.Extensions.Logging.xml
+C:\Sistemas\SistemaAmericanColor\SistemaAmericanColor\CapaPresentacion\bin\Debug\Microsoft.Extensions.Logging.Abstractions.xml
+C:\Sistemas\SistemaAmericanColor\SistemaAmericanColor\CapaPresentacion\bin\Debug\Microsoft.Extensions.Options.xml
+C:\Sistemas\SistemaAmericanColor\SistemaAmericanColor\CapaPresentacion\bin\Debug\Microsoft.Extensions.Primitives.xml
+C:\Sistemas\SistemaAmericanColor\SistemaAmericanColor\CapaPresentacion\bin\Debug\RBush.xml
+C:\Sistemas\SistemaAmericanColor\SistemaAmericanColor\CapaPresentacion\bin\Debug\SimpleTcp.xml
+C:\Sistemas\SistemaAmericanColor\SistemaAmericanColor\CapaPresentacion\bin\Debug\SixLabors.Fonts.xml
+C:\Sistemas\SistemaAmericanColor\SistemaAmericanColor\CapaPresentacion\bin\Debug\SixLabors.ImageSharp.xml
+C:\Sistemas\SistemaAmericanColor\SistemaAmericanColor\CapaPresentacion\bin\Debug\System.Buffers.xml
+C:\Sistemas\SistemaAmericanColor\SistemaAmericanColor\CapaPresentacion\bin\Debug\System.Diagnostics.DiagnosticSource.xml
+C:\Sistemas\SistemaAmericanColor\SistemaAmericanColor\CapaPresentacion\bin\Debug\System.IO.Ports.xml
+C:\Sistemas\SistemaAmericanColor\SistemaAmericanColor\CapaPresentacion\bin\Debug\System.Memory.xml
+C:\Sistemas\SistemaAmericanColor\SistemaAmericanColor\CapaPresentacion\bin\Debug\System.Numerics.Vectors.xml
+C:\Sistemas\SistemaAmericanColor\SistemaAmericanColor\CapaPresentacion\bin\Debug\System.Runtime.CompilerServices.Unsafe.xml
+C:\Sistemas\SistemaAmericanColor\SistemaAmericanColor\CapaPresentacion\bin\Debug\System.Text.Encoding.CodePages.xml
+C:\Sistemas\SistemaAmericanColor\SistemaAmericanColor\CapaPresentacion\bin\Debug\System.Text.Encodings.Web.xml
+C:\Sistemas\SistemaAmericanColor\SistemaAmericanColor\CapaPresentacion\bin\Debug\System.Text.Json.xml
+C:\Sistemas\SistemaAmericanColor\SistemaAmericanColor\CapaPresentacion\bin\Debug\System.Threading.Tasks.Extensions.xml
+C:\Sistemas\SistemaAmericanColor\SistemaAmericanColor\CapaPresentacion\bin\Debug\System.ValueTuple.xml
+C:\Sistemas\SistemaAmericanColor\SistemaAmericanColor\CapaPresentacion\obj\Debug\CapaPres.61CA7C38.Up2Date
+C:\Sistemas\SistemaAmericanColor\SistemaAmericanColor\CapaPresentacion\obj\Debug\CapaPresentacion.Modales.md_Composicion.resources
+C:\Sistemas\SistemaAmericanColor\SistemaAmericanColor\CapaPresentacion\obj\Debug\CapaPresentacion.Modales.mdNuevoProductoDesdeCompra.resources
+C:\Sistemas\SistemaAmericanColor\SistemaAmericanColor\CapaPresentacion\obj\Debug\CapaPresentacion.Modales.Md_ProductoCompras.resources
+C:\Sistemas\SistemaAmericanColor\SistemaAmericanColor\CapaPresentacion\obj\Debug\CapaPresentacion.FrmRegistroColores.resources
+C:\Sistemas\SistemaAmericanColor\SistemaAmericanColor\CapaPresentacion\obj\Debug\CapaPresentacion.Modales.FrmResumenAbonosProveedor.resources
+C:\Sistemas\SistemaAmericanColor\SistemaAmericanColor\CapaPresentacion\bin\Debug\AMERICAN COLORS.exe.config
+C:\Sistemas\SistemaAmericanColor\SistemaAmericanColor\CapaPresentacion\bin\Debug\AMERICAN COLORS.exe.manifest
+C:\Sistemas\SistemaAmericanColor\SistemaAmericanColor\CapaPresentacion\bin\Debug\AMERICAN COLORS.application
+C:\Sistemas\SistemaAmericanColor\SistemaAmericanColor\CapaPresentacion\bin\Debug\AMERICAN COLORS.exe
+C:\Sistemas\SistemaAmericanColor\SistemaAmericanColor\CapaPresentacion\bin\Debug\AMERICAN COLORS.pdb
+C:\Sistemas\SistemaAmericanColor\SistemaAmericanColor\CapaPresentacion\obj\Debug\AMERICAN COLORS.exe.manifest
+C:\Sistemas\SistemaAmericanColor\SistemaAmericanColor\CapaPresentacion\obj\Debug\AMERICAN COLORS.application
+C:\Sistemas\SistemaAmericanColor\SistemaAmericanColor\CapaPresentacion\obj\Debug\AMERICAN COLORS.exe
+C:\Sistemas\SistemaAmericanColor\SistemaAmericanColor\CapaPresentacion\obj\Debug\AMERICAN COLORS.pdb
+C:\Sistemas\SistemaAmericanColor\SistemaAmericanColor\CapaPresentacion\obj\Debug\AMERICAN COLORS.exe.config
+C:\Sistemas\PlantillaSistema\PlantillaSistema\CapaPresentacion\bin\Debug\BouncyCastle.Cryptography.dll
+C:\Sistemas\PlantillaSistema\PlantillaSistema\CapaPresentacion\bin\Debug\CapaDatosSP.dll
+C:\Sistemas\PlantillaSistema\PlantillaSistema\CapaPresentacion\bin\Debug\CapaEntidadSP.dll
+C:\Sistemas\PlantillaSistema\PlantillaSistema\CapaPresentacion\bin\Debug\CapaNegocioSP.dll
+C:\Sistemas\PlantillaSistema\PlantillaSistema\CapaPresentacion\bin\Debug\ClosedXML.dll
+C:\Sistemas\PlantillaSistema\PlantillaSistema\CapaPresentacion\bin\Debug\ClosedXML.Parser.dll
+C:\Sistemas\PlantillaSistema\PlantillaSistema\CapaPresentacion\bin\Debug\DocumentFormat.OpenXml.dll
+C:\Sistemas\PlantillaSistema\PlantillaSistema\CapaPresentacion\bin\Debug\DocumentFormat.OpenXml.Framework.dll
+C:\Sistemas\PlantillaSistema\PlantillaSistema\CapaPresentacion\bin\Debug\ESC-POS-USB-NET.dll
+C:\Sistemas\PlantillaSistema\PlantillaSistema\CapaPresentacion\bin\Debug\ESCPOS_NET.dll
+C:\Sistemas\PlantillaSistema\PlantillaSistema\CapaPresentacion\bin\Debug\ExcelNumberFormat.dll
+C:\Sistemas\PlantillaSistema\PlantillaSistema\CapaPresentacion\bin\Debug\FontAwesome.Sharp.dll
+C:\Sistemas\PlantillaSistema\PlantillaSistema\CapaPresentacion\bin\Debug\itextsharp.dll
+C:\Sistemas\PlantillaSistema\PlantillaSistema\CapaPresentacion\bin\Debug\itextsharp.xmlworker.dll
+C:\Sistemas\PlantillaSistema\PlantillaSistema\CapaPresentacion\bin\Debug\Microsoft.Bcl.AsyncInterfaces.dll
+C:\Sistemas\PlantillaSistema\PlantillaSistema\CapaPresentacion\bin\Debug\Microsoft.Bcl.HashCode.dll
+C:\Sistemas\PlantillaSistema\PlantillaSistema\CapaPresentacion\bin\Debug\Microsoft.Extensions.DependencyInjection.Abstractions.dll
+C:\Sistemas\PlantillaSistema\PlantillaSistema\CapaPresentacion\bin\Debug\Microsoft.Extensions.DependencyInjection.dll
+C:\Sistemas\PlantillaSistema\PlantillaSistema\CapaPresentacion\bin\Debug\Microsoft.Extensions.Logging.Abstractions.dll
+C:\Sistemas\PlantillaSistema\PlantillaSistema\CapaPresentacion\bin\Debug\Microsoft.Extensions.Logging.dll
+C:\Sistemas\PlantillaSistema\PlantillaSistema\CapaPresentacion\bin\Debug\Microsoft.Extensions.Options.dll
+C:\Sistemas\PlantillaSistema\PlantillaSistema\CapaPresentacion\bin\Debug\Microsoft.Extensions.Primitives.dll
+C:\Sistemas\PlantillaSistema\PlantillaSistema\CapaPresentacion\bin\Debug\RBush.dll
+C:\Sistemas\PlantillaSistema\PlantillaSistema\CapaPresentacion\bin\Debug\SimpleTcp.dll
+C:\Sistemas\PlantillaSistema\PlantillaSistema\CapaPresentacion\bin\Debug\SixLabors.Fonts.dll
+C:\Sistemas\PlantillaSistema\PlantillaSistema\CapaPresentacion\bin\Debug\SixLabors.ImageSharp.dll
+C:\Sistemas\PlantillaSistema\PlantillaSistema\CapaPresentacion\bin\Debug\System.Buffers.dll
+C:\Sistemas\PlantillaSistema\PlantillaSistema\CapaPresentacion\bin\Debug\System.Diagnostics.DiagnosticSource.dll
+C:\Sistemas\PlantillaSistema\PlantillaSistema\CapaPresentacion\bin\Debug\System.Drawing.Common.dll
+C:\Sistemas\PlantillaSistema\PlantillaSistema\CapaPresentacion\bin\Debug\System.IO.Ports.dll
+C:\Sistemas\PlantillaSistema\PlantillaSistema\CapaPresentacion\bin\Debug\System.Memory.dll
+C:\Sistemas\PlantillaSistema\PlantillaSistema\CapaPresentacion\bin\Debug\System.Numerics.Vectors.dll
+C:\Sistemas\PlantillaSistema\PlantillaSistema\CapaPresentacion\bin\Debug\System.Runtime.CompilerServices.Unsafe.dll
+C:\Sistemas\PlantillaSistema\PlantillaSistema\CapaPresentacion\bin\Debug\System.Text.Encoding.CodePages.dll
+C:\Sistemas\PlantillaSistema\PlantillaSistema\CapaPresentacion\bin\Debug\System.Text.Encodings.Web.dll
+C:\Sistemas\PlantillaSistema\PlantillaSistema\CapaPresentacion\bin\Debug\System.Text.Json.dll
+C:\Sistemas\PlantillaSistema\PlantillaSistema\CapaPresentacion\bin\Debug\System.Threading.Tasks.Extensions.dll
+C:\Sistemas\PlantillaSistema\PlantillaSistema\CapaPresentacion\bin\Debug\System.ValueTuple.dll
+C:\Sistemas\PlantillaSistema\PlantillaSistema\CapaPresentacion\bin\Debug\Zen.Barcode.Core.dll
+C:\Sistemas\PlantillaSistema\PlantillaSistema\CapaPresentacion\bin\Debug\CapaDatosSP.pdb
+C:\Sistemas\PlantillaSistema\PlantillaSistema\CapaPresentacion\bin\Debug\CapaDatosSP.dll.config
+C:\Sistemas\PlantillaSistema\PlantillaSistema\CapaPresentacion\bin\Debug\CapaEntidadSP.pdb
+C:\Sistemas\PlantillaSistema\PlantillaSistema\CapaPresentacion\bin\Debug\CapaEntidadSP.dll.config
+C:\Sistemas\PlantillaSistema\PlantillaSistema\CapaPresentacion\bin\Debug\CapaNegocioSP.pdb
+C:\Sistemas\PlantillaSistema\PlantillaSistema\CapaPresentacion\bin\Debug\CapaNegocioSP.dll.config
+C:\Sistemas\PlantillaSistema\PlantillaSistema\CapaPresentacion\bin\Debug\BouncyCastle.Cryptography.xml
+C:\Sistemas\PlantillaSistema\PlantillaSistema\CapaPresentacion\bin\Debug\ClosedXML.pdb
+C:\Sistemas\PlantillaSistema\PlantillaSistema\CapaPresentacion\bin\Debug\ClosedXML.xml
+C:\Sistemas\PlantillaSistema\PlantillaSistema\CapaPresentacion\bin\Debug\ClosedXML.Parser.xml
+C:\Sistemas\PlantillaSistema\PlantillaSistema\CapaPresentacion\bin\Debug\DocumentFormat.OpenXml.xml
+C:\Sistemas\PlantillaSistema\PlantillaSistema\CapaPresentacion\bin\Debug\DocumentFormat.OpenXml.Framework.xml
+C:\Sistemas\PlantillaSistema\PlantillaSistema\CapaPresentacion\bin\Debug\ExcelNumberFormat.xml
+C:\Sistemas\PlantillaSistema\PlantillaSistema\CapaPresentacion\bin\Debug\itextsharp.xml
+C:\Sistemas\PlantillaSistema\PlantillaSistema\CapaPresentacion\bin\Debug\Microsoft.Bcl.AsyncInterfaces.xml
+C:\Sistemas\PlantillaSistema\PlantillaSistema\CapaPresentacion\bin\Debug\Microsoft.Bcl.HashCode.xml
+C:\Sistemas\PlantillaSistema\PlantillaSistema\CapaPresentacion\bin\Debug\Microsoft.Extensions.DependencyInjection.xml
+C:\Sistemas\PlantillaSistema\PlantillaSistema\CapaPresentacion\bin\Debug\Microsoft.Extensions.DependencyInjection.Abstractions.xml
+C:\Sistemas\PlantillaSistema\PlantillaSistema\CapaPresentacion\bin\Debug\Microsoft.Extensions.Logging.xml
+C:\Sistemas\PlantillaSistema\PlantillaSistema\CapaPresentacion\bin\Debug\Microsoft.Extensions.Logging.Abstractions.xml
+C:\Sistemas\PlantillaSistema\PlantillaSistema\CapaPresentacion\bin\Debug\Microsoft.Extensions.Options.xml
+C:\Sistemas\PlantillaSistema\PlantillaSistema\CapaPresentacion\bin\Debug\Microsoft.Extensions.Primitives.xml
+C:\Sistemas\PlantillaSistema\PlantillaSistema\CapaPresentacion\bin\Debug\RBush.xml
+C:\Sistemas\PlantillaSistema\PlantillaSistema\CapaPresentacion\bin\Debug\SimpleTcp.xml
+C:\Sistemas\PlantillaSistema\PlantillaSistema\CapaPresentacion\bin\Debug\SixLabors.Fonts.xml
+C:\Sistemas\PlantillaSistema\PlantillaSistema\CapaPresentacion\bin\Debug\SixLabors.ImageSharp.xml
+C:\Sistemas\PlantillaSistema\PlantillaSistema\CapaPresentacion\bin\Debug\System.Buffers.xml
+C:\Sistemas\PlantillaSistema\PlantillaSistema\CapaPresentacion\bin\Debug\System.Diagnostics.DiagnosticSource.xml
+C:\Sistemas\PlantillaSistema\PlantillaSistema\CapaPresentacion\bin\Debug\System.IO.Ports.xml
+C:\Sistemas\PlantillaSistema\PlantillaSistema\CapaPresentacion\bin\Debug\System.Memory.xml
+C:\Sistemas\PlantillaSistema\PlantillaSistema\CapaPresentacion\bin\Debug\System.Numerics.Vectors.xml
+C:\Sistemas\PlantillaSistema\PlantillaSistema\CapaPresentacion\bin\Debug\System.Runtime.CompilerServices.Unsafe.xml
+C:\Sistemas\PlantillaSistema\PlantillaSistema\CapaPresentacion\bin\Debug\System.Text.Encoding.CodePages.xml
+C:\Sistemas\PlantillaSistema\PlantillaSistema\CapaPresentacion\bin\Debug\System.Text.Encodings.Web.xml
+C:\Sistemas\PlantillaSistema\PlantillaSistema\CapaPresentacion\bin\Debug\System.Text.Json.xml
+C:\Sistemas\PlantillaSistema\PlantillaSistema\CapaPresentacion\bin\Debug\System.Threading.Tasks.Extensions.xml
+C:\Sistemas\PlantillaSistema\PlantillaSistema\CapaPresentacion\bin\Debug\System.ValueTuple.xml
+C:\Sistemas\PlantillaSistema\PlantillaSistema\CapaPresentacion\obj\Debug\CapaPresentacion.csproj.AssemblyReference.cache
+C:\Sistemas\PlantillaSistema\PlantillaSistema\CapaPresentacion\obj\Debug\CapaPresentacion.frmCategoria.resources
+C:\Sistemas\PlantillaSistema\PlantillaSistema\CapaPresentacion\obj\Debug\CapaPresentacion.frmCierreCaja.resources
+C:\Sistemas\PlantillaSistema\PlantillaSistema\CapaPresentacion\obj\Debug\CapaPresentacion.frmClientes.resources
+C:\Sistemas\PlantillaSistema\PlantillaSistema\CapaPresentacion\obj\Debug\CapaPresentacion.frmCompras.resources
+C:\Sistemas\PlantillaSistema\PlantillaSistema\CapaPresentacion\obj\Debug\CapaPresentacion.FrmComprasCredito.resources
+C:\Sistemas\PlantillaSistema\PlantillaSistema\CapaPresentacion\obj\Debug\CapaPresentacion.frmDetalleCompra.resources
+C:\Sistemas\PlantillaSistema\PlantillaSistema\CapaPresentacion\obj\Debug\CapaPresentacion.frmDetalleVenta.resources
+C:\Sistemas\PlantillaSistema\PlantillaSistema\CapaPresentacion\obj\Debug\CapaPresentacion.FrmEgresos.resources
+C:\Sistemas\PlantillaSistema\PlantillaSistema\CapaPresentacion\obj\Debug\CapaPresentacion.frmFinanzas.resources
+C:\Sistemas\PlantillaSistema\PlantillaSistema\CapaPresentacion\obj\Debug\CapaPresentacion.frmNegocio.resources
+C:\Sistemas\PlantillaSistema\PlantillaSistema\CapaPresentacion\obj\Debug\CapaPresentacion.FrmPedidos.resources
+C:\Sistemas\PlantillaSistema\PlantillaSistema\CapaPresentacion\obj\Debug\CapaPresentacion.frmProducto.resources
+C:\Sistemas\PlantillaSistema\PlantillaSistema\CapaPresentacion\obj\Debug\CapaPresentacion.frmProveedores.resources
+C:\Sistemas\PlantillaSistema\PlantillaSistema\CapaPresentacion\obj\Debug\CapaPresentacion.frmReporteCompras.resources
+C:\Sistemas\PlantillaSistema\PlantillaSistema\CapaPresentacion\obj\Debug\CapaPresentacion.frmReportes.resources
+C:\Sistemas\PlantillaSistema\PlantillaSistema\CapaPresentacion\obj\Debug\CapaPresentacion.frmReporteVentas.resources
+C:\Sistemas\PlantillaSistema\PlantillaSistema\CapaPresentacion\obj\Debug\CapaPresentacion.frmUsuarios.resources
+C:\Sistemas\PlantillaSistema\PlantillaSistema\CapaPresentacion\obj\Debug\CapaPresentacion.frmVentas.resources
+C:\Sistemas\PlantillaSistema\PlantillaSistema\CapaPresentacion\obj\Debug\CapaPresentacion.FrmVentasCredito.resources
+C:\Sistemas\PlantillaSistema\PlantillaSistema\CapaPresentacion\obj\Debug\CapaPresentacion.Inicio.resources
+C:\Sistemas\PlantillaSistema\PlantillaSistema\CapaPresentacion\obj\Debug\CapaPresentacion.Login.resources
+C:\Sistemas\PlantillaSistema\PlantillaSistema\CapaPresentacion\obj\Debug\CapaPresentacion.Modales.FrmCredito.resources
+C:\Sistemas\PlantillaSistema\PlantillaSistema\CapaPresentacion\obj\Debug\CapaPresentacion.Modales.frmHistorialStock.resources
+C:\Sistemas\PlantillaSistema\PlantillaSistema\CapaPresentacion\obj\Debug\CapaPresentacion.Modales.FrmResumenAbonosProveedor.resources
+C:\Sistemas\PlantillaSistema\PlantillaSistema\CapaPresentacion\obj\Debug\CapaPresentacion.Modales.MdAbonosCompra.resources
+C:\Sistemas\PlantillaSistema\PlantillaSistema\CapaPresentacion\obj\Debug\CapaPresentacion.Modales.MdAcceso.resources
+C:\Sistemas\PlantillaSistema\PlantillaSistema\CapaPresentacion\obj\Debug\CapaPresentacion.Modales.mdAcercade.resources
+C:\Sistemas\PlantillaSistema\PlantillaSistema\CapaPresentacion\obj\Debug\CapaPresentacion.Modales.MdCambiarClaveMenu.resources
+C:\Sistemas\PlantillaSistema\PlantillaSistema\CapaPresentacion\obj\Debug\CapaPresentacion.Modales.mdCliente.resources
+C:\Sistemas\PlantillaSistema\PlantillaSistema\CapaPresentacion\obj\Debug\CapaPresentacion.Modales.mdNuevoProductoDesdeCompra.resources
+C:\Sistemas\PlantillaSistema\PlantillaSistema\CapaPresentacion\obj\Debug\CapaPresentacion.Modales.mdProducto.resources
+C:\Sistemas\PlantillaSistema\PlantillaSistema\CapaPresentacion\obj\Debug\CapaPresentacion.Modales.mdProveedor.resources
+C:\Sistemas\PlantillaSistema\PlantillaSistema\CapaPresentacion\obj\Debug\CapaPresentacion.Modales.md_CobrarFactura.resources
+C:\Sistemas\PlantillaSistema\PlantillaSistema\CapaPresentacion\obj\Debug\CapaPresentacion.Modales.Md_ProductoCompras.resources
+C:\Sistemas\PlantillaSistema\PlantillaSistema\CapaPresentacion\obj\Debug\CapaPresentacion.Modales.Md_ProductoVentas.resources
+C:\Sistemas\PlantillaSistema\PlantillaSistema\CapaPresentacion\obj\Debug\CapaPresentacion.Modales.Md_RegistrarCredito.resources
+C:\Sistemas\PlantillaSistema\PlantillaSistema\CapaPresentacion\obj\Debug\CapaPresentacion.Modales.md_RegistrarVentaCredito.resources
+C:\Sistemas\PlantillaSistema\PlantillaSistema\CapaPresentacion\obj\Debug\CapaPresentacion.Properties.Resources.resources
+C:\Sistemas\PlantillaSistema\PlantillaSistema\CapaPresentacion\obj\Debug\CapaPresentacion.csproj.GenerateResource.cache
+C:\Sistemas\PlantillaSistema\PlantillaSistema\CapaPresentacion\obj\Debug\CapaPresentacion.csproj.CoreCompileInputs.cache
+C:\Sistemas\PlantillaSistema\PlantillaSistema\CapaPresentacion\obj\Debug\CapaPres.61CA7C38.Up2Date
+C:\Sistemas\PlantillaSistema\PlantillaSistema\CapaPresentacion\bin\Debug\PLANTILLA.exe.config
+C:\Sistemas\PlantillaSistema\PlantillaSistema\CapaPresentacion\bin\Debug\PLANTILLA.exe.manifest
+C:\Sistemas\PlantillaSistema\PlantillaSistema\CapaPresentacion\bin\Debug\PLANTILLA.application
+C:\Sistemas\PlantillaSistema\PlantillaSistema\CapaPresentacion\bin\Debug\PLANTILLA.exe
+C:\Sistemas\PlantillaSistema\PlantillaSistema\CapaPresentacion\bin\Debug\PLANTILLA.pdb
+C:\Sistemas\PlantillaSistema\PlantillaSistema\CapaPresentacion\obj\Debug\PLANTILLA.exe.manifest
+C:\Sistemas\PlantillaSistema\PlantillaSistema\CapaPresentacion\obj\Debug\PLANTILLA.application
+C:\Sistemas\PlantillaSistema\PlantillaSistema\CapaPresentacion\obj\Debug\PLANTILLA.exe
+C:\Sistemas\PlantillaSistema\PlantillaSistema\CapaPresentacion\obj\Debug\PLANTILLA.pdb
+C:\Sistemas\PlantillaSistema\PlantillaSistema\CapaPresentacion\obj\Debug\PLANTILLA.exe.config
+C:\Sistemas\SistemaInverfa\SistemaInverfa\CapaPresentacion\bin\Debug\BouncyCastle.Cryptography.dll
+C:\Sistemas\SistemaInverfa\SistemaInverfa\CapaPresentacion\bin\Debug\CapaDatosSP.dll
+C:\Sistemas\SistemaInverfa\SistemaInverfa\CapaPresentacion\bin\Debug\CapaEntidadSP.dll
+C:\Sistemas\SistemaInverfa\SistemaInverfa\CapaPresentacion\bin\Debug\CapaNegocioSP.dll
+C:\Sistemas\SistemaInverfa\SistemaInverfa\CapaPresentacion\bin\Debug\ClosedXML.dll
+C:\Sistemas\SistemaInverfa\SistemaInverfa\CapaPresentacion\bin\Debug\ClosedXML.Parser.dll
+C:\Sistemas\SistemaInverfa\SistemaInverfa\CapaPresentacion\bin\Debug\DocumentFormat.OpenXml.dll
+C:\Sistemas\SistemaInverfa\SistemaInverfa\CapaPresentacion\bin\Debug\DocumentFormat.OpenXml.Framework.dll
+C:\Sistemas\SistemaInverfa\SistemaInverfa\CapaPresentacion\bin\Debug\ESC-POS-USB-NET.dll
+C:\Sistemas\SistemaInverfa\SistemaInverfa\CapaPresentacion\bin\Debug\ESCPOS_NET.dll
+C:\Sistemas\SistemaInverfa\SistemaInverfa\CapaPresentacion\bin\Debug\ExcelNumberFormat.dll
+C:\Sistemas\SistemaInverfa\SistemaInverfa\CapaPresentacion\bin\Debug\FontAwesome.Sharp.dll
+C:\Sistemas\SistemaInverfa\SistemaInverfa\CapaPresentacion\bin\Debug\itextsharp.dll
+C:\Sistemas\SistemaInverfa\SistemaInverfa\CapaPresentacion\bin\Debug\itextsharp.xmlworker.dll
+C:\Sistemas\SistemaInverfa\SistemaInverfa\CapaPresentacion\bin\Debug\Microsoft.Bcl.AsyncInterfaces.dll
+C:\Sistemas\SistemaInverfa\SistemaInverfa\CapaPresentacion\bin\Debug\Microsoft.Bcl.HashCode.dll
+C:\Sistemas\SistemaInverfa\SistemaInverfa\CapaPresentacion\bin\Debug\Microsoft.Extensions.DependencyInjection.Abstractions.dll
+C:\Sistemas\SistemaInverfa\SistemaInverfa\CapaPresentacion\bin\Debug\Microsoft.Extensions.DependencyInjection.dll
+C:\Sistemas\SistemaInverfa\SistemaInverfa\CapaPresentacion\bin\Debug\Microsoft.Extensions.Logging.Abstractions.dll
+C:\Sistemas\SistemaInverfa\SistemaInverfa\CapaPresentacion\bin\Debug\Microsoft.Extensions.Logging.dll
+C:\Sistemas\SistemaInverfa\SistemaInverfa\CapaPresentacion\bin\Debug\Microsoft.Extensions.Options.dll
+C:\Sistemas\SistemaInverfa\SistemaInverfa\CapaPresentacion\bin\Debug\Microsoft.Extensions.Primitives.dll
+C:\Sistemas\SistemaInverfa\SistemaInverfa\CapaPresentacion\bin\Debug\RBush.dll
+C:\Sistemas\SistemaInverfa\SistemaInverfa\CapaPresentacion\bin\Debug\SimpleTcp.dll
+C:\Sistemas\SistemaInverfa\SistemaInverfa\CapaPresentacion\bin\Debug\SixLabors.Fonts.dll
+C:\Sistemas\SistemaInverfa\SistemaInverfa\CapaPresentacion\bin\Debug\SixLabors.ImageSharp.dll
+C:\Sistemas\SistemaInverfa\SistemaInverfa\CapaPresentacion\bin\Debug\System.Buffers.dll
+C:\Sistemas\SistemaInverfa\SistemaInverfa\CapaPresentacion\bin\Debug\System.Diagnostics.DiagnosticSource.dll
+C:\Sistemas\SistemaInverfa\SistemaInverfa\CapaPresentacion\bin\Debug\System.Drawing.Common.dll
+C:\Sistemas\SistemaInverfa\SistemaInverfa\CapaPresentacion\bin\Debug\System.IO.Ports.dll
+C:\Sistemas\SistemaInverfa\SistemaInverfa\CapaPresentacion\bin\Debug\System.Memory.dll
+C:\Sistemas\SistemaInverfa\SistemaInverfa\CapaPresentacion\bin\Debug\System.Numerics.Vectors.dll
+C:\Sistemas\SistemaInverfa\SistemaInverfa\CapaPresentacion\bin\Debug\System.Runtime.CompilerServices.Unsafe.dll
+C:\Sistemas\SistemaInverfa\SistemaInverfa\CapaPresentacion\bin\Debug\System.Text.Encoding.CodePages.dll
+C:\Sistemas\SistemaInverfa\SistemaInverfa\CapaPresentacion\bin\Debug\System.Text.Encodings.Web.dll
+C:\Sistemas\SistemaInverfa\SistemaInverfa\CapaPresentacion\bin\Debug\System.Text.Json.dll
+C:\Sistemas\SistemaInverfa\SistemaInverfa\CapaPresentacion\bin\Debug\System.Threading.Tasks.Extensions.dll
+C:\Sistemas\SistemaInverfa\SistemaInverfa\CapaPresentacion\bin\Debug\System.ValueTuple.dll
+C:\Sistemas\SistemaInverfa\SistemaInverfa\CapaPresentacion\bin\Debug\Zen.Barcode.Core.dll
+C:\Sistemas\SistemaInverfa\SistemaInverfa\CapaPresentacion\bin\Debug\CapaDatosSP.pdb
+C:\Sistemas\SistemaInverfa\SistemaInverfa\CapaPresentacion\bin\Debug\CapaDatosSP.dll.config
+C:\Sistemas\SistemaInverfa\SistemaInverfa\CapaPresentacion\bin\Debug\CapaEntidadSP.pdb
+C:\Sistemas\SistemaInverfa\SistemaInverfa\CapaPresentacion\bin\Debug\CapaEntidadSP.dll.config
+C:\Sistemas\SistemaInverfa\SistemaInverfa\CapaPresentacion\bin\Debug\CapaNegocioSP.pdb
+C:\Sistemas\SistemaInverfa\SistemaInverfa\CapaPresentacion\bin\Debug\CapaNegocioSP.dll.config
+C:\Sistemas\SistemaInverfa\SistemaInverfa\CapaPresentacion\bin\Debug\BouncyCastle.Cryptography.xml
+C:\Sistemas\SistemaInverfa\SistemaInverfa\CapaPresentacion\bin\Debug\ClosedXML.pdb
+C:\Sistemas\SistemaInverfa\SistemaInverfa\CapaPresentacion\bin\Debug\ClosedXML.xml
+C:\Sistemas\SistemaInverfa\SistemaInverfa\CapaPresentacion\bin\Debug\ClosedXML.Parser.xml
+C:\Sistemas\SistemaInverfa\SistemaInverfa\CapaPresentacion\bin\Debug\DocumentFormat.OpenXml.xml
+C:\Sistemas\SistemaInverfa\SistemaInverfa\CapaPresentacion\bin\Debug\DocumentFormat.OpenXml.Framework.xml
+C:\Sistemas\SistemaInverfa\SistemaInverfa\CapaPresentacion\bin\Debug\ExcelNumberFormat.xml
+C:\Sistemas\SistemaInverfa\SistemaInverfa\CapaPresentacion\bin\Debug\itextsharp.xml
+C:\Sistemas\SistemaInverfa\SistemaInverfa\CapaPresentacion\bin\Debug\Microsoft.Bcl.AsyncInterfaces.xml
+C:\Sistemas\SistemaInverfa\SistemaInverfa\CapaPresentacion\bin\Debug\Microsoft.Bcl.HashCode.xml
+C:\Sistemas\SistemaInverfa\SistemaInverfa\CapaPresentacion\bin\Debug\Microsoft.Extensions.DependencyInjection.xml
+C:\Sistemas\SistemaInverfa\SistemaInverfa\CapaPresentacion\bin\Debug\Microsoft.Extensions.DependencyInjection.Abstractions.xml
+C:\Sistemas\SistemaInverfa\SistemaInverfa\CapaPresentacion\bin\Debug\Microsoft.Extensions.Logging.xml
+C:\Sistemas\SistemaInverfa\SistemaInverfa\CapaPresentacion\bin\Debug\Microsoft.Extensions.Logging.Abstractions.xml
+C:\Sistemas\SistemaInverfa\SistemaInverfa\CapaPresentacion\bin\Debug\Microsoft.Extensions.Options.xml
+C:\Sistemas\SistemaInverfa\SistemaInverfa\CapaPresentacion\bin\Debug\Microsoft.Extensions.Primitives.xml
+C:\Sistemas\SistemaInverfa\SistemaInverfa\CapaPresentacion\bin\Debug\RBush.xml
+C:\Sistemas\SistemaInverfa\SistemaInverfa\CapaPresentacion\bin\Debug\SimpleTcp.xml
+C:\Sistemas\SistemaInverfa\SistemaInverfa\CapaPresentacion\bin\Debug\SixLabors.Fonts.xml
+C:\Sistemas\SistemaInverfa\SistemaInverfa\CapaPresentacion\bin\Debug\SixLabors.ImageSharp.xml
+C:\Sistemas\SistemaInverfa\SistemaInverfa\CapaPresentacion\bin\Debug\System.Buffers.xml
+C:\Sistemas\SistemaInverfa\SistemaInverfa\CapaPresentacion\bin\Debug\System.Diagnostics.DiagnosticSource.xml
+C:\Sistemas\SistemaInverfa\SistemaInverfa\CapaPresentacion\bin\Debug\System.IO.Ports.xml
+C:\Sistemas\SistemaInverfa\SistemaInverfa\CapaPresentacion\bin\Debug\System.Memory.xml
+C:\Sistemas\SistemaInverfa\SistemaInverfa\CapaPresentacion\bin\Debug\System.Numerics.Vectors.xml
+C:\Sistemas\SistemaInverfa\SistemaInverfa\CapaPresentacion\bin\Debug\System.Runtime.CompilerServices.Unsafe.xml
+C:\Sistemas\SistemaInverfa\SistemaInverfa\CapaPresentacion\bin\Debug\System.Text.Encoding.CodePages.xml
+C:\Sistemas\SistemaInverfa\SistemaInverfa\CapaPresentacion\bin\Debug\System.Text.Encodings.Web.xml
+C:\Sistemas\SistemaInverfa\SistemaInverfa\CapaPresentacion\bin\Debug\System.Text.Json.xml
+C:\Sistemas\SistemaInverfa\SistemaInverfa\CapaPresentacion\bin\Debug\System.Threading.Tasks.Extensions.xml
+C:\Sistemas\SistemaInverfa\SistemaInverfa\CapaPresentacion\bin\Debug\System.ValueTuple.xml
+C:\Sistemas\SistemaInverfa\SistemaInverfa\CapaPresentacion\obj\Debug\CapaPresentacion.csproj.AssemblyReference.cache
+C:\Sistemas\SistemaInverfa\SistemaInverfa\CapaPresentacion\obj\Debug\CapaPresentacion.frmCategoria.resources
+C:\Sistemas\SistemaInverfa\SistemaInverfa\CapaPresentacion\obj\Debug\CapaPresentacion.frmCierreCaja.resources
+C:\Sistemas\SistemaInverfa\SistemaInverfa\CapaPresentacion\obj\Debug\CapaPresentacion.frmClientes.resources
+C:\Sistemas\SistemaInverfa\SistemaInverfa\CapaPresentacion\obj\Debug\CapaPresentacion.frmCompras.resources
+C:\Sistemas\SistemaInverfa\SistemaInverfa\CapaPresentacion\obj\Debug\CapaPresentacion.FrmComprasCredito.resources
+C:\Sistemas\SistemaInverfa\SistemaInverfa\CapaPresentacion\obj\Debug\CapaPresentacion.frmDetalleCompra.resources
+C:\Sistemas\SistemaInverfa\SistemaInverfa\CapaPresentacion\obj\Debug\CapaPresentacion.frmDetalleVenta.resources
+C:\Sistemas\SistemaInverfa\SistemaInverfa\CapaPresentacion\obj\Debug\CapaPresentacion.FrmEgresos.resources
+C:\Sistemas\SistemaInverfa\SistemaInverfa\CapaPresentacion\obj\Debug\CapaPresentacion.frmFinanzas.resources
+C:\Sistemas\SistemaInverfa\SistemaInverfa\CapaPresentacion\obj\Debug\CapaPresentacion.frmNegocio.resources
+C:\Sistemas\SistemaInverfa\SistemaInverfa\CapaPresentacion\obj\Debug\CapaPresentacion.FrmPedidos.resources
+C:\Sistemas\SistemaInverfa\SistemaInverfa\CapaPresentacion\obj\Debug\CapaPresentacion.frmProducto.resources
+C:\Sistemas\SistemaInverfa\SistemaInverfa\CapaPresentacion\obj\Debug\CapaPresentacion.frmProveedores.resources
+C:\Sistemas\SistemaInverfa\SistemaInverfa\CapaPresentacion\obj\Debug\CapaPresentacion.frmReporteCompras.resources
+C:\Sistemas\SistemaInverfa\SistemaInverfa\CapaPresentacion\obj\Debug\CapaPresentacion.frmReportes.resources
+C:\Sistemas\SistemaInverfa\SistemaInverfa\CapaPresentacion\obj\Debug\CapaPresentacion.frmReporteVentas.resources
+C:\Sistemas\SistemaInverfa\SistemaInverfa\CapaPresentacion\obj\Debug\CapaPresentacion.frmUsuarios.resources
+C:\Sistemas\SistemaInverfa\SistemaInverfa\CapaPresentacion\obj\Debug\CapaPresentacion.frmVentas.resources
+C:\Sistemas\SistemaInverfa\SistemaInverfa\CapaPresentacion\obj\Debug\CapaPresentacion.FrmVentasCredito.resources
+C:\Sistemas\SistemaInverfa\SistemaInverfa\CapaPresentacion\obj\Debug\CapaPresentacion.Inicio.resources
+C:\Sistemas\SistemaInverfa\SistemaInverfa\CapaPresentacion\obj\Debug\CapaPresentacion.Login.resources
+C:\Sistemas\SistemaInverfa\SistemaInverfa\CapaPresentacion\obj\Debug\CapaPresentacion.Modales.FrmCredito.resources
+C:\Sistemas\SistemaInverfa\SistemaInverfa\CapaPresentacion\obj\Debug\CapaPresentacion.Modales.frmHistorialStock.resources
+C:\Sistemas\SistemaInverfa\SistemaInverfa\CapaPresentacion\obj\Debug\CapaPresentacion.Modales.FrmResumenAbonosProveedor.resources
+C:\Sistemas\SistemaInverfa\SistemaInverfa\CapaPresentacion\obj\Debug\CapaPresentacion.Modales.MdAbonosCompra.resources
+C:\Sistemas\SistemaInverfa\SistemaInverfa\CapaPresentacion\obj\Debug\CapaPresentacion.Modales.MdAcceso.resources
+C:\Sistemas\SistemaInverfa\SistemaInverfa\CapaPresentacion\obj\Debug\CapaPresentacion.Modales.mdAcercade.resources
+C:\Sistemas\SistemaInverfa\SistemaInverfa\CapaPresentacion\obj\Debug\CapaPresentacion.Modales.MdCambiarClaveMenu.resources
+C:\Sistemas\SistemaInverfa\SistemaInverfa\CapaPresentacion\obj\Debug\CapaPresentacion.Modales.mdCliente.resources
+C:\Sistemas\SistemaInverfa\SistemaInverfa\CapaPresentacion\obj\Debug\CapaPresentacion.Modales.mdNuevoProductoDesdeCompra.resources
+C:\Sistemas\SistemaInverfa\SistemaInverfa\CapaPresentacion\obj\Debug\CapaPresentacion.Modales.mdProducto.resources
+C:\Sistemas\SistemaInverfa\SistemaInverfa\CapaPresentacion\obj\Debug\CapaPresentacion.Modales.mdProveedor.resources
+C:\Sistemas\SistemaInverfa\SistemaInverfa\CapaPresentacion\obj\Debug\CapaPresentacion.Modales.md_CobrarFactura.resources
+C:\Sistemas\SistemaInverfa\SistemaInverfa\CapaPresentacion\obj\Debug\CapaPresentacion.Modales.Md_ProductoCompras.resources
+C:\Sistemas\SistemaInverfa\SistemaInverfa\CapaPresentacion\obj\Debug\CapaPresentacion.Modales.Md_ProductoVentas.resources
+C:\Sistemas\SistemaInverfa\SistemaInverfa\CapaPresentacion\obj\Debug\CapaPresentacion.Modales.Md_RegistrarCredito.resources
+C:\Sistemas\SistemaInverfa\SistemaInverfa\CapaPresentacion\obj\Debug\CapaPresentacion.Modales.md_RegistrarVentaCredito.resources
+C:\Sistemas\SistemaInverfa\SistemaInverfa\CapaPresentacion\obj\Debug\CapaPresentacion.Properties.Resources.resources
+C:\Sistemas\SistemaInverfa\SistemaInverfa\CapaPresentacion\obj\Debug\CapaPresentacion.csproj.GenerateResource.cache
+C:\Sistemas\SistemaInverfa\SistemaInverfa\CapaPresentacion\obj\Debug\CapaPresentacion.csproj.CoreCompileInputs.cache
+C:\Sistemas\SistemaInverfa\SistemaInverfa\CapaPresentacion\obj\Debug\CapaPres.61CA7C38.Up2Date
+C:\Sistemas\SistemaInverfa\SistemaInverfa\CapaPresentacion\obj\Debug\CapaPresentacion.md_ProductoCredito.resources
+C:\Sistemas\SistemaInverfa\SistemaInverfa\CapaPresentacion\bin\Debug\COMERCIAL INVERFA.exe.config
+C:\Sistemas\SistemaInverfa\SistemaInverfa\CapaPresentacion\bin\Debug\COMERCIAL INVERFA.exe.manifest
+C:\Sistemas\SistemaInverfa\SistemaInverfa\CapaPresentacion\bin\Debug\COMERCIAL INVERFA.application
+C:\Sistemas\SistemaInverfa\SistemaInverfa\CapaPresentacion\bin\Debug\COMERCIAL INVERFA.exe
+C:\Sistemas\SistemaInverfa\SistemaInverfa\CapaPresentacion\bin\Debug\COMERCIAL INVERFA.pdb
+C:\Sistemas\SistemaInverfa\SistemaInverfa\CapaPresentacion\obj\Debug\COMERCIAL INVERFA.exe.manifest
+C:\Sistemas\SistemaInverfa\SistemaInverfa\CapaPresentacion\obj\Debug\COMERCIAL INVERFA.application
+C:\Sistemas\SistemaInverfa\SistemaInverfa\CapaPresentacion\obj\Debug\COMERCIAL INVERFA.exe
+C:\Sistemas\SistemaInverfa\SistemaInverfa\CapaPresentacion\obj\Debug\COMERCIAL INVERFA.pdb
+C:\Sistemas\SistemaInverfa\SistemaInverfa\CapaPresentacion\obj\Debug\COMERCIAL INVERFA.exe.config
+C:\Sistemas\SistemaInverfa\SistemaInverfa\CapaPresentacion\obj\Debug\CapaPresentacion.Modales.md_ProductoNuevo.resources

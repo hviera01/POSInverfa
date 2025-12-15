@@ -108,12 +108,16 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Class1.cs" />
     <Compile Include="CN_Abono.cs" />
     <Compile Include="CN_AbonoCompra.cs" />
+    <Compile Include="CN_AbonoCuota.cs" />
     <Compile Include="CN_Categoria.cs" />
+    <Compile Include="CN_CierreCaja.cs" />
+    <Compile Include="CN_ClaveAcceso.cs" />
     <Compile Include="CN_Cliente.cs" />
     <Compile Include="CN_Compra.cs" />
+    <Compile Include="CN_CuotaCredito.cs" />
+    <Compile Include="CN_Egreso.cs" />
     <Compile Include="CN_HistorialStock.cs" />
     <Compile Include="CN_Negocio.cs" />
     <Compile Include="CN_Permiso.cs" />

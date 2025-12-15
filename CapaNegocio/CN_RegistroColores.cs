@@ -33,7 +33,5 @@ namespace CapaNegocio
         {
             return objcd_RegistroCoolores.Eliminar(idColor, out Mensaje);
         }
-
-
     }
 }

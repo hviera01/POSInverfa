@@ -269,5 +269,48 @@ namespace CapaPresentacion
         {
             FiltrarDatos();
         }
+
+        private void RefrescarFormulario()
+        {
+            // Limpiar los campos de entrada
+            Limpiar();
+
+            // Limpiar el DataGridView
+            dgvdata.Rows.Clear();
+
+            // Volver a cargar los datos
+            CargarDatos();
+        }
+
+        private void CargarDatos()
+        {
+            // Obtener la lista de categorías nuevamente
+            List<Categoria> lista = new CN_Categoria().Listar();
+
+            // Llenar el DataGridView con los datos
+            foreach (Categoria item in lista)
+            {
+                dgvdata.Rows.Add(new object[] { "", item.IdCategoria,
+            item.Descripcion,
+            item.Estado == true ? 1 : 0,
+            item.Estado == true ? "Activo" : "No activo"
+        });
+            }
+        }
+        private void btnrefrescar_Click(object sender, EventArgs e)
+        {
+            RefrescarFormulario();
+        }
+
+        private void iconButton2_Click(object sender, EventArgs e)
+        {
+            CargarDatos();
+            FiltrarDatos();
+        }
+
+        private void BtnLimpiar_Click(object sender, EventArgs e)
+        {
+            Limpiar();
+        }
     }
 }

@@ -15,5 +15,7 @@ namespace CapaEntidad
         public decimal NuevoSaldoPendiente { get; set; }
         public decimal InteresAplicado { get; set; }
         public string MetodoPago { get; set; }
+        public string NoRecibo { get; set; }
+
     }
 }

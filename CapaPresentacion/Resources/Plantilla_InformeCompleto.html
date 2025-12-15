@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8" />
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            padding: 25px;
+        }
+
+        h1, h2 {
+            text-align: center;
+            color: #2c3e50;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+        }
+
+        th, td {
+            border: 1px solid #aaa;
+            padding: 8px;
+            text-align: center;
+        }
+
+        th {
+            background-color: #f0f0f0;
+        }
+
+        .section {
+            margin-top: 40px;
+        }
+
+        .resumen {
+            font-size: 15px;
+            margin-top: 10px;
+        }
+
+            .resumen span {
+                font-weight: bold;
+            }
+    </style>
+</head>
+<body>
+    <h1>REPORTE FINANCIERO COMPLETO</h1>
+    <p style="text-align:center"><strong>Desde:</strong> @fechainicio &nbsp;&nbsp;&nbsp; <strong>Hasta:</strong> @fechafin</p>
+
+    <div class="section">
+        <h2>UTILIDAD BRUTA</h2>
+        <table>
+            <thead>
+                <tr>
+                    <th>Fecha</th>
+                    <th>Número</th>
+                    <th>Cliente</th>
+                    <th>Vendedor</th>
+                    <th>Método de Pago</th>
+                    <th>Total Venta</th>
+                    <th>Costo Total</th>
+                    <th>Utilidad Bruta</th>
+                </tr>
+            </thead>
+            <tbody>@tabla_bruta</tbody>
+        </table>
+        <div class="resumen">
+            <p><span>Total Venta:</span> L. @totalventa_bruta</p>
+            <p><span>Total Costo:</span> L. @totalcosto_bruta</p>
+            <p><span>Utilidad Bruta:</span> L. @totalutilidad_bruta</p>
+        </div>
+    </div>
+
+    <div class="section">
+        <h2>UTILIDAD NETA</h2>
+        <div class="resumen">
+            <p><span>Total Ventas:</span> L. @totalventa_neta</p>
+            <p><span>Total Costos:</span> L. @totalcostos_neta</p>
+            <p><span>Total Egresos:</span> L. @totalegresos_neta</p>
+            <p><span>Utilidad Neta:</span> L. @utilidadneta</p>
+        </div>
+    </div>
+
+
+    <div class="section">
+        <h2>GANANCIA POR PRODUCTO</h2>
+        <table>
+            <thead>
+                <tr>
+                    <th>Producto</th>
+                    <th>Cantidad Vendida</th>
+                    <th>Costo Total</th>
+                    <th>Total Ventas</th>
+                    <th>Ganancia</th>
+                </tr>
+            </thead>
+            <tbody>@tabla_producto</tbody>
+        </table>
+        <div class="resumen">
+            <p><span>Total Ventas:</span> L. @totalventa_producto</p>
+            <p><span>Total Costos:</span> L. @totalcosto_producto</p>
+            <p><span>Total Ganancia:</span> L. @totalganancia_producto</p>
+        </div>
+    </div>
+
+    <div class="section">
+        <h2>CIERRES DE CAJA</h2>
+        <table>
+            <thead>
+                <tr>
+                    <th>Inicio</th>
+                    <th>Cierre</th>
+                    <th>Usuario</th>
+                    <th>Monto Inicial</th>
+                    <th>Gran Total</th>
+                    <th>Total Real</th>
+                    <th>Diferencia</th>
+                </tr>
+            </thead>
+            <tbody>@tabla_cierre</tbody>
+        </table>
+    </div>
+</body>
+</html>

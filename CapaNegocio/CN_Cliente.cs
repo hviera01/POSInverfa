@@ -45,6 +45,49 @@ namespace CapaNegocio
 
         }
 
+        public Cliente ObtenerPorId(int idCliente)
+        {
+            return new CD_Clientes().ObtenerPorId(idCliente);
+        }
+
+
+        public bool ActualizarCliente(Cliente obj, out string mensaje)
+        {
+            // Validación si es necesario, por ejemplo, si los puntos son negativos o algo así
+            if (obj.Puntos < 0)
+            {
+                mensaje = "Los puntos no pueden ser negativos.";
+                return false;
+            }
+
+            return objcd_Cliente.ActualizarCliente(obj, out mensaje);
+        }
+
+        public Cliente ObtenerCliente(int idCliente)
+        {
+            return objcd_Cliente.Listar().FirstOrDefault(c => c.idCliente == idCliente);
+        }
+
+        public bool ActualizarCliente(Cliente cliente)
+        {
+            string mensaje;
+            return objcd_Cliente.Editar(cliente, out mensaje);
+        }
+
+
+        // Obtener puntos del cliente
+        public int ObtenerPuntosCliente(int idCliente)
+        {
+            return objcd_Cliente.ObtenerPuntos(idCliente);
+        }
+
+        // Actualizar puntos del cliente
+        public bool ActualizarPuntosCliente(int idCliente, int nuevosPuntos, out string mensaje)
+        {
+            return objcd_Cliente.ActualizarPuntos(idCliente, nuevosPuntos, out mensaje);
+        }
+
+
         public bool Editar(Cliente obj, out string Mensaje)
         {
             Mensaje = string.Empty;

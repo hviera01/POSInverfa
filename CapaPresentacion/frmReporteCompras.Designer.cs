@@ -52,8 +52,11 @@
             this.label5 = new System.Windows.Forms.Label();
             this.txtTotalFacturado = new System.Windows.Forms.TextBox();
             this.label7 = new System.Windows.Forms.Label();
+            this.btnrefrescar = new FontAwesome.Sharp.IconButton();
+            this.btnborrar = new FontAwesome.Sharp.IconButton();
             this.FechaRegistro = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.TipoDocumento = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.NoFactura = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.NumeroDocumento = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.MontoTotal = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.CantidadProductos = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -63,6 +66,9 @@
             this.Condicion = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.MetodoPago = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.FechaVencimiento = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Impuesto = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Estado = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.btnDetalle = new FontAwesome.Sharp.IconButton();
             ((System.ComponentModel.ISupportInitialize)(this.dgvdata)).BeginInit();
             this.SuspendLayout();
             // 
@@ -70,7 +76,7 @@
             // 
             this.txtfechainicio.CustomFormat = "dd/MM/yyyy";
             this.txtfechainicio.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.txtfechainicio.Location = new System.Drawing.Point(118, 62);
+            this.txtfechainicio.Location = new System.Drawing.Point(78, 65);
             this.txtfechainicio.Name = "txtfechainicio";
             this.txtfechainicio.Size = new System.Drawing.Size(101, 20);
             this.txtfechainicio.TabIndex = 0;
@@ -91,7 +97,7 @@
             // 
             this.label1.AutoSize = true;
             this.label1.BackColor = System.Drawing.Color.White;
-            this.label1.Location = new System.Drawing.Point(48, 68);
+            this.label1.Location = new System.Drawing.Point(8, 71);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(67, 13);
             this.label1.TabIndex = 74;
@@ -101,7 +107,7 @@
             // 
             this.txtfechafin.CustomFormat = "dd/MM/yyyy";
             this.txtfechafin.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.txtfechafin.Location = new System.Drawing.Point(310, 62);
+            this.txtfechafin.Location = new System.Drawing.Point(270, 65);
             this.txtfechafin.Name = "txtfechafin";
             this.txtfechafin.Size = new System.Drawing.Size(101, 20);
             this.txtfechafin.TabIndex = 75;
@@ -110,7 +116,7 @@
             // 
             this.label2.AutoSize = true;
             this.label2.BackColor = System.Drawing.Color.White;
-            this.label2.Location = new System.Drawing.Point(250, 67);
+            this.label2.Location = new System.Drawing.Point(210, 70);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(54, 13);
             this.label2.TabIndex = 76;
@@ -120,7 +126,7 @@
             // 
             this.label3.AutoSize = true;
             this.label3.BackColor = System.Drawing.Color.White;
-            this.label3.Location = new System.Drawing.Point(461, 68);
+            this.label3.Location = new System.Drawing.Point(421, 71);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(59, 13);
             this.label3.TabIndex = 77;
@@ -130,7 +136,7 @@
             // 
             this.cboproveedor.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cboproveedor.FormattingEnabled = true;
-            this.cboproveedor.Location = new System.Drawing.Point(526, 61);
+            this.cboproveedor.Location = new System.Drawing.Point(486, 64);
             this.cboproveedor.Name = "cboproveedor";
             this.cboproveedor.Size = new System.Drawing.Size(155, 21);
             this.cboproveedor.TabIndex = 78;
@@ -143,7 +149,7 @@
             this.label4.Location = new System.Drawing.Point(1, 119);
             this.label4.Name = "label4";
             this.label4.Padding = new System.Windows.Forms.Padding(10, 0, 0, 0);
-            this.label4.Size = new System.Drawing.Size(1368, 403);
+            this.label4.Size = new System.Drawing.Size(1368, 571);
             this.label4.TabIndex = 80;
             // 
             // dgvdata
@@ -154,6 +160,7 @@
             this.dgvdata.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.FechaRegistro,
             this.TipoDocumento,
+            this.NoFactura,
             this.NumeroDocumento,
             this.MontoTotal,
             this.CantidadProductos,
@@ -162,12 +169,14 @@
             this.RazonSocial,
             this.Condicion,
             this.MetodoPago,
-            this.FechaVencimiento});
-            this.dgvdata.Location = new System.Drawing.Point(-31, 220);
+            this.FechaVencimiento,
+            this.Impuesto,
+            this.Estado});
+            this.dgvdata.Location = new System.Drawing.Point(12, 210);
             this.dgvdata.MultiSelect = false;
             this.dgvdata.Name = "dgvdata";
             this.dgvdata.ReadOnly = true;
-            this.dgvdata.Size = new System.Drawing.Size(1400, 302);
+            this.dgvdata.Size = new System.Drawing.Size(1346, 314);
             this.dgvdata.TabIndex = 81;
             // 
             // btnlimpiarbuscador
@@ -181,7 +190,7 @@
             this.btnlimpiarbuscador.IconColor = System.Drawing.Color.Black;
             this.btnlimpiarbuscador.IconFont = FontAwesome.Sharp.IconFont.Auto;
             this.btnlimpiarbuscador.IconSize = 18;
-            this.btnlimpiarbuscador.Location = new System.Drawing.Point(1162, 181);
+            this.btnlimpiarbuscador.Location = new System.Drawing.Point(1205, 181);
             this.btnlimpiarbuscador.Name = "btnlimpiarbuscador";
             this.btnlimpiarbuscador.Size = new System.Drawing.Size(36, 21);
             this.btnlimpiarbuscador.TabIndex = 86;
@@ -191,7 +200,7 @@
             // 
             // txtbusqueda
             // 
-            this.txtbusqueda.Location = new System.Drawing.Point(304, 181);
+            this.txtbusqueda.Location = new System.Drawing.Point(347, 181);
             this.txtbusqueda.Name = "txtbusqueda";
             this.txtbusqueda.Size = new System.Drawing.Size(107, 20);
             this.txtbusqueda.TabIndex = 84;
@@ -202,7 +211,7 @@
             // 
             this.cbobusqueda.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbobusqueda.FormattingEnabled = true;
-            this.cbobusqueda.Location = new System.Drawing.Point(205, 181);
+            this.cbobusqueda.Location = new System.Drawing.Point(248, 181);
             this.cbobusqueda.Name = "cbobusqueda";
             this.cbobusqueda.Size = new System.Drawing.Size(91, 21);
             this.cbobusqueda.TabIndex = 83;
@@ -239,7 +248,7 @@
             this.btnbuscarresultado.IconColor = System.Drawing.Color.Black;
             this.btnbuscarresultado.IconFont = FontAwesome.Sharp.IconFont.Auto;
             this.btnbuscarresultado.IconSize = 18;
-            this.btnbuscarresultado.Location = new System.Drawing.Point(687, 61);
+            this.btnbuscarresultado.Location = new System.Drawing.Point(647, 64);
             this.btnbuscarresultado.Name = "btnbuscarresultado";
             this.btnbuscarresultado.Size = new System.Drawing.Size(36, 21);
             this.btnbuscarresultado.TabIndex = 88;
@@ -269,7 +278,7 @@
             // 
             // txtbusqueda3
             // 
-            this.txtbusqueda3.Location = new System.Drawing.Point(1024, 182);
+            this.txtbusqueda3.Location = new System.Drawing.Point(1067, 182);
             this.txtbusqueda3.Name = "txtbusqueda3";
             this.txtbusqueda3.Size = new System.Drawing.Size(120, 20);
             this.txtbusqueda3.TabIndex = 119;
@@ -279,14 +288,14 @@
             // 
             this.cbobusqueda3.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbobusqueda3.FormattingEnabled = true;
-            this.cbobusqueda3.Location = new System.Drawing.Point(922, 182);
+            this.cbobusqueda3.Location = new System.Drawing.Point(965, 182);
             this.cbobusqueda3.Name = "cbobusqueda3";
             this.cbobusqueda3.Size = new System.Drawing.Size(97, 21);
             this.cbobusqueda3.TabIndex = 118;
             // 
             // txtbusqueda2
             // 
-            this.txtbusqueda2.Location = new System.Drawing.Point(772, 183);
+            this.txtbusqueda2.Location = new System.Drawing.Point(815, 183);
             this.txtbusqueda2.Name = "txtbusqueda2";
             this.txtbusqueda2.Size = new System.Drawing.Size(120, 20);
             this.txtbusqueda2.TabIndex = 117;
@@ -296,14 +305,14 @@
             // 
             this.cbobusqueda2.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbobusqueda2.FormattingEnabled = true;
-            this.cbobusqueda2.Location = new System.Drawing.Point(670, 183);
+            this.cbobusqueda2.Location = new System.Drawing.Point(713, 183);
             this.cbobusqueda2.Name = "cbobusqueda2";
             this.cbobusqueda2.Size = new System.Drawing.Size(97, 21);
             this.cbobusqueda2.TabIndex = 116;
             // 
             // txtbusqueda1
             // 
-            this.txtbusqueda1.Location = new System.Drawing.Point(527, 182);
+            this.txtbusqueda1.Location = new System.Drawing.Point(570, 182);
             this.txtbusqueda1.Name = "txtbusqueda1";
             this.txtbusqueda1.Size = new System.Drawing.Size(120, 20);
             this.txtbusqueda1.TabIndex = 115;
@@ -313,7 +322,7 @@
             // 
             this.cbobusqueda1.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbobusqueda1.FormattingEnabled = true;
-            this.cbobusqueda1.Location = new System.Drawing.Point(425, 182);
+            this.cbobusqueda1.Location = new System.Drawing.Point(468, 182);
             this.cbobusqueda1.Name = "cbobusqueda1";
             this.cbobusqueda1.Size = new System.Drawing.Size(97, 21);
             this.cbobusqueda1.TabIndex = 114;
@@ -322,7 +331,7 @@
             // 
             this.label5.AutoSize = true;
             this.label5.BackColor = System.Drawing.Color.White;
-            this.label5.Location = new System.Drawing.Point(167, 161);
+            this.label5.Location = new System.Drawing.Point(186, 185);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(58, 13);
             this.label5.TabIndex = 111;
@@ -331,7 +340,7 @@
             // txtTotalFacturado
             // 
             this.txtTotalFacturado.Font = new System.Drawing.Font("Microsoft Sans Serif", 30F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtTotalFacturado.Location = new System.Drawing.Point(1033, 29);
+            this.txtTotalFacturado.Location = new System.Drawing.Point(1025, 37);
             this.txtTotalFacturado.Multiline = true;
             this.txtTotalFacturado.Name = "txtTotalFacturado";
             this.txtTotalFacturado.Size = new System.Drawing.Size(325, 53);
@@ -343,11 +352,52 @@
             this.label7.AutoSize = true;
             this.label7.BackColor = System.Drawing.Color.White;
             this.label7.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label7.Location = new System.Drawing.Point(918, 62);
+            this.label7.Location = new System.Drawing.Point(910, 70);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(115, 13);
             this.label7.TabIndex = 120;
             this.label7.Text = "TOTAL COMPRAS:";
+            // 
+            // btnrefrescar
+            // 
+            this.btnrefrescar.BackColor = System.Drawing.SystemColors.Control;
+            this.btnrefrescar.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnrefrescar.FlatAppearance.BorderColor = System.Drawing.Color.Black;
+            this.btnrefrescar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnrefrescar.ForeColor = System.Drawing.Color.Black;
+            this.btnrefrescar.IconChar = FontAwesome.Sharp.IconChar.Sync;
+            this.btnrefrescar.IconColor = System.Drawing.Color.Black;
+            this.btnrefrescar.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            this.btnrefrescar.IconSize = 16;
+            this.btnrefrescar.Location = new System.Drawing.Point(270, 19);
+            this.btnrefrescar.Name = "btnrefrescar";
+            this.btnrefrescar.Size = new System.Drawing.Size(152, 26);
+            this.btnrefrescar.TabIndex = 122;
+            this.btnrefrescar.Text = "REFRESCAR";
+            this.btnrefrescar.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btnrefrescar.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.btnrefrescar.UseVisualStyleBackColor = false;
+            this.btnrefrescar.Click += new System.EventHandler(this.btnrefrescar_Click);
+            // 
+            // btnborrar
+            // 
+            this.btnborrar.BackColor = System.Drawing.Color.White;
+            this.btnborrar.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnborrar.FlatAppearance.BorderColor = System.Drawing.Color.Black;
+            this.btnborrar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnborrar.ForeColor = System.Drawing.Color.White;
+            this.btnborrar.IconChar = FontAwesome.Sharp.IconChar.Broom;
+            this.btnborrar.IconColor = System.Drawing.Color.Black;
+            this.btnborrar.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            this.btnborrar.IconSize = 18;
+            this.btnborrar.Location = new System.Drawing.Point(281, 125);
+            this.btnborrar.Name = "btnborrar";
+            this.btnborrar.Size = new System.Drawing.Size(36, 21);
+            this.btnborrar.TabIndex = 123;
+            this.btnborrar.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btnborrar.UseVisualStyleBackColor = false;
+            this.btnborrar.Visible = false;
+            this.btnborrar.Click += new System.EventHandler(this.btnborrar_Click);
             // 
             // FechaRegistro
             // 
@@ -362,6 +412,12 @@
             this.TipoDocumento.Name = "TipoDocumento";
             this.TipoDocumento.ReadOnly = true;
             this.TipoDocumento.Width = 120;
+            // 
+            // NoFactura
+            // 
+            this.NoFactura.HeaderText = "NoFactura";
+            this.NoFactura.Name = "NoFactura";
+            this.NoFactura.ReadOnly = true;
             // 
             // NumeroDocumento
             // 
@@ -426,11 +482,48 @@
             this.FechaVencimiento.ReadOnly = true;
             this.FechaVencimiento.Width = 125;
             // 
+            // Impuesto
+            // 
+            this.Impuesto.DataPropertyName = "Impuesto";
+            this.Impuesto.HeaderText = "Impuesto";
+            this.Impuesto.Name = "Impuesto";
+            this.Impuesto.ReadOnly = true;
+            // 
+            // Estado
+            // 
+            this.Estado.HeaderText = "Estado";
+            this.Estado.Name = "Estado";
+            this.Estado.ReadOnly = true;
+            // 
+            // btnDetalle
+            // 
+            this.btnDetalle.BackColor = System.Drawing.Color.White;
+            this.btnDetalle.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnDetalle.FlatAppearance.BorderColor = System.Drawing.Color.Black;
+            this.btnDetalle.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnDetalle.ForeColor = System.Drawing.Color.Black;
+            this.btnDetalle.IconChar = FontAwesome.Sharp.IconChar.FileText;
+            this.btnDetalle.IconColor = System.Drawing.Color.Black;
+            this.btnDetalle.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            this.btnDetalle.IconSize = 16;
+            this.btnDetalle.Location = new System.Drawing.Point(26, 180);
+            this.btnDetalle.Name = "btnDetalle";
+            this.btnDetalle.Size = new System.Drawing.Size(115, 23);
+            this.btnDetalle.TabIndex = 125;
+            this.btnDetalle.Text = "VER DETALLE";
+            this.btnDetalle.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btnDetalle.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.btnDetalle.UseVisualStyleBackColor = false;
+            this.btnDetalle.Click += new System.EventHandler(this.btnDetalle_Click);
+            // 
             // frmReporteCompras
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1370, 531);
+            this.Controls.Add(this.btnDetalle);
+            this.Controls.Add(this.btnborrar);
+            this.Controls.Add(this.btnrefrescar);
             this.Controls.Add(this.txtTotalFacturado);
             this.Controls.Add(this.label7);
             this.Controls.Add(this.txtbusqueda3);
@@ -490,8 +583,11 @@
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.TextBox txtTotalFacturado;
         private System.Windows.Forms.Label label7;
+        private FontAwesome.Sharp.IconButton btnrefrescar;
+        private FontAwesome.Sharp.IconButton btnborrar;
         private System.Windows.Forms.DataGridViewTextBoxColumn FechaRegistro;
         private System.Windows.Forms.DataGridViewTextBoxColumn TipoDocumento;
+        private System.Windows.Forms.DataGridViewTextBoxColumn NoFactura;
         private System.Windows.Forms.DataGridViewTextBoxColumn NumeroDocumento;
         private System.Windows.Forms.DataGridViewTextBoxColumn MontoTotal;
         private System.Windows.Forms.DataGridViewTextBoxColumn CantidadProductos;
@@ -501,5 +597,8 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn Condicion;
         private System.Windows.Forms.DataGridViewTextBoxColumn MetodoPago;
         private System.Windows.Forms.DataGridViewTextBoxColumn FechaVencimiento;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Impuesto;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Estado;
+        private FontAwesome.Sharp.IconButton btnDetalle;
     }
 }

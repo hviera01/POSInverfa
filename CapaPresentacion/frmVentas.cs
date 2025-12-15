@@ -1,23 +1,25 @@
-﻿using CapaEntidad;
-using CapaNegocio;
-using CapaPresentacion.Modales;
-using CapaPresentacion.Utilidades;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.Drawing.Printing;
+using System.IO;
+using System.IO.Ports;
 using System.Linq;
+using System.Runtime.InteropServices;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using System.IO;
-
+using CapaDatos;
+using CapaEntidad;
+using CapaNegocio;
+using CapaPresentacion.Modales;
+using CapaPresentacion.Resources;
+using CapaPresentacion.Utilidades;
 using ESCPOS_NET;
-using ESCPOS_NET.Utilities;
 using ESCPOS_NET.Printers;
-using System.IO.Ports;
-using System.Drawing.Printing;
+using ESCPOS_NET.Utilities;
 
 
 
@@ -25,36 +27,83 @@ namespace CapaPresentacion
 {
     public partial class frmVentas : Form
     {
+        private readonly Dictionary<int, List<ConsumoItem>> _prepPorItem = new Dictionary<int, List<ConsumoItem>>();
+
+
+        public class ConsumoItem
+        {
+            public int NumeroItem { get; set; }
+            public int IdProductoInsumo { get; set; }
+            public string NombreInsumo { get; set; }
+            public string UnidadElegida { get; set; }    
+            public decimal CantidadUnidad { get; set; }  
+            public string EquivalenteEn { get; set; }   
+            public decimal CantidadUsada { get; set; }    
+        }
 
         private Usuario _Usuario;
 
         private Negocio negocio;
+        List<Producto> listaProductos = new List<Producto>();
+
+        private int idCliente;
+        private string bufferCodigoScanner = "";
+        private DateTime ultimaTecla = DateTime.Now;
+        private bool permisoModificarPrecio = false;
+        private bool _bloqueandoPrecio = false;
+        private string _ultimoTipoDocumentoValor = "VentaSinFacturar";
+
+
+
         public frmVentas(Usuario oUsuario = null)
         {
             _Usuario = oUsuario;
             InitializeComponent();
             negocio = new CN_Negocio().ObtenerDatos();
-
+            this.KeyPreview = true;
+            dgvdata.SuspendLayout();
+            dgvdata.ResumeLayout();
+            this.DoubleBuffered = true;
         }
         private string numeroDocumentoImpresion;
         private void frmVentas_Load(object sender, EventArgs e)
         {
-             comboMetodoPago.Items.Add("Efectivo");
+            dtpFecha.Value = DateTime.Today;
+            comboMetodoPago.Items.Add("Efectivo");
             comboMetodoPago.Items.Add("Tarjeta");
             comboMetodoPago.Items.Add("Transferencia");
             comboMetodoPago.SelectedIndex = 0;
             cbocondicion.Items.Add("Contado");
             cbocondicion.Items.Add("Credito");
             cbocondicion.SelectedIndex = 0;
+            cbotipodocumento.Items.Add(new OpcionCombo() { Valor = "VentaSinFacturar", Texto = "Venta" });
             cbotipodocumento.Items.Add(new OpcionCombo() { Valor = "Factura", Texto = "Factura" });
             cbotipodocumento.Items.Add(new OpcionCombo() { Valor = "Boleta", Texto = "Boleta" });
             cbotipodocumento.Items.Add(new OpcionCombo() { Valor = "Cotizacion", Texto = "Cotizacion" });
-            cbotipodocumento.Items.Add(new OpcionCombo() { Valor = "VentaSinFacturar", Texto = "Venta Sin" });
+            cbotipodocumento.Items.Add(new OpcionCombo() { Valor = "Canje", Texto = "Canje" });
             cbotipodocumento.DisplayMember = "Texto";
             cbotipodocumento.ValueMember = "Valor";
-            cbotipodocumento.SelectedIndex = 0;
+            cbotipodocumento.SelectedIndex = 1;
 
-            txtfecha.Text = DateTime.Now.ToString("dd/MM/yyyy");
+            cmbAplicarRecargo.Items.Clear(); // Limpiar elementos existentes
+            cmbAplicarRecargo.Items.Add("Sí");
+            cmbAplicarRecargo.Items.Add("No");
+            cmbAplicarRecargo.SelectedIndex = 1;
+            label18.Visible = false;
+            cmbAplicarRecargo.Visible = false;
+            label19.Visible = false;
+            txtrecargo.Visible = false;
+
+            cbotipodocumento.DisplayMember = "Texto";
+            cbotipodocumento.ValueMember = "Valor";
+
+            cmbNivelPrecio.Items.Add("Nivel 1");
+            cmbNivelPrecio.Items.Add("Nivel 2");
+            cmbNivelPrecio.Items.Add("Nivel 3");
+            cmbNivelPrecio.SelectedIndex = 0;
+
+
+            
             txtidproducto.Text = "0";
 
             txtpagocon.Text = "";
@@ -70,6 +119,18 @@ namespace CapaPresentacion
                 }
             }
 
+            this.Focus();
+           
+            cmbPorcentajeTarjeta.Items.Add("2.9%");
+            cmbPorcentajeTarjeta.Items.Add("3.5%");
+            cmbPorcentajeTarjeta.SelectedIndex = 0;
+            cmbPorcentajeTarjeta.Visible = false;
+
+            CD_Producto oCD_Producto = new CD_Producto();
+            listaProductos = oCD_Producto.Listar();
+            _ultimoTipoDocumentoValor = ((OpcionCombo)cbotipodocumento.SelectedItem).Valor.ToString();
+
+
         }
 
         private void Btn_Click(object sender, EventArgs e)
@@ -81,23 +142,68 @@ namespace CapaPresentacion
             }
         }
 
+        private void AjustarGridSegunCambioTipo(string tipoAnterior, string tipoNuevo)
+        {
+            // Tipos que muestran PRECIO sin ISV (se aplica ISV en el total)
+            HashSet<string> tiposConISVSeparado = new HashSet<string>(StringComparer.OrdinalIgnoreCase)
+    { "Factura", "Boleta", "Cotizacion" };
+
+            bool antesConISVSeparado = tiposConISVSeparado.Contains(tipoAnterior);
+            bool ahoraConISVSeparado = tiposConISVSeparado.Contains(tipoNuevo);
+
+            // Si es canje, solo recalcular totales de puntos
+            if (string.Equals(tipoNuevo, "Canje", StringComparison.OrdinalIgnoreCase))
+            {
+                calcularTotalCanje();
+                return;
+            }
+
+            // Recorremos filas y ajustamos Precio y SubTotal cuando cambia de régimen
+            if (antesConISVSeparado != ahoraConISVSeparado)
+            {
+                decimal factor = ahoraConISVSeparado ? (1 / 1.15m) : 1.15m; // Venta->Factura: /1.15 ; Factura->Venta: *1.15
+
+                foreach (DataGridViewRow row in dgvdata.Rows)
+                {
+                    if (row.IsNewRow) continue;
+
+                    // Evita errores si faltan columnas
+                    if (row.Cells["Precio"]?.Value == null || row.Cells["Cantidad"]?.Value == null) continue;
+
+                    if (!decimal.TryParse(row.Cells["Precio"].Value.ToString(), out decimal precio)) continue;
+                    if (!decimal.TryParse(row.Cells["Cantidad"].Value.ToString(), out decimal cantidad)) continue;
+
+                    decimal nuevoPrecio = Math.Round(precio * factor, 2, MidpointRounding.AwayFromZero);
+                    decimal nuevoSubTotal = Math.Round(nuevoPrecio * cantidad, 2, MidpointRounding.AwayFromZero);
+
+                    row.Cells["Precio"].Value = nuevoPrecio.ToString("0.00");
+                    row.Cells["SubTotal"].Value = nuevoSubTotal.ToString("0.00");
+                }
+            }
+
+            // Recalcular totales globales según el tipo nuevo
+            calcularTotal();
+        }
+
+
         private void btnbuscarproveedor_Click(object sender, EventArgs e)
         {
             using (var modal = new mdCliente())
             {
                 var result = modal.ShowDialog();
-
                 if (result == DialogResult.OK)
                 {
                     txtdocumentocliente.Text = modal._Cliente.Documento;
                     txtnombrecliente.Text = modal._Cliente.NombreCompleto;
+                    txtIdCliente.Text = modal._Cliente.idCliente.ToString(); // Captura el ID del cliente
+
+
                     txtcodproducto.Select();
                 }
                 else
                 {
                     txtdocumentocliente.Select();
                 }
-
             }
         }
 
@@ -113,78 +219,121 @@ namespace CapaPresentacion
                     txtIdCategoria.Text = modal._Producto.oCategoria.IdCategoria.ToString();
                     txtcodproducto.Text = modal._Producto.Codigo;
                     txtproducto.Text = modal._Producto.Nombre;
-                    txtprecio.Text = modal._Producto.PrecioVenta.ToString("0.00");
+
+                    string tipoDocumento = ((OpcionCombo)cbotipodocumento.SelectedItem)?.Texto;
+
+                    decimal precioSeleccionado = 0;
+
+                    if (tipoDocumento == "Canje")
+                    {
+                        precioSeleccionado = modal._Producto.PrecioPuntos;
+                    }
+                    else
+                    {
+                        string nivelSeleccionado = cmbNivelPrecio.SelectedItem.ToString();
+
+                        switch (nivelSeleccionado)
+                        {
+                            case "Nivel 1":
+                                precioSeleccionado = modal._Producto.PrecioVenta;
+                                break;
+                            case "Nivel 2":
+                                precioSeleccionado = modal._Producto.Precio2;
+                                break;
+                            case "Nivel 3":
+                                precioSeleccionado = modal._Producto.Precio3;
+                                break;
+                        }
+                    }
+
+                    txtprecio.Text = precioSeleccionado.ToString("0.00");
                     txtstock.Text = modal._Producto.Stock.ToString();
+
+                    // 🔥 Cargar la PRIMA del producto en el textbox de prima
+                    if (txtPrimaProducto != null)           // si tu textbox se llama txtPrima, cambia aquí el nombre
+                        txtPrimaProducto.Text = modal._Producto.Prima.ToString("0.00");
+
                     txtcantidad.Select();
                 }
                 else
                 {
                     txtcodproducto.Select();
                 }
-
             }
         }
 
+
+
         private void txtcodproducto_KeyDown(object sender, KeyEventArgs e)
         {
-            if (e.KeyData == Keys.Enter)
+            if (e.KeyCode == Keys.Enter)
             {
-
-                Producto oProducto = new CN_Producto().Listar().Where(p => p.Codigo == txtcodproducto.Text && p.Estado == true).FirstOrDefault();
+                Producto oProducto = new CN_Producto()
+                                        .Listar()
+                                        .Where(p => p.Codigo == txtcodproducto.Text.Trim() && p.Estado == true)
+                                        .FirstOrDefault();
 
                 if (oProducto != null)
                 {
                     txtcodproducto.BackColor = Color.Honeydew;
+
                     txtidproducto.Text = oProducto.IdProducto.ToString();
                     txtproducto.Text = oProducto.Nombre;
                     txtprecio.Text = oProducto.PrecioVenta.ToString("0.00");
                     txtstock.Text = oProducto.Stock.ToString();
+
+                    // 🔥 Cargar la PRIMA del producto
+                    if (txtPrimaProducto != null)   // o txtPrima
+                        txtPrimaProducto.Text = oProducto.Prima.ToString("0.00");
+
                     txtcantidad.Select();
                 }
                 else
                 {
                     txtcodproducto.BackColor = Color.MistyRose;
+
                     txtidproducto.Text = "0";
                     txtproducto.Text = "";
                     txtprecio.Text = "";
                     txtstock.Text = "";
+
+                    if (txtPrimaProducto != null)
+                        txtPrimaProducto.Text = "0.00";
+
                     txtcantidad.Value = 1;
                 }
             }
         }
 
+        private void RestarStockDeVenta(int idProducto, decimal cantidad)
+        {
+
+            Producto producto = new CN_Producto().Listar().FirstOrDefault(p => p.IdProducto == idProducto);
+            if (producto != null)
+            {
+                producto.Stock -= cantidad;
+            }
+        }
+
         private void btnagregarproducto_Click(object sender, EventArgs e)
         {
-            decimal precioConImpuesto = 0;
-            decimal precioSinImpuesto = 0;
-            bool producto_existe = false;
+            decimal precioBase = 0m;
 
-            // Verificar si se ha seleccionado un producto
-            if (int.TryParse(txtidproducto.Text, out int idProducto) && idProducto == 0)
+            if (!int.TryParse(txtidproducto.Text, out int idProducto) || idProducto == 0)
             {
                 MessageBox.Show("Debe seleccionar un producto", "Mensaje", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
                 return;
             }
-
-            // Validar el precio
-            if (!decimal.TryParse(txtprecio.Text, out precioConImpuesto))
+            if (!decimal.TryParse(txtprecio.Text, out precioBase))
             {
                 MessageBox.Show("Precio - Formato moneda incorrecto", "Mensaje", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
                 txtprecio.Select();
                 return;
             }
-
-            // Calcular el precio sin impuesto
-            precioSinImpuesto = precioConImpuesto / 1.15m;
-
-            // Validar el stock y la cantidad
             if (!decimal.TryParse(txtstock.Text, out decimal stock))
             {
-                MessageBox.Show("Stock - Formato incorrecto", "Mensaje", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
-                txtstock.Select();
-                return;
+                stock = 0m;
             }
-
             if (!decimal.TryParse(txtcantidad.Value.ToString(), out decimal cantidad))
             {
                 MessageBox.Show("Cantidad - Formato incorrecto", "Mensaje", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
@@ -192,127 +341,137 @@ namespace CapaPresentacion
                 return;
             }
 
-            // Concatenar el color al nombre del producto si se ha ingresado
-            string color = txtcolor.Text.Trim();
+            string tipoDocumento = ((OpcionCombo)cbotipodocumento.SelectedItem).Valor.ToString();
+            bool esCotizacion = string.Equals(tipoDocumento, "Cotizacion", StringComparison.OrdinalIgnoreCase);
+
+
+            string color = txtCodigoColor.Text.Trim();
             string nombreProducto = txtproducto.Text;
-            if (!string.IsNullOrEmpty(color))
+            if (!string.IsNullOrWhiteSpace(color))
+                nombreProducto += $" {color}";
+
+            int idProductoFinal = idProducto;
+
+            string idCategoria = txtIdCategoria.Text?.Trim() ?? "0";
+
+            if (idCategoria == "52")
+                MessageBox.Show("Producto externo a la tienda facturado.", "Mensaje");
+            else if (idCategoria == "51")
+                MessageBox.Show("Envío a domicilio facturado.", "Mensaje");
+            else if (idCategoria == "50")
+                MessageBox.Show("Servicio facturado.", "Mensaje");
+
+            int rowIndex;
+
+            // ============================
+            // CANJE
+            // ============================
+            if (string.Equals(tipoDocumento, "Canje", StringComparison.OrdinalIgnoreCase))
             {
-                nombreProducto += $" color {color}";
+                int precioPuntos = (int)Math.Round(precioBase, MidpointRounding.AwayFromZero);
+                int subtotalPuntos = (int)Math.Round(precioPuntos * cantidad, MidpointRounding.AwayFromZero);
+
+                rowIndex = dgvdata.Rows.Add(new object[] {
+            idProductoFinal.ToString(),
+            idCategoria,
+            nombreProducto,
+            precioPuntos.ToString(),
+            cantidad.ToString("0.00"),
+            subtotalPuntos.ToString()
+        });
+
+                DataGridViewRow row = dgvdata.Rows[rowIndex];
+                row.Cells["PrimaProducto"].Value = "0.00";
+                row.Cells["NumeroCuotasProducto"].Value = 0;
+                row.Cells["FrecuenciaProducto"].Value = "N/A";
+                row.Cells["FechaInicioCreditoProducto"].Value = "";
+                row.Cells["FechaVencimientoProducto"].Value = "";
+                row.Cells["MontoCuotaProducto"].Value = "0.00";
+                row.Cells["SaldoPendienteProducto"].Value = "0.00";
+
+                calcularTotalCanje();
             }
-
-            int idProductoFinal = idProducto; // Inicializamos con el ID del producto original
-
-            // Verificar si el producto es de la categoría 35 (Pintura Preparada)
-            if (txtIdCategoria.Text == "35")
+            else
             {
-                // Agregar el producto sin importar el stock
-                MessageBox.Show("Recuerde registrar las pinturas que utilizó.", "Mensaje", MessageBoxButtons.OK, MessageBoxIcon.Information);
-            }
-            else if (stock < cantidad)
-            {
-                // Si el stock es insuficiente, mostrar mensaje
-                MessageBox.Show($"El producto {txtproducto.Text} no tiene suficiente stock.", "Mensaje", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                // ============================
+                // NORMAL (Contado / Crédito)
+                // ============================
+                decimal precioFinal =
+                    (esCotizacion ||
+                     tipoDocumento == "Factura" ||
+                     tipoDocumento == "Boleta")
+                     ? Math.Round(precioBase / 1.15m, 2)
+                     : Math.Round(precioBase, 2);
 
-                // Preguntar si desea hacer un reembasado
-                DialogResult result = MessageBox.Show("¿Desea realizar un reembasado?", "Reembasado", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+                decimal subtotal = Math.Round(precioFinal * cantidad, 2);
 
-                if (result == DialogResult.Yes)
+                rowIndex = dgvdata.Rows.Add(new object[] {
+            idProductoFinal.ToString(),
+            idCategoria,
+            nombreProducto,
+            precioFinal.ToString("0.00"),
+            cantidad.ToString("0.00"),
+            subtotal.ToString("0.00")
+        });
+
+                DataGridViewRow row = dgvdata.Rows[rowIndex];
+
+                // ==============================================
+                // AQUI VA EXACTAMENTE LO QUE ME PREGUNTASTE
+                // ==============================================
+
+                if (cbocondicion.SelectedItem != null &&
+    cbocondicion.SelectedItem.ToString() == "Credito")
                 {
-                    // Opción "Reembasar"
-                    using (var modal = new mdProducto())
+                    decimal primaDefecto = 0m;
+                    if (txtPrimaProducto != null &&
+                        decimal.TryParse(txtPrimaProducto.Text, out decimal ptmp))
+                        primaDefecto = ptmp;
+
+                    // SubTotal del grid está SIN ISV para Factura / Boleta / Cotización.
+                    // Aquí calculamos el total de la línea PARA EL CRÉDITO.
+                    string tipoDocLinea = ((OpcionCombo)cbotipodocumento.SelectedItem).Valor.ToString();
+                    bool conISVSeparado = tipoDocLinea == "Factura" ||
+                                          tipoDocLinea == "Boleta" ||
+                                          tipoDocLinea == "Cotizacion";
+
+                    decimal totalProducto = subtotal;
+
+                    if (conISVSeparado)
                     {
-                        var modalResult = modal.ShowDialog();
-                        if (modalResult == DialogResult.OK)
-                        {
-                            // Obtener el ID del producto seleccionado para reembasado
-                            idProductoFinal = modal._Producto.IdProducto;
-                            decimal cantidadReembasada = cantidad;
-
-                            // Obtener los datos del producto reembasado
-                            Producto productoReembasado = new CN_Producto().Listar().FirstOrDefault(p => p.IdProducto == idProductoFinal);
-                            if (productoReembasado != null && productoReembasado.Stock >= cantidadReembasada)
-                            {
-                                // Restar el stock temporalmente del producto reembasado
-                                productoReembasado.Stock -= cantidadReembasada;
-                            }
-                            else
-                            {
-                                MessageBox.Show("El producto seleccionado para reembasado no tiene suficiente stock.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                                return; // Salir si el producto reembasado no tiene stock suficiente
-                            }
-                        }
-                        else
-                        {
-                            return; // Salir si no se selecciona un producto alternativo
-                        }
+                        // Le sumamos el 15% de ISV para que el crédito sea sobre el monto con impuesto
+                        totalProducto = Math.Round(subtotal * 1.15m, 2, MidpointRounding.AwayFromZero);
                     }
+
+                    AbrirModalCreditoParaFila(row, totalProducto, primaDefecto, false);
                 }
+
                 else
                 {
-                    return; // Salir si el usuario elige "No"
-                }
-            }
-
-            // Verificar si el producto ya existe en el DataGridView
-            foreach (DataGridViewRow fila in dgvdata.Rows)
-            {
-                if (fila.Cells["IdProducto"].Value.ToString() == idProductoFinal.ToString())
-                {
-                    producto_existe = true;
-                    break;
-                }
-            }
-
-            // Si el producto no existe en la lista, agregarlo con el ID final (reembasado o no)
-            if (!producto_existe)
-            {
-                decimal subtotalSinImpuesto;
-
-                // Verificar si es un reembasado
-                if (cantidad < 1)
-                {
-                    // Si la cantidad es menor a 1, calcular el precio multiplicando por el factor de reembasado
-                    subtotalSinImpuesto = precioSinImpuesto * (cantidad * 4);
-                }
-                else
-                {
-                    // Si es cantidad normal, hacer la multiplicación estándar
-                    subtotalSinImpuesto = precioSinImpuesto * cantidad;
+                    row.Cells["PrimaProducto"].Value = "0.00";
+                    row.Cells["NumeroCuotasProducto"].Value = 0;
+                    row.Cells["FrecuenciaProducto"].Value = "N/A";
+                    row.Cells["FechaInicioCreditoProducto"].Value = "N/A";
+                    row.Cells["FechaVencimientoProducto"].Value = "N/A";
+                    row.Cells["MontoCuotaProducto"].Value = "0.00";
+                    row.Cells["SaldoPendienteProducto"].Value = "0.00";
                 }
 
-                // Agregar el producto al DataGridView
-                dgvdata.Rows.Add(new object[] {
-                idProductoFinal.ToString(),
-                txtIdCategoria.Text,
-                nombreProducto, // Usar el nombre del producto con el color
-                precioSinImpuesto.ToString("0.00"),
-                cantidad.ToString("0.00"),
-                subtotalSinImpuesto.ToString("0.00")
-               });
+                // ==============================================
+                // FIN DEL BLOQUE QUE PREGUNTASTE
+                // ==============================================
 
-                // Si se seleccionó "Pintura Preparada", no restamos stock
-                if (txtIdCategoria.Text != "35" && stock >= cantidad)
-                {
-                    // Restar el stock de manera temporal en la venta (sin afectar la base de datos)
-                    RestarStockDeVenta(idProductoFinal, cantidad);
-                }
-
-                // Calcular el total
                 calcularTotal();
-                limpiarProducto();
-                txtcodproducto.Select();
             }
-        }
 
-        // Método para restar el stock de venta temporalmente
-        private void RestarStockDeVenta(int idProducto, decimal cantidad)
-        {
-           
-            Producto producto = new CN_Producto().Listar().FirstOrDefault(p => p.IdProducto == idProducto);
-            if (producto != null)
+            if (!esCotizacion && idCategoria != "35" && idCategoria != "49" && stock >= cantidad)
             {
-                producto.Stock -= cantidad;
+                RestarStockDeVenta(idProductoFinal, cantidad);
             }
+
+            txtCodigoColor.Clear();
+            limpiarProducto();
+            txtcodproducto.Select();
         }
 
         private void calcularTotal()
@@ -324,20 +483,30 @@ namespace CapaPresentacion
             {
                 foreach (DataGridViewRow row in dgvdata.Rows)
                 {
-                    totalSinImpuesto += Convert.ToDecimal(row.Cells["SubTotal"].Value.ToString());
+                    if (row.Cells["SubTotal"].Value != null && decimal.TryParse(row.Cells["SubTotal"].Value.ToString(), out decimal subtotal))
+                    {
+                        totalSinImpuesto += subtotal;
+                    }
                 }
             }
 
-         
-            totalISV = totalSinImpuesto * 0.15m; 
+            string tipoDocumento = ((OpcionCombo)cbotipodocumento.SelectedItem)?.Valor.ToString();
+            decimal totalPagar;
 
-          
-            decimal totalPagar = totalSinImpuesto + totalISV; 
+            if (tipoDocumento == "VentaSinFacturar")
+            {
+                totalISV = 0;
+                totalPagar = totalSinImpuesto;
+            }
+            else
+            {
+                totalISV = totalSinImpuesto * 0.15m;
+                totalPagar = totalSinImpuesto + totalISV;
+            }
 
-           
-            totalPagar = Math.Round(totalPagar, 2, MidpointRounding.ToEven); 
-          
-            if (totalPagar % 1 >= 0.90m) 
+            totalPagar = Math.Round(totalPagar, 2, MidpointRounding.ToEven);
+
+            if (totalPagar % 1 >= 0.90m)
             {
                 totalPagar = Math.Ceiling(totalPagar); // Redondear hacia arriba
             }
@@ -346,10 +515,11 @@ namespace CapaPresentacion
                 totalPagar = Math.Floor(totalPagar); // Redondear hacia abajo a un entero
             }
 
-            // Mostrar siempre dos decimales
-            txttotalpagar.Text = totalPagar.ToString("0.00"); // Asegurarse de que se muestre con dos decimales
+            txtsubtotal.Text = totalSinImpuesto.ToString("0.00");
+            txttotalpagar.Text = totalPagar.ToString("0.00");
             txtimpuesto.Text = totalISV.ToString("0.00");
         }
+
 
         private void limpiarProducto()
         {
@@ -361,14 +531,15 @@ namespace CapaPresentacion
             txtstock.Text = "";
             txtcantidad.Value = 1;
             txtcolor.Text = "";
+            txtPrimaProducto.Text = "";
         }
 
         private void dgvdata_CellPainting(object sender, DataGridViewCellPaintingEventArgs e)
         {
-            if (e.RowIndex < 0)
+            if (e.RowIndex < 0 || e.ColumnIndex < 0)
                 return;
 
-            if (e.ColumnIndex == 6)
+            if (e.ColumnIndex == dgvdata.Columns["btneliminar"].Index)
             {
                 e.Paint(e.CellBounds, DataGridViewPaintParts.All);
 
@@ -379,19 +550,75 @@ namespace CapaPresentacion
 
                 e.Graphics.DrawImage(Properties.Resources.delete25, new Rectangle(x, y, w, h));
                 e.Handled = true;
+                return;
+            }
+
+            if (e.ColumnIndex == dgvdata.Columns["btnEditarCredito"].Index)
+            {
+                e.Paint(e.CellBounds, DataGridViewPaintParts.All);
+                e.Handled = true;
+                return;
             }
         }
 
         private void dgvdata_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
-            if (dgvdata.Columns[e.ColumnIndex].Name == "btneliminar")
+            if (e.RowIndex < 0 || e.ColumnIndex < 0)
+                return;
+
+            string nombreColumna = dgvdata.Columns[e.ColumnIndex].Name;
+
+            if (nombreColumna == "btneliminar")
             {
                 int index = e.RowIndex;
                 if (index >= 0)
                 {
-                    // Simplemente eliminar la fila del DataGridView sin restar stock
-                    dgvdata.Rows.RemoveAt(index);
+                    DataGridViewRow fila = dgvdata.Rows[index];
+                    decimal cantidadActual = Convert.ToDecimal(fila.Cells["Cantidad"].Value);
+
+                    if (cantidadActual > 1)
+                    {
+                        cantidadActual -= 1;
+                        fila.Cells["Cantidad"].Value = cantidadActual.ToString("0.00");
+
+                        decimal precio = Convert.ToDecimal(fila.Cells["Precio"].Value);
+                        fila.Cells["SubTotal"].Value = (cantidadActual * precio).ToString("0.00");
+                    }
+                    else
+                    {
+                        dgvdata.Rows.RemoveAt(index);
+                    }
+
+                    calcularTotal();
                 }
+            }
+
+            if (nombreColumna == "btnEditarCredito")
+            {
+                DataGridViewRow row = dgvdata.Rows[e.RowIndex];
+
+                if (!decimal.TryParse(row.Cells["Precio"].Value?.ToString(), out decimal precioFila))
+                    precioFila = 0m;
+
+                if (!decimal.TryParse(row.Cells["Cantidad"].Value?.ToString(), out decimal cantFila))
+                    cantFila = 1m;
+
+                decimal subtotalLinea = Math.Round(precioFila * cantFila, 2, MidpointRounding.AwayFromZero);
+
+                string tipoDocLinea = ((OpcionCombo)cbotipodocumento.SelectedItem).Valor.ToString();
+                bool conISVSeparado = tipoDocLinea == "Factura" ||
+                                      tipoDocLinea == "Boleta" ||
+                                      tipoDocLinea == "Cotizacion";
+
+                decimal totalProducto = subtotalLinea;
+                if (conISVSeparado)
+                    totalProducto = Math.Round(subtotalLinea * 1.15m, 2, MidpointRounding.AwayFromZero);
+
+                decimal primaDefecto = 0m;
+                if (row.Cells["PrimaProducto"].Value != null)
+                    decimal.TryParse(row.Cells["PrimaProducto"].Value.ToString(), out primaDefecto);
+
+                AbrirModalCreditoParaFila(row, totalProducto, primaDefecto, true);
             }
         }
 
@@ -486,11 +713,48 @@ namespace CapaPresentacion
             txtpagocon.Text = pagacon.ToString("0.00");
         }
 
+
+        private bool pagoconEnterPressed = false;
+
         private void txtpagocon_KeyDown(object sender, KeyEventArgs e)
         {
             if (e.KeyData == Keys.Enter)
             {
-                calcularcambio(); // Llama al método para calcular el cambio
+                calcularcambio();
+                pagoconEnterPressed = true;
+            }
+        }
+
+        private bool EnsurePagoConEfectivo()
+        {
+            // Solo aplica a ventas de contado con método Efectivo
+            if (cbocondicion.SelectedItem?.ToString() != "Contado") return true;
+            if (comboMetodoPago.SelectedItem?.ToString() != "Efectivo") return true;
+
+            if (!decimal.TryParse(txttotalpagar.Text, out decimal total) || total <= 0)
+            {
+                MessageBox.Show("El monto total no puede estar vacío o en cero.", "Error",
+                                MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return false;
+            }
+
+            // Si ya hay valor en txtpagocon, no hacemos nada
+            if (!string.IsNullOrWhiteSpace(txtpagocon.Text)) return true;
+
+            using (var modal = new CapaPresentacion.Modales.md_CobrarFactura(total))
+            {
+                var r = modal.ShowDialog();
+                if (r == DialogResult.OK)
+                {
+                    txtpagocon.Text = modal.PagoCon.ToString("0.00");
+                    txtcambio.Text = modal.Cambio.ToString("0.00");
+                    return true;
+                }
+                else
+                {
+                    // Cajero canceló: abortar flujo
+                    return false;
+                }
             }
         }
 
@@ -516,7 +780,7 @@ namespace CapaPresentacion
                 return;
             }
 
-            // Crear objeto de venta
+            // Crear objeto de venta (para manejo de pago)
             Venta objVenta = new Venta
             {
                 MetodoPago = cbocondicion.SelectedItem.ToString() == "Credito" ? "N/A" : comboMetodoPago.SelectedItem.ToString(),
@@ -527,26 +791,23 @@ namespace CapaPresentacion
             // Si la condición es "Crédito", no se requiere monto pagado ni cambio
             if (objVenta.Condicion == "Credito")
             {
-                objVenta.MontoPago = 0; // No se requiere monto pagado
-                objVenta.MontoCambio = 0; // No se requiere cambio
+                objVenta.MontoPago = 0;
+                objVenta.MontoCambio = 0;
             }
             else
             {
-                // Verificar el método de pago y calcular el cambio si es efectivo
                 if (objVenta.MetodoPago == "Efectivo")
                 {
-                    if (string.IsNullOrEmpty(txtpagocon.Text))
-                    {
-                        MessageBox.Show("Ingrese el monto con el que pagó el cliente.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                        return;
-                    }
+                    if (!EnsurePagoConEfectivo())
+                        return; // usuario canceló
 
                     objVenta.MontoPago = decimal.Parse(txtpagocon.Text);
                     objVenta.MontoCambio = objVenta.MontoPago - objVenta.MontoTotal;
 
                     if (objVenta.MontoCambio < 0)
                     {
-                        MessageBox.Show("El monto pagado no puede ser menor al total.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                        MessageBox.Show("El monto pagado no puede ser menor al total.", "Error",
+                                        MessageBoxButtons.OK, MessageBoxIcon.Warning);
                         return;
                     }
                 }
@@ -557,45 +818,99 @@ namespace CapaPresentacion
                 }
             }
 
-            // Crear DataTable para el detalle de la venta
+            // ==========================
+            // ARMAR DETALLE_VENTA
+            // ==========================
             DataTable detalle_venta = new DataTable();
             detalle_venta.Columns.Add("IdProducto", typeof(int));
             detalle_venta.Columns.Add("PrecioVenta", typeof(decimal));
             detalle_venta.Columns.Add("Cantidad", typeof(decimal));
             detalle_venta.Columns.Add("SubTotal", typeof(decimal));
-            detalle_venta.Columns.Add("NombreProducto", typeof(string)); // Nueva columna
+            detalle_venta.Columns.Add("NombreProducto", typeof(string));
+            detalle_venta.Columns.Add("PrecioCompraUsado", typeof(decimal));
+            detalle_venta.Columns.Add("PrimaProducto", typeof(decimal));
+            detalle_venta.Columns.Add("NumeroCuotasProducto", typeof(int));
+            detalle_venta.Columns.Add("FechaInicioCreditoProducto", typeof(DateTime));
 
-            // Llenar el DataTable con los datos de los productos
             foreach (DataGridViewRow row in dgvdata.Rows)
             {
-                if (!row.IsNewRow)
+                if (row.Cells["IdProducto"].Value == null)
+                    continue;
+
+                int idProducto = Convert.ToInt32(row.Cells["IdProducto"].Value);
+                decimal precioVenta = Convert.ToDecimal(row.Cells["Precio"].Value);
+                decimal cantidad = Convert.ToDecimal(row.Cells["Cantidad"].Value);
+                decimal subtotal = Convert.ToDecimal(row.Cells["SubTotal"].Value);
+
+                string nombreProducto = row.Cells["Producto"].Value.ToString();
+
+                Producto prod = listaProductos.FirstOrDefault(p => p.IdProducto == idProducto);
+                decimal precioCompraBase = prod != null ? prod.PrecioCompra : 0m;
+                decimal precioCompraUsado = Math.Round(precioCompraBase * cantidad, 2);
+
+                decimal primaProducto = 0m;
+                if (row.Cells["PrimaProducto"].Value != null)
+                    decimal.TryParse(row.Cells["PrimaProducto"].Value.ToString(), out primaProducto);
+
+                int numeroCuotasProducto = 0;
+                if (row.Cells["NumeroCuotasProducto"].Value != null)
+                    int.TryParse(row.Cells["NumeroCuotasProducto"].Value.ToString(), out numeroCuotasProducto);
+
+                DateTime fechaInicioCreditoProducto = DateTime.MinValue;
+                bool tieneFechaInicio = false;
+                if (row.Cells["FechaInicioCreditoProducto"].Value != null &&
+                    DateTime.TryParse(row.Cells["FechaInicioCreditoProducto"].Value.ToString(),
+                                      out fechaInicioCreditoProducto))
                 {
-                    detalle_venta.Rows.Add(
-                        Convert.ToInt32(row.Cells["IdProducto"].Value),
-                        Convert.ToDecimal(row.Cells["Precio"].Value),
-                        Convert.ToDecimal(row.Cells["Cantidad"].Value.ToString()),
-                        Convert.ToDecimal(row.Cells["SubTotal"].Value),
-                        row.Cells["Producto"].Value.ToString() // Asegúrate de incluir el nombre del producto
-                    );
+                    tieneFechaInicio = true;
                 }
+
+                DataRow dr = detalle_venta.NewRow();
+                dr["IdProducto"] = idProducto;
+                dr["PrecioVenta"] = precioVenta;
+                dr["Cantidad"] = cantidad;
+                dr["SubTotal"] = subtotal;
+                dr["NombreProducto"] = nombreProducto;
+                dr["PrecioCompraUsado"] = precioCompraUsado;
+                dr["PrimaProducto"] = primaProducto;
+                dr["NumeroCuotasProducto"] = numeroCuotasProducto;
+                dr["FechaInicioCreditoProducto"] = tieneFechaInicio ? (object)fechaInicioCreditoProducto : DBNull.Value;
+
+                detalle_venta.Rows.Add(dr);
             }
 
-            // Calcular el impuesto
+            // ==========================
+            // IMPUESTO
+            // ==========================
             decimal totalSinImpuesto = 0;
             foreach (DataGridViewRow row in dgvdata.Rows)
             {
                 totalSinImpuesto += Convert.ToDecimal(row.Cells["SubTotal"].Value);
             }
-            decimal totalISV = totalSinImpuesto * 0.15m; // Calcular el ISV
+            decimal totalISV = totalSinImpuesto * 0.15m;
 
-            // Asignar el impuesto al objeto de venta
             objVenta.Impuesto = totalISV;
 
-            // Obtener el correlativo para el número de documento
+            // ==========================
+            // CORRELATIVO DOCUMENTO
+            // ==========================
             int idcorrelativo = new CN_Venta().ObtenerCorrelativo();
             numeroDocumentoImpresion = string.Format("{0:00000000}", idcorrelativo);
 
-            // Crear el objeto de venta para registrar
+            decimal porcentajeTarjeta = 0;
+            decimal montoFinal = decimal.Parse(txttotalpagar.Text);
+
+            if (comboMetodoPago.SelectedItem.ToString() == "Tarjeta")
+            {
+                string seleccion = cmbPorcentajeTarjeta.SelectedItem.ToString();
+                porcentajeTarjeta = seleccion == "2.9%" ? 2.9m : 3.5m;
+                decimal descuento = montoFinal * (porcentajeTarjeta / 100);
+                montoFinal = montoFinal - descuento;
+            }
+
+            // ==========================
+            // OBJETO VENTA PARA BD
+            // ==========================
             Venta oVenta = new Venta
             {
                 oUsuario = new Usuario() { IdUsuario = _Usuario.IdUsuario },
@@ -603,107 +918,45 @@ namespace CapaPresentacion
                 NumeroDocumento = numeroDocumentoImpresion,
                 DocumentoCliente = string.IsNullOrEmpty(txtdocumentocliente.Text) ? "N/A" : txtdocumentocliente.Text,
                 NombreCliente = string.IsNullOrEmpty(txtnombrecliente.Text) ? "CONSUMIDOR FINAL" : txtnombrecliente.Text,
-                MetodoPago = objVenta.MetodoPago, // Esto ahora será "N/A" si es crédito
+                MetodoPago = objVenta.MetodoPago,
                 MontoPago = objVenta.MontoPago,
                 MontoCambio = objVenta.MontoCambio,
-                MontoTotal = Math.Round(decimal.Parse(txttotalpagar.Text), 2), // Asegurarse de que se redondee a dos decimales
-                Impuesto = objVenta.Impuesto,// Asignar el impuesto
-                Condicion = cbocondicion.SelectedItem.ToString(),  // Aquí asumes que el ComboBox tiene las opciones "Contado" o "Crédito"
-                FechaVencimiento = objVenta.Condicion == "Credito" ? (DateTime?)dtpFechaVencimiento.Value : null // Asignar la fecha de vencimiento
+                MontoTotal = Math.Round(montoFinal, 2),
+                Impuesto = objVenta.Impuesto,
+                Condicion = cbocondicion.SelectedItem.ToString(),
+                FechaVencimiento = objVenta.Condicion == "Credito" ? (DateTime?)dtpFechaVencimiento.Value : null,
+                FechaRegistro = dtpFecha.Value
             };
 
-            string rangoAutorizado = negocio.RangoAutorizado; // Obtener el rango autorizado completo
-            string[] partesRango = rangoAutorizado.Split(new[] { " al " }, StringSplitOptions.None);
-
-            if (partesRango.Length == 2)
-            {
-                // Obtener el rango final
-                string rangoFinal = partesRango[1].Substring(partesRango[1].Length - 8); // Obtener los últimos 8 dígitos del rango final
-
-                // Comparar el correlativo de la venta con el rango final
-                if (int.Parse(numeroDocumentoImpresion) > int.Parse(rangoFinal))
-                {
-                    DialogResult result = MessageBox.Show("¡Alerta! Se ha alcanzado el rango autorizado para las facturas. ¿Desea continuar con la venta?",
-                                                            "Alerta",
-                                                            MessageBoxButtons.YesNo,
-                                                            MessageBoxIcon.Warning);
-                    if (result == DialogResult.No)
-                    {
-                        return; // Si el usuario elige "No", salir del método y no continuar con la venta
-                    }
-                }
-            }
-
-            // Verificar si se ha alcanzado la fecha límite de emisión
-            if (DateTime.Now.Date >= negocio.FechaLimiteEmision.Date)
-            {
-                DialogResult result = MessageBox.Show("¡Alerta! Se ha alcanzado la fecha límite de emisión. ¿Desea continuar con la venta?",
-                                             "Alerta",
-                                             MessageBoxButtons.YesNo,
-                                             MessageBoxIcon.Warning);
-                if (result == DialogResult.No)
-                {
-                    return; // Si el usuario elige "No", salir del método y no continuar con la venta
-                }
-            }
-
-            // Registrar la venta
+            // ==========================
+            // REGISTRAR VENTA
+            // ==========================
             string mensaje = string.Empty;
-            bool respuesta = new CN_Venta().Registrar(oVenta, detalle_venta, out mensaje);
-
-            if (respuesta)
+            int idVentaGenerada = new CN_Venta().Registrar(oVenta, detalle_venta, out mensaje);
+            if (idVentaGenerada > 0 &&
+    cbocondicion.SelectedItem != null &&
+    cbocondicion.SelectedItem.ToString() == "Credito")
             {
-                // Restar el stock de los productos vendidos
-                foreach (DataGridViewRow row in dgvdata.Rows)
-                {
-                    if (!row.IsNewRow)
-                    {
-                        int idProducto = Convert.ToInt32(row.Cells["IdProducto"].Value);
-                        decimal cantidadVendida = Convert.ToDecimal(row.Cells["Cantidad"].Value);
-                        int idCategoria = Convert.ToInt32(row.Cells["IdCategoria"].Value); // Asegúrate de que la columna IdCategoria esté presente
-
-                        // Lógica para restar el stock solo si el IdCategoria es 35
-                        if (idCategoria == 35)
-                        {
-                            // No restar stock para productos con IdCategoria 35
-                            continue; // Salta a la siguiente iteración
-                        }
-
-                        // Lógica para restar el stock
-                        bool stockRestado = new CN_Venta().RestarStock(idProducto, cantidadVendida);
-                        if (!stockRestado)
-                        {
-                            MessageBox.Show("Error al restar stock para el producto ID: " + idProducto, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                        }
-                    }
-                }
+                // numeroDocumentoImpresion es el que ya usás para la factura
+                CrearCreditosPorProducto(numeroDocumentoImpresion);
             }
+           
 
-            // Manejo de impresión
-            try
+            // ==========================
+            // MENSAJE / LIMPIEZA
+            // ==========================
+            if (idVentaGenerada > 0)
             {
-                // Imprimir la original
-                ImprimirFactura(false);
-
-                // Imprimir la copia
-                ImprimirFactura(true);
-
-                
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show("Error al imprimir: " + ex.Message);
-            }
-
-            // Manejo de respuesta
-            if (respuesta)
-            {
-                var result = MessageBox.Show("TRANSACCION EXITOSA\n\nNúmero de venta generada:\n" + numeroDocumentoImpresion + "\n\n¿Desea copiar al portapapeles?", "Mensaje", MessageBoxButtons.YesNo, MessageBoxIcon.Information);
+                var result = MessageBox.Show("TRANSACCION EXITOSA\n\nNúmero de venta generada:\n" +
+                                             numeroDocumentoImpresion +
+                                             "\n\n¿Desea copiar al portapapeles?",
+                                             "Mensaje",
+                                             MessageBoxButtons.YesNo,
+                                             MessageBoxIcon.Information);
 
                 if (result == DialogResult.Yes)
                     Clipboard.SetText(numeroDocumentoImpresion);
 
-                // Limpiar campos después de registrar la venta
                 txtdocumentocliente.Text = "";
                 txtnombrecliente.Text = "";
                 dgvdata.Rows.Clear();
@@ -716,6 +969,7 @@ namespace CapaPresentacion
                 label14.Visible = false;
                 dtpFechaVencimiento.Visible = false;
                 cbotipodocumento.SelectedIndex = 0;
+                cmbAplicarRecargo.SelectedIndex = 1;
             }
             else
             {
@@ -726,30 +980,223 @@ namespace CapaPresentacion
         private void ImprimirFactura(bool esCopia)
         {
             PrintDocument printDoc = new PrintDocument();
-            printDoc.PrinterSettings.PrinterName = "POS-80"; // Asegúrate de que este sea el nombre correcto
-            printDoc.PrintPage += (s, e) => PrintPage(s, e, esCopia); // Llama a PrintPage con el parámetro adecuado
+            printDoc.PrinterSettings.PrinterName = @"\\192.168.0.9\POS-80 (copy 1)".Normalize().Replace('\u00A0', ' ').Trim();
+            printDoc.PrintPage += (s, e) => PrintPage(s, e, esCopia);
 
-            // Imprimir la factura
-            printDoc.Print();
+            // Asegúrate de que el formulario esté en primer plano
+            this.Activate();
+
+            // Imprimir directamente sin mostrar el PrintDialog
+            try
+            {
+                printDoc.Print();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error al imprimir: " + ex.Message);
+            }
+
+            // Restaurar el formulario después de la impresión
+            this.WindowState = FormWindowState.Normal;
+            this.Activate();
         }
+
+        private void ImprimirFacturaV(bool esCopia)
+        {
+            PrintDocument printDoc = new PrintDocument();
+            printDoc.PrinterSettings.PrinterName = @"\\192.168.0.9\POS-80 (copy 1)".Normalize().Replace('\u00A0', ' ').Trim();
+            printDoc.PrintPage += (s, e) => PrintPagVSF(s, e, esCopia);
+
+            // Asegúrate de que el formulario esté en primer plano
+            this.Activate();
+
+            // Imprimir directamente sin mostrar el PrintDialog
+            try
+            {
+                printDoc.Print();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error al imprimir: " + ex.Message);
+            }
+
+            // Restaurar el formulario después de la impresión
+            this.WindowState = FormWindowState.Normal;
+            this.Activate();
+        }
+
+
+
+
+
+
+        private bool ImpresoraExiste(string nombre)
+        {
+            foreach (string impresora in PrinterSettings.InstalledPrinters)
+            {
+                if (impresora.Trim().Equals(nombre.Trim(), StringComparison.OrdinalIgnoreCase))
+                    return true;
+            }
+            return false;
+        }
+
+        private void CrearCreditosPorProducto(string numeroDocumentoVenta)
+        {
+            if (cbocondicion.SelectedItem == null ||
+                cbocondicion.SelectedItem.ToString() != "Credito")
+                return;
+
+            CN_Venta cnVenta = new CN_Venta();
+            CN_CuotaCredito cnCuota = new CN_CuotaCredito();
+
+            string docCliente = string.IsNullOrWhiteSpace(txtdocumentocliente.Text)
+                ? "N/A"
+                : txtdocumentocliente.Text.Trim();
+
+            string nombreCliente = string.IsNullOrWhiteSpace(txtnombrecliente.Text)
+                ? "CONSUMIDOR FINAL"
+                : txtnombrecliente.Text.Trim();
+
+            string tipoDocumento = ((OpcionCombo)cbotipodocumento.SelectedItem).Texto;
+            DateTime fechaRegistroVenta = dtpFecha.Value.Date;
+
+            foreach (DataGridViewRow row in dgvdata.Rows)
+            {
+                if (row.Cells["IdProducto"].Value == null)
+                    continue;
+
+                int numeroCuotas = 0;
+                if (row.Cells["NumeroCuotasProducto"].Value == null ||
+                    !int.TryParse(row.Cells["NumeroCuotasProducto"].Value.ToString(), out numeroCuotas) ||
+                    numeroCuotas <= 0)
+                {
+                    continue;
+                }
+
+                decimal saldoPendienteProducto = 0m;
+                if (row.Cells["SaldoPendienteProducto"].Value == null ||
+                    !decimal.TryParse(row.Cells["SaldoPendienteProducto"].Value.ToString(), out saldoPendienteProducto) ||
+                    saldoPendienteProducto <= 0)
+                {
+                    continue;
+                }
+
+                decimal primaProducto = 0m;
+                if (row.Cells["PrimaProducto"].Value != null)
+                    decimal.TryParse(row.Cells["PrimaProducto"].Value.ToString(), out primaProducto);
+
+                if (primaProducto < 0) primaProducto = 0;
+
+                decimal montoTotalProducto = saldoPendienteProducto + primaProducto;
+
+                string frecuencia = row.Cells["FrecuenciaProducto"].Value != null
+                    ? row.Cells["FrecuenciaProducto"].Value.ToString()
+                    : "Mensual";
+
+                if (string.IsNullOrWhiteSpace(frecuencia) || frecuencia == "N/A")
+                    frecuencia = "Mensual";
+
+                DateTime fechaInicio = fechaRegistroVenta;
+                if (row.Cells["FechaInicioCreditoProducto"].Value != null)
+                {
+                    if (row.Cells["FechaInicioCreditoProducto"].Value is DateTime dtIni)
+                    {
+                        fechaInicio = dtIni.Date;
+                    }
+                    else
+                    {
+                        DateTime tmp;
+                        if (DateTime.TryParse(row.Cells["FechaInicioCreditoProducto"].Value.ToString(), out tmp))
+                            fechaInicio = tmp.Date;
+                    }
+                }
+
+                DateTime fechaVencimiento;
+                if (row.Cells["FechaVencimientoProducto"].Value != null &&
+                    DateTime.TryParse(row.Cells["FechaVencimientoProducto"].Value.ToString(), out DateTime tmpVence))
+                {
+                    fechaVencimiento = tmpVence.Date;
+                }
+                else
+                {
+                    fechaVencimiento = cnCuota.CalcularFechaUltimoPago(fechaInicio, frecuencia, numeroCuotas);
+                }
+
+                string nombreProducto = row.Cells["Producto"].Value != null
+                    ? row.Cells["Producto"].Value.ToString()
+                    : "PRODUCTO";
+
+                string descripcion = nombreProducto;
+
+                Venta creditoFila = new Venta
+                {
+                    NumeroDocumento = numeroDocumentoVenta,
+                    DocumentoCliente = docCliente,
+                    NombreCliente = nombreCliente,
+                    MontoTotal = montoTotalProducto,
+                    SaldoPendiente = saldoPendienteProducto,
+                    FechaVencimiento = fechaVencimiento,
+                    MetodoPago = "N/A",
+                    Condicion = "Credito",
+                    FechaRegistro = fechaRegistroVenta,
+                    TipoDocumento = tipoDocumento,
+                    Descripcion = descripcion
+                };
+
+                string mensajeCredito;
+                bool ok = cnVenta.RegistrarCredito(creditoFila, out mensajeCredito);
+                if (!ok)
+                {
+                    MessageBox.Show(
+                        "No se pudo registrar el crédito para el producto: " + nombreProducto + "\n" + mensajeCredito,
+                        "Error al registrar crédito",
+                        MessageBoxButtons.OK,
+                        MessageBoxIcon.Warning
+                    );
+                    continue;
+                }
+
+                int idVentaCredito = cnVenta.ObtenerIdVentaPorNumeroDocumento(creditoFila.NumeroDocumento);
+                if (idVentaCredito > 0)
+                {
+                    cnCuota.GenerarPlanCuotas(
+                        idVentaCredito,
+                        saldoPendienteProducto,
+                        numeroCuotas,
+                        frecuencia,
+                        fechaInicio
+                    );
+                }
+            }
+        }
+
+
 
         private void comboMetodoPago_SelectedIndexChanged(object sender, EventArgs e)
         {
             if (comboMetodoPago.SelectedItem != null)
             {
-                if (comboMetodoPago.SelectedItem.ToString() == "Efectivo")
-                {
-                    txtpagocon.Enabled = true;
-                    txtcambio.Enabled = true;
-                    txtpagocon.Text = "";
-                    txtcambio.Text = "";
-                }
-                else if (comboMetodoPago.SelectedItem.ToString() == "Tarjeta" || comboMetodoPago.SelectedItem.ToString() == "Transferencia")
+                string metodo = comboMetodoPago.SelectedItem.ToString();
+
+                if (metodo == "Tarjeta")
                 {
                     txtpagocon.Enabled = false;
                     txtcambio.Enabled = false;
                     txtpagocon.Text = "0";
                     txtcambio.Text = "0";
+
+                    cmbPorcentajeTarjeta.Visible = true;
+                    lblPorcentajeTarjeta.Visible = true;
+                }
+                else
+                {
+                    txtpagocon.Enabled = metodo == "Efectivo";
+                    txtcambio.Enabled = metodo == "Efectivo";
+                    txtpagocon.Text = metodo == "Efectivo" ? "" : "0";
+                    txtcambio.Text = metodo == "Efectivo" ? "" : "0";
+
+                    cmbPorcentajeTarjeta.Visible = false;
+                    lblPorcentajeTarjeta.Visible = false;
                 }
             }
         }
@@ -760,66 +1207,139 @@ namespace CapaPresentacion
             {
                 var selectedItem = (OpcionCombo)cbotipodocumento.SelectedItem;
 
-                if ( selectedItem.Valor == "Cotizacion")
+                if (selectedItem.Valor == "Cotizacion")
                 {
                     btncrearventa.Visible = false;
                     btnCrearCotizacion.Visible = true;
+                    btnVentaSinFacturar.Visible = false;
+
                     comboMetodoPago.Enabled = false;
-                    txtpagocon.Enabled = false;
-                    txtcambio.Enabled = false;
-                    txtpagocon.Text = "0";
-                    txtcambio.Text = "0";
                     comboMetodoPago.Text = "";
+
+                    txtpagocon.Enabled = false;
+                    txtpagocon.Text = "0";
+                    txtcambio.Enabled = false;
+                    txtcambio.Text = "0";
+
                     txtoc.Enabled = false;
                     txtregexo.Enabled = false;
                     txtregsag.Enabled = false;
                     cbocondicion.Enabled = false;
                     cbocondicion.Text = "Contado";
+
                     dtpFechaVencimiento.Visible = false;
                     label14.Visible = false;
 
+                    label12.Visible = true;
+                    txtimpuesto.Visible = true;
+                    label27.Visible = true;
+                    txtsubtotal.Visible = true;
+                    lblPagocon.Visible = false;
+                    lblCambio.Visible = false;
+                    txtpagocon.Visible = false;
+                    txtcambio.Visible = false;
+                    label20.Visible = true;
+                    label25.Visible = true;
+                    label22.Visible = false;
+                    label21.Visible = false;
+                    label32.Visible = false;
+                  
                 }
                 else if (selectedItem.Valor == "VentaSinFacturar")
                 {
-                    // Si se selecciona Venta Sin Facturar
-                    btncrearventa.Visible = false; // Ocultar botón de crear venta
-                    btnCrearCotizacion.Visible = false; // Ocultar botón de crear cotización
-                                                        // Aquí puedes mostrar el botón específico para "Venta Sin Facturar" si lo tienes
-                    btnVentaSinFacturar.Visible = true; // Mostrar botón de crear venta sin facturar
-                    comboMetodoPago.Enabled = true; // Habilitar métodos de pago
-                    txtpagocon.Enabled = true; // Habilitar campo de pago
-                    txtcambio.Enabled = true; 
-                    txtoc.Enabled = true;
-                    txtregexo.Enabled = true; 
-                    txtregsag.Enabled = true; 
-                    cbocondicion.Enabled = true;
+                    btncrearventa.Visible = false;
+                    btnCrearCotizacion.Visible = false;
+                    btnVentaSinFacturar.Visible = true;
+
+                    comboMetodoPago.Enabled = true;
                     comboMetodoPago.Text = "Efectivo";
-                    dtpFechaVencimiento.Visible = false; 
-                    label14.Visible = false; 
+
+                    txtpagocon.Enabled = true;
+                    txtcambio.Enabled = true;
+
+                    txtoc.Enabled = true;
+                    txtregexo.Enabled = true;
+                    txtregsag.Enabled = true;
+                    cbocondicion.Enabled = true;
+
+                    dtpFechaVencimiento.Visible = false;
+                    label14.Visible = false;
+
+                    label12.Visible = true;
+                    txtimpuesto.Visible = true;
+                    label27.Visible = true;
+                    txtsubtotal.Visible = true;
+                    lblPagocon.Visible = true;
+                    lblCambio.Visible = true;
+                    txtpagocon.Visible = true;
+                    txtcambio.Visible = true;
+                    label20.Visible = true;
+                    label25.Visible = true;
+                    label22.Visible = true;
+                    label21.Visible = true;
+                    label32.Visible = false;
+                    label16.Visible = true;
+                    label15.Visible = true;
+
+                    txtimpuesto.Text = "0.00";
+                    calcularTotal();
                 }
                 else
                 {
-                    // Si se selecciona otro tipo de documento
-                    btncrearventa.Visible = true; // Mostrar botón de crear venta
-                    btnCrearCotizacion.Visible = false; // Ocultar botón de crear cotización
-                                                        // Asegúrate de ocultar el botón de venta sin facturar
-                    btnVentaSinFacturar.Visible = false; // Ocultar botón de crear venta sin facturar
-                    comboMetodoPago.Enabled = true; // Habilitar métodos de pago
-                    txtpagocon.Enabled = true; // Habilitar campo de pago
-                    txtcambio.Enabled = true; // Habilitar campo de cambio
-                    txtoc.Enabled = true; // Habilitar campo O/C
-                    txtregexo.Enabled = true; // Habilitar campo de registro de exonerado
-                    txtregsag.Enabled = true; // Habilitar campo de registro SAG
-                    cbocondicion.Enabled = true; // Habilitar condición
-                    comboMetodoPago.Text = "Efectivo"; // Establecer método de pago por defecto
-                    dtpFechaVencimiento.Visible = false; // Ocultar fecha de vencimiento
-                    label14.Visible = false; // Ocultar etiqueta de fecha de vencimiento
+                    btncrearventa.Visible = true;
+                    btnCrearCotizacion.Visible = false;
+                    btnVentaSinFacturar.Visible = false;
+
+                    comboMetodoPago.Enabled = true;
+                    comboMetodoPago.Text = "Efectivo";
+
+                    txtpagocon.Enabled = true;
+                    txtpagocon.Text = "";
+                    txtcambio.Enabled = true;
+                    txtcambio.Text = "";
+
+                    txtoc.Enabled = true;
+                    txtregexo.Enabled = true;
+                    txtregsag.Enabled = true;
+                    cbocondicion.Enabled = true;
+
+                    dtpFechaVencimiento.Visible = false;
+                    label14.Visible = false;
+
+                    cmbNivelPrecio.Enabled = true;
+
+                    label12.Visible = true;
+                    txtimpuesto.Visible = true;
+                    label27.Visible = true;
+                    txtsubtotal.Visible = true;
+                    lblPagocon.Visible = true;
+                    lblCambio.Visible = true;
+                    txtpagocon.Visible = true;
+                    txtcambio.Visible = true;
+                    label20.Visible = true;
+                    label25.Visible = true;
+                    label22.Visible = true;
+                    label21.Visible = true;
+                    label32.Visible = false;
+                    label15.Visible = true;
+                    label16.Visible = true;
+                    
                 }
+
+                if (cmbNivelPrecio.Items.Count > 0 && cmbNivelPrecio.SelectedItem == null)
+                {
+                    cmbNivelPrecio.SelectedIndex = 0;
+                }
+
+                var nuevoTipo = ((OpcionCombo)cbotipodocumento.SelectedItem).Valor.ToString();
+                AjustarGridSegunCambioTipo(_ultimoTipoDocumentoValor, nuevoTipo);
+                _ultimoTipoDocumentoValor = nuevoTipo;
+
+                cbocondicion_SelectedIndexChanged(null, EventArgs.Empty);
             }
         }
 
-
-
+        
         private void btnCrearCotizacion_Click(object sender, EventArgs e)
         {
             if (dgvdata.Rows.Count < 1)
@@ -844,26 +1364,34 @@ namespace CapaPresentacion
             detalle_venta.Columns.Add("PrecioVenta", typeof(decimal));
             detalle_venta.Columns.Add("Cantidad", typeof(decimal));
             detalle_venta.Columns.Add("SubTotal", typeof(decimal));
-            detalle_venta.Columns.Add("NombreProducto", typeof(string)); // Nueva columna
+            detalle_venta.Columns.Add("NombreProducto", typeof(string));
+            detalle_venta.Columns.Add("PrecioCompraUsado", typeof(decimal));
 
             // Llenar el DataTable con los datos de los productos
             foreach (DataGridViewRow row in dgvdata.Rows)
             {
-                if (!row.IsNewRow)
+                if (row.Cells["IdProducto"].Value != null)
                 {
-                    detalle_venta.Rows.Add(
-                        Convert.ToInt32(row.Cells["IdProducto"].Value),
-                        Convert.ToDecimal(row.Cells["Precio"].Value),
-                        Convert.ToDecimal(row.Cells["Cantidad"].Value.ToString()),
-                        Convert.ToDecimal(row.Cells["SubTotal"].Value),
-                        row.Cells["Producto"].Value.ToString() // Asegúrate de incluir el nombre del producto
-                    );
+                    int idProducto = Convert.ToInt32(row.Cells["IdProducto"].Value);
+                    decimal precioVenta = Convert.ToDecimal(row.Cells["Precio"].Value);
+                    decimal cantidad = Convert.ToDecimal(row.Cells["Cantidad"].Value);
+                    decimal subtotal = Convert.ToDecimal(row.Cells["SubTotal"].Value);
+                    string nombreProducto = row.Cells["Producto"].Value.ToString();
+
+                    Producto prod = listaProductos.FirstOrDefault(p => p.IdProducto == idProducto);
+                    decimal precioCompraBase = prod != null ? prod.PrecioCompra : 0;
+
+                    // ✅ Cálculo proporcional según cantidad vendida
+                    decimal precioCompraUsado = Math.Round(precioCompraBase * cantidad, 2);
+
+                    detalle_venta.Rows.Add(idProducto, precioVenta, cantidad, subtotal, nombreProducto, precioCompraUsado);
                 }
             }
 
+
             // Obtener el correlativo para el número de documento
             int idcorrelativo = new CN_Venta().ObtenerCorrelativoCotizacion();
-            string numeroDocumento = string.Format("{0:0000000000}", idcorrelativo);
+            string numeroDocumento = string.Format("{0:00000000}", idcorrelativo);
 
             // Crear el objeto de cotización para registrar
             Venta oVenta = new Venta()
@@ -876,15 +1404,16 @@ namespace CapaPresentacion
                 MetodoPago = objVenta.MetodoPago,
                 MontoPago = objVenta.MontoPago,
                 MontoCambio = objVenta.MontoCambio,
-                MontoTotal = objVenta.MontoTotal
+                MontoTotal = objVenta.MontoTotal,
+                 FechaRegistro = dtpFecha.Value
             };
 
             // Registrar la cotización
             string mensaje = string.Empty;
-            bool respuesta = new CN_Venta().Registrar(oVenta, detalle_venta, out mensaje);
+            int idVentaGenerada = new CN_Venta().Registrar(oVenta, detalle_venta, out mensaje);
 
             // Manejo de respuesta
-            if (respuesta)
+            if (idVentaGenerada > 0)
             {
                 var result = MessageBox.Show("Número de Cotización generada:\n" + numeroDocumento + "\n\n¿Desea copiar al portapapeles?", "Mensaje", MessageBoxButtons.YesNo, MessageBoxIcon.Information);
 
@@ -899,6 +1428,7 @@ namespace CapaPresentacion
                 txtpagocon.Text = "";
                 txtcambio.Text = "";
                 cbotipodocumento.SelectedIndex = 0;
+                txtsubtotal.Text = "0.00";
             }
             else
             {
@@ -907,315 +1437,424 @@ namespace CapaPresentacion
         }
 
 
-
-        private void PrintPage(object sender, PrintPageEventArgs e, bool esCopia)
+        private void cbocondicion_SelectedIndexChanged(object sender, EventArgs e)
         {
-            string totalEnLetras = ConvertirNumeroALetras.Convertir(decimal.Parse(txttotalpagar.Text));
+            if (cbocondicion.SelectedItem == null)
+                return;
 
-            int pageWidth = 280; // Ancho de la impresora térmica
-            Font fontNormal = new Font("MS Gothic", 8, FontStyle.Regular);
-            Font fontBold = new Font("MS Gothic", 8, FontStyle.Regular);
-            Font fontTitle = new Font("MS Gothic", 11, FontStyle.Regular);
-            Font fontSubTitle = new Font("MS Gothic", 9, FontStyle.Regular);
-            int y = 0;
+            string condicion = cbocondicion.SelectedItem.ToString();
+            bool esCredito = condicion.Equals("Credito", StringComparison.OrdinalIgnoreCase);
 
-            try
+            // ====== COMPORTAMIENTO DE CONTROLES (LO QUE YA TENÍAS) ======
+            if (esCredito)
             {
-                if (negocio.LogoBlancoNegro != null)
+                dtpFechaVencimiento.Visible = false;
+                label14.Visible = false;
+                comboMetodoPago.Enabled = false;
+                txtpagocon.Enabled = false;
+                txtcambio.Enabled = false;
+                txtpagocon.Text = "0";
+                txtcambio.Text = "0";
+                comboMetodoPago.Text = "";
+               
+                cmbAplicarRecargo.SelectedIndex = 1;
+            }
+            else
+            {
+                dtpFechaVencimiento.Visible = false;
+                label14.Visible = false;
+                comboMetodoPago.Enabled = true;
+                txtpagocon.Enabled = true;
+                txtcambio.Enabled = true;
+                txtpagocon.Text = "";
+                txtcambio.Text = "";
+                comboMetodoPago.Text = "Efectivo";
+                
+            }
+
+            // ====== SINCRONIZAR LAS FILAS DEL GRID SEGÚN LA CONDICIÓN ======
+            foreach (DataGridViewRow row in dgvdata.Rows)
+            {
+                if (row.IsNewRow)
+                    continue;
+
+                if (!esCredito)
                 {
-                    using (MemoryStream ms = new MemoryStream(negocio.LogoBlancoNegro))
+                    // Pasar a CONTADO: ocultar datos de crédito visibles
+                    if (dgvdata.Columns.Contains("Prima"))
+                        row.Cells["Prima"].Value = "N/A";
+                    if (dgvdata.Columns.Contains("NoCuotas"))
+                        row.Cells["NoCuotas"].Value = "N/A";
+                    if (dgvdata.Columns.Contains("Frecuencia"))
+                        row.Cells["Frecuencia"].Value = "N/A";
+                    if (dgvdata.Columns.Contains("FechaInicioCredito"))
+                        row.Cells["FechaInicioCredito"].Value = "N/A";
+                    if (dgvdata.Columns.Contains("FechaVence"))
+                        row.Cells["FechaVence"].Value = "N/A";
+                    if (dgvdata.Columns.Contains("Cuota"))
+                        row.Cells["Cuota"].Value = "N/A";
+                    if (dgvdata.Columns.Contains("Saldo"))
+                        row.Cells["Saldo"].Value = "N/A";
+                }
+                else
+                {
+                    // Volver a CRÉDITO: recuperar desde las columnas internas *_Producto
+                    decimal prima = 0m;
+                    int nCuotas = 0;
+                    DateTime fechaIni;
+
+                    if (dgvdata.Columns.Contains("PrimaProducto") &&
+                        row.Cells["PrimaProducto"].Value != null)
                     {
-                        Image logo = Image.FromStream(ms);
-                        int logoWidth = 300; // Ajusta según sea necesario
-                        int logoHeight = 150; // Ajusta según sea necesario
-                        e.Graphics.DrawImage(logo, (pageWidth - logoWidth) / 2, y, logoWidth, logoHeight);
-                        y += logoHeight + 0; // Espacio después del logo
+                        decimal.TryParse(row.Cells["PrimaProducto"].Value.ToString(), out prima);
+                    }
+
+                    if (dgvdata.Columns.Contains("NumeroCuotasProducto") &&
+                        row.Cells["NumeroCuotasProducto"].Value != null)
+                    {
+                        int.TryParse(row.Cells["NumeroCuotasProducto"].Value.ToString(), out nCuotas);
+                    }
+
+                    if (!DateTime.TryParse(
+                            dgvdata.Columns.Contains("FechaInicioCreditoProducto")
+                                ? Convert.ToString(row.Cells["FechaInicioCreditoProducto"].Value)
+                                : string.Empty,
+                            out fechaIni))
+                    {
+                        // si no hay fecha guardada, usar la fecha de la venta
+                        fechaIni = dtpFecha.Value;
+                    }
+
+                    if (prima > 0 || nCuotas > 0)
+                    {
+                        if (dgvdata.Columns.Contains("Prima"))
+                            row.Cells["Prima"].Value = prima.ToString("0.00");
+
+                        if (dgvdata.Columns.Contains("NoCuotas"))
+                            row.Cells["NoCuotas"].Value = nCuotas > 0 ? nCuotas.ToString() : "1";
+
+                        if (dgvdata.Columns.Contains("FechaInicioCredito"))
+                            row.Cells["FechaInicioCredito"].Value = fechaIni.ToString("dd/MM/yyyy");
+                        // Frecuencia / FechaVence / Cuota / Saldo quedan como ya las tenga la fila
                     }
                 }
             }
-            catch (Exception ex)
+        }
+
+        private void btnVentaSinFacturar_Click(object sender, EventArgs e)
+        {
+            if (dgvdata.Rows.Count < 1)
             {
-                MessageBox.Show("Error al cargar el logo: " + ex.Message);
+                MessageBox.Show("Debe ingresar productos en la venta", "Mensaje", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                return;
             }
 
-            // CENTRAR "NOMBRE DEL NEGOCIO"
-            string nombreNegocio = negocio.Nombre.ToUpper();
-            SizeF titleSize = e.Graphics.MeasureString(nombreNegocio, fontTitle);
-            e.Graphics.DrawString(nombreNegocio, fontTitle, Brushes.Black, (pageWidth - titleSize.Width) / 2, y);
-            y += 18;
-
-            // CENTRAR "ESLOGAN DEL NEGOCIO"
-            string eslogan = negocio.Eslogan;
-            SizeF sloganSize = e.Graphics.MeasureString(eslogan, fontSubTitle);
-            e.Graphics.DrawString(eslogan, fontSubTitle, Brushes.Black, (pageWidth - sloganSize.Width) / 2, y);
-            y += 14;
-
-            // Datos de la empresa, centrados
-            string[] companyInfo =
+            if (cbocondicion.SelectedItem == null)
             {
-        "RTN: " + negocio.RUC,
-        "Tel: " + negocio.Telefono,
-        "Email: " + negocio.CorreoElectronico,
-        "CAI: " + negocio.CAI
-    };
-
-            string direccionCompleta = "Dirección: " + negocio.Direccion;
-            string[] direccionLines = SplitText(direccionCompleta, 32); // Dividir la dirección en líneas de 32 caracteres
-            foreach (string line in direccionLines)
-            {
-                SizeF textSize = e.Graphics.MeasureString(line, fontNormal);
-                e.Graphics.DrawString(line, fontNormal, Brushes.Black, (pageWidth - textSize.Width) / 2, y);
-                y += 14; // Reducí el espaciado entre líneas
+                MessageBox.Show("Seleccione la condición de la venta.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
             }
 
-            // Imprimir la información de la empresa
-            foreach (string line in companyInfo)
+            bool esCredito = cbocondicion.SelectedItem.ToString() == "Credito";
+
+            if (comboMetodoPago.SelectedIndex == -1 && !esCredito)
             {
-                SizeF textSize = e.Graphics.MeasureString(line, fontNormal);
-                e.Graphics.DrawString(line, fontNormal, Brushes.Black, (pageWidth - textSize.Width) / 2, y);
-                y += 14; // Reducí el espaciado entre líneas
+                MessageBox.Show("Seleccione un método de pago.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
             }
 
-            y += 5;
-            e.Graphics.DrawString("------------------------------------------------------------------------", fontBold, Brushes.Black, 10, y);
-            y += 13;
-
-            // Información de la factura
-            string tipoDocumento = ((OpcionCombo)cbotipodocumento.SelectedItem).Valor.ToString();
-            // Obtener el valor seleccionado de cbotipodocumento
-            string cliente = string.IsNullOrEmpty(txtnombrecliente.Text) ? "CONSUMIDOR FINAL" : txtnombrecliente.Text;
-            string documentoCliente = string.IsNullOrEmpty(txtdocumentocliente.Text) ? "N/A" : txtdocumentocliente.Text;
-            // Mostrar el tipo de documento en la impresión
-            e.Graphics.DrawString(tipoDocumento.ToUpper() +" " + negocio.RangoInicial + numeroDocumentoImpresion, fontBold, Brushes.Black, 10, y);
-            y += 13;
-            e.Graphics.DrawString("Fecha: " + DateTime.Now.ToString("dd/MM/yyyy HH:mm tt"), fontBold, Brushes.Black, 10, y);
-            y += 13;
-            e.Graphics.DrawString("Atendido por: " + _Usuario.NombreCompleto, fontBold, Brushes.Black, 10, y);
-            y += 13;
-            if (cbocondicion.Text == "Credito")
+            if (string.IsNullOrEmpty(txttotalpagar.Text))
             {
-                e.Graphics.DrawString("Condicion: " + cbocondicion.Text, fontBold, Brushes.Black, 10, y);
-                y += 13;
-                e.Graphics.DrawString("Fecha de vencimiento: " + dtpFechaVencimiento.Value.ToString("dd/MM/yyyy"), fontBold, Brushes.Black, 10, y);
-                y += 13; // Aumentar la posición Y para la siguiente línea
+                MessageBox.Show("El monto total no puede estar vacío.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
             }
-            if (cbocondicion.Text == "Contado")
+
+            Venta objVenta = new Venta
             {
-                e.Graphics.DrawString("Condicion: " + cbocondicion.Text, fontBold, Brushes.Black, 10, y);
-                y += 13;
+                MetodoPago = esCredito ? "N/A" : comboMetodoPago.SelectedItem.ToString(),
+                MontoTotal = decimal.Parse(txttotalpagar.Text),
+                Condicion = cbocondicion.SelectedItem.ToString()
+            };
+
+            if (esCredito)
+            {
+                objVenta.MontoPago = 0;
+                objVenta.MontoCambio = 0;
             }
-            e.Graphics.DrawString("------------------------------------------------------------------------", fontBold, Brushes.Black, 10, y);
-            y += 13;
+            else
+            {
+                if (objVenta.MetodoPago == "Efectivo")
+                {
+                    if (!EnsurePagoConEfectivo())
+                        return;
 
-            // Información del cliente
-            e.Graphics.DrawString("Cliente: " + cliente, fontBold, Brushes.Black, 10, y);
-            y += 13;
-            e.Graphics.DrawString("ID/RTN Cliente: " + documentoCliente, fontBold, Brushes.Black, 10, y);
-            y += 13;
-            e.Graphics.DrawString("No.O/C exenta: " + txtoc.Text, fontBold, Brushes.Black, 10, y);
-            y += 13;
-            e.Graphics.DrawString("No.Reg de exonerado: " + txtregexo.Text, fontBold, Brushes.Black, 10, y);
-            y += 13;
-            e.Graphics.DrawString("No.De reg de la SAG: " + txtregsag.Text, fontBold, Brushes.Black, 10, y);
-            y += 13;
-            e.Graphics.DrawString("------------------------------------------------------------------------", fontBold, Brushes.Black, 10, y);
-            y += 13;
+                    objVenta.MontoPago = decimal.Parse(txtpagocon.Text);
+                    objVenta.MontoCambio = objVenta.MontoPago - objVenta.MontoTotal;
 
-            // Detalle de producto
-            e.Graphics.DrawString("CANT  DESCRIPCION                     IMPORTE", fontBold, Brushes.Black, 10, y);
-            y += 13;
-            e.Graphics.DrawString("------------------------------------------------------------", fontBold, Brushes.Black, 10, y);
-            y += 13;
-            Font fontBoldProductos = new Font("MS Gothic", 7, FontStyle.Bold); // Fuente de productos
-            Font fontBoldTotales = new Font("MS Gothic", 7, FontStyle.Bold); // Fuente de totales
+                    if (objVenta.MontoCambio < 0)
+                    {
+                        MessageBox.Show("El monto pagado no puede ser menor al total.", "Error",
+                                        MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                        return;
+                    }
+                }
+                else if (objVenta.MetodoPago == "Tarjeta" || objVenta.MetodoPago == "Transferencia")
+                {
+                    objVenta.MontoPago = 0;
+                    objVenta.MontoCambio = 0;
+                }
+            }
 
-            // Crear StringFormat para alinear los totales a la derecha
-            StringFormat rightAlign = new StringFormat();
-            rightAlign.Alignment = StringAlignment.Far;
+            DataTable detalle_venta = new DataTable();
+            detalle_venta.Columns.Add("IdProducto", typeof(int));
+            detalle_venta.Columns.Add("PrecioVenta", typeof(decimal));
+            detalle_venta.Columns.Add("Cantidad", typeof(decimal));
+            detalle_venta.Columns.Add("SubTotal", typeof(decimal));
+            detalle_venta.Columns.Add("NombreProducto", typeof(string));
+            detalle_venta.Columns.Add("PrecioCompraUsado", typeof(decimal));
+            detalle_venta.Columns.Add("PrimaProducto", typeof(decimal));
+            detalle_venta.Columns.Add("NumeroCuotasProducto", typeof(int));
+            detalle_venta.Columns.Add("FechaInicioCreditoProducto", typeof(DateTime));
 
             foreach (DataGridViewRow row in dgvdata.Rows)
             {
+                if (row.Cells["IdProducto"].Value == null)
+                    continue;
 
-                string cantidad = row.Cells["Cantidad"].Value.ToString();
-                string producto = row.Cells["Producto"].Value.ToString();
-                string precioUnitario = Convert.ToDecimal(row.Cells["Precio"].Value).ToString("0.00");
-                string subtotal = "L. " + Convert.ToDecimal(row.Cells["SubTotal"].Value).ToString("0.00");
+                int idProducto = Convert.ToInt32(row.Cells["IdProducto"].Value);
+                decimal precioVenta = Convert.ToDecimal(row.Cells["Precio"].Value);
+                decimal cantidad = Convert.ToDecimal(row.Cells["Cantidad"].Value);
+                decimal subtotal = Convert.ToDecimal(row.Cells["SubTotal"].Value);
 
-                int maxxCaracteresPorLinea = 35; // Límite de caracteres por línea
-                int inicioDescripcion = 10;  // Posición inicial de la descripción
-                List<string> lineasDescripcion = new List<string>();
+                string nombreProducto = row.Cells["Producto"].Value.ToString();
 
-                // Dividir la descripción en líneas de hasta 35 caracteres
-                for (int i = 0; i < producto.Length; i += maxxCaracteresPorLinea)
+                Producto prod = listaProductos.FirstOrDefault(p => p.IdProducto == idProducto);
+                decimal precioCompraBase = prod != null ? prod.PrecioCompra : 0m;
+                decimal precioCompraUsado = Math.Round(precioCompraBase * cantidad, 2);
+
+                decimal primaProducto = 0m;
+                if (row.Cells["PrimaProducto"].Value != null)
+                    decimal.TryParse(row.Cells["PrimaProducto"].Value.ToString(), out primaProducto);
+
+                int numeroCuotasProducto = 0;
+                if (row.Cells["NumeroCuotasProducto"].Value != null)
+                    int.TryParse(row.Cells["NumeroCuotasProducto"].Value.ToString(), out numeroCuotasProducto);
+
+                DateTime fechaInicioCreditoProducto = DateTime.MinValue;
+                bool tieneFechaInicio = false;
+                if (row.Cells["FechaInicioCreditoProducto"].Value != null &&
+                    DateTime.TryParse(row.Cells["FechaInicioCreditoProducto"].Value.ToString(),
+                                      out fechaInicioCreditoProducto))
                 {
-                    lineasDescripcion.Add(producto.Substring(i, Math.Min(maxxCaracteresPorLinea, producto.Length - i)));
+                    tieneFechaInicio = true;
                 }
 
-                // Imprimir cada línea de la descripción
-                foreach (string linea in lineasDescripcion)
-                {
-                    e.Graphics.DrawString(linea, fontBoldProductos, Brushes.Black, inicioDescripcion, y);
-                    y += 12;
-                }
+                DataRow dr = detalle_venta.NewRow();
+                dr["IdProducto"] = idProducto;
+                dr["PrecioVenta"] = precioVenta;
+                dr["Cantidad"] = cantidad;
+                dr["SubTotal"] = subtotal;
+                dr["NombreProducto"] = nombreProducto;
+                dr["PrecioCompraUsado"] = precioCompraUsado;
+                dr["PrimaProducto"] = primaProducto;
+                dr["NumeroCuotasProducto"] = numeroCuotasProducto;
+                dr["FechaInicioCreditoProducto"] = tieneFechaInicio ? (object)fechaInicioCreditoProducto : DBNull.Value;
 
-                // Segunda línea: Cantidad x Precio Unitario + Subtotal alineado a la derecha
-                e.Graphics.DrawString($"{cantidad} x L. {precioUnitario}", fontBoldProductos, Brushes.Black, inicioDescripcion + 5, y);
-                e.Graphics.DrawString(subtotal, fontBoldTotales, Brushes.Black, 275, y, rightAlign);
-                y += 14; // Espaciado entre productos
+                detalle_venta.Rows.Add(dr);
             }
-            e.Graphics.DrawString("------------------------------------------------------------------------", fontBold, Brushes.Black, 10, y);
-            y += 13;
-            decimal montoTotal = decimal.Parse(txttotalpagar.Text);
-            decimal pagoCon = string.IsNullOrEmpty(txtpagocon.Text) ? 0 : decimal.Parse(txtpagocon.Text);
-            decimal cambio = pagoCon - montoTotal;
-            int xAlignRight = pageWidth - 1; // Límite derecho
-            int columnWidth = 100; // Ancho de la columna de valores
 
-            // Ajustar la posición de los encabezados más a la derecha
-            int xAlignHeader = xAlignRight - columnWidth - 1; // Ajuste para que los encabezados estén más cerca del borde derecho
-            int xAlignCurrency = xAlignRight - 100; // Posición de la "L." para evitar que se monte en los números
-            int xAlignValues = xAlignRight - 1; // Los valores se pegarán más al margen derecho sin que se salgan
-
-            // Función para imprimir encabezado y valor alineados
-            void PrintAlignedText(string header, string value, bool isTotal = false)
-            {
-                // Medir el ancho del encabezado
-                SizeF headerSize = e.Graphics.MeasureString(header, fontBold);
-                float xHeader = xAlignHeader - headerSize.Width; // Asegura que los encabezados estén alineados a la derecha
-                e.Graphics.DrawString(header, fontBold, Brushes.Black, xHeader, y);
-
-                // Dibuja la "L." en la posición correcta
-                e.Graphics.DrawString("L.", fontBold, Brushes.Black, xAlignCurrency, y); // Esto debería imprimir "L."
-
-                // Dibuja el valor, alineado a la derecha
-                e.Graphics.DrawString(value, isTotal ? fontSubTitle : fontBold, Brushes.Black, xAlignValues, y, rightAlign);
-
-                y += 13; // Espaciado entre líneas
-            }
-            decimal subtotalSinImpuesto = 0;
-            decimal totalISV = 0;
+            decimal totalSinImpuesto = 0;
             foreach (DataGridViewRow row in dgvdata.Rows)
             {
-                subtotalSinImpuesto += Convert.ToDecimal(row.Cells["SubTotal"].Value);
+                totalSinImpuesto += Convert.ToDecimal(row.Cells["SubTotal"].Value);
             }
-            totalISV = subtotalSinImpuesto * 0.15m;
-            // Llamadas alineadas con "L."
-            PrintAlignedText("SUBTOTAL:", subtotalSinImpuesto.ToString("0.00"));
-            PrintAlignedText("Descuentos:", "0.00");
-            PrintAlignedText("Importe Exento:", "0.00");
-            PrintAlignedText("Importe Exonerado:", "0.00");
-            PrintAlignedText("Gravado 15%:", subtotalSinImpuesto.ToString("0.00"));
-            PrintAlignedText("Gravado 18%:", "0.00");
-            PrintAlignedText("ISV 15%:", txtimpuesto.Text);
-            PrintAlignedText("ISV 18%:", "0.00");
+            decimal totalISV = totalSinImpuesto * 0.15m;
 
-            // Resaltar TOTAL A PAGAR (usando el flag isTotal para ajuste fino)
+            objVenta.Impuesto = totalISV;
 
-            PrintAlignedText("TOTAL A PAGAR:", txttotalpagar.Text, true);
-            y += 18;
+            int idcorrelativo = new CN_Venta().ObtenerCorrelativoVentaSinFacturar();
+            numeroDocumentoImpresion = string.Format("{0:00000000}", idcorrelativo);
 
-            e.Graphics.DrawString("------------------------------------------------------------------------", fontBold, Brushes.Black, 10, y);
-            y += 13;
+            decimal porcentajeTarjeta = 0;
+            decimal montoFinal = decimal.Parse(txttotalpagar.Text);
 
-            Venta objVenta = new Venta();
-            objVenta.MetodoPago = comboMetodoPago.SelectedItem.ToString();
-            int maxCaracteresPorLinea = 40; // Límite de caracteres por línea
-            List<string> lineasTotalEnLetras = new List<string>();
-
-            for (int i = 0; i < totalEnLetras.Length; i += maxCaracteresPorLinea)
+            if (comboMetodoPago.SelectedItem.ToString() == "Tarjeta")
             {
-                lineasTotalEnLetras.Add(totalEnLetras.Substring(i, Math.Min(maxCaracteresPorLinea, totalEnLetras.Length - i)));
+                string seleccion = cmbPorcentajeTarjeta.SelectedItem.ToString();
+                porcentajeTarjeta = seleccion == "2.9%" ? 2.9m : 3.5m;
+                decimal descuento = montoFinal * (porcentajeTarjeta / 100);
+                montoFinal = montoFinal - descuento;
             }
 
-            // Imprimir la primera línea con "Son:"
-            if (lineasTotalEnLetras.Count > 0)
+            Venta oVenta = new Venta
             {
-                e.Graphics.DrawString("Son: " + lineasTotalEnLetras[0], fontBold, Brushes.Black, 10, y);
-                y += 13;
-            }
+                oUsuario = new Usuario() { IdUsuario = _Usuario.IdUsuario },
+                TipoDocumento = ((OpcionCombo)cbotipodocumento.SelectedItem).Texto,
+                NumeroDocumento = numeroDocumentoImpresion,
+                DocumentoCliente = string.IsNullOrEmpty(txtdocumentocliente.Text) ? "N/A" : txtdocumentocliente.Text,
+                NombreCliente = string.IsNullOrEmpty(txtnombrecliente.Text) ? "CONSUMIDOR FINAL" : txtnombrecliente.Text,
+                MetodoPago = objVenta.MetodoPago,
+                MontoPago = objVenta.MontoPago,
+                MontoCambio = objVenta.MontoCambio,
+                MontoTotal = Math.Round(montoFinal, 2),
+                Impuesto = objVenta.Impuesto,
+                Condicion = cbocondicion.SelectedItem.ToString(),
+                FechaVencimiento = esCredito ? (DateTime?)dtpFechaVencimiento.Value : null,
+                FechaRegistro = dtpFecha.Value
+            };
 
-            // Imprimir las líneas restantes sin "Son:"
-            for (int i = 1; i < lineasTotalEnLetras.Count; i++)
+            string mensaje = string.Empty;
+            int idVentaGenerada = new CN_Venta().Registrar(oVenta, detalle_venta, out mensaje);
+
+            if (idVentaGenerada > 0 && esCredito)
             {
-                e.Graphics.DrawString(lineasTotalEnLetras[i], fontBold, Brushes.Black, 10, y);
-                y += 13;
+                CrearCreditosPorProducto(numeroDocumentoImpresion);
             }
-            string pagoConValor = Convert.ToDecimal(txtpagocon.Text).ToString("0.00");
-            string cambioValor = Convert.ToDecimal(txtcambio.Text).ToString("0.00");
 
-            if (cbocondicion.Text != "Credito")
+            if (idVentaGenerada > 0)
             {
-                // Si el método de pago es efectivo
-                if (comboMetodoPago.Text == "Efectivo")
-                {
-                    string efectivoTexto = $"Efectivo:  L. {pagoConValor.PadLeft(10)}"; // Alinea el número a la derecha
-                    string cambioTexto = $"Cambio:    L. {cambioValor.PadLeft(10)}";
-                    e.Graphics.DrawString(efectivoTexto, fontBold, Brushes.Black, 10, y);
-                    y += 13;
-                    e.Graphics.DrawString(cambioTexto, fontBold, Brushes.Black, 10, y);
-                    y += 13;
-                }
-                // Si el método de pago es tarjeta
-                else if (comboMetodoPago.Text == "Tarjeta")
-                {
-                    e.Graphics.DrawString("Terminal Atlantida: L." + txttotalpagar.Text, fontBold, Brushes.Black, 10, y);
-                    y += 13;
-                }
-                // Si el método de pago es transferencia
-                else if (comboMetodoPago.Text == "Transferencia")
-                {
-                    e.Graphics.DrawString("Transferencia", fontBold, Brushes.Black, 10, y);
-                    y += 13;
-                }
+                var result = MessageBox.Show("TRANSACCION EXITOSA\n\nNúmero de venta generada:\n" +
+                                             numeroDocumentoImpresion +
+                                             "\n\n¿Desea copiar al portapapeles?",
+                                             "Mensaje",
+                                             MessageBoxButtons.YesNo,
+                                             MessageBoxIcon.Information);
+
+                if (result == DialogResult.Yes)
+                    Clipboard.SetText(numeroDocumentoImpresion);
+
+                txtdocumentocliente.Text = "";
+                txtnombrecliente.Text = "";
+                dgvdata.Rows.Clear();
+                calcularTotal();
+                txtpagocon.Text = "";
+                txtcambio.Text = "";
+                txtimpuesto.Text = "";
+                comboMetodoPago.SelectedIndex = 0;
+                cbocondicion.Text = "Contado";
+                label14.Visible = false;
+                dtpFechaVencimiento.Visible = false;
+                cbotipodocumento.SelectedIndex = 0;
+                cmbAplicarRecargo.SelectedIndex = 1;
             }
-
-
-            e.Graphics.DrawString("------------------------------------------------------------------------", fontBold, Brushes.Black, 10, y);
-            y += 13;
-            string rangoAutorizado = "Rango Aut.: " + negocio.RangoAutorizado; // Reemplaza con el valor real
-            string fechaLimite = "Fecha Límite: " + negocio.FechaLimiteEmision.ToString("dd/MM/yyyy"); // Reemplaza con el valor real
-
-            // Dividir el rango autorizado en dos líneas
-            string[] rangoLines = SplitText(rangoAutorizado, 32);
-            foreach (string line in rangoLines)
+            else
             {
-                e.Graphics.DrawString(line, fontBold, Brushes.Black, 10, y);
-                y += 13;
+                MessageBox.Show(mensaje, "Mensaje", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
             }
+        }
 
-            // Imprimir la fecha límite
-            e.Graphics.DrawString(fechaLimite, fontBold, Brushes.Black, 10, y);
-            y += 15;
-
-            e.Graphics.DrawString("ORIGINAL: CLIENTE", fontBold, Brushes.Black, 10, y);
-            y += 13;
-            e.Graphics.DrawString("COPIA: OBLIGADO TRIBUTARIO EMISOR", fontBold, Brushes.Black, 10, y);
-            y += 15;
-
-            // Mensaje final
-            string mensajeFinal = "LA FACTURA ES BENEFICIO DE TODOS, ¡EXÍJALA!";
-            SizeF mensajeSize = e.Graphics.MeasureString(mensajeFinal, fontBold);
-            e.Graphics.DrawString(mensajeFinal, fontBold, Brushes.Black, (pageWidth - mensajeSize.Width) / 2, y);
-            y += 20;
-
-            e.Graphics.DrawString("¡GRACIAS POR SU COMPRA!", new Font("Lucida Console", 8, FontStyle.Bold), Brushes.Black, 10, y);
-
-            y += 20; // Ajusta este valor para controlar el espaciado
-
-            string etiqueta = esCopia ? "COPIA" : "ORIGINAL";
-            Font fontEtiqueta = new Font("MS Gothic", 8, FontStyle.Bold);
-            SizeF etiquetaSize = e.Graphics.MeasureString(etiqueta, fontEtiqueta);
-
-            // Calcular la posición X para alinearlo completamente a la derecha
-            float xEtiqueta = pageWidth - etiquetaSize.Width - 5; // Se resta un pequeño margen (5)
-
-            // Usar la posición Y actual
-            float yEtiqueta = y;
-
-            // Dibuja la etiqueta alineada completamente a la derecha
-            e.Graphics.DrawString(etiqueta, fontEtiqueta, Brushes.Black, xEtiqueta, yEtiqueta);
+       
+        private void LimpiarCampos()
+        {
+            txtdocumentocliente.Text = "";
+            txtnombrecliente.Text = "";
+            txtcodproducto.Text = "";
+            txtproducto.Text = "";
+            txtprecio.Text = "";
+            txtstock.Text = "";
+            txtcantidad.Value = 1;
+            txtpagocon.Text = "";
+            txtcambio.Text = "";
+            txttotalpagar.Text = "0.00";
+            dgvdata.Rows.Clear();
+            comboMetodoPago.SelectedIndex = 0;
+            cbocondicion.SelectedIndex = 0;
+            dtpFechaVencimiento.Visible = false;
+            cbotipodocumento.SelectedIndex = 0;
+            dtpFecha.Value = DateTime.Today;
+            txtimpuesto.Text = "0.00";
+            cmbAplicarRecargo.SelectedIndex = 1;
+            txtsubtotal.Text = "0.00";
+            txtIdCliente.Text = "0";
+            label12.Visible = true;
+            txtimpuesto.Visible = true;
+            label27.Visible = true;
+            txtsubtotal.Visible = true;
+            lblPagocon.Visible = true;
+            lblCambio.Visible = true;
+            txtpagocon.Visible = true;
+            txtcambio.Visible = true;
+            label20.Visible = true;
+            label25.Visible = true;
+            label22.Visible = true;
+            label21.Visible = true;
+            label32.Visible = false; // Ocultar label de puntos
+            
+            label15.Visible = true;
+            label16.Visible = true;
+           
+            cmbNivelPrecio.SelectedIndex = 0;
 
         }
+
+        private void btnrefrescar_Click(object sender, EventArgs e)
+        {
+            LimpiarCampos();
+        }
+
+        private void frmVentas_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.F10)
+            {
+
+                btnbuscarproducto.PerformClick();
+
+                e.Handled = true;
+            }
+
+            if (e.KeyCode == Keys.F9)
+            {
+
+                btnbuscarproveedor.PerformClick();
+
+                e.Handled = true;
+            }
+
+            if (e.KeyCode == Keys.F11)
+            {
+
+                btnagregarproducto.PerformClick();
+
+                e.Handled = true;
+            }
+
+
+
+            if (e.KeyCode == Keys.F12)
+            {
+
+                if (btnVentaSinFacturar.Visible)
+                {
+                    btnVentaSinFacturar.PerformClick();
+                }
+                else if (btnCrearCotizacion.Visible)
+                {
+                    btnCrearCotizacion.PerformClick();
+                }
+                else if (btncrearventa.Visible) 
+                {
+                    btncrearventa.PerformClick();
+                }
+
+
+
+                    e.Handled = true;
+            }
+        }
+
+        private void frmVentas_Activated(object sender, EventArgs e)
+        {
+            this.Focus();
+        }
+
+        private void cmbAplicarRecargo_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+            calcularTotal();
+        }
+
+
+     
 
         private string[] SplitText(string text, int maxLength)
         {
@@ -1365,216 +2004,1099 @@ namespace CapaPresentacion
             }
         }
 
-        private void cbocondicion_SelectedIndexChanged(object sender, EventArgs e)
+        private void cmbNivelPrecio_TextChanged(object sender, EventArgs e)
         {
-            if (cbocondicion.SelectedItem.ToString() == "Credito")
-            {
-                dtpFechaVencimiento.Visible = true;
-                label14.Visible = true;
-                comboMetodoPago.Enabled = false;
-                txtpagocon.Enabled = false;
-                txtcambio.Enabled = false;
-                txtpagocon.Text = "0";
-                txtcambio.Text = "0";
-                comboMetodoPago.Text = "";
-            }
-            else
-            {
-               
-                dtpFechaVencimiento.Visible = false;
-                label14.Visible = false;
-                comboMetodoPago.Enabled = true;
-                txtpagocon.Enabled = true;
-                txtcambio.Enabled = true;
-                txtpagocon.Text = "";
-                txtcambio.Text = "";
-                comboMetodoPago.Text = "Efectivo";
-            }
+           
         }
 
-        private void btnVentaSinFacturar_Click(object sender, EventArgs e)
+        private void cmbNivelPrecio_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if (dgvdata.Rows.Count < 1)
-            {
-                MessageBox.Show("Debe ingresar productos en la venta", "Mensaje", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
-                return;
-            }
+           
+        }
 
-            // Validar que se haya seleccionado un método de pago
-            if (comboMetodoPago.SelectedIndex == -1 && cbocondicion.SelectedItem.ToString() != "Credito")
-            {
-                MessageBox.Show("Seleccione un método de pago.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                return;
-            }
+        private void txtIdCliente_TextChanged(object sender, EventArgs e)
+        {
+           
+        }
 
-            // Validar que el monto total no esté vacío
-            if (string.IsNullOrEmpty(txttotalpagar.Text))
-            {
-                MessageBox.Show("El monto total no puede estar vacío.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                return;
-            }
+        private void calcularTotalCanje()
+        {
+            int totalPuntos = 0;
 
-            // Crear objeto de venta
-            Venta objVenta = new Venta
-            {
-                MetodoPago = cbocondicion.SelectedItem.ToString() == "Credito" ? "N/A" : comboMetodoPago.SelectedItem.ToString(),
-                MontoTotal = decimal.Parse(txttotalpagar.Text),
-                Condicion = cbocondicion.SelectedItem.ToString()
-            };
-
-            // Si la condición es "Crédito", no se requiere monto pagado ni cambio
-            if (objVenta.Condicion == "Credito")
-            {
-                objVenta.MontoPago = 0; // No se requiere monto pagado
-                objVenta.MontoCambio = 0; // No se requiere cambio
-            }
-            else
-            {
-                // Verificar el método de pago y calcular el cambio si es efectivo
-                if (objVenta.MetodoPago == "Efectivo")
-                {
-                    if (string.IsNullOrEmpty(txtpagocon.Text))
-                    {
-                        MessageBox.Show("Ingrese el monto con el que pagó el cliente.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                        return;
-                    }
-
-                    objVenta.MontoPago = decimal.Parse(txtpagocon.Text);
-                    objVenta.MontoCambio = objVenta.MontoPago - objVenta.MontoTotal;
-
-                    if (objVenta.MontoCambio < 0)
-                    {
-                        MessageBox.Show("El monto pagado no puede ser menor al total.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                        return;
-                    }
-                }
-                else if (objVenta.MetodoPago == "Tarjeta" || objVenta.MetodoPago == "Transferencia")
-                {
-                    objVenta.MontoPago = 0;
-                    objVenta.MontoCambio = 0;
-                }
-            }
-
-            // Crear DataTable para el detalle de la venta
-            DataTable detalle_venta = new DataTable();
-            detalle_venta.Columns.Add("IdProducto", typeof(int));
-            detalle_venta.Columns.Add("PrecioVenta", typeof(decimal));
-            detalle_venta.Columns.Add("Cantidad", typeof(decimal));
-            detalle_venta.Columns.Add("SubTotal", typeof(decimal));
-            detalle_venta.Columns.Add("NombreProducto", typeof(string)); // Nueva columna
-
-            // Llenar el DataTable con los datos de los productos
             foreach (DataGridViewRow row in dgvdata.Rows)
             {
                 if (!row.IsNewRow)
                 {
-                    detalle_venta.Rows.Add(
-                        Convert.ToInt32(row.Cells["IdProducto"].Value),
-                        Convert.ToDecimal(row.Cells["Precio"].Value),
-                        Convert.ToDecimal(row.Cells["Cantidad"].Value.ToString()),
-                        Convert.ToDecimal(row.Cells["SubTotal"].Value),
-                        row.Cells["Producto"].Value.ToString() // Asegúrate de incluir el nombre del producto
-                    );
-                }
-            }
-
-            // Calcular el impuesto
-            decimal totalSinImpuesto = 0;
-            foreach (DataGridViewRow row in dgvdata.Rows)
-            {
-                totalSinImpuesto += Convert.ToDecimal(row.Cells["SubTotal"].Value);
-            }
-            decimal totalISV = totalSinImpuesto * 0.15m; // Calcular el ISV
-
-            // Asignar el impuesto al objeto de venta
-            objVenta.Impuesto = totalISV;
-
-            // Obtener el correlativo para el número de documento
-            int idcorrelativo = new CN_Venta().ObtenerCorrelativoVentaSinFacturar();
-            numeroDocumentoImpresion = string.Format("{0:0000}", idcorrelativo);
-
-            // Crear el objeto de venta para registrar
-            Venta oVenta = new Venta
-            {
-                oUsuario = new Usuario() { IdUsuario = _Usuario.IdUsuario },
-                TipoDocumento = ((OpcionCombo)cbotipodocumento.SelectedItem).Texto,
-                NumeroDocumento = numeroDocumentoImpresion,
-                DocumentoCliente = string.IsNullOrEmpty(txtdocumentocliente.Text) ? "N/A" : txtdocumentocliente.Text,
-                NombreCliente = string.IsNullOrEmpty(txtnombrecliente.Text) ? "CONSUMIDOR FINAL" : txtnombrecliente.Text,
-                MetodoPago = objVenta.MetodoPago, // Esto ahora será "N/A" si es crédito
-                MontoPago = objVenta.MontoPago,
-                MontoCambio = objVenta.MontoCambio,
-                MontoTotal = Math.Round(decimal.Parse(txttotalpagar.Text), 2), // Asegurarse de que se redondee a dos decimales
-                Impuesto = objVenta.Impuesto,// Asignar el impuesto
-                Condicion = cbocondicion.SelectedItem.ToString(),  // Aquí asumes que el ComboBox tiene las opciones "Contado" o "Crédito"
-                FechaVencimiento = objVenta.Condicion == "Credito" ? (DateTime?)dtpFechaVencimiento.Value : null // Asignar la fecha de vencimiento
-            };
-
-            // Registrar la venta
-            string mensaje = string.Empty;
-            bool respuesta = new CN_Venta().Registrar(oVenta, detalle_venta, out mensaje);
-
-            if (respuesta)
-            {
-                // Restar el stock de los productos vendidos
-                foreach (DataGridViewRow row in dgvdata.Rows)
-                {
-                    if (!row.IsNewRow)
+                    if (int.TryParse(row.Cells["Precio"].Value.ToString(), out int precio) &&
+                        decimal.TryParse(row.Cells["Cantidad"].Value.ToString(), out decimal cantidad))
                     {
-                        int idProducto = Convert.ToInt32(row.Cells["IdProducto"].Value);
-                        decimal cantidadVendida = Convert.ToDecimal(row.Cells["Cantidad"].Value);
-
-                        // Obtener el IdCategoria del producto
-                        int idCategoria = Convert.ToInt32(row.Cells["IdCategoria"].Value); // Asegúrate de que la columna IdCategoria esté presente
-
-                        // Lógica para restar el stock solo si el IdCategoria es 35
-                        if (idCategoria == 35)
-                        {
-                            // No restar stock para productos con IdCategoria 35
-                            continue; // Salta a la siguiente iteración
-                        }
-
-                        // Lógica para restar el stock
-                        bool stockRestado = new CN_Venta().RestarStock(idProducto, cantidadVendida);
-                        if (!stockRestado)
-                        {
-                            MessageBox.Show("Error al restar stock para el producto ID: " + idProducto, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                        }
+                        totalPuntos += (int)(precio * cantidad);
                     }
                 }
             }
 
-            if (respuesta)
+            txtsubtotal.Text = "0.00";
+            txtimpuesto.Text = "0.00";
+            txttotalpagar.Text = totalPuntos.ToString(); // Mostrar total en puntos enteros
+        }
+
+
+        private void btnRealizarCanje_Click(object sender, EventArgs e)
+        {
+           
+        }
+
+        private void PrintPagVSF(object sender, PrintPageEventArgs e, bool esCopia)
+        {
+            string totalEnLetras = ConvertirNumeroALetras.Convertir(decimal.Parse(txttotalpagar.Text));
+
+            int pageWidth = 280; // Ancho de la impresora térmica
+            Font fontNormal = new Font("MS Gothic", 8, FontStyle.Regular);
+            Font fontBold = new Font("MS Gothic", 8, FontStyle.Bold);
+            Font fontTitle = new Font("MS Gothic", 11, FontStyle.Regular);
+            Font fontSubTitle = new Font("MS Gothic", 9, FontStyle.Regular);
+            int y = 0;
+
+            try
             {
-                var result = MessageBox.Show("Número de venta sin facturar generada:\n" + numeroDocumentoImpresion + "\n\n¿Desea copiar al portapapeles?", "Mensaje", MessageBoxButtons.YesNo, MessageBoxIcon.Information);
+                if (negocio.LogoBlancoNegro != null)
+                {
+                    using (MemoryStream ms = new MemoryStream(negocio.LogoBlancoNegro))
+                    {
+                        Image logo = Image.FromStream(ms);
+                        int logoWidth = 300; // Ajusta según sea necesario
+                        int logoHeight = 150; // Ajusta según sea necesario
+                        e.Graphics.DrawImage(logo, (pageWidth - logoWidth) / 2, y, logoWidth, logoHeight);
+                        y += logoHeight + 5; // Espacio después del logo
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error al cargar el logo: " + ex.Message);
+            }
 
-                if (result == DialogResult.Yes)
-                    Clipboard.SetText(numeroDocumentoImpresion);
+            string nombreNegocio = negocio.Nombre.ToUpper();
+            SizeF titleSize = e.Graphics.MeasureString(nombreNegocio, fontTitle);
 
-                // Limpiar campos después de registrar la venta
-                txtdocumentocliente.Text = "";
-                txtnombrecliente.Text = "";
-                dgvdata.Rows.Clear();
-                calcularTotal();
-                txtpagocon.Text = "";
-                txtcambio.Text = "";
-                txtimpuesto.Text = "";
-                comboMetodoPago.SelectedIndex = 0;
-                cbocondicion.Text = "Contado";
-                label14.Visible = false;
-                dtpFechaVencimiento.Visible = false;
-                cbotipodocumento.SelectedIndex = 0;
+            // Dibujar el nombre del negocio centrado
+            float xNombre = (pageWidth - titleSize.Width) / 2;
+            e.Graphics.DrawString(nombreNegocio, fontTitle, Brushes.Black, xNombre, y);
+
+            // Avanzar la posición vertical para que no se monte con el eslogan
+            y += (int)titleSize.Height + 5;
+
+            // Esloganes
+            string[] esloganes = { "Mejor Precio", "Mejor Pintura", "Interiores y Exteriores" };
+
+            foreach (string slogan in esloganes)
+            {
+                SizeF sloganSize = e.Graphics.MeasureString(slogan, fontNormal);
+                float xSlogan = (pageWidth - sloganSize.Width) / 2;
+                e.Graphics.DrawString(slogan, fontNormal, Brushes.Black, xSlogan, y);
+                y += (int)sloganSize.Height + 2; // Avanza un poco para la siguiente línea
+            }
+
+            string direccionCompleta = "Dirección: " + negocio.Direccion;
+            string[] direccionLines = SplitText(direccionCompleta, 37); // Dividir la dirección en líneas de 32 caracteres
+            foreach (string line in direccionLines)
+            {
+                SizeF textSize = e.Graphics.MeasureString(line, fontNormal);
+                e.Graphics.DrawString(line, fontNormal, Brushes.Black, (pageWidth - textSize.Width) / 2, y);
+                y += 14; // Reducí el espaciado entre líneas
+            }
+
+            // Imprimir RTN centrado
+            string rtn = "RTN: " + negocio.RUC;
+            string ciudad = "Danli, El Paraiso";
+            SizeF rtnSize = e.Graphics.MeasureString(rtn, fontNormal);
+            e.Graphics.DrawString(ciudad, fontNormal, Brushes.Black, (pageWidth - rtnSize.Width) / 2, y);
+            y += 14;
+            e.Graphics.DrawString(rtn, fontNormal, Brushes.Black, (pageWidth - rtnSize.Width) / 2, y);
+            y += 14;
+           
+
+            // WhatsApp con ícono centrado
+            Bitmap wtIcono = Properties.Resources.wtIcono;
+            Bitmap fbIcono = Properties.Resources.fbIcono;
+            Bitmap igIcono = Properties.Resources.igIcono;
+            Bitmap ttIcono = Properties.Resources.ttIcono;
+
+            int iconSize = 10;
+            int iconYAdjust = 2;
+            int textXOffset = 15;
+
+            // Calcular posición centrada
+            string whatsText = "Cel: " + negocio.Telefono + " / (+504) 3376-6564";
+
+            SizeF whatsSize = e.Graphics.MeasureString(whatsText, fontNormal);
+            float totalWhatsWidth = iconSize + textXOffset + whatsSize.Width;
+            float startXWhats = (pageWidth - totalWhatsWidth) / 2;
+
+            e.Graphics.DrawImage(wtIcono, startXWhats, y + iconYAdjust, iconSize, iconSize);
+            e.Graphics.DrawString(whatsText, fontNormal, Brushes.Black, startXWhats + iconSize + textXOffset, y);
+            y += 14;
+
+            // Encabezado de redes sociales
+            string redesHeader = "Síguenos en nuestras redes sociales:";
+            SizeF redesHeaderSize = e.Graphics.MeasureString(redesHeader, fontNormal);
+            e.Graphics.DrawString(redesHeader, fontNormal, Brushes.Black, (pageWidth - redesHeaderSize.Width) / 2, y);
+            y += 14;
+
+            // Lista de redes (centrado con íconos)
+            void DibujarRedSocial(Bitmap icono, string texto)
+            {
+                SizeF textoSize = e.Graphics.MeasureString(texto, fontNormal);
+                float totalWidth = iconSize + 4 + textoSize.Width; // 4 px de separación
+                float startX = (pageWidth - totalWidth) / 2;
+                float iconY = y + 1; // ajuste fino para que estén alineados
+
+                e.Graphics.DrawImage(icono, startX, iconY, iconSize, iconSize);
+                e.Graphics.DrawString(texto, fontNormal, Brushes.Black, startX + iconSize + 4, y);
+                y += 14;
+            }
+
+
+
+            // Dibujar cada red
+            DibujarRedSocial(fbIcono, "Facebook: American colors Honduras");
+            DibujarRedSocial(igIcono, "Instagram: @american.colors33");
+            DibujarRedSocial(ttIcono, "TikTok: @americancolololorshn");
+
+
+            e.Graphics.DrawString("------------------------------------------------------------------------", fontBold, Brushes.Black, 10, y);
+            y += 13;
+
+            // Información de la facturaKEY
+            string tipoDocumento = ((OpcionCombo)cbotipodocumento.SelectedItem).Valor.ToString();
+            string cliente = string.IsNullOrEmpty(txtnombrecliente.Text) ? "CONSUMIDOR FINAL" : txtnombrecliente.Text;
+            string documentoCliente = string.IsNullOrEmpty(txtdocumentocliente.Text) ? "N/A" : txtdocumentocliente.Text;
+
+            // Mostrar el tipo de documento en la impresión
+            e.Graphics.DrawString("VENTA " + numeroDocumentoImpresion, fontNormal, Brushes.Black, 10, y);
+            y += 13;
+            e.Graphics.DrawString("Fecha: " + DateTime.Now.ToString("dd/MM/yyyy HH:mm tt"), fontNormal, Brushes.Black, 10, y);
+            y += 13;
+            e.Graphics.DrawString("Atendido por: " + _Usuario.NombreCompleto, fontNormal, Brushes.Black, 10, y);
+            y += 13;
+
+            if (cbocondicion.Text == "Credito")
+            {
+                e.Graphics.DrawString("Condicion: " + cbocondicion.Text, fontNormal, Brushes.Black, 10, y);
+                y += 13;
+                e.Graphics.DrawString("Fecha de vencimiento: " + dtpFechaVencimiento.Value.ToString("dd/MM/yyyy"), fontNormal, Brushes.Black, 10, y);
+                y += 13; // Aumentar la posición Y para la siguiente línea
+            }
+            if (cbocondicion.Text == "Contado")
+            {
+                e.Graphics.DrawString("Condicion: " + cbocondicion.Text, fontNormal, Brushes.Black, 10, y);
+                y += 13;
+            }
+            e.Graphics.DrawString("------------------------------------------------------------------------", fontBold, Brushes.Black, 10, y);
+            y += 13;
+
+            // Información del cliente
+            int maxCaracteresPorLineaCliente = 45; // Límite de caracteres por línea para el cliente
+            List<string> lineasCliente = new List<string>();
+
+            // Agregar "Cliente: " a la primera línea
+            string clienteTexto = "Cliente: " + cliente;
+            for (int i = 0; i < clienteTexto.Length; i += maxCaracteresPorLineaCliente)
+            {
+                lineasCliente.Add(clienteTexto.Substring(i, Math.Min(maxCaracteresPorLineaCliente, clienteTexto.Length - i)));
+            }
+
+            // Imprimir la primera línea con "Cliente: "
+            if (lineasCliente.Count > 0)
+            {
+                e.Graphics.DrawString(lineasCliente[0], fontNormal, Brushes.Black, 10, y);
+                y += 13; // Aumentar la posición Y para la siguiente línea
+            }
+
+            // Imprimir las líneas restantes sin "Cliente: "
+            for (int i = 1; i < lineasCliente.Count; i++)
+            {
+                e.Graphics.DrawString(lineasCliente[i], fontNormal, Brushes.Black, 10, y);
+                y += 13; // Aumentar la posición Y para la siguiente línea
+            }
+
+            e.Graphics.DrawString("ID/RTN Cliente: " + documentoCliente, fontNormal, Brushes.Black, 10, y);
+            y += 13;
+          
+            e.Graphics.DrawString("------------------------------------------------------------------------", fontBold, Brushes.Black, 10, y);
+            y += 13;
+
+            // Detalle de producto
+            e.Graphics.DrawString("CANT  DESCRIPCION                     IMPORTE", fontNormal, Brushes.Black, 10, y);
+            y += 13;
+            e.Graphics.DrawString("------------------------------------------------------------", fontBold, Brushes.Black, 10, y);
+            y += 13;
+            Font fontBoldProductos = new Font("MS Gothic", 7, FontStyle.Bold); // Fuente de productos
+            Font fontBoldTotales = new Font("MS Gothic", 7, FontStyle.Bold); // Fuente de totales
+
+            // Crear StringFormat para alinear los totales a la derecha
+            StringFormat rightAlign = new StringFormat();
+            rightAlign.Alignment = StringAlignment.Far;
+
+            foreach (DataGridViewRow row in dgvdata.Rows)
+            {
+                string cantidad = row.Cells["Cantidad"].Value.ToString();
+                string producto = row.Cells["Producto"].Value.ToString();
+                string precioUnitario = Convert.ToDecimal(row.Cells["Precio"].Value).ToString("0.00");
+                string subtotal = "L. " + Convert.ToDecimal(row.Cells["SubTotal"].Value).ToString("0.00");
+
+                int maxxCaracteresPorLinea = 35; // Límite de caracteres por línea
+                int inicioDescripcion = 10;  // Posición inicial de la descripción
+                List<string> lineasDescripcion = new List<string>();
+
+                // Dividir la descripción en líneas de hasta 35 caracteres
+                for (int i = 0; i < producto.Length; i += maxxCaracteresPorLinea)
+                {
+                    lineasDescripcion.Add(producto.Substring(i, Math.Min(maxxCaracteresPorLinea, producto.Length - i)));
+                }
+
+                // Imprimir cada línea de la descripción
+                foreach (string linea in lineasDescripcion)
+                {
+                    e.Graphics.DrawString(linea, fontBoldProductos, Brushes.Black, inicioDescripcion, y);
+                    y += 12;
+                }
+
+                // Segunda línea: Cantidad x Precio Unitario + Subtotal alineado a la derecha
+                e.Graphics.DrawString($"{cantidad} x L. {precioUnitario}", fontBoldProductos, Brushes.Black, inicioDescripcion + 5, y);
+                e.Graphics.DrawString(subtotal, fontBoldTotales, Brushes.Black, 275, y, rightAlign);
+                y += 14; // Espaciado entre productos
+            }
+            e.Graphics.DrawString("------------------------------------------------------------------------", fontBold, Brushes.Black, 10, y);
+            y += 13;
+            // Variables principales
+            decimal montoTotal = decimal.Parse(txttotalpagar.Text);
+            decimal pagoCon = string.IsNullOrEmpty(txtpagocon.Text) ? 0 : decimal.Parse(txtpagocon.Text);
+            decimal cambio = pagoCon - montoTotal;
+
+            // Parámetros de alineación (Nombres nuevos)
+            int anchoPaginaTicket = e.PageBounds.Width;
+            int limiteDerechoTicket = anchoPaginaTicket - 1;
+            int anchoColumnaValoresTicket = 100;
+
+            int xEncabezadoTicket = limiteDerechoTicket - anchoColumnaValoresTicket - 1;
+            int xMonedaTicket = limiteDerechoTicket - 100;
+            int xValorTicket = limiteDerechoTicket - 1;
+
+            // Fuente en negrita (Nombre nuevo)
+            Font fuenteNegritaTicket = new Font(fontNormal, FontStyle.Bold);
+
+            // Función para imprimir textos alineados
+            void ImprimirTextoAlineadoTicket(string texto, string valor, bool esTotal = false)
+            {
+                Font fuenteUsar = esTotal ? fuenteNegritaTicket : fontNormal;
+
+                SizeF tamTexto = e.Graphics.MeasureString(texto, fuenteUsar);
+                float xTexto = xEncabezadoTicket - tamTexto.Width;
+
+                e.Graphics.DrawString(texto, fuenteUsar, Brushes.Black, xTexto, y);
+                e.Graphics.DrawString("L.", fuenteUsar, Brushes.Black, xMonedaTicket, y);
+                e.Graphics.DrawString(valor, fuenteUsar, Brushes.Black, xValorTicket, y, rightAlign);
+
+                y += 13;
+            }
+
+            // Calcular valores
+            decimal subtotalSinISV = 0;
+            foreach (DataGridViewRow fila in dgvdata.Rows)
+            {
+                subtotalSinISV += Convert.ToDecimal(fila.Cells["SubTotal"].Value);
+            }
+            decimal totalISV = subtotalSinISV * 0.15m;
+
+            // Imprimir datos
+            ImprimirTextoAlineadoTicket("SUBTOTAL:", subtotalSinISV.ToString("0.00"));
+            ImprimirTextoAlineadoTicket("Descuentos:", "0.00");
+            
+
+            // Total a pagar (resaltado en negrita)
+            ImprimirTextoAlineadoTicket("TOTAL A PAGAR:", txttotalpagar.Text, true);
+
+            y += 18;
+
+
+            e.Graphics.DrawString("------------------------------------------------------------------------", fontBold, Brushes.Black, 10, y);
+            y += 13;
+
+            Venta objVenta = new Venta();
+            objVenta.MetodoPago = comboMetodoPago.SelectedItem.ToString();
+            int maxCaracteresPorLinea = 40; // Límite de caracteres por línea
+            List<string> lineasTotalEnLetras = new List<string>();
+
+            for (int i = 0; i < totalEnLetras.Length; i += maxCaracteresPorLinea)
+            {
+                lineasTotalEnLetras.Add(totalEnLetras.Substring(i, Math.Min(maxCaracteresPorLinea, totalEnLetras.Length - i)));
+            }
+
+            // Imprimir la primera línea con "Son:"
+            if (lineasTotalEnLetras.Count > 0)
+            {
+                e.Graphics.DrawString("Son: " + lineasTotalEnLetras[0], fontNormal, Brushes.Black, 10, y);
+                y += 13;
+            }
+
+            // Imprimir las líneas restantes sin "Son:"
+            for (int i = 1; i < lineasTotalEnLetras.Count; i++)
+            {
+                e.Graphics.DrawString(lineasTotalEnLetras[i], fontNormal, Brushes.Black, 10, y);
+                y += 13;
+            }
+            string pagoConValor = Convert.ToDecimal(txtpagocon.Text).ToString("0.00");
+            string cambioValor = Convert.ToDecimal(txtcambio.Text).ToString("0.00");
+
+            if (cbocondicion.Text != "Credito")
+            {
+                // Si el método de pago es efectivo
+                if (comboMetodoPago.Text == "Efectivo")
+                {
+                    string efectivoTexto = $"Efectivo:  L. {pagoConValor.PadLeft(10)}"; // Alinea el número a la derecha
+                    string cambioTexto = $"Cambio:    L. {cambioValor.PadLeft(10)}";
+                    e.Graphics.DrawString(efectivoTexto, fontNormal, Brushes.Black, 10, y);
+                    y += 13;
+                    e.Graphics.DrawString(cambioTexto, fontNormal, Brushes.Black, 10, y);
+                    y += 13;
+                }
+                // Si el método de pago es tarjeta
+                else if (comboMetodoPago.Text == "Tarjeta")
+                {
+                    e.Graphics.DrawString("Terminal POS: L." + txttotalpagar.Text, fontNormal, Brushes.Black, 10, y);
+                    y += 13;
+                }
+                // Si el método de pago es transferencia
+                else if (comboMetodoPago.Text == "Transferencia")
+                {
+                    e.Graphics.DrawString("Transferencia", fontNormal, Brushes.Black, 10, y);
+                    y += 13;
+                }
+            }
+            e.Graphics.DrawString("------------------------------------------------------------------------", fontBold, Brushes.Black, 10, y);
+            y += 13;
+            if (int.TryParse(txtIdCliente.Text, out int idClientePuntos) && cmbNivelPrecio.SelectedItem.ToString() == "Nivel 1")
+            {
+                int puntosAcumulados = (int)(decimal.Parse(txttotalpagar.Text) / 100) * 4;
+               
+
+              
+            }
+            e.Graphics.DrawString("¡GRACIAS POR SU COMPRA!", new Font("Lucida Console", 8, FontStyle.Bold), Brushes.Black, 10, y);
+
+            y += 20; // Ajusta este valor para controlar el espaciado
+
+            string etiqueta = esCopia ? "COPIA" : "ORIGINAL";
+            Font fontEtiqueta = new Font("MS Gothic", 8, FontStyle.Bold);
+            SizeF etiquetaSize = e.Graphics.MeasureString(etiqueta, fontEtiqueta);
+
+            // Calcular la posición X para alinearlo completamente a la derecha
+            float xEtiqueta = pageWidth - etiquetaSize.Width - 5; // Se resta un pequeño margen (5)
+
+            // Usar la posición Y actual
+            float yEtiqueta = y;
+
+            // Dibuja la etiqueta alineada completamente a la derecha
+            e.Graphics.DrawString(etiqueta, fontEtiqueta, Brushes.Black, xEtiqueta, yEtiqueta);
+        }
+
+        private void PrintPage(object sender, PrintPageEventArgs e, bool esCopia)
+        {
+            string totalEnLetras = ConvertirNumeroALetras.Convertir(decimal.Parse(txttotalpagar.Text));
+
+            int pageWidth = 280; // Ancho de la impresora térmica
+            Font fontNormal = new Font("MS Gothic", 8, FontStyle.Regular);
+            Font fontBold = new Font("MS Gothic", 8, FontStyle.Bold);
+            Font fontTitle = new Font("MS Gothic", 11, FontStyle.Regular);
+            Font fontSubTitle = new Font("MS Gothic", 9, FontStyle.Regular);
+            int y = 0;
+
+            try
+            {
+                if (negocio.LogoBlancoNegro != null)
+                {
+                    using (MemoryStream ms = new MemoryStream(negocio.LogoBlancoNegro))
+                    {
+                        Image logo = Image.FromStream(ms);
+                        int logoWidth = 300; // Ajusta según sea necesario
+                        int logoHeight = 150; // Ajusta según sea necesario
+                        e.Graphics.DrawImage(logo, (pageWidth - logoWidth) / 2, y, logoWidth, logoHeight);
+                        y += logoHeight + 3; // Espacio después del logo
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error al cargar el logo: " + ex.Message);
+            }
+
+            string nombreNegocio = negocio.Nombre.ToUpper();
+            SizeF titleSize = e.Graphics.MeasureString(nombreNegocio, fontTitle);
+
+            // Dibujar el nombre del negocio centrado
+            float xNombre = (pageWidth - titleSize.Width) / 2;
+            e.Graphics.DrawString(nombreNegocio, fontTitle, Brushes.Black, xNombre, y);
+
+            // Avanzar la posición vertical para que no se monte con el eslogan
+            y += (int)titleSize.Height + 5;
+
+            // Esloganes
+            string[] esloganes = { "Mejor Precio", "Mejor Pintura", "Interiores y Exteriores" };
+
+            foreach (string slogan in esloganes)
+            {
+                SizeF sloganSize = e.Graphics.MeasureString(slogan, fontNormal);
+                float xSlogan = (pageWidth - sloganSize.Width) / 2;
+                e.Graphics.DrawString(slogan, fontNormal, Brushes.Black, xSlogan, y);
+                y += (int)sloganSize.Height + 2; // Avanza un poco para la siguiente línea
+            }
+
+            string direccionCompleta = "Dirección: " + negocio.Direccion;
+            string[] direccionLines = SplitText(direccionCompleta, 37); // Dividir la dirección en líneas de 32 caracteres
+            foreach (string line in direccionLines)
+            {
+                SizeF textSize = e.Graphics.MeasureString(line, fontNormal);
+                e.Graphics.DrawString(line, fontNormal, Brushes.Black, (pageWidth - textSize.Width) / 2, y);
+                y += 14; // Reducí el espaciado entre líneas
+            }
+
+            string ciudad = "Danli, El Paraiso";
+            string rtn = "RTN: " + negocio.RUC;
+            string cai = "CAI: " + negocio.CAI;
+            SizeF rtnSize = e.Graphics.MeasureString(rtn, fontNormal);
+            e.Graphics.DrawString(ciudad, fontNormal, Brushes.Black, (pageWidth - rtnSize.Width) / 2, y);
+            y += 14;
+            e.Graphics.DrawString(rtn, fontNormal, Brushes.Black, (pageWidth - rtnSize.Width) / 2, y);
+            y += 14;
+            e.Graphics.DrawString(cai, fontNormal, Brushes.Black, (pageWidth - rtnSize.Width) / 2, y);
+            y += 14;
+
+            // WhatsApp con ícono centrado
+            Bitmap wtIcono = Properties.Resources.wtIcono;
+            Bitmap fbIcono = Properties.Resources.fbIcono;
+            Bitmap igIcono = Properties.Resources.igIcono;
+            Bitmap ttIcono = Properties.Resources.ttIcono;
+
+            int iconSize = 10;
+            int iconYAdjust = 2;
+            int textXOffset = 15;
+
+            // Calcular posición centrada
+            string whatsText = "Cel: " + negocio.Telefono + " / (+504) 3376-6564";
+
+            SizeF whatsSize = e.Graphics.MeasureString(whatsText, fontNormal);
+            float totalWhatsWidth = iconSize + textXOffset + whatsSize.Width;
+            float startXWhats = (pageWidth - totalWhatsWidth) / 2;
+
+            e.Graphics.DrawImage(wtIcono, startXWhats, y + iconYAdjust, iconSize, iconSize);
+            e.Graphics.DrawString(whatsText, fontNormal, Brushes.Black, startXWhats + iconSize + textXOffset, y);
+            y += 14;
+
+            // Encabezado de redes sociales
+            string redesHeader = "Síguenos en nuestras redes sociales:";
+            SizeF redesHeaderSize = e.Graphics.MeasureString(redesHeader, fontNormal);
+            e.Graphics.DrawString(redesHeader, fontNormal, Brushes.Black, (pageWidth - redesHeaderSize.Width) / 2, y);
+            y += 14;
+
+            // Lista de redes (centrado con íconos)
+            void DibujarRedSocial(Bitmap icono, string texto)
+            {
+                SizeF textoSize = e.Graphics.MeasureString(texto, fontNormal);
+                float totalWidth = iconSize + 4 + textoSize.Width; // 4 px de separación
+                float startX = (pageWidth - totalWidth) / 2;
+                float iconY = y + 1; // ajuste fino para que estén alineados
+
+                e.Graphics.DrawImage(icono, startX, iconY, iconSize, iconSize);
+                e.Graphics.DrawString(texto, fontNormal, Brushes.Black, startX + iconSize + 4, y);
+                y += 14;
+            }
+
+
+
+            // Dibujar cada red
+            DibujarRedSocial(fbIcono, "Facebook: American colors Honduras");
+            DibujarRedSocial(igIcono, "Instagram: @american.colors33");
+            DibujarRedSocial(ttIcono, "TikTok: @americancolololorshn");
+            y += 5;
+            e.Graphics.DrawString("------------------------------------------------------------------------", fontBold, Brushes.Black, 10, y);
+            y += 13;
+
+            // Información de la factura
+            string tipoDocumento = ((OpcionCombo)cbotipodocumento.SelectedItem).Valor.ToString();
+            string cliente = string.IsNullOrEmpty(txtnombrecliente.Text) ? "CONSUMIDOR FINAL" : txtnombrecliente.Text;
+            string documentoCliente = string.IsNullOrEmpty(txtdocumentocliente.Text) ? "N/A" : txtdocumentocliente.Text;
+
+            // Mostrar el tipo de documento en la impresión
+            e.Graphics.DrawString(tipoDocumento.ToUpper() + " " + negocio.RangoInicial + numeroDocumentoImpresion, fontNormal, Brushes.Black, 10, y);
+            y += 13;
+            e.Graphics.DrawString("Fecha: " + dtpFecha.Value.ToString("dd/MM/yyyy HH:mm tt"), fontNormal, Brushes.Black, 10, y);
+            y += 13;
+            e.Graphics.DrawString("Atendido por: " + _Usuario.NombreCompleto, fontNormal, Brushes.Black, 10, y);
+            y += 13;
+
+            if (cbocondicion.Text == "Credito")
+            {
+                e.Graphics.DrawString("Condicion: " + cbocondicion.Text, fontNormal, Brushes.Black, 10, y);
+                y += 13;
+                e.Graphics.DrawString("Fecha de vencimiento: " + dtpFechaVencimiento.Value.ToString("dd/MM/yyyy"), fontNormal, Brushes.Black, 10, y);
+                y += 13; // Aumentar la posición Y para la siguiente línea
+            }
+            if (cbocondicion.Text == "Contado")
+            {
+                e.Graphics.DrawString("Condicion: " + cbocondicion.Text, fontNormal, Brushes.Black, 10, y);
+                y += 13;
+            }
+            e.Graphics.DrawString("------------------------------------------------------------------------", fontBold, Brushes.Black, 10, y);
+            y += 13;
+
+            // Información del cliente
+            int maxCaracteresPorLineaCliente = 45; // Límite de caracteres por línea para el cliente
+            List<string> lineasCliente = new List<string>();
+
+            // Agregar "Cliente: " a la primera línea
+            string clienteTexto = "Cliente: " + cliente;
+            for (int i = 0; i < clienteTexto.Length; i += maxCaracteresPorLineaCliente)
+            {
+                lineasCliente.Add(clienteTexto.Substring(i, Math.Min(maxCaracteresPorLineaCliente, clienteTexto.Length - i)));
+            }
+
+            // Imprimir la primera línea con "Cliente: "
+            if (lineasCliente.Count > 0)
+            {
+                e.Graphics.DrawString(lineasCliente[0], fontNormal, Brushes.Black, 10, y);
+                y += 13; // Aumentar la posición Y para la siguiente línea
+            }
+
+            // Imprimir las líneas restantes sin "Cliente: "
+            for (int i = 1; i < lineasCliente.Count; i++)
+            {
+                e.Graphics.DrawString(lineasCliente[i], fontNormal, Brushes.Black, 10, y);
+                y += 13; // Aumentar la posición Y para la siguiente línea
+            }
+
+            e.Graphics.DrawString("ID/RTN Cliente: " + documentoCliente, fontNormal, Brushes.Black, 10, y);
+            y += 13;
+            e.Graphics.DrawString("No.O/C exenta: " + txtoc.Text, fontNormal, Brushes.Black, 10, y);
+            y += 13;
+            e.Graphics.DrawString("No.Reg de exonerado: " + txtregexo.Text, fontNormal, Brushes.Black, 10, y);
+            y += 13;
+            e.Graphics.DrawString("No.De reg de la SAG: " + txtregsag.Text, fontNormal, Brushes.Black, 10, y);
+            y += 13;
+            e.Graphics.DrawString("------------------------------------------------------------------------", fontBold, Brushes.Black, 10, y);
+            y += 13;
+
+            // Detalle de producto
+            e.Graphics.DrawString("CANT  DESCRIPCION                     IMPORTE", fontNormal, Brushes.Black, 10, y);
+            y += 13;
+            e.Graphics.DrawString("------------------------------------------------------------", fontBold, Brushes.Black, 10, y);
+            y += 13;
+            Font fontBoldProductos = new Font("MS Gothic", 7, FontStyle.Bold); // Fuente de productos
+            Font fontBoldTotales = new Font("MS Gothic", 7, FontStyle.Bold); // Fuente de totales
+
+            // Crear StringFormat para alinear los totales a la derecha
+            StringFormat rightAlign = new StringFormat();
+            rightAlign.Alignment = StringAlignment.Far;
+
+            foreach (DataGridViewRow row in dgvdata.Rows)
+            {
+                string cantidad = row.Cells["Cantidad"].Value.ToString();
+                string producto = row.Cells["Producto"].Value.ToString();
+                string precioUnitario = Convert.ToDecimal(row.Cells["Precio"].Value).ToString("0.00");
+                string subtotal = "L. " + Convert.ToDecimal(row.Cells["SubTotal"].Value).ToString("0.00");
+
+                int maxxCaracteresPorLinea = 35; // Límite de caracteres por línea
+                int inicioDescripcion = 10;  // Posición inicial de la descripción
+                List<string> lineasDescripcion = new List<string>();
+
+                // Dividir la descripción en líneas de hasta 35 caracteres
+                for (int i = 0; i < producto.Length; i += maxxCaracteresPorLinea)
+                {
+                    lineasDescripcion.Add(producto.Substring(i, Math.Min(maxxCaracteresPorLinea, producto.Length - i)));
+                }
+
+                // Imprimir cada línea de la descripción
+                foreach (string linea in lineasDescripcion)
+                {
+                    e.Graphics.DrawString(linea, fontBoldProductos, Brushes.Black, inicioDescripcion, y);
+                    y += 12;
+                }
+
+                // Segunda línea: Cantidad x Precio Unitario + Subtotal alineado a la derecha
+                e.Graphics.DrawString($"{cantidad} x L. {precioUnitario}", fontBoldProductos, Brushes.Black, inicioDescripcion + 5, y);
+                e.Graphics.DrawString(subtotal, fontBoldTotales, Brushes.Black, 275, y, rightAlign);
+                y += 14; // Espaciado entre productos
+            }
+            e.Graphics.DrawString("------------------------------------------------------------------------", fontBold, Brushes.Black, 10, y);
+            y += 13;
+            // Variables principales
+            decimal montoTotal = decimal.Parse(txttotalpagar.Text);
+            decimal pagoCon = string.IsNullOrEmpty(txtpagocon.Text) ? 0 : decimal.Parse(txtpagocon.Text);
+            decimal cambio = pagoCon - montoTotal;
+
+            // Parámetros de alineación (Nombres nuevos)
+            int anchoPaginaTicket = e.PageBounds.Width;
+            int limiteDerechoTicket = anchoPaginaTicket - 1;
+            int anchoColumnaValoresTicket = 100;
+
+            int xEncabezadoTicket = limiteDerechoTicket - anchoColumnaValoresTicket - 1;
+            int xMonedaTicket = limiteDerechoTicket - 100;
+            int xValorTicket = limiteDerechoTicket - 1;
+
+            // Fuente en negrita (Nombre nuevo)
+            Font fuenteNegritaTicket = new Font(fontNormal, FontStyle.Bold);
+
+            // Función para imprimir textos alineados
+            void ImprimirTextoAlineadoTicket(string texto, string valor, bool esTotal = false)
+            {
+                Font fuenteUsar = esTotal ? fuenteNegritaTicket : fontNormal;
+
+                SizeF tamTexto = e.Graphics.MeasureString(texto, fuenteUsar);
+                float xTexto = xEncabezadoTicket - tamTexto.Width;
+
+                e.Graphics.DrawString(texto, fuenteUsar, Brushes.Black, xTexto, y);
+                e.Graphics.DrawString("L.", fuenteUsar, Brushes.Black, xMonedaTicket, y);
+                e.Graphics.DrawString(valor, fuenteUsar, Brushes.Black, xValorTicket, y, rightAlign);
+
+                y += 13;
+            }
+
+            // Calcular valores
+            decimal subtotalSinISV = 0;
+            foreach (DataGridViewRow fila in dgvdata.Rows)
+            {
+                subtotalSinISV += Convert.ToDecimal(fila.Cells["SubTotal"].Value);
+            }
+            decimal totalISV = subtotalSinISV * 0.15m;
+
+            // Imprimir datos
+            ImprimirTextoAlineadoTicket("SUBTOTAL:", subtotalSinISV.ToString("0.00"));
+            ImprimirTextoAlineadoTicket("Descuentos:", "0.00");
+            ImprimirTextoAlineadoTicket("Importe Exento:", "0.00");
+            ImprimirTextoAlineadoTicket("Importe Exonerado:", "0.00");
+            ImprimirTextoAlineadoTicket("Gravado 15%:", subtotalSinISV.ToString("0.00"));
+            ImprimirTextoAlineadoTicket("Gravado 18%:", "0.00");
+            ImprimirTextoAlineadoTicket("ISV 15%:", txtimpuesto.Text);
+            ImprimirTextoAlineadoTicket("ISV 18%:", "0.00");
+
+            // Total a pagar (resaltado en negrita)
+            ImprimirTextoAlineadoTicket("TOTAL A PAGAR:", txttotalpagar.Text, true);
+
+            y += 18;
+
+
+            e.Graphics.DrawString("------------------------------------------------------------------------", fontBold, Brushes.Black, 10, y);
+            y += 13;
+
+            Venta objVenta = new Venta();
+            objVenta.MetodoPago = comboMetodoPago.SelectedItem.ToString();
+            int maxCaracteresPorLinea = 40; // Límite de caracteres por línea
+            List<string> lineasTotalEnLetras = new List<string>();
+
+            for (int i = 0; i < totalEnLetras.Length; i += maxCaracteresPorLinea)
+            {
+                lineasTotalEnLetras.Add(totalEnLetras.Substring(i, Math.Min(maxCaracteresPorLinea, totalEnLetras.Length - i)));
+            }
+
+            // Imprimir la primera línea con "Son:"
+            if (lineasTotalEnLetras.Count > 0)
+            {
+                e.Graphics.DrawString("Son: " + lineasTotalEnLetras[0], fontNormal, Brushes.Black, 10, y);
+                y += 13;
+            }
+
+            // Imprimir las líneas restantes sin "Son:"
+            for (int i = 1; i < lineasTotalEnLetras.Count; i++)
+            {
+                e.Graphics.DrawString(lineasTotalEnLetras[i], fontNormal, Brushes.Black, 10, y);
+                y += 13;
+            }
+            string pagoConValor = Convert.ToDecimal(txtpagocon.Text).ToString("0.00");
+            string cambioValor = Convert.ToDecimal(txtcambio.Text).ToString("0.00");
+
+            if (cbocondicion.Text != "Credito")
+            {
+                // Si el método de pago es efectivo
+                if (comboMetodoPago.Text == "Efectivo")
+                {
+                    string efectivoTexto = $"Efectivo:  L. {pagoConValor.PadLeft(10)}"; // Alinea el número a la derecha
+                    string cambioTexto = $"Cambio:    L. {cambioValor.PadLeft(10)}";
+                    e.Graphics.DrawString(efectivoTexto, fontNormal, Brushes.Black, 10, y);
+                    y += 13;
+                    e.Graphics.DrawString(cambioTexto, fontNormal, Brushes.Black, 10, y);
+                    y += 13;
+                }
+                // Si el método de pago es tarjeta
+                else if (comboMetodoPago.Text == "Tarjeta")
+                {
+                    e.Graphics.DrawString("Terminal POS: L." + txttotalpagar.Text, fontNormal, Brushes.Black, 10, y);
+                    y += 13;
+                }
+                // Si el método de pago es transferencia
+                else if (comboMetodoPago.Text == "Transferencia")
+                {
+                    e.Graphics.DrawString("Transferencia", fontNormal, Brushes.Black, 10, y);
+                    y += 13;
+                }
+            }
+
+            e.Graphics.DrawString("------------------------------------------------------------------------", fontBold, Brushes.Black, 10, y);
+            y += 13;
+            string rangoAutorizado = "Rango Aut.: " + negocio.RangoAutorizado; // Reemplaza con el valor real
+            string fechaLimite = "Fecha Límite: " + negocio.FechaLimiteEmision.ToString("dd/MM/yyyy"); // Reemplaza con el valor real
+
+            // Dividir el rango autorizado en dos líneas
+            string[] rangoLines = SplitText(rangoAutorizado, 32);
+            foreach (string line in rangoLines)
+            {
+                e.Graphics.DrawString(line, fontNormal, Brushes.Black, 10, y);
+                y += 13;
+            }
+
+            // Imprimir la fecha límite
+            e.Graphics.DrawString(fechaLimite, fontNormal, Brushes.Black, 10, y);
+            y += 15;
+
+            e.Graphics.DrawString("ORIGINAL: CLIENTE", fontNormal, Brushes.Black, 10, y);
+            y += 13;
+            e.Graphics.DrawString("COPIA: OBLIGADO TRIBUTARIO EMISOR", fontNormal, Brushes.Black, 10, y);
+            y += 15;
+
+            // Mensaje final
+            string mensajeFinal = "LA FACTURA ES BENEFICIO DE TODOS, ¡EXÍJALA!";
+            SizeF mensajeSize = e.Graphics.MeasureString(mensajeFinal, fontNormal);
+            e.Graphics.DrawString(mensajeFinal, fontBold, Brushes.Black, (pageWidth - mensajeSize.Width) / 2, y);
+            y += 20;
+
+            e.Graphics.DrawString("¡GRACIAS POR SU COMPRA!", new Font("Lucida Console", 8, FontStyle.Bold), Brushes.Black, 10, y);
+
+            y += 20; // Ajusta este valor para controlar el espaciado
+
+            string etiqueta = esCopia ? "COPIA" : "ORIGINAL";
+            Font fontEtiqueta = new Font("MS Gothic", 8, FontStyle.Bold);
+            SizeF etiquetaSize = e.Graphics.MeasureString(etiqueta, fontEtiqueta);
+
+            // Calcular la posición X para alinearlo completamente a la derecha
+            float xEtiqueta = pageWidth - etiquetaSize.Width - 5; // Se resta un pequeño margen (5)
+
+            // Usar la posición Y actual
+            float yEtiqueta = y;
+
+            // Dibuja la etiqueta alineada completamente a la derecha
+            e.Graphics.DrawString(etiqueta, fontEtiqueta, Brushes.Black, xEtiqueta, yEtiqueta);
+        }
+
+
+
+        private void frmVentas_KeyPress(object sender, KeyPressEventArgs e)
+        {
+           
+        }
+       
+        private void txtprecio_Enter(object sender, EventArgs e)
+        {
+            if (_bloqueandoPrecio || permisoModificarPrecio)
+                return;
+
+            _bloqueandoPrecio = true; // activamos el bloqueo
+
+            bool requiereClave = true;
+
+            if (_Usuario != null && _Usuario.oRol != null && _Usuario.oRol.Descripcion == "Administrador")
+            {
+                requiereClave = false;
+            }
+
+            if (requiereClave)
+            {
+                using (MdAcceso claveAccesoForm = new MdAcceso())
+                {
+                    var resultado = claveAccesoForm.ShowDialog();
+
+                    if (resultado == DialogResult.OK)
+                    {
+                        string claveCorrecta = new CN_ClaveAcceso().ObtenerClave("ModificarPrecio");
+
+                        if (claveAccesoForm.ClaveIngresada == claveCorrecta)
+                        {
+                            permisoModificarPrecio = true;
+                            txtprecio.ReadOnly = false;
+                        }
+                        else
+                        {
+                            MessageBox.Show("Clave de acceso incorrecta.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            permisoModificarPrecio = false;
+                            txtprecio.ReadOnly = true;
+                            MoverFocoSeguro();
+                        }
+                    }
+                    else
+                    {
+                        permisoModificarPrecio = false;
+                        txtprecio.ReadOnly = true;
+                        MoverFocoSeguro();
+                    }
+                }
             }
             else
             {
-                MessageBox.Show(mensaje, "Mensaje", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                permisoModificarPrecio = true;
+                txtprecio.ReadOnly = false;
+            }
+
+            _bloqueandoPrecio = false;
+        }
+
+        private void txtprecio_Leave(object sender, EventArgs e)
+        {
+            permisoModificarPrecio = false;
+            txtprecio.ReadOnly = true;
+        }
+
+        private void MoverFocoSeguro()
+        {
+            
+            this.ActiveControl = txtcodproducto;
+
+        }
+
+        private void dgvdata_CellBeginEdit(object sender, DataGridViewCellCancelEventArgs e)
+        {
+            if (dgvdata.Columns[e.ColumnIndex].Name == "Precio")
+            {
+                // Verificar si el usuario tiene permiso o es administrador
+                int[] usuariosPermitidos = { 25, 40, 41 };
+
+                bool tienePermiso = usuariosPermitidos.Contains(_Usuario.IdUsuario) ||
+                                    (_Usuario.oRol != null && _Usuario.oRol.Descripcion == "Administrador");
+
+                if (!tienePermiso)
+                {
+                    // Mostrar formulario para ingresar clave
+                    using (MdAcceso claveAccesoForm = new MdAcceso())
+                    {
+                        var resultado = claveAccesoForm.ShowDialog();
+
+                        if (resultado == DialogResult.OK)
+                        {
+                            string claveCorrecta = new CN_ClaveAcceso().ObtenerClave("ModificarPrecio");
+
+                            if (claveAccesoForm.ClaveIngresada != claveCorrecta)
+                            {
+                                MessageBox.Show("Clave incorrecta. No se puede modificar el precio.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                                e.Cancel = true;
+                            }
+                        }
+                        else
+                        {
+                            e.Cancel = true;
+                        }
+                    }
+                }
+            }
+            else
+            {
+                // Cancelar edición en otras columnas
+                e.Cancel = true;
             }
         }
 
-      
+        private void dgvdata_CellEndEdit(object sender, DataGridViewCellEventArgs e)
+        {
+            if (dgvdata.Columns[e.ColumnIndex].Name == "Precio")
+            {
+                DataGridViewRow row = dgvdata.Rows[e.RowIndex];
+
+                if (decimal.TryParse(row.Cells["Precio"].Value?.ToString(), out decimal nuevoPrecio) &&
+                    decimal.TryParse(row.Cells["Cantidad"].Value?.ToString(), out decimal cantidad))
+                {
+                    // ✅ Reasignar el precio formateado a dos decimales
+                    row.Cells["Precio"].Value = nuevoPrecio.ToString("0.00");
+
+                    // Calcular nuevo subtotal
+                    row.Cells["SubTotal"].Value = (nuevoPrecio * cantidad).ToString("0.00");
+
+                    // Recalcular totales generales
+                    calcularTotal();
+                }
+                else
+                {
+                    MessageBox.Show("Formato de precio no válido.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    row.Cells["Precio"].Value = "0.00";
+                }
+            }
+        }
+
+        private void cmbPorcentajeTarjeta_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label10_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void txtPrimaProducto_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar) && (e.KeyChar != '.'))
+                e.Handled = true;
+
+            if ((e.KeyChar == '.') && (sender as TextBox).Text.IndexOf('.') > -1)
+                e.Handled = true;
+        }
+
+
+
+        private void AbrirModalCreditoParaFila(DataGridViewRow row, decimal precioBaseProducto, decimal primaDefecto, bool esEdicion)
+        {
+            try
+            {
+                using (var modal = new md_ProductoCredito())
+                {
+                    decimal cantidad = 1m;
+                    if (row.Cells["Cantidad"].Value != null)
+                        decimal.TryParse(row.Cells["Cantidad"].Value.ToString(), out cantidad);
+                    if (cantidad <= 0) cantidad = 1m;
+
+                    decimal precioTotal = precioBaseProducto;
+                    if (precioTotal <= 0 && row.Cells["SubTotal"].Value != null)
+                        decimal.TryParse(row.Cells["SubTotal"].Value.ToString(), out precioTotal);
+
+                    int numeroCuotas = 0;
+                    string frecuencia = "Mensual";
+                    DateTime fechaInicio = dtpFecha.Value.Date;
+                    DateTime fechaVencimiento = DateTime.MinValue;
+                    decimal saldoPendienteInicial = 0m;
+                    decimal montoCuotaInicial = 0m;
+
+                    if (esEdicion)
+                    {
+                        if (row.Cells["NumeroCuotasProducto"].Value != null)
+                            int.TryParse(row.Cells["NumeroCuotasProducto"].Value.ToString(), out numeroCuotas);
+
+                        if (row.Cells["FrecuenciaProducto"].Value != null)
+                            frecuencia = row.Cells["FrecuenciaProducto"].Value.ToString();
+
+                        if (row.Cells["FechaInicioCreditoProducto"].Value != null &&
+                            DateTime.TryParse(row.Cells["FechaInicioCreditoProducto"].Value.ToString(), out DateTime fIni))
+                            fechaInicio = fIni;
+
+                        if (row.Cells["PrimaProducto"].Value != null &&
+                            decimal.TryParse(row.Cells["PrimaProducto"].Value.ToString(), out decimal primaGuardada))
+                            primaDefecto = primaGuardada;
+
+                        if (row.Cells["SaldoPendienteProducto"].Value != null &&
+                            decimal.TryParse(row.Cells["SaldoPendienteProducto"].Value.ToString(), out decimal saldoGuardado))
+                            saldoPendienteInicial = saldoGuardado;
+
+                        if (row.Cells["FechaVencimientoProducto"].Value != null &&
+                            DateTime.TryParse(row.Cells["FechaVencimientoProducto"].Value.ToString(), out DateTime fVence))
+                            fechaVencimiento = fVence;
+
+                        if (row.Cells["MontoCuotaProducto"].Value != null &&
+                            decimal.TryParse(row.Cells["MontoCuotaProducto"].Value.ToString(), out decimal cuotaGuardada))
+                            montoCuotaInicial = cuotaGuardada;
+                    }
+
+                    if (numeroCuotas <= 0) numeroCuotas = 1;
+                    if (string.IsNullOrWhiteSpace(frecuencia)) frecuencia = "Mensual";
+                    if (fechaInicio == DateTime.MinValue) fechaInicio = dtpFecha.Value.Date;
+                    if (saldoPendienteInicial <= 0)
+                        saldoPendienteInicial = precioTotal - primaDefecto;
+                    if (saldoPendienteInicial < 0) saldoPendienteInicial = 0;
+
+                    modal.PrecioInicial = precioTotal;
+                    modal.PrimaInicial = primaDefecto;
+                    modal.SaldoPendienteInicial = saldoPendienteInicial;
+                    modal.NumeroCuotasInicial = numeroCuotas;
+                    modal.FrecuenciaInicial = frecuencia;
+                    modal.FechaInicioInicial = fechaInicio;
+                    modal.FechaVencimientoInicial = fechaVencimiento;
+                    modal.MontoCuotaInicial = montoCuotaInicial;
+
+                    if (modal.ShowDialog() == DialogResult.OK)
+                    {
+                        row.Cells["PrimaProducto"].Value = modal.Prima;
+                        row.Cells["NumeroCuotasProducto"].Value = modal.NumeroCuotas;
+                        row.Cells["FrecuenciaProducto"].Value = modal.Frecuencia;
+                        row.Cells["FechaInicioCreditoProducto"].Value = modal.FechaInicioCredito;
+                        row.Cells["FechaVencimientoProducto"].Value = modal.FechaVencimiento;
+                        row.Cells["SaldoPendienteProducto"].Value = modal.SaldoPendiente;
+                        row.Cells["MontoCuotaProducto"].Value = modal.MontoCuota;
+
+                        if (dgvdata.Columns.Contains("Prima"))
+                            row.Cells["Prima"].Value = modal.Prima.ToString("0.00");
+                        if (dgvdata.Columns.Contains("NoCuotas"))
+                            row.Cells["NoCuotas"].Value = modal.NumeroCuotas.ToString();
+                        if (dgvdata.Columns.Contains("Frecuencia"))
+                            row.Cells["Frecuencia"].Value = modal.Frecuencia;
+                        if (dgvdata.Columns.Contains("FechaInicioCredito"))
+                            row.Cells["FechaInicioCredito"].Value = modal.FechaInicioCredito.ToString("dd/MM/yyyy");
+                        if (dgvdata.Columns.Contains("FechaVence"))
+                            row.Cells["FechaVence"].Value = modal.FechaVencimiento.ToString("dd/MM/yyyy");
+                        if (dgvdata.Columns.Contains("Cuota"))
+                            row.Cells["Cuota"].Value = modal.MontoCuota.ToString("0.00");
+                        if (dgvdata.Columns.Contains("Saldo"))
+                            row.Cells["Saldo"].Value = modal.SaldoPendiente.ToString("0.00");
+
+                        string tipoDocLinea = ((OpcionCombo)cbotipodocumento.SelectedItem).Valor.ToString();
+                        bool conISVSeparado = tipoDocLinea == "Factura" || tipoDocLinea == "Boleta" || tipoDocLinea == "Cotizacion";
+
+                        decimal cantidadFila = 1m;
+                        if (row.Cells["Cantidad"].Value != null)
+                            decimal.TryParse(row.Cells["Cantidad"].Value.ToString(), out cantidadFila);
+                        if (cantidadFila <= 0) cantidadFila = 1m;
+
+                        decimal totalCredito = modal.Precio;
+                        decimal nuevoSubTotal;
+                        decimal nuevoPrecio;
+
+                        if (conISVSeparado)
+                        {
+                            nuevoSubTotal = Math.Round(totalCredito / 1.15m, 2, MidpointRounding.AwayFromZero);
+                            nuevoPrecio = Math.Round(nuevoSubTotal / cantidadFila, 2, MidpointRounding.AwayFromZero);
+                        }
+                        else
+                        {
+                            nuevoSubTotal = Math.Round(totalCredito, 2, MidpointRounding.AwayFromZero);
+                            nuevoPrecio = Math.Round(nuevoSubTotal / cantidadFila, 2, MidpointRounding.AwayFromZero);
+                        }
+
+                        row.Cells["Precio"].Value = nuevoPrecio.ToString("0.00");
+                        row.Cells["SubTotal"].Value = nuevoSubTotal.ToString("0.00");
+
+                        calcularTotal();
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Ocurrió un error al configurar el crédito del producto:\n" + ex.Message,
+                                "Error Crédito", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void dgvdata_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
+        {
+            if (e.RowIndex < 0 || e.ColumnIndex < 0)
+                return;
+
+            string colName = dgvdata.Columns[e.ColumnIndex].Name;
+
+            if (colName == "Precio" ||
+                colName == "SubTotal" ||
+                colName == "PrimaProducto" ||
+                colName == "MontoCuotaProducto" ||
+                colName == "SaldoPendienteProducto")
+            {
+                if (e.Value != null && decimal.TryParse(e.Value.ToString(), out decimal valor))
+                {
+                    e.Value = "L. " + valor.ToString("N2");
+                    e.FormattingApplied = true;
+                }
+            }
+        }
     }
 
 }
-
-    
-

@@ -14,12 +14,14 @@ namespace CapaEntidad
         public string TipoDocumento { get; set; }
         public string NumeroDocumento { get; set; }
         public string NoFactura { get; set; }
+        public decimal Impuesto { get; set; }
         public decimal MontoTotal { get; set; }
         public List<Detalle_Compra> oDetalleCompra { get; set; }
-        public string FechaRegistro { get; set; } // Cambiado a string
+        public string FechaRegistro { get; set; } 
         public string MetodoPago { get; set; }
         public string Condicion { get; set; }
         public decimal SaldoPendiente { get; set; }
         public string FechaVencimiento { get; set; }
+        public string Estado { get; set; }
     }
 }
